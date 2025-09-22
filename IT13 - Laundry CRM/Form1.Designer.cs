@@ -33,6 +33,8 @@
             login_button = new Button();
             textbox_username = new TextBox();
             textbox_password = new TextBox();
+            linkLabel1 = new LinkLabel();
+            label1 = new Label();
             SuspendLayout();
             // 
             // label2
@@ -84,11 +86,33 @@
             textbox_password.Size = new Size(202, 26);
             textbox_password.TabIndex = 5;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(522, 309);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(75, 19);
+            linkLabel1.TabIndex = 6;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Register.";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(324, 309);
+            label1.Name = "label1";
+            label1.Size = new Size(192, 19);
+            label1.TabIndex = 7;
+            label1.Text = "Doesn't have an account?";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(936, 404);
+            Controls.Add(label1);
+            Controls.Add(linkLabel1);
             Controls.Add(textbox_password);
             Controls.Add(textbox_username);
             Controls.Add(login_button);
@@ -109,5 +133,7 @@
         private Button login_button;
         private TextBox textbox_username;
         private TextBox textbox_password;
+        private LinkLabel linkLabel1;
+        private Label label1;
     }
 }

@@ -32,7 +32,7 @@ namespace IT13___Laundry_CRM
                 {
                     MessageBox.Show("Welcome Admin!", "Login Successful",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Dashboard dashboard = new Dashboard();
+                    AdminForm dashboard = new AdminForm();
                     dashboard.Show();
 
                     this.Hide();
@@ -42,6 +42,21 @@ namespace IT13___Laundry_CRM
                 {
                     MessageBox.Show("Welcome Laundry Attendant!", "Login Successful",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Laundry_Attendant_Dashboard dashboard = new Laundry_Attendant_Dashboard();
+                    dashboard.Show();   
+
+                    this.Hide();    
+
+                }
+                else if (user.Role == "customer")
+                {
+                    MessageBox.Show("Welcome Laundry Customer!", "Login Successful",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //CustomerForm customerform = new CustomerForm();
+                    //customerform.Show();
+
+                    //this.Hide();
 
                 }
             }
@@ -55,6 +70,14 @@ namespace IT13___Laundry_CRM
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegisterForm registerform = new RegisterForm();
+            registerform.ShowDialog();
+
+            
         }
     }
 }
