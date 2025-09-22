@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace IT13___Laundry_CRM
 {
-    public partial class Dashboard : Form
+    public partial class Laundry_Attendant_Dashboard : Laundry_Attendant_Template
     {
-        public Dashboard()
+        public Laundry_Attendant_Dashboard()
         {
             InitializeComponent();
+        }
+
+        private void Laundry_Attendant_Dashboard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
