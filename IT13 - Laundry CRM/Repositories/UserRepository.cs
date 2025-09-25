@@ -2,6 +2,8 @@
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace IT13___Laundry_CRM.Repositories
 {
@@ -21,7 +23,12 @@ namespace IT13___Laundry_CRM.Repositories
                 {
                     connection.Open();
 
-                    string sql = "SELECT UserId, Username, PasswordHash, Role, first_name, middle_name, last_name, address, contact, CreatedAt FROM users ORDER BY UserId DESC";
+                    string sql = @"SELECT user_id, username, password, role, 
+                                  first_name, middle_name, last_name, 
+                                  address, contact, created_at 
+                           FROM users 
+                           ORDER BY user_id DESC";
+
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -30,11 +37,16 @@ namespace IT13___Laundry_CRM.Repositories
                             {
                                 User user = new User
                                 {
-                                    UserId = reader.GetInt32(0),
-                                    Username = reader.GetString(1),
-                                    PasswordHash = reader.GetString(2),
-                                    Role = reader.GetString(3),
-                                    CreatedAt = reader.GetDateTime(4)
+                                    user_id = reader.GetInt32(0),
+                                    username = reader.GetString(1),
+                                    password = reader.GetString(2),
+                                    role = reader.GetString(3),
+                                    first_name = reader.IsDBNull(4) ? null : reader.GetString(4),
+                                    middle_name = reader.IsDBNull(5) ? null : reader.GetString(5),
+                                    last_name = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    address = reader.IsDBNull(7) ? null : reader.GetString(7),
+                                    contact = reader.IsDBNull(8) ? null : reader.GetString(8),
+                                    created_at = reader.GetDateTime(9)
                                 };
                                 users.Add(user);
                             }
@@ -44,7 +56,7 @@ namespace IT13___Laundry_CRM.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex);
+                Console.WriteLine("Exception: " + ex.Message);
             }
 
             return users;
@@ -59,7 +71,10 @@ namespace IT13___Laundry_CRM.Repositories
                 {
                     connection.Open();
 
-                    string sql = "SELECT UserId, Username, PasswordHash, Role, CreatedAt FROM users WHERE Username=@username";
+                    string sql = @"SELECT user_id, username, password, role, created_at 
+                       FROM users 
+                       WHERE username = @username";
+
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
@@ -70,11 +85,11 @@ namespace IT13___Laundry_CRM.Repositories
                             {
                                 return new User
                                 {
-                                    UserId = reader.GetInt32(0),
-                                    Username = reader.GetString(1),
-                                    PasswordHash = reader.GetString(2),
-                                    Role = reader.GetString(3),
-                                    CreatedAt = reader.GetDateTime(4)
+                                    user_id = reader.GetInt32(0),
+                                    username = reader.GetString(1),
+                                    password = reader.GetString(2),
+                                    role = reader.GetString(3),
+                                    created_at = reader.GetDateTime(4)
                                 };
                             }
                         }
@@ -83,10 +98,11 @@ namespace IT13___Laundry_CRM.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex);
+                Console.WriteLine("Exception: " + ex.Message);
             }
 
             return null;
+
         }
 
         // Get user by ID
@@ -108,11 +124,11 @@ namespace IT13___Laundry_CRM.Repositories
                             {
                                 return new User
                                 {
-                                    UserId = reader.GetInt32(0),
-                                    Username = reader.GetString(1),
-                                    PasswordHash = reader.GetString(2),
-                                    Role = reader.GetString(3),
-                                    CreatedAt = reader.GetDateTime(4)
+                                    user_id = reader.GetInt32(0),
+                                    username = reader.GetString(1),
+                                    password = reader.GetString(2),
+                                    role = reader.GetString(3),
+                                    created_at= reader.GetDateTime(4)
                                 };
                             }
                         }
@@ -135,15 +151,26 @@ namespace IT13___Laundry_CRM.Repositories
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "INSERT INTO users (Username, PasswordHash, Role, CreatedAt) " +
-                                 "VALUES (@Username, @PasswordHash, @Role, @CreatedAt)";
+
+                    string sql = @"INSERT INTO users 
+                (username, password, role, first_name, middle_name, last_name, address, contact, created_at) 
+                VALUES 
+                (@username, @password, @role, @first_name, @middle_name, @last_name, @address, @contact, @created_at)";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Username", user.Username);
-                        command.Parameters.AddWithValue("@PasswordHash", user.PasswordHash); // ⚠️ Should be hashed before saving
-                        command.Parameters.AddWithValue("@Role", user.Role);
-                        command.Parameters.AddWithValue("@CreatedAt", user.CreatedAt);
+                        // Hash the password before saving
+                        string hashedPassword = HashPassword(user.password);
+
+                        command.Parameters.AddWithValue("@username", user.username);
+                        command.Parameters.AddWithValue("@password", hashedPassword);
+                        command.Parameters.AddWithValue("@role", user.role);
+                        command.Parameters.AddWithValue("@first_name", (object?)user.first_name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@middle_name", (object?)user.middle_name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@last_name", (object?)user.last_name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@address", (object?)user.address ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@contact", (object?)user.contact ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@created_at", user.created_at);
 
                         command.ExecuteNonQuery();
                     }
@@ -151,7 +178,19 @@ namespace IT13___Laundry_CRM.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex);
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+
+        }
+
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
             }
         }
 
@@ -169,10 +208,10 @@ namespace IT13___Laundry_CRM.Repositories
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Username", user.Username);
-                        command.Parameters.AddWithValue("@PasswordHash", user.PasswordHash); // ⚠️ Should be hashed before saving
-                        command.Parameters.AddWithValue("@Role", user.Role);
-                        command.Parameters.AddWithValue("@UserId", user.UserId);
+                        command.Parameters.AddWithValue("@Username", user.username);
+                        command.Parameters.AddWithValue("@PasswordHash", user.password); // ⚠️ Should be hashed before saving
+                        command.Parameters.AddWithValue("@Role", user.role);
+                        command.Parameters.AddWithValue("@UserId", user.user_id);
 
                         command.ExecuteNonQuery();
                     }

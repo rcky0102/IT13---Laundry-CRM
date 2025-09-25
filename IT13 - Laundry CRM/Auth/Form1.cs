@@ -1,0 +1,123 @@
+﻿using IT13___Laundry_CRM.Models;
+using IT13___Laundry_CRM.Repositories;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace IT13___Laundry_CRM
+{
+    public partial class Form1 : Form
+    {
+        private readonly UserRepository userRepository = new UserRepository();
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void login_button_Click(object sender, EventArgs e)
+        {
+            string username = textbox_username.Text.Trim();
+            string password = textbox_password.Text.Trim();
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both username and password.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Fetch user from DB
+            User? user = userRepository.GetUserByUsername(username);
+
+            if (user != null)
+            {
+                // ✅ Hash entered password before comparison
+                string hashedPassword = HashPassword(password);
+
+                if (user.password == hashedPassword)
+                {
+                    if (user.role == "admin")
+                    {
+                        MessageBox.Show("Welcome Admin!", "Login Successful",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AdminForm dashboard = new AdminForm();
+                        dashboard.Show();
+                        this.Hide();
+                    }
+                    else if (user.role == "laundry_attendant")
+                    {
+                        MessageBox.Show("Welcome Laundry Attendant!", "Login Successful",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Laundry_Attendant_Dashboard dashboard = new Laundry_Attendant_Dashboard();
+                        dashboard.Show();
+                        this.Hide();
+                    }
+                    else if (user.role == "customer")
+                    {
+                        MessageBox.Show("Welcome Laundry Customer!", "Login Successful",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        customer_dashboard customerform = new customer_dashboard();
+                        customerform.Show();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.", "Login Failed",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.", "Login Failed",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //RegisterForm registerform = new RegisterForm();
+            //registerform.ShowDialog();
+
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linklabel_reg_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegisterForm reg = new RegisterForm();
+            reg.ShowDialog();
+
+            
+        }
+    }
+}
