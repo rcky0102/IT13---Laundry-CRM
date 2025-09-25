@@ -12,6 +12,26 @@ namespace IT13___Laundry_CRM
         public Form1()
         {
             InitializeComponent();
+
+            SeedAdmin();
+        }
+
+        private void SeedAdmin()
+        {
+            User adminUser = new User
+            {
+                username = "admin",
+                password = "123", // this will be hashed
+                role = "admin",
+                first_name = "System",
+                middle_name = null,
+                last_name = "Administrator",
+                address = null,
+                contact = null,
+                created_at = DateTime.Now
+            };
+
+            userRepository.CreateUser(adminUser);
         }
 
         private void login_button_Click(object sender, EventArgs e)
