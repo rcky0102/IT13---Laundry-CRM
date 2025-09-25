@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IT13___Laundry_CRM.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,10 +38,10 @@ namespace IT13___Laundry_CRM
 
         private void button_users_Click(object sender, EventArgs e)
         {
-            //UserForm userform = new UserForm();
-            //userform.Show();
+            admin_user user = new admin_user();
+            user.Show();
 
-            //this.Hide();
+            this.Hide();
         }
     }
 }

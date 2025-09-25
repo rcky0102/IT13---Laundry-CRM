@@ -62,6 +62,59 @@ namespace IT13___Laundry_CRM.Repositories
             return users;
         }
 
+
+        public User? GetUser(int id)
+        {
+            User? user = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sql = @"SELECT user_id, username, password, role, 
+                                  first_name, middle_name, last_name, 
+                                  address, contact, created_at
+                           FROM users
+                           WHERE user_id = @id";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                user = new User
+                                {
+                                    user_id = reader.GetInt32(0),
+                                    username = reader.GetString(1),
+                                    password = reader.GetString(2),
+                                    role = reader.GetString(3),
+                                    first_name = reader.IsDBNull(4) ? null : reader.GetString(4),
+                                    middle_name = reader.IsDBNull(5) ? null : reader.GetString(5),
+                                    last_name = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    address = reader.IsDBNull(7) ? null : reader.GetString(7),
+                                    contact = reader.IsDBNull(8) ? null : reader.GetString(8),
+                                    created_at = reader.GetDateTime(9)
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+
+            return user;
+        }
+
+
+
         // Get user by username (used in login)
         public User? GetUserByUsername(string username)
         {
@@ -202,16 +255,52 @@ namespace IT13___Laundry_CRM.Repositories
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "UPDATE users " +
-                                 "SET Username=@Username, PasswordHash=@PasswordHash, Role=@Role " +
-                                 "WHERE UserId=@UserId";
+
+                    // If password is provided → include in update
+                    string sql;
+                    if (!string.IsNullOrEmpty(user.password))
+                    {
+                        sql = @"UPDATE users 
+                        SET username = @username, 
+                            password = @password, 
+                            role = @role, 
+                            first_name = @first_name, 
+                            middle_name = @middle_name, 
+                            last_name = @last_name, 
+                            address = @address, 
+                            contact = @contact
+                        WHERE user_id = @user_id";
+                    }
+                    else
+                    {
+                        // No password change → exclude password column
+                        sql = @"UPDATE users 
+                        SET username = @username, 
+                            role = @role, 
+                            first_name = @first_name, 
+                            middle_name = @middle_name, 
+                            last_name = @last_name, 
+                            address = @address, 
+                            contact = @contact
+                        WHERE user_id = @user_id";
+                    }
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Username", user.username);
-                        command.Parameters.AddWithValue("@PasswordHash", user.password); // ⚠️ Should be hashed before saving
-                        command.Parameters.AddWithValue("@Role", user.role);
-                        command.Parameters.AddWithValue("@UserId", user.user_id);
+                        command.Parameters.AddWithValue("@username", user.username);
+                        command.Parameters.AddWithValue("@role", user.role);
+                        command.Parameters.AddWithValue("@first_name", (object?)user.first_name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@middle_name", (object?)user.middle_name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@last_name", (object?)user.last_name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@address", (object?)user.address ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@contact", (object?)user.contact ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@user_id", user.user_id);
+
+                        if (!string.IsNullOrEmpty(user.password))
+                        {
+                            string hashedPassword = HashPassword(user.password);
+                            command.Parameters.AddWithValue("@password", hashedPassword);
+                        }
 
                         command.ExecuteNonQuery();
                     }
@@ -219,9 +308,10 @@ namespace IT13___Laundry_CRM.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex);
+                Console.WriteLine("Exception: " + ex.Message);
             }
         }
+
 
         // Delete user
         public void DeleteUser(int id)
