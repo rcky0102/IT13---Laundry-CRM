@@ -314,26 +314,28 @@ namespace IT13___Laundry_CRM.Repositories
 
 
         // Delete user
-        public void DeleteUser(int id)
+        public void DeleteUser(int user_id)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "DELETE FROM users WHERE UserId=@id";
+
+                    string sql = @"DELETE FROM users WHERE user_id = @user_id";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@id", id);
+                        command.Parameters.AddWithValue("@user_id", user_id);
                         command.ExecuteNonQuery();
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex);
+                Console.WriteLine("Exception: " + ex.Message);
             }
         }
+
     }
 }

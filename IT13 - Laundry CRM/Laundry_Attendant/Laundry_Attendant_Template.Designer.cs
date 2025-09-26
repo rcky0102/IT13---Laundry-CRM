@@ -30,11 +30,13 @@
         {
             panel1 = new Panel();
             button_customers = new Button();
+            button_status = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(button_status);
             panel1.Controls.Add(button_customers);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
@@ -52,6 +54,16 @@
             button_customers.UseVisualStyleBackColor = true;
             button_customers.Click += button_customers_Click;
             // 
+            // button_status
+            // 
+            button_status.Location = new Point(26, 181);
+            button_status.Name = "button_status";
+            button_status.Size = new Size(159, 29);
+            button_status.TabIndex = 1;
+            button_status.Text = "Status";
+            button_status.UseVisualStyleBackColor = true;
+            button_status.Click += button_status_Click;
+            // 
             // Laundry_Attendant_Template
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -68,5 +80,6 @@
 
         private Panel panel1;
         private Button button_customers;
+        private Button button_status;
     }
 }

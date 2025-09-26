@@ -23,5 +23,8 @@ namespace IT13___Laundry_CRM.Models
 
         public string contact { get; set; } = "";
         public DateTime created_at { get; set; } = DateTime.Now;
+
+
+        public List<Status> Statuses { get; set; }
     }
 }

@@ -107,5 +107,29 @@ namespace IT13___Laundry_CRM.Admin
                 LoadUsers(); // reload DataGridView
             }
         }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+            if (table_users.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a user to delete.",
+                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var val = table_users.SelectedRows[0].Cells["user_id"].Value.ToString();
+            if (string.IsNullOrEmpty(val)) return;
+
+            int userId = int.Parse(val);
+
+            var confirm = MessageBox.Show("Are you sure you want to delete this user?",
+                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                userRepository.DeleteUser(userId);
+                LoadUsers(); // refresh grid
+            }
+        }
     }
 }

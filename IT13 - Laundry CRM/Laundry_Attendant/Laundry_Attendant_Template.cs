@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IT13___Laundry_CRM.Laundry_Attendant;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +20,18 @@ namespace IT13___Laundry_CRM
 
         private void button_customers_Click(object sender, EventArgs e)
         {
-            Laundry_Attendant_CustomersForm customers = new Laundry_Attendant_CustomersForm();  
+            Laundry_Attendant_CustomersForm customers = new Laundry_Attendant_CustomersForm();
             customers.Show();
 
-            this.Hide();    
+            this.Hide();
+        }
+
+        private void button_status_Click(object sender, EventArgs e)
+        {
+            laundry_attendant_status status = new laundry_attendant_status();   
+            status.Show();
+
+            this.Hide();
         }
     }
 }
