@@ -71,6 +71,52 @@ namespace IT13___Laundry_CRM.Repositories
                 return statuses;
             }
 
+        public List<Status> GetStatusesByUserId(int userId)
+        {
+            var statuses = new List<Status>();
+
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"SELECT s.status_id, s.user_id, s.status, s.created_at,
+                                        u.user_id, u.first_name, u.middle_name, u.last_name
+                                 FROM Status s
+                                 INNER JOIN Users u ON s.user_id = u.user_id
+                                 WHERE s.user_id = @UserId
+                                 ORDER BY s.created_at DESC";
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var status = new Status
+                            {
+                                status_id = (int)reader["status_id"],
+                                user_id = (int)reader["user_id"],
+                                status = reader["status"].ToString(),
+                                created_at = (DateTime)reader["created_at"],
+                                User = new User
+                                {
+                                    user_id = (int)reader["user_id"],
+                                    first_name = reader["first_name"].ToString(),
+                                    middle_name = reader["middle_name"].ToString(),
+                                    last_name = reader["last_name"].ToString()
+                                }
+                            };
+
+                            statuses.Add(status);
+                        }
+                    }
+                }
+            }
+
+            return statuses;
+        }
+
         public void AddStatus(Status status)
         {
             try

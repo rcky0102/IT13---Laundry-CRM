@@ -29,18 +29,32 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button_status = new Button();
             button1 = new Button();
+            button_message = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(button_message);
+            panel1.Controls.Add(button_status);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(222, 450);
             panel1.TabIndex = 0;
+            // 
+            // button_status
+            // 
+            button_status.Location = new Point(64, 139);
+            button_status.Name = "button_status";
+            button_status.Size = new Size(94, 29);
+            button_status.TabIndex = 1;
+            button_status.Text = "Status";
+            button_status.UseVisualStyleBackColor = true;
+            button_status.Click += button_status_Click;
             // 
             // button1
             // 
@@ -50,6 +64,16 @@
             button1.TabIndex = 0;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
+            // 
+            // button_message
+            // 
+            button_message.Location = new Point(64, 199);
+            button_message.Name = "button_message";
+            button_message.Size = new Size(94, 29);
+            button_message.TabIndex = 2;
+            button_message.Text = "Messages";
+            button_message.UseVisualStyleBackColor = true;
+            button_message.Click += button_message_Click;
             // 
             // customer_template
             // 
@@ -67,5 +91,7 @@
 
         private Panel panel1;
         private Button button1;
+        private Button button_status;
+        private Button button_message;
     }
 }

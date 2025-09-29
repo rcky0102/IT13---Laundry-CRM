@@ -1,4 +1,5 @@
 ﻿using IT13___Laundry_CRM.Repositories;
+using IT13___Laundry_CRM.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,9 @@ using System.Windows.Forms;
 using static IT13___Laundry_CRM.Models.User;
 using Message = IT13___Laundry_CRM.Models.Message;
 
-namespace IT13___Laundry_CRM.Laundry_Attendant
+namespace IT13___Laundry_CRM.Customer
 {
-    public partial class laundry_attendant_messages : Laundry_Attendant_Template
+    public partial class customer_messages : customer_template
     {
 
         private readonly UserRepository userRepository = new UserRepository();
@@ -21,10 +22,45 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
         private List<Message> currentConversation = new List<Message>();
 
-        public laundry_attendant_messages()
+        public customer_messages()
         {
             InitializeComponent();
             LoadMessages();
+        }
+
+        private void customer_messages_Load(object sender, EventArgs e)
+        {
+            LoadUsersToComboBox();
+
+            combobox_users.SelectedIndexChanged += combobox_users_SelectedIndexChanged;
+        }
+
+        private void LoadUsersToComboBox()
+        {
+            try
+            {
+                var users = userRepository.GetUsers();
+
+                var filteredUsers = users
+                    .Where(u => u.role == "laundry_attendant" || u.role == "admin")
+                    .Select(u => new UserComboItem
+                    {
+                        user_id = u.user_id,
+                        FullName = $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name} ({u.role})"
+                    })
+                    .ToList();
+
+                combobox_users.DisplayMember = "FullName";
+                combobox_users.ValueMember = "user_id";
+                combobox_users.DataSource = filteredUsers;
+                combobox_users.SelectedIndex = -1;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading users: " + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadMessages()
@@ -62,8 +98,6 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
         private void button_send_Click(object sender, EventArgs e)
         {
@@ -116,44 +150,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 MessageBox.Show("Error sending message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void laundry_attendant_messages_Load(object sender, EventArgs e)
-        {
-            LoadUsersToComboBox();
-
-            combobox_users.SelectedIndexChanged += combobox_users_SelectedIndexChanged;
-        }
-
-        private void LoadUsersToComboBox()
-        {
-            try
-            {
-                var users = userRepository.GetUsers();
-
-                var filteredUsers = users
-                    .Where(u => u.role == "customer" || u.role == "admin")
-                    .Select(u => new UserComboItem
-                    {
-                        user_id = u.user_id,
-                        FullName = $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name} ({u.role})"
-                    })
-                    .ToList();
-
-                combobox_users.DisplayMember = "FullName";
-                combobox_users.ValueMember = "user_id";
-                combobox_users.DataSource = filteredUsers;
-                combobox_users.SelectedIndex = -1;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading users: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
+        
 
         private void button_edit_Click(object sender, EventArgs e)
         {

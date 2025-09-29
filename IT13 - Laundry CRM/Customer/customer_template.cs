@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IT13___Laundry_CRM.Customer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,22 @@ namespace IT13___Laundry_CRM
         public customer_template()
         {
             InitializeComponent();
+        }
+
+        private void button_status_Click(object sender, EventArgs e)
+        {
+            customer_status status = new customer_status();
+            status.Show();
+
+            this.Hide();
+        }
+
+        private void button_message_Click(object sender, EventArgs e)
+        {
+            customer_messages message = new customer_messages(); 
+            message.Show();
+
+            this.Hide();
         }
     }
 }
