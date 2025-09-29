@@ -83,5 +83,10 @@ namespace IT13___Laundry_CRM
             textbox_address.Clear();
             textbox_contact.Clear();
         }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

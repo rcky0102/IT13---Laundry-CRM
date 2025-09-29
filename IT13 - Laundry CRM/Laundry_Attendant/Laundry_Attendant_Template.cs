@@ -28,7 +28,7 @@ namespace IT13___Laundry_CRM
 
         private void button_status_Click(object sender, EventArgs e)
         {
-            laundry_attendant_status status = new laundry_attendant_status();   
+            laundry_attendant_status status = new laundry_attendant_status();
             status.Show();
 
             this.Hide();

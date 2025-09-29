@@ -117,7 +117,7 @@ namespace IT13___Laundry_CRM
             RegisterForm reg = new RegisterForm();
             reg.ShowDialog();
 
-            
+
         }
     }
 }

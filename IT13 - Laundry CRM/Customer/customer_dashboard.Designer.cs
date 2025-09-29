@@ -32,9 +32,10 @@
             // 
             // customer_dashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 562);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "customer_dashboard";
             Text = "customer_dashboard";
             Load += customer_dashboard_Load;
