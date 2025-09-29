@@ -23,12 +23,16 @@ namespace IT13___Laundry_CRM.Repositories
                 {
                     connection.Open();
 
+<<<<<<< HEAD
                     string sql = @"SELECT user_id, username, password, role, 
                                   first_name, middle_name, last_name, 
                                   address, contact, created_at 
                            FROM users 
                            ORDER BY user_id DESC";
 
+=======
+                    string sql = "SELECT UserId, Username, PasswordHash, Role, first_name, middle_name, last_name, address, contact, CreatedAt FROM users ORDER BY UserId DESC";
+>>>>>>> master
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -196,6 +200,47 @@ namespace IT13___Laundry_CRM.Repositories
             return null;
         }
 
+<<<<<<< HEAD
+=======
+        // Get user by ID
+        public User? GetUserById(int id)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT UserId, Username, PasswordHash, Role, CreatedAt FROM users WHERE UserId=@id";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return new User
+                                {
+                                    UserId = reader.GetInt32(0),
+                                    Username = reader.GetString(1),
+                                    PasswordHash = reader.GetString(2),
+                                    Role = reader.GetString(3),
+                                    CreatedAt = reader.GetDateTime(4)
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex);
+            }
+
+            return null;
+        }
+
+>>>>>>> master
         // Insert new user
         public void CreateUser(User user)
         {
@@ -212,6 +257,7 @@ namespace IT13___Laundry_CRM.Repositories
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
+<<<<<<< HEAD
                         // Hash the password before saving
                         string hashedPassword = HashPassword(user.password);
 
@@ -224,6 +270,12 @@ namespace IT13___Laundry_CRM.Repositories
                         command.Parameters.AddWithValue("@address", (object?)user.address ?? DBNull.Value);
                         command.Parameters.AddWithValue("@contact", (object?)user.contact ?? DBNull.Value);
                         command.Parameters.AddWithValue("@created_at", user.created_at);
+=======
+                        command.Parameters.AddWithValue("@Username", user.Username);
+                        command.Parameters.AddWithValue("@PasswordHash", user.PasswordHash); // ⚠️ Should be hashed before saving
+                        command.Parameters.AddWithValue("@Role", user.Role);
+                        command.Parameters.AddWithValue("@CreatedAt", user.CreatedAt);
+>>>>>>> master
 
                         command.ExecuteNonQuery();
                     }
@@ -255,6 +307,7 @@ namespace IT13___Laundry_CRM.Repositories
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
+<<<<<<< HEAD
 
                     // If password is provided → include in update
                     string sql;
@@ -301,6 +354,18 @@ namespace IT13___Laundry_CRM.Repositories
                             string hashedPassword = HashPassword(user.password);
                             command.Parameters.AddWithValue("@password", hashedPassword);
                         }
+=======
+                    string sql = "UPDATE users " +
+                                 "SET Username=@Username, PasswordHash=@PasswordHash, Role=@Role " +
+                                 "WHERE UserId=@UserId";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@Username", user.Username);
+                        command.Parameters.AddWithValue("@PasswordHash", user.PasswordHash); // ⚠️ Should be hashed before saving
+                        command.Parameters.AddWithValue("@Role", user.Role);
+                        command.Parameters.AddWithValue("@UserId", user.UserId);
+>>>>>>> master
 
                         command.ExecuteNonQuery();
                     }
@@ -308,6 +373,7 @@ namespace IT13___Laundry_CRM.Repositories
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
                 Console.WriteLine("Exception: " + ex.Message);
             }
         }
@@ -315,27 +381,49 @@ namespace IT13___Laundry_CRM.Repositories
 
         // Delete user
         public void DeleteUser(int user_id)
+=======
+                Console.WriteLine("Exception: " + ex);
+            }
+        }
+
+        // Delete user
+        public void DeleteUser(int id)
+>>>>>>> master
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
+<<<<<<< HEAD
 
                     string sql = @"DELETE FROM users WHERE user_id = @user_id";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@user_id", user_id);
+=======
+                    string sql = "DELETE FROM users WHERE UserId=@id";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+>>>>>>> master
                         command.ExecuteNonQuery();
                     }
                 }
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
                 Console.WriteLine("Exception: " + ex.Message);
             }
         }
 
+=======
+                Console.WriteLine("Exception: " + ex);
+            }
+        }
+>>>>>>> master
     }
 }
