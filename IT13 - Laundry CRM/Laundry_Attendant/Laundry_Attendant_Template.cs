@@ -33,5 +33,13 @@ namespace IT13___Laundry_CRM
 
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            laundry_attendant_messages messages = new laundry_attendant_messages();
+            messages.Show();
+
+            this.Hide();
+        }
     }
 }

@@ -13,63 +13,63 @@ namespace IT13___Laundry_CRM.Repositories
         private readonly string connectionString =
     "Data Source=LAPTOP-NGRORR8P\\SQLEXPRESS;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
-        public List<Status> GetStatusesWithCustomerNames()
-        {
-            var statuses = new List<Status>();
-
-            try
+            public List<Status> GetStatusesWithCustomerNames()
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                var statuses = new List<Status>();
+
+                try
                 {
-                    connection.Open();
-
-                    string sql = @"
-                        SELECT s.status_id, s.user_id, s.status, s.created_at,
-                               u.first_name, u.middle_name, u.last_name
-                        FROM Status s
-                        INNER JOIN Users u ON s.user_id = u.user_id
-                        WHERE u.role = 'customer' AND s.is_archived = 0
-                        ORDER BY s.status_id DESC";
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        connection.Open();
+
+                        string sql = @"
+                            SELECT s.status_id, s.user_id, s.status, s.created_at,
+                                   u.first_name, u.middle_name, u.last_name
+                            FROM Status s
+                            INNER JOIN Users u ON s.user_id = u.user_id
+                            WHERE u.role = 'customer' AND s.is_archived = 0
+                            ORDER BY s.status_id DESC";
+
+                        using (SqlCommand command = new SqlCommand(sql, connection))
                         {
-                            while (reader.Read())
+                            using (SqlDataReader reader = command.ExecuteReader())
                             {
-                                // build user (only names)
-                                var user = new User
+                                while (reader.Read())
                                 {
-                                    user_id = reader.GetInt32(1),
-                                    first_name = reader.IsDBNull(4) ? null : reader.GetString(4),
-                                    middle_name = reader.IsDBNull(5) ? null : reader.GetString(5),
-                                    last_name = reader.IsDBNull(6) ? null : reader.GetString(6),
-                                    role = "customer" // since we filtered by role already
-                                };
+                                    // build user (only names)
+                                    var user = new User
+                                    {
+                                        user_id = reader.GetInt32(1),
+                                        first_name = reader.IsDBNull(4) ? null : reader.GetString(4),
+                                        middle_name = reader.IsDBNull(5) ? null : reader.GetString(5),
+                                        last_name = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                        role = "customer" // since we filtered by role already
+                                    };
 
-                                // build status
-                                var status = new Status
-                                {
-                                    status_id = reader.GetInt32(0),
-                                    user_id = reader.GetInt32(1),
-                                    status = reader.GetString(2),
-                                    created_at = reader.GetDateTime(3),
-                                    User = user
-                                };
+                                    // build status
+                                    var status = new Status
+                                    {
+                                        status_id = reader.GetInt32(0),
+                                        user_id = reader.GetInt32(1),
+                                        status = reader.GetString(2),
+                                        created_at = reader.GetDateTime(3),
+                                        User = user
+                                    };
 
-                                statuses.Add(status);
+                                    statuses.Add(status);
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message);
-            }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception: " + ex.Message);
+                }
 
-            return statuses;
-        }
+                return statuses;
+            }
 
         public void AddStatus(Status status)
         {

@@ -26,5 +26,24 @@ namespace IT13___Laundry_CRM.Models
 
 
         public List<Status> Statuses { get; set; }
+        public List<Message> Messages { get; set; }
+
+        public static class CurrentUser
+        {
+            public static User User { get; set; }
+
+            public static int UserId => User != null ? User.user_id : 0;
+            public static string FullName => User != null
+                ? $"{User.first_name} {(string.IsNullOrEmpty(User.middle_name) ? "" : User.middle_name + " ")}{User.last_name}"
+                : "";
+            public static string Role => User?.role ?? "";
+        }
+
+        public class UserComboItem
+        {
+            public int user_id { get; set; }
+            public string FullName { get; set; }
+        }
+
     }
 }

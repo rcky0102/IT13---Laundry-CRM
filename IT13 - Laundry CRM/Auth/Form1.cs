@@ -2,6 +2,7 @@
 using IT13___Laundry_CRM.Repositories;
 using System.Security.Cryptography;
 using System.Text;
+using static IT13___Laundry_CRM.Models.User;
 
 namespace IT13___Laundry_CRM
 {
@@ -38,6 +39,8 @@ namespace IT13___Laundry_CRM
                 {
                     if (user.role == "admin")
                     {
+                        CurrentUser.User = user;
+
                         MessageBox.Show("Welcome Admin!", "Login Successful",
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                         AdminForm dashboard = new AdminForm();
@@ -46,6 +49,8 @@ namespace IT13___Laundry_CRM
                     }
                     else if (user.role == "laundry_attendant")
                     {
+                        CurrentUser.User = user;
+
                         MessageBox.Show("Welcome Laundry Attendant!", "Login Successful",
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Laundry_Attendant_Dashboard dashboard = new Laundry_Attendant_Dashboard();
@@ -54,6 +59,8 @@ namespace IT13___Laundry_CRM
                     }
                     else if (user.role == "customer")
                     {
+                        CurrentUser.User = user;
+
                         MessageBox.Show("Welcome Laundry Customer!", "Login Successful",
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                         customer_dashboard customerform = new customer_dashboard();
