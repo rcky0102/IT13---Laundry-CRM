@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button_message = new Button();
             button_status = new Button();
             button1 = new Button();
-            button_message = new Button();
+            button_feedback = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(button_feedback);
             panel1.Controls.Add(button_message);
             panel1.Controls.Add(button_status);
             panel1.Controls.Add(button1);
@@ -45,6 +47,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(222, 450);
             panel1.TabIndex = 0;
+            // 
+            // button_message
+            // 
+            button_message.Location = new Point(64, 199);
+            button_message.Name = "button_message";
+            button_message.Size = new Size(94, 29);
+            button_message.TabIndex = 2;
+            button_message.Text = "Messages";
+            button_message.UseVisualStyleBackColor = true;
+            button_message.Click += button_message_Click;
             // 
             // button_status
             // 
@@ -65,15 +77,15 @@
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
-            // button_message
+            // button_feedback
             // 
-            button_message.Location = new Point(64, 199);
-            button_message.Name = "button_message";
-            button_message.Size = new Size(94, 29);
-            button_message.TabIndex = 2;
-            button_message.Text = "Messages";
-            button_message.UseVisualStyleBackColor = true;
-            button_message.Click += button_message_Click;
+            button_feedback.Location = new Point(64, 260);
+            button_feedback.Name = "button_feedback";
+            button_feedback.Size = new Size(94, 29);
+            button_feedback.TabIndex = 3;
+            button_feedback.Text = "Feedback";
+            button_feedback.UseVisualStyleBackColor = true;
+            button_feedback.Click += button_feedback_Click;
             // 
             // customer_template
             // 
@@ -93,5 +105,6 @@
         private Button button1;
         private Button button_status;
         private Button button_message;
+        private Button button_feedback;
     }
 }

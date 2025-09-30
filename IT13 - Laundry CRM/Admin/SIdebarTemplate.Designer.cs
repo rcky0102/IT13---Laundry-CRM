@@ -30,13 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SIdebarTemplate));
             panel1 = new Panel();
+            button3 = new Button();
+            button_messages = new Button();
             button_users = new Button();
             button1 = new Button();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             panel2 = new Panel();
-            button2 = new Button();
-            button3 = new Button();
+            button_feedback = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -46,8 +47,9 @@
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(button_feedback);
             panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button_messages);
             panel1.Controls.Add(button_users);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
@@ -57,6 +59,35 @@
             panel1.Size = new Size(279, 641);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // button3
+            // 
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = SystemColors.ButtonHighlight;
+            button3.Location = new Point(62, 525);
+            button3.Margin = new Padding(4, 3, 4, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(209, 43);
+            button3.TabIndex = 3;
+            button3.Text = "🚪Log Out";
+            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button_messages
+            // 
+            button_messages.FlatAppearance.BorderSize = 0;
+            button_messages.FlatStyle = FlatStyle.Flat;
+            button_messages.ForeColor = SystemColors.ButtonHighlight;
+            button_messages.Location = new Point(41, 172);
+            button_messages.Margin = new Padding(4, 3, 4, 3);
+            button_messages.Name = "button_messages";
+            button_messages.Size = new Size(155, 50);
+            button_messages.TabIndex = 2;
+            button_messages.Text = "📩 Message";
+            button_messages.TextAlign = ContentAlignment.MiddleLeft;
+            button_messages.UseVisualStyleBackColor = true;
+            button_messages.Click += button_messages_Click;
             // 
             // button_users
             // 
@@ -105,7 +136,7 @@
             label1.Location = new Point(123, 18);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(311, 60);
+            label1.Size = new Size(264, 49);
             label1.TabIndex = 3;
             label1.Text = "LaundryCare";
             // 
@@ -122,37 +153,24 @@
             panel2.Size = new Size(1578, 99);
             panel2.TabIndex = 1;
             // 
-            // button2
+            // button_feedback
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(41, 172);
-            button2.Margin = new Padding(4, 3, 4, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(155, 50);
-            button2.TabIndex = 2;
-            button2.Text = "📩 Message";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = SystemColors.ButtonHighlight;
-            button3.Location = new Point(62, 525);
-            button3.Margin = new Padding(4, 3, 4, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(209, 43);
-            button3.TabIndex = 3;
-            button3.Text = "🚪Log Out";
-            button3.TextAlign = ContentAlignment.MiddleRight;
-            button3.UseVisualStyleBackColor = true;
+            button_feedback.FlatAppearance.BorderSize = 0;
+            button_feedback.FlatStyle = FlatStyle.Flat;
+            button_feedback.ForeColor = SystemColors.ButtonHighlight;
+            button_feedback.Location = new Point(30, 244);
+            button_feedback.Margin = new Padding(4, 3, 4, 3);
+            button_feedback.Name = "button_feedback";
+            button_feedback.Size = new Size(155, 50);
+            button_feedback.TabIndex = 4;
+            button_feedback.Text = "📩 Feedback";
+            button_feedback.TextAlign = ContentAlignment.MiddleLeft;
+            button_feedback.UseVisualStyleBackColor = true;
+            button_feedback.Click += button_feedback_Click;
             // 
             // SIdebarTemplate
             // 
-            AutoScaleDimensions = new SizeF(12F, 27F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1578, 740);
             Controls.Add(panel1);
@@ -176,7 +194,8 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Panel panel2;
-        private Button button2;
+        private Button button_messages;
         private Button button3;
+        private Button button_feedback;
     }
 }

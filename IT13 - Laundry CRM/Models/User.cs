@@ -28,6 +28,8 @@ namespace IT13___Laundry_CRM.Models
         public List<Status> Statuses { get; set; }
         public List<Message> Messages { get; set; }
 
+        public List<Feedback> Feedbacks { get; set; }
+
         public static class CurrentUser
         {
             public static User User { get; set; }

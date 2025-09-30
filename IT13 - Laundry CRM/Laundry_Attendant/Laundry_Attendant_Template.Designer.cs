@@ -39,6 +39,7 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
+            button_feedback = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -48,6 +49,7 @@
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(button_feedback);
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
@@ -68,7 +70,7 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Cascadia Code SemiLight", 12F);
             button3.Location = new Point(9, 245);
-            button3.Margin = new Padding(2, 2, 2, 2);
+            button3.Margin = new Padding(2);
             button3.Name = "button3";
             button3.Size = new Size(171, 37);
             button3.TabIndex = 3;
@@ -82,7 +84,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.Location = new Point(36, 623);
-            button2.Margin = new Padding(2, 2, 2, 2);
+            button2.Margin = new Padding(2);
             button2.Name = "button2";
             button2.Size = new Size(134, 37);
             button2.TabIndex = 2;
@@ -95,7 +97,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Cascadia Code SemiLight", 12F);
             button1.Location = new Point(0, 111);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(170, 37);
             button1.TabIndex = 2;
@@ -136,7 +138,7 @@
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Location = new Point(2, 2);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(194, 88);
             panel2.TabIndex = 1;
@@ -145,7 +147,7 @@
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 6);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(80, 73);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -176,6 +178,20 @@
             label1.TabIndex = 1;
             label1.Text = "Laundry";
             // 
+            // button_feedback
+            // 
+            button_feedback.FlatAppearance.BorderSize = 0;
+            button_feedback.FlatStyle = FlatStyle.Flat;
+            button_feedback.Font = new Font("Cascadia Code SemiLight", 12F);
+            button_feedback.Location = new Point(14, 316);
+            button_feedback.Margin = new Padding(2);
+            button_feedback.Name = "button_feedback";
+            button_feedback.Size = new Size(171, 37);
+            button_feedback.TabIndex = 4;
+            button_feedback.Text = "📩 Feedbacks";
+            button_feedback.UseVisualStyleBackColor = true;
+            button_feedback.Click += button_feedback_Click;
+            // 
             // Laundry_Attendant_Template
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -203,5 +219,6 @@
         private Label label2;
         private Panel panel2;
         private Button button3;
+        private Button button_feedback;
     }
 }

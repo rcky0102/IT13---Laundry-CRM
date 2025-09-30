@@ -43,5 +43,26 @@ namespace IT13___Laundry_CRM
 
             this.Hide();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_messages_Click(object sender, EventArgs e)
+        {
+            admin_messages messages = new admin_messages();
+            messages.Show();
+
+            this.Hide();
+        }
+
+        private void button_feedback_Click(object sender, EventArgs e)
+        {
+            admin_feedback feedback = new admin_feedback();
+            feedback.Show();
+
+            this.Hide();
+        }
     }
 }

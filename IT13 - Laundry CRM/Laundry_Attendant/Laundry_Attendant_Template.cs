@@ -41,5 +41,13 @@ namespace IT13___Laundry_CRM
 
             this.Hide();
         }
+
+        private void button_feedback_Click(object sender, EventArgs e)
+        {
+            laundry_attendant_feedback feedback = new laundry_attendant_feedback();
+            feedback.Show();
+
+            this.Hide();
+        }
     }
 }

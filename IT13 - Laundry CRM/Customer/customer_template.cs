@@ -28,8 +28,16 @@ namespace IT13___Laundry_CRM
 
         private void button_message_Click(object sender, EventArgs e)
         {
-            customer_messages message = new customer_messages(); 
+            customer_messages message = new customer_messages();
             message.Show();
+
+            this.Hide();
+        }
+
+        private void button_feedback_Click(object sender, EventArgs e)
+        {
+            customer_feedback feedback = new customer_feedback();   
+            feedback.Show();
 
             this.Hide();
         }
