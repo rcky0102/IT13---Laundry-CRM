@@ -22,6 +22,11 @@ namespace IT13___Laundry_CRM.Customer
             InitializeComponent();
         }
 
+        internal void LoadCustomerStatuses()
+        {
+            throw new NotImplementedException();
+        }
+
         private void customer_status_Load(object sender, EventArgs e)
         {
             LoadMyStatuses();
@@ -37,10 +42,25 @@ namespace IT13___Laundry_CRM.Customer
                 return;
             }
 
-            var statuses = statusRepository.GetStatusesByUserId(currentUserId);
-
             flowlayoutpanel_status.Controls.Clear();
-            foreach (var s in statuses)
+
+            // 1️⃣ Get status history
+            var history = statusRepository.GetStatusHistoryByUserId(currentUserId);
+
+            // 2️⃣ Get current status
+            var currentStatuses = statusRepository.GetStatusesByUserId(currentUserId);
+
+            // 3️⃣ Merge them
+            var allStatuses = new List<(DateTime created_at, string status)>();
+
+            allStatuses.AddRange(history.Select(h => (h.created_at, h.status)));
+            allStatuses.AddRange(currentStatuses.Select(s => (s.created_at, s.status)));
+
+            // Sort by timestamp ascending (oldest first)
+            allStatuses = allStatuses.OrderBy(a => a.created_at).ToList();
+
+            // 4️⃣ Display
+            foreach (var s in allStatuses)
             {
                 Label lbl = new Label();
                 lbl.AutoSize = true;
@@ -48,6 +68,7 @@ namespace IT13___Laundry_CRM.Customer
                 flowlayoutpanel_status.Controls.Add(lbl);
             }
         }
+
 
     }
 }

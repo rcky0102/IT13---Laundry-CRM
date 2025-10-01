@@ -1,0 +1,2 @@
+﻿INSERT INTO Users ("username", "password", "role", "first_name", "middle_name", "last_name", "address", "contact") 
+VALUES (3, 'TgdAhWK+24tgzgXB3s/jrRa3IjCWfeAfZAt+Rym0n84=', 'admin', 'admin', 'admin', 'admin', 'abc', 123);

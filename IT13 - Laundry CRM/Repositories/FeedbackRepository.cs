@@ -184,5 +184,48 @@ namespace IT13___Laundry_CRM.Repositories
                 return false;
             }
         }
+
+        public Feedback? GetLatestFeedback()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT TOP 1 f.feedback_id, f.user_id, f.subject, f.feedback, f.created_at, f.updated_at,
+                   u.user_id, u.first_name, u.middle_name, u.last_name
+            FROM Feedback f
+            INNER JOIN Users u ON f.user_id = u.user_id
+            ORDER BY f.created_at DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Feedback
+                            {
+                                feedback_id = (int)reader["feedback_id"],
+                                user_id = (int)reader["user_id"],
+                                subject = reader["subject"].ToString(),
+                                feedback = reader["feedback"].ToString(),
+                                created_at = (DateTime)reader["created_at"],
+                                updated_at = (DateTime)reader["updated_at"],
+                                User = new User
+                                {
+                                    user_id = (int)reader["user_id"],
+                                    first_name = reader["first_name"].ToString(),
+                                    middle_name = reader["middle_name"].ToString(),
+                                    last_name = reader["last_name"].ToString()
+                                }
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
     }
 }

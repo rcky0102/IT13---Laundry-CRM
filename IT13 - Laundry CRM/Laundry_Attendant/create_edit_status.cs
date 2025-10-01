@@ -125,20 +125,22 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 }
                 else
                 {
-                    // UPDATE (only status should change, not customer)
+                    // UPDATE with history tracking
                     Status updatedStatus = new Status
                     {
                         status_id = statusId.Value,
-                        // Keep the original customer tied to this status
                         user_id = statusRepository.GetUserIdByStatusId(statusId.Value),
                         status = combobox_status.SelectedItem.ToString(),
                         created_at = DateTime.Now
                     };
 
-                    statusRepository.UpdateStatus(updatedStatus);
-                    MessageBox.Show("Status updated successfully!", "Success",
+                    // Use the new method to automatically save previous status to history
+                    statusRepository.UpdateStatusWithHistory(updatedStatus);
+
+                    MessageBox.Show("Status updated successfully and previous status saved to history!", "Success",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

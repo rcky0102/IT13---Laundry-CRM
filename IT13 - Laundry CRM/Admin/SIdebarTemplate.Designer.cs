@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SIdebarTemplate));
             panel1 = new Panel();
             label2 = new Label();
@@ -39,8 +40,12 @@
             button_users = new Button();
             button1 = new Button();
             panel2 = new Panel();
+            profile = new Button();
+            contextmenustrip_profile = new ContextMenuStrip(components);
+            logout = new ToolStripMenuItem();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            contextmenustrip_profile.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -70,7 +75,7 @@
             label2.ForeColor = SystemColors.HotTrack;
             label2.Location = new Point(173, 52);
             label2.Name = "label2";
-            label2.Size = new Size(95, 43);
+            label2.Size = new Size(79, 35);
             label2.TabIndex = 5;
             label2.Text = "Care";
             // 
@@ -82,7 +87,7 @@
             label1.Location = new Point(94, 0);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(183, 52);
+            label1.Size = new Size(160, 45);
             label1.TabIndex = 3;
             label1.Text = "Laundry";
             // 
@@ -183,12 +188,37 @@
             panel2.Size = new Size(279, 108);
             panel2.TabIndex = 1;
             // 
+            // profile
+            // 
+            profile.Location = new Point(802, 31);
+            profile.Name = "profile";
+            profile.Size = new Size(94, 29);
+            profile.TabIndex = 1;
+            profile.Text = "Profile";
+            profile.UseVisualStyleBackColor = true;
+            profile.Click += profile_Click;
+            // 
+            // contextmenustrip_profile
+            // 
+            contextmenustrip_profile.ImageScalingSize = new Size(20, 20);
+            contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { logout });
+            contextmenustrip_profile.Name = "contextmenustrip_profile";
+            contextmenustrip_profile.Size = new Size(126, 28);
+            // 
+            // logout
+            // 
+            logout.Name = "logout";
+            logout.Size = new Size(210, 24);
+            logout.Text = "Logout";
+            logout.Click += logout_Click;
+            // 
             // SIdebarTemplate
             // 
-            AutoScaleDimensions = new SizeF(12F, 27F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1181, 562);
+            Controls.Add(profile);
             Controls.Add(panel1);
             Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
@@ -197,6 +227,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            contextmenustrip_profile.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -212,5 +243,8 @@
         private Button button_feedback;
         private Label label2;
         private Panel panel2;
+        private Button profile;
+        private ContextMenuStrip contextmenustrip_profile;
+        private ToolStripMenuItem logout;
     }
 }

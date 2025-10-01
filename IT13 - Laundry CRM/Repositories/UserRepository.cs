@@ -124,9 +124,9 @@ namespace IT13___Laundry_CRM.Repositories
                 {
                     connection.Open();
 
-                    string sql = @"SELECT user_id, username, password, role, created_at 
-                       FROM users 
-                       WHERE username = @username";
+                    string sql = @"SELECT user_id, username, password, role, first_name, middle_name, last_name, address, contact, created_at
+                           FROM users 
+                           WHERE username = @username";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -138,11 +138,16 @@ namespace IT13___Laundry_CRM.Repositories
                             {
                                 return new User
                                 {
-                                    user_id = reader.GetInt32(0),
-                                    username = reader.GetString(1),
-                                    password = reader.GetString(2),
-                                    role = reader.GetString(3),
-                                    created_at = reader.GetDateTime(4)
+                                    user_id = reader.GetInt32(reader.GetOrdinal("user_id")),
+                                    username = reader.GetString(reader.GetOrdinal("username")),
+                                    password = reader.GetString(reader.GetOrdinal("password")),
+                                    role = reader.GetString(reader.GetOrdinal("role")),
+                                    first_name = reader.GetString(reader.GetOrdinal("first_name")),
+                                    middle_name = reader.GetString(reader.GetOrdinal("middle_name")),
+                                    last_name = reader.GetString(reader.GetOrdinal("last_name")),
+                                    address = reader.GetString(reader.GetOrdinal("address")),
+                                    contact = reader.GetString(reader.GetOrdinal("contact")),
+                                    created_at = reader.GetDateTime(reader.GetOrdinal("created_at"))
                                 };
                             }
                         }
@@ -155,8 +160,8 @@ namespace IT13___Laundry_CRM.Repositories
             }
 
             return null;
-
         }
+
 
         // Get user by ID
         public User? GetUserById(int id)
@@ -311,6 +316,39 @@ namespace IT13___Laundry_CRM.Repositories
                 Console.WriteLine("Exception: " + ex.Message);
             }
         }
+
+        public bool UpdateUserProfile(User user)
+        {
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"UPDATE users
+                         SET first_name=@FirstName,
+                             middle_name=@MiddleName,
+                             last_name=@LastName,
+                             address=@Address,
+                             contact=@Contact,
+                             username=@Username,
+                             password=@Password
+                         WHERE user_id=@UserId";
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@FirstName", user.first_name);
+                    cmd.Parameters.AddWithValue("@MiddleName", user.middle_name);
+                    cmd.Parameters.AddWithValue("@LastName", user.last_name);
+                    cmd.Parameters.AddWithValue("@Address", user.address);
+                    cmd.Parameters.AddWithValue("@Contact", user.contact);
+                    cmd.Parameters.AddWithValue("@Username", user.username);
+                    cmd.Parameters.AddWithValue("@Password", user.password);
+                    cmd.Parameters.AddWithValue("@UserId", user.user_id);
+
+                    int rows = cmd.ExecuteNonQuery();
+                    return rows > 0;
+                }
+            }
+        }
+
 
 
         // Delete user

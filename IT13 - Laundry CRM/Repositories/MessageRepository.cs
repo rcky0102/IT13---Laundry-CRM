@@ -293,6 +293,56 @@ namespace IT13___Laundry_CRM.Repositories
         }
 
 
+        public Message? GetLatestMessageForUser(int currentUserId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string sql = @"
+            SELECT TOP 1 
+                m.message_id, m.sender_id, m.receiver_id, m.message, m.created_at,
+                u.user_id, u.first_name, u.middle_name, u.last_name, u.username, u.role
+            FROM messages m
+            INNER JOIN users u ON m.sender_id = u.user_id
+            WHERE m.receiver_id = @currentUserId
+            ORDER BY m.created_at DESC";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@currentUserId", currentUserId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var message = new Message
+                            {
+                                message_id = (int)reader["message_id"],
+                                sender_id = (int)reader["sender_id"],
+                                receiver_id = (int)reader["receiver_id"],
+                                message = reader["message"].ToString(),
+                                created_at = (DateTime)reader["created_at"],
+                                User = new User
+                                {
+                                    user_id = (int)reader["user_id"],
+                                    first_name = reader["first_name"].ToString(),
+                                    middle_name = reader["middle_name"].ToString(),
+                                    last_name = reader["last_name"].ToString(),
+                                    username = reader["username"].ToString(),
+                                    role = reader["role"].ToString()
+                                }
+                            };
+
+                            return message;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
 
     }
 }

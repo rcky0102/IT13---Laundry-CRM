@@ -122,9 +122,9 @@ namespace IT13___Laundry_CRM
         private void linklabel_reg_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegisterForm reg = new RegisterForm();
-            reg.ShowDialog();
+            reg.Show();
 
-
+            this.Hide();    
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static IT13___Laundry_CRM.Models.User;
 
 namespace IT13___Laundry_CRM
 {
@@ -63,6 +64,29 @@ namespace IT13___Laundry_CRM
             feedback.Show();
 
             this.Hide();
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
+                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+
+                CurrentUser.User = null;
+
+
+                Form1 loginForm = new Form1();
+                loginForm.Show();
+
+                this.Close();
+            }
+        }
+
+        private void profile_Click(object sender, EventArgs e)
+        {
+            contextmenustrip_profile.Show(profile, 0, profile.Height);
         }
     }
 }

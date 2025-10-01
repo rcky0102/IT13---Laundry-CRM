@@ -28,47 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
-            textBox1 = new TextBox();
+            label_feedback = new Label();
+            label_message = new Label();
             SuspendLayout();
             // 
-            // label2
+            // label_feedback
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(630, 228);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 28);
-            label2.TabIndex = 3;
-            label2.Text = "label2";
+            label_feedback.AutoSize = true;
+            label_feedback.Location = new Point(358, 139);
+            label_feedback.Name = "label_feedback";
+            label_feedback.Size = new Size(70, 22);
+            label_feedback.TabIndex = 2;
+            label_feedback.Text = "label3";
             // 
-            // textBox1
+            // label_message
             // 
-            textBox1.Location = new Point(648, 298);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(186, 31);
-            textBox1.TabIndex = 4;
+            label_message.AutoSize = true;
+            label_message.Location = new Point(358, 422);
+            label_message.Name = "label_message";
+            label_message.Size = new Size(70, 22);
+            label_message.TabIndex = 3;
+            label_message.Text = "label3";
             // 
             // AdminForm
             // 
-            AutoScaleDimensions = new SizeF(12F, 27F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 588);
-            Controls.Add(textBox1);
-            Controls.Add(label2);
-            Margin = new Padding(6, 4, 6, 4);
+            ClientSize = new Size(1000, 479);
+            Controls.Add(label_message);
+            Controls.Add(label_feedback);
+            Margin = new Padding(5, 3, 5, 3);
             Name = "AdminForm";
             Text = "AdminForm";
             Load += AdminForm_Load;
-            Controls.SetChildIndex(label2, 0);
-            Controls.SetChildIndex(textBox1, 0);
+            Controls.SetChildIndex(label_feedback, 0);
+            Controls.SetChildIndex(label_message, 0);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label label2;
-        private TextBox textBox1;
+
+        private Label label_feedback;
+        private Label label_message;
     }
 }

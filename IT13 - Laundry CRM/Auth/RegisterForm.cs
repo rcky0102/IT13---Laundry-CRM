@@ -55,11 +55,12 @@ namespace IT13___Laundry_CRM
 
                 MessageBox.Show("User registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                customer_dashboard dashboard = new customer_dashboard(); // pass username if needed
+                customer_dashboard dashboard = new customer_dashboard(); 
                 dashboard.Show();
+
                 this.Hide();
 
-                // Optionally clear the form
+               
                 ClearForm();
             }
             catch (Exception ex)
@@ -70,7 +71,11 @@ namespace IT13___Laundry_CRM
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
+            Form1 form = new Form1();
+            form.Show();
+
             this.Close();
+
         }
 
         private void ClearForm()
