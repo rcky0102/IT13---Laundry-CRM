@@ -120,7 +120,5 @@ namespace IT13___Laundry_CRM.Admin
                 combobox_role.Enabled = false;
             }
         }
-
-
     }
 }

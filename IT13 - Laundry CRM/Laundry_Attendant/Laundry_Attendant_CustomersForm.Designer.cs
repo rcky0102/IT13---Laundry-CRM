@@ -45,11 +45,11 @@
             table_customers.BackgroundColor = SystemColors.ButtonHighlight;
             table_customers.BorderStyle = BorderStyle.Fixed3D;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(260, 204);
+            table_customers.Location = new Point(259, 190);
             table_customers.Margin = new Padding(4);
             table_customers.Name = "table_customers";
             table_customers.RowHeadersWidth = 51;
-            table_customers.Size = new Size(727, 358);
+            table_customers.Size = new Size(910, 358);
             table_customers.TabIndex = 1;
             // 
             // button_add_cutomer
@@ -74,12 +74,12 @@
             panel2.Controls.Add(button_add_cutomer);
             panel2.Location = new Point(259, 109);
             panel2.Name = "panel2";
-            panel2.Size = new Size(728, 74);
+            panel2.Size = new Size(910, 74);
             panel2.TabIndex = 3;
             // 
             // Searchbtn_Customer
             // 
-            Searchbtn_Customer.Location = new Point(276, 16);
+            Searchbtn_Customer.Location = new Point(431, 19);
             Searchbtn_Customer.Name = "Searchbtn_Customer";
             Searchbtn_Customer.Size = new Size(43, 34);
             Searchbtn_Customer.TabIndex = 6;
@@ -89,7 +89,7 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(325, 19);
+            textBox1.Location = new Point(480, 19);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(396, 31);
             textBox1.TabIndex = 5;
@@ -112,9 +112,9 @@
             label1.ForeColor = SystemColors.ActiveCaption;
             label1.Location = new Point(254, 0);
             label1.Name = "label1";
-            label1.Size = new Size(538, 52);
+            label1.Size = new Size(561, 52);
             label1.TabIndex = 4;
-            label1.Text = "👤Customer Information";
+            label1.Text = "👤 Customer Information";
             // 
             // label2
             // 
@@ -122,7 +122,7 @@
             label2.BackColor = SystemColors.ButtonHighlight;
             label2.Font = new Font("Cascadia Code Light", 7F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaption;
-            label2.Location = new Point(319, 56);
+            label2.Location = new Point(350, 70);
             label2.Name = "label2";
             label2.Size = new Size(344, 18);
             label2.TabIndex = 5;
@@ -133,7 +133,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1000, 562);
+            ClientSize = new Size(1181, 562);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(table_customers);

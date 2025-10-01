@@ -34,10 +34,10 @@
             button_archive = new Button();
             label1 = new Label();
             panel2 = new Panel();
+            SearchBtn_Status = new Button();
             textBox1 = new TextBox();
             button1 = new Button();
             label3 = new Label();
-            SearchBtn_Status = new Button();
             ((System.ComponentModel.ISupportInitialize)table_customers).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -47,11 +47,11 @@
             table_customers.BackgroundColor = SystemColors.ButtonHighlight;
             table_customers.BorderStyle = BorderStyle.Fixed3D;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(184, 186);
+            table_customers.Location = new Point(259, 186);
             table_customers.Margin = new Padding(4);
             table_customers.Name = "table_customers";
             table_customers.RowHeadersWidth = 51;
-            table_customers.Size = new Size(984, 363);
+            table_customers.Size = new Size(909, 363);
             table_customers.TabIndex = 1;
             table_customers.CellContentClick += table_customers_CellContentClick;
             // 
@@ -60,7 +60,7 @@
             button_edit.BackColor = Color.MediumSeaGreen;
             button_edit.FlatAppearance.BorderSize = 0;
             button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(859, 19);
+            button_edit.Location = new Point(789, 17);
             button_edit.Margin = new Padding(4);
             button_edit.Name = "button_edit";
             button_edit.Size = new Size(47, 36);
@@ -87,7 +87,7 @@
             // 
             button_archive.BackColor = Color.Orange;
             button_archive.ForeColor = SystemColors.ButtonHighlight;
-            button_archive.Location = new Point(914, 19);
+            button_archive.Location = new Point(844, 18);
             button_archive.Margin = new Padding(4);
             button_archive.Name = "button_archive";
             button_archive.Size = new Size(51, 36);
@@ -99,10 +99,11 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(244, 70);
+            label1.Location = new Point(327, 56);
             label1.Name = "label1";
-            label1.Size = new Size(542, 25);
+            label1.Size = new Size(622, 21);
             label1.TabIndex = 5;
             label1.Text = "Laundry Status: In Progress: 5 | Ready for Pickup: 2 | Completed: 10";
             // 
@@ -116,16 +117,25 @@
             panel2.Controls.Add(button_archive);
             panel2.Controls.Add(button_edit);
             panel2.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel2.Location = new Point(184, 108);
+            panel2.Location = new Point(259, 108);
             panel2.Name = "panel2";
-            panel2.Size = new Size(984, 71);
+            panel2.Size = new Size(909, 71);
             panel2.TabIndex = 6;
+            // 
+            // SearchBtn_Status
+            // 
+            SearchBtn_Status.Location = new Point(321, 19);
+            SearchBtn_Status.Name = "SearchBtn_Status";
+            SearchBtn_Status.Size = new Size(41, 34);
+            SearchBtn_Status.TabIndex = 6;
+            SearchBtn_Status.Text = "🔎";
+            SearchBtn_Status.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(390, 22);
+            textBox1.Location = new Point(368, 22);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(462, 28);
+            textBox1.Size = new Size(414, 28);
             textBox1.TabIndex = 5;
             // 
             // button1
@@ -142,20 +152,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaption;
-            label3.Location = new Point(175, 9);
+            label3.Location = new Point(259, 4);
             label3.Name = "label3";
             label3.Size = new Size(515, 52);
             label3.TabIndex = 7;
             label3.Text = "⌚View Laundry Status";
-            // 
-            // SearchBtn_Status
-            // 
-            SearchBtn_Status.Location = new Point(343, 19);
-            SearchBtn_Status.Name = "SearchBtn_Status";
-            SearchBtn_Status.Size = new Size(41, 34);
-            SearchBtn_Status.TabIndex = 6;
-            SearchBtn_Status.Text = "🔎";
-            SearchBtn_Status.UseVisualStyleBackColor = true;
             // 
             // laundry_attendant_status
             // 

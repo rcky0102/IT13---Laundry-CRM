@@ -29,31 +29,67 @@
         private void InitializeComponent()
         {
             listbox_feedback = new ListBox();
+            label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // listbox_feedback
             // 
+            listbox_feedback.BackColor = SystemColors.ButtonHighlight;
             listbox_feedback.FormattingEnabled = true;
-            listbox_feedback.Location = new Point(265, 87);
+            listbox_feedback.ItemHeight = 25;
+            listbox_feedback.Location = new Point(278, 158);
+            listbox_feedback.Margin = new Padding(4);
             listbox_feedback.Name = "listbox_feedback";
-            listbox_feedback.Size = new Size(436, 284);
+            listbox_feedback.Size = new Size(890, 404);
             listbox_feedback.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaption;
+            label3.Location = new Point(259, 14);
+            label3.Name = "label3";
+            label3.Size = new Size(492, 52);
+            label3.TabIndex = 9;
+            label3.Text = "💬 Customer Feedback";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Cascadia Code", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ActiveCaption;
+            label4.Location = new Point(357, 81);
+            label4.Name = "label4";
+            label4.Size = new Size(593, 24);
+            label4.TabIndex = 10;
+            label4.Text = "\"See what your users are saying and respond quickly.\"";
             // 
             // laundry_attendant_feedback
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.ButtonHighlight;
+            ClientSize = new Size(1181, 575);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(listbox_feedback);
+            Margin = new Padding(5);
             Name = "laundry_attendant_feedback";
             Text = "laundry_attendant_feedback";
             Load += laundry_attendant_feedback_Load;
             Controls.SetChildIndex(listbox_feedback, 0);
+            Controls.SetChildIndex(label3, 0);
+            Controls.SetChildIndex(label4, 0);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private ListBox listbox_feedback;
+        private Label label3;
+        private Label label4;
     }
 }

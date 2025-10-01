@@ -30,36 +30,54 @@
         {
             label1 = new Label();
             flowlayoutpanel_status = new FlowLayoutPanel();
+            label2 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(356, 82);
+            label1.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ActiveCaption;
+            label1.Location = new Point(307, 51);
             label1.Name = "label1";
-            label1.Size = new Size(50, 20);
+            label1.Size = new Size(774, 61);
             label1.TabIndex = 1;
-            label1.Text = "label1";
+            label1.Text = "“Track every step of your laundry process, from washing and drying to folding and delivery, all in one place.”";
             // 
             // flowlayoutpanel_status
             // 
-            flowlayoutpanel_status.Location = new Point(335, 146);
+            flowlayoutpanel_status.Location = new Point(261, 143);
+            flowlayoutpanel_status.Margin = new Padding(4);
             flowlayoutpanel_status.Name = "flowlayoutpanel_status";
-            flowlayoutpanel_status.Size = new Size(324, 234);
+            flowlayoutpanel_status.Size = new Size(907, 406);
             flowlayoutpanel_status.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ActiveCaption;
+            label2.Location = new Point(247, 4);
+            label2.Name = "label2";
+            label2.Size = new Size(630, 52);
+            label2.TabIndex = 8;
+            label2.Text = "⌚View Your Laundry Status";
             // 
             // customer_status
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(flowlayoutpanel_status);
+            BackColor = SystemColors.ButtonHighlight;
+            ClientSize = new Size(1181, 562);
             Controls.Add(label1);
+            Controls.Add(label2);
+            Controls.Add(flowlayoutpanel_status);
+            Margin = new Padding(5);
             Name = "customer_status";
             Text = "customer_status";
             Load += customer_status_Load;
-            Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(flowlayoutpanel_status, 0);
+            Controls.SetChildIndex(label2, 0);
+            Controls.SetChildIndex(label1, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -68,5 +86,6 @@
 
         private Label label1;
         private FlowLayoutPanel flowlayoutpanel_status;
+        private Label label2;
     }
 }

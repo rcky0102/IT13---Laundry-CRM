@@ -39,96 +39,118 @@
             button_save = new Button();
             button_cancel = new Button();
             panel1 = new Panel();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // textbox_username
             // 
-            textbox_username.Location = new Point(234, 53);
+            textbox_username.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_username.Location = new Point(36, 60);
             textbox_username.Margin = new Padding(4);
+            textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
-            textbox_username.PlaceholderText = "Username";
-            textbox_username.Size = new Size(155, 31);
+            textbox_username.PlaceholderText = "Username:";
+            textbox_username.Size = new Size(233, 40);
             textbox_username.TabIndex = 0;
             // 
             // textbox_password
             // 
-            textbox_password.Location = new Point(622, 55);
+            textbox_password.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_password.Location = new Point(281, 60);
             textbox_password.Margin = new Padding(4);
+            textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
             textbox_password.PasswordChar = '*';
-            textbox_password.PlaceholderText = "Password";
-            textbox_password.Size = new Size(155, 31);
+            textbox_password.PlaceholderText = "Password:";
+            textbox_password.Size = new Size(258, 40);
             textbox_password.TabIndex = 1;
             // 
             // textbox_firstname
             // 
-            textbox_firstname.Location = new Point(459, 109);
+            textbox_firstname.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_firstname.Location = new Point(36, 165);
             textbox_firstname.Margin = new Padding(4);
+            textbox_firstname.Multiline = true;
             textbox_firstname.Name = "textbox_firstname";
-            textbox_firstname.PlaceholderText = "First Name";
-            textbox_firstname.Size = new Size(155, 31);
+            textbox_firstname.PlaceholderText = "First Name:";
+            textbox_firstname.Size = new Size(172, 44);
             textbox_firstname.TabIndex = 2;
             // 
             // textbox_middlename
             // 
-            textbox_middlename.Location = new Point(622, 109);
+            textbox_middlename.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_middlename.Location = new Point(216, 165);
             textbox_middlename.Margin = new Padding(4);
+            textbox_middlename.Multiline = true;
             textbox_middlename.Name = "textbox_middlename";
-            textbox_middlename.PlaceholderText = "Middle Name";
-            textbox_middlename.Size = new Size(155, 31);
+            textbox_middlename.PlaceholderText = "Middle Name:";
+            textbox_middlename.Size = new Size(138, 44);
             textbox_middlename.TabIndex = 3;
             // 
             // textbox_lastname
             // 
-            textbox_lastname.Location = new Point(785, 109);
+            textbox_lastname.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_lastname.Location = new Point(369, 165);
             textbox_lastname.Margin = new Padding(4);
+            textbox_lastname.Multiline = true;
             textbox_lastname.Name = "textbox_lastname";
-            textbox_lastname.PlaceholderText = "Last Name";
-            textbox_lastname.Size = new Size(155, 31);
+            textbox_lastname.PlaceholderText = "Last Name:";
+            textbox_lastname.Size = new Size(170, 44);
             textbox_lastname.TabIndex = 4;
             // 
             // textbox_address
             // 
-            textbox_address.Location = new Point(574, 242);
+            textbox_address.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_address.Location = new Point(36, 229);
             textbox_address.Margin = new Padding(4);
+            textbox_address.Multiline = true;
             textbox_address.Name = "textbox_address";
-            textbox_address.PlaceholderText = "Address";
-            textbox_address.Size = new Size(155, 31);
+            textbox_address.PlaceholderText = "Address:";
+            textbox_address.Size = new Size(503, 48);
             textbox_address.TabIndex = 5;
             // 
             // textbox_contact
             // 
-            textbox_contact.Location = new Point(574, 305);
+            textbox_contact.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_contact.Location = new Point(36, 298);
             textbox_contact.Margin = new Padding(4);
+            textbox_contact.Multiline = true;
             textbox_contact.Name = "textbox_contact";
-            textbox_contact.PlaceholderText = "Contact";
-            textbox_contact.Size = new Size(155, 31);
+            textbox_contact.PlaceholderText = "Contact:";
+            textbox_contact.Size = new Size(503, 50);
             textbox_contact.TabIndex = 6;
             // 
             // combobox_role
             // 
             combobox_role.FormattingEnabled = true;
-            combobox_role.Location = new Point(785, 55);
+            combobox_role.Location = new Point(36, 388);
             combobox_role.Margin = new Padding(4);
             combobox_role.Name = "combobox_role";
-            combobox_role.Size = new Size(188, 33);
+            combobox_role.Size = new Size(188, 32);
             combobox_role.TabIndex = 7;
             // 
             // button_save
             // 
-            button_save.Location = new Point(330, 441);
+            button_save.BackColor = SystemColors.HotTrack;
+            button_save.ForeColor = SystemColors.HighlightText;
+            button_save.Location = new Point(344, 476);
             button_save.Margin = new Padding(4);
             button_save.Name = "button_save";
             button_save.Size = new Size(118, 36);
             button_save.TabIndex = 8;
             button_save.Text = "Save";
-            button_save.UseVisualStyleBackColor = true;
+            button_save.UseVisualStyleBackColor = false;
             button_save.Click += button_save_Click;
             // 
             // button_cancel
             // 
-            button_cancel.Location = new Point(528, 443);
+            button_cancel.FlatAppearance.BorderSize = 0;
+            button_cancel.FlatStyle = FlatStyle.Flat;
+            button_cancel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_cancel.Location = new Point(470, 476);
             button_cancel.Margin = new Padding(4);
             button_cancel.Name = "button_cancel";
             button_cancel.Size = new Size(118, 36);
@@ -139,27 +161,66 @@
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(button_cancel);
             panel1.Controls.Add(textbox_username);
-            panel1.Location = new Point(40, 83);
+            panel1.Controls.Add(button_save);
+            panel1.Controls.Add(textbox_password);
+            panel1.Controls.Add(textbox_contact);
+            panel1.Controls.Add(combobox_role);
+            panel1.Controls.Add(textbox_address);
+            panel1.Controls.Add(textbox_firstname);
+            panel1.Controls.Add(textbox_lastname);
+            panel1.Controls.Add(textbox_middlename);
+            panel1.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panel1.Location = new Point(221, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(948, 150);
+            panel1.Size = new Size(589, 556);
             panel1.TabIndex = 10;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ActiveCaption;
+            label1.Location = new Point(3, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(266, 32);
+            label1.TabIndex = 10;
+            label1.Text = "login credentials:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ActiveCaption;
+            label2.Location = new Point(3, 129);
+            label2.Name = "label2";
+            label2.Size = new Size(308, 32);
+            label2.TabIndex = 11;
+            label2.Text = "Personal Information:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaption;
+            label3.Location = new Point(3, 352);
+            label3.Name = "label3";
+            label3.Size = new Size(182, 32);
+            label3.TabIndex = 12;
+            label3.Text = "Select Role:";
             // 
             // admin_create_edit_user
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1000, 562);
-            Controls.Add(button_cancel);
-            Controls.Add(button_save);
-            Controls.Add(combobox_role);
-            Controls.Add(textbox_contact);
-            Controls.Add(textbox_address);
-            Controls.Add(textbox_lastname);
-            Controls.Add(textbox_middlename);
-            Controls.Add(textbox_firstname);
-            Controls.Add(textbox_password);
+            ClientSize = new Size(1004, 562);
             Controls.Add(panel1);
             Margin = new Padding(4);
             Name = "admin_create_edit_user";
@@ -167,7 +228,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -183,5 +243,8 @@
         private Button button_save;
         private Button button_cancel;
         private Panel panel1;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }
