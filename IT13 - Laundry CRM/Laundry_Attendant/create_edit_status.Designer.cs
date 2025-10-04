@@ -92,15 +92,15 @@
             panel1.Controls.Add(button_cancel);
             panel1.Controls.Add(combobox_customer);
             panel1.Controls.Add(button_save);
-            panel1.Location = new Point(61, 125);
+            panel1.Location = new Point(3, 50);
             panel1.Name = "panel1";
-            panel1.Size = new Size(300, 302);
+            panel1.Size = new Size(300, 323);
             panel1.TabIndex = 4;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(408, 104);
+            pictureBox1.Location = new Point(296, 50);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(362, 323);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -112,7 +112,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(12, 47);
+            label1.Location = new Point(3, 4);
             label1.Name = "label1";
             label1.Size = new Size(330, 43);
             label1.TabIndex = 6;
@@ -123,7 +123,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(832, 476);
+            ClientSize = new Size(660, 374);
             Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);

@@ -35,8 +35,8 @@
             button_delete = new Button();
             textbox_message = new TextBox();
             panel3 = new Panel();
-            label1 = new Label();
             label2 = new Label();
+            label1 = new Label();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,20 +52,22 @@
             // 
             // listbox_messages
             // 
+            listbox_messages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_messages.FormattingEnabled = true;
             listbox_messages.ItemHeight = 25;
-            listbox_messages.Location = new Point(253, 180);
+            listbox_messages.Location = new Point(247, 262);
             listbox_messages.Margin = new Padding(4);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(915, 304);
+            listbox_messages.Size = new Size(921, 229);
             listbox_messages.TabIndex = 2;
             // 
             // button_send
             // 
+            button_send.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_send.BackColor = SystemColors.HotTrack;
             button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(1092, 499);
+            button_send.Location = new Point(1101, 499);
             button_send.Margin = new Padding(4);
             button_send.Name = "button_send";
             button_send.Size = new Size(67, 50);
@@ -76,9 +78,10 @@
             // 
             // button_edit
             // 
+            button_edit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_edit.BackColor = Color.ForestGreen;
             button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(809, 15);
+            button_edit.Location = new Point(800, 15);
             button_edit.Margin = new Padding(4);
             button_edit.Name = "button_edit";
             button_edit.Size = new Size(51, 36);
@@ -89,9 +92,10 @@
             // 
             // button_delete
             // 
+            button_delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_delete.BackColor = Color.IndianRed;
             button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(868, 14);
+            button_delete.Location = new Point(859, 14);
             button_delete.Margin = new Padding(4);
             button_delete.Name = "button_delete";
             button_delete.Size = new Size(51, 39);
@@ -102,8 +106,9 @@
             // 
             // textbox_message
             // 
+            textbox_message.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_message.BorderStyle = BorderStyle.FixedSingle;
-            textbox_message.Location = new Point(253, 492);
+            textbox_message.Location = new Point(253, 499);
             textbox_message.Margin = new Padding(4);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
@@ -112,37 +117,36 @@
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.ActiveCaption;
             panel3.BorderStyle = BorderStyle.Fixed3D;
             panel3.Controls.Add(combobox_users);
             panel3.Controls.Add(button_edit);
             panel3.Controls.Add(button_delete);
-            panel3.Location = new Point(247, 108);
+            panel3.Location = new Point(247, 196);
             panel3.Name = "panel3";
-            panel3.Size = new Size(931, 59);
+            panel3.Size = new Size(922, 59);
             panel3.TabIndex = 7;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.ButtonHighlight;
-            label1.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(246, 2);
-            label1.Name = "label1";
-            label1.Size = new Size(178, 43);
-            label1.TabIndex = 8;
-            label1.Text = "🔔 Inbox";
             // 
             // label2
             // 
             label2.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ActiveCaption;
-            label2.Location = new Point(315, 45);
+            label2.ForeColor = SystemColors.ActiveCaptionText;
+            label2.Location = new Point(327, 125);
             label2.Name = "label2";
             label2.Size = new Size(757, 47);
             label2.TabIndex = 9;
             label2.Text = "“This chat allows you to communicate directly with our administrators for timely support and guidance.”";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Cascadia Code", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(247, 78);
+            label1.Name = "label1";
+            label1.Size = new Size(194, 47);
+            label1.TabIndex = 10;
+            label1.Text = "🔔 Inbox";
             // 
             // customer_messages
             // 
@@ -150,8 +154,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1181, 562);
-            Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(label2);
             Controls.Add(textbox_message);
             Controls.Add(button_send);
             Controls.Add(listbox_messages);
@@ -164,8 +168,8 @@
             Controls.SetChildIndex(listbox_messages, 0);
             Controls.SetChildIndex(button_send, 0);
             Controls.SetChildIndex(textbox_message, 0);
-            Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(label2, 0);
+            Controls.SetChildIndex(label1, 0);
             panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -180,7 +184,7 @@
         private Button button_delete;
         private TextBox textbox_message;
         private Panel panel3;
-        private Label label1;
         private Label label2;
+        private Label label1;
     }
 }

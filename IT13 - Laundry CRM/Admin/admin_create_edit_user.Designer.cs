@@ -39,9 +39,10 @@
             button_save = new Button();
             button_cancel = new Button();
             panel1 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            label4 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -177,32 +178,10 @@
             panel1.Controls.Add(textbox_lastname);
             panel1.Controls.Add(textbox_middlename);
             panel1.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel1.Location = new Point(221, 12);
+            panel1.Location = new Point(222, 141);
             panel1.Name = "panel1";
             panel1.Size = new Size(589, 556);
             panel1.TabIndex = 10;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(3, 17);
-            label1.Name = "label1";
-            label1.Size = new Size(266, 32);
-            label1.TabIndex = 10;
-            label1.Text = "login credentials:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ActiveCaption;
-            label2.Location = new Point(3, 129);
-            label2.Name = "label2";
-            label2.Size = new Size(308, 32);
-            label2.TabIndex = 11;
-            label2.Text = "Personal Information:";
             // 
             // label3
             // 
@@ -215,12 +194,46 @@
             label3.TabIndex = 12;
             label3.Text = "Select Role:";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ActiveCaption;
+            label2.Location = new Point(3, 129);
+            label2.Name = "label2";
+            label2.Size = new Size(308, 32);
+            label2.TabIndex = 11;
+            label2.Text = "Personal Information:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ActiveCaption;
+            label1.Location = new Point(3, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(266, 32);
+            label1.TabIndex = 10;
+            label1.Text = "login credentials:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ButtonHighlight;
+            label4.Location = new Point(419, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(186, 128);
+            label4.TabIndex = 11;
+            label4.Text = "👤";
+            // 
             // admin_create_edit_user
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1004, 562);
+            ClientSize = new Size(1004, 709);
+            Controls.Add(label4);
             Controls.Add(panel1);
             Margin = new Padding(4);
             Name = "admin_create_edit_user";
@@ -228,6 +241,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -246,5 +260,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Label label4;
     }
 }

@@ -40,8 +40,9 @@
             // 
             // textbox_subject
             // 
+            textbox_subject.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_subject.ForeColor = Color.Yellow;
-            textbox_subject.Location = new Point(261, 121);
+            textbox_subject.Location = new Point(261, 199);
             textbox_subject.Margin = new Padding(4);
             textbox_subject.Name = "textbox_subject";
             textbox_subject.Size = new Size(318, 31);
@@ -49,6 +50,7 @@
             // 
             // textbox_feedback
             // 
+            textbox_feedback.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_feedback.BorderStyle = BorderStyle.FixedSingle;
             textbox_feedback.Location = new Point(261, 475);
             textbox_feedback.Margin = new Padding(4);
@@ -59,16 +61,18 @@
             // 
             // listbox_feedback
             // 
+            listbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_feedback.FormattingEnabled = true;
             listbox_feedback.ItemHeight = 25;
-            listbox_feedback.Location = new Point(261, 163);
+            listbox_feedback.Location = new Point(261, 238);
             listbox_feedback.Margin = new Padding(4);
             listbox_feedback.Name = "listbox_feedback";
-            listbox_feedback.Size = new Size(907, 304);
+            listbox_feedback.Size = new Size(907, 229);
             listbox_feedback.TabIndex = 3;
             // 
             // button_send
             // 
+            button_send.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_send.BackColor = SystemColors.MenuHighlight;
             button_send.FlatAppearance.BorderSize = 0;
             button_send.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -83,9 +87,10 @@
             // 
             // button_edit
             // 
+            button_edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_edit.BackColor = Color.LimeGreen;
             button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(1060, 118);
+            button_edit.Location = new Point(1060, 196);
             button_edit.Margin = new Padding(4);
             button_edit.Name = "button_edit";
             button_edit.Size = new Size(49, 36);
@@ -96,12 +101,13 @@
             // 
             // button_delete
             // 
+            button_delete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_delete.BackColor = Color.IndianRed;
             button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(1117, 118);
+            button_delete.Location = new Point(1117, 194);
             button_delete.Margin = new Padding(4);
             button_delete.Name = "button_delete";
-            button_delete.Size = new Size(54, 36);
+            button_delete.Size = new Size(51, 36);
             button_delete.TabIndex = 6;
             button_delete.Text = "🗑️";
             button_delete.UseVisualStyleBackColor = false;
@@ -111,8 +117,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(245, 4);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(247, 78);
             label1.Name = "label1";
             label1.Size = new Size(446, 52);
             label1.TabIndex = 10;
@@ -121,8 +127,8 @@
             // label2
             // 
             label2.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ActiveCaption;
-            label2.Location = new Point(337, 55);
+            label2.ForeColor = SystemColors.ActiveCaptionText;
+            label2.Location = new Point(337, 140);
             label2.Name = "label2";
             label2.Size = new Size(772, 52);
             label2.TabIndex = 11;

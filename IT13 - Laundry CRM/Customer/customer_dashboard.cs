@@ -77,7 +77,9 @@ namespace IT13___Laundry_CRM
             }
         }
 
+        private void Luandry_Status_Paint(object sender, PaintEventArgs e)
+        {
 
-
+        }
     }
 }

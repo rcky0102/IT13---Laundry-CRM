@@ -36,20 +36,23 @@
             button1 = new Button();
             label1 = new Label();
             label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)table_customers).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
             // table_customers
             // 
+            table_customers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             table_customers.BackgroundColor = SystemColors.ButtonHighlight;
             table_customers.BorderStyle = BorderStyle.Fixed3D;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(259, 190);
+            table_customers.Location = new Point(259, 275);
             table_customers.Margin = new Padding(4);
             table_customers.Name = "table_customers";
             table_customers.RowHeadersWidth = 51;
-            table_customers.Size = new Size(910, 358);
+            table_customers.Size = new Size(918, 277);
             table_customers.TabIndex = 1;
             // 
             // button_add_cutomer
@@ -67,14 +70,15 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ActiveCaption;
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(Searchbtn_Customer);
             panel2.Controls.Add(textBox1);
             panel2.Controls.Add(button_add_cutomer);
-            panel2.Location = new Point(259, 109);
+            panel2.Location = new Point(258, 189);
             panel2.Name = "panel2";
-            panel2.Size = new Size(910, 74);
+            panel2.Size = new Size(918, 74);
             panel2.TabIndex = 3;
             // 
             // Searchbtn_Customer
@@ -88,6 +92,7 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Location = new Point(480, 19);
             textBox1.Name = "textBox1";
@@ -110,7 +115,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(254, 0);
+            label1.Location = new Point(259, 69);
             label1.Name = "label1";
             label1.Size = new Size(561, 52);
             label1.TabIndex = 4;
@@ -122,20 +127,40 @@
             label2.BackColor = SystemColors.ButtonHighlight;
             label2.Font = new Font("Cascadia Code Light", 7F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaption;
-            label2.Location = new Point(350, 70);
+            label2.Location = new Point(347, 118);
             label2.Name = "label2";
             label2.Size = new Size(344, 18);
             label2.TabIndex = 5;
             label2.Text = "\"Currently managing 128 active customers.\"";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Cascadia Code", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(259, 73);
+            label3.Name = "label3";
+            label3.Size = new Size(367, 43);
+            label3.TabIndex = 4;
+            label3.Text = "👤 Manage Customer";
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.Location = new Point(326, 116);
+            label4.Name = "label4";
+            label4.Size = new Size(851, 49);
+            label4.TabIndex = 5;
+            label4.Text = "Easily view and track updates from the laundry service, ensuring you stay informed about your orders.\"";
             // 
             // Laundry_Attendant_CustomersForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1181, 562);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            ClientSize = new Size(1184, 552);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(table_customers);
             Controls.Add(panel2);
             Margin = new Padding(5);
@@ -144,8 +169,8 @@
             Load += Laundry_Attendant_CustomersForm_Load;
             Controls.SetChildIndex(panel2, 0);
             Controls.SetChildIndex(table_customers, 0);
-            Controls.SetChildIndex(label1, 0);
-            Controls.SetChildIndex(label2, 0);
+            Controls.SetChildIndex(label3, 0);
+            Controls.SetChildIndex(label4, 0);
             ((System.ComponentModel.ISupportInitialize)table_customers).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -163,5 +188,7 @@
         private Label label1;
         private Label label2;
         private Button Searchbtn_Customer;
+        private Label label3;
+        private Label label4;
     }
 }

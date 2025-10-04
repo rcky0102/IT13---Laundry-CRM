@@ -42,19 +42,24 @@
             add = new Button();
             edit = new Button();
             archive = new Button();
+            panel3 = new Panel();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)table_customers).BeginInit();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // table_customers
             // 
+            table_customers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             table_customers.BackgroundColor = SystemColors.ButtonHighlight;
             table_customers.BorderStyle = BorderStyle.Fixed3D;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(236, 215);
+            table_customers.Location = new Point(269, 309);
+            table_customers.Margin = new Padding(4);
             table_customers.Name = "table_customers";
             table_customers.RowHeadersWidth = 51;
-            table_customers.Size = new Size(727, 290);
+            table_customers.Size = new Size(900, 253);
             table_customers.TabIndex = 1;
             table_customers.CellContentClick += table_customers_CellContentClick;
             // 
@@ -139,7 +144,7 @@
             textBox1.Location = new Point(294, 18);
             textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(332, 25);
+            textBox1.Size = new Size(332, 28);
             textBox1.TabIndex = 5;
             // 
             // button1
@@ -154,80 +159,116 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ActiveCaption;
-            label3.Location = new Point(207, 31);
+            label3.Font = new Font("Cascadia Code", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(258, 90);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(446, 45);
+            label3.Size = new Size(514, 52);
             label3.TabIndex = 7;
             label3.Text = "⌚View Laundry Status";
             // 
             // button_archives
             // 
-            button_archives.Location = new Point(416, 169);
+            button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_archives.BackColor = Color.Coral;
+            button_archives.Location = new Point(772, 13);
+            button_archives.Margin = new Padding(4);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(119, 29);
+            button_archives.Size = new Size(57, 43);
             button_archives.TabIndex = 8;
-            button_archives.Text = "Archives";
-            button_archives.UseVisualStyleBackColor = true;
+            button_archives.Text = "📤";
+            button_archives.UseVisualStyleBackColor = false;
             button_archives.Click += button_archives_Click;
             // 
             // add
             // 
-            add.Location = new Point(255, 165);
+            add.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            add.BackColor = SystemColors.MenuHighlight;
+            add.ForeColor = SystemColors.ButtonHighlight;
+            add.Location = new Point(17, 19);
+            add.Margin = new Padding(4);
             add.Name = "add";
-            add.Size = new Size(94, 29);
+            add.Size = new Size(58, 37);
             add.TabIndex = 9;
-            add.Text = "Add";
-            add.UseVisualStyleBackColor = true;
+            add.Text = "➕";
+            add.UseVisualStyleBackColor = false;
             add.Click += add_Click;
             // 
             // edit
             // 
-            edit.Location = new Point(615, 165);
+            edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            edit.BackColor = Color.LimeGreen;
+            edit.Location = new Point(717, 13);
+            edit.Margin = new Padding(4);
             edit.Name = "edit";
-            edit.Size = new Size(94, 29);
+            edit.Size = new Size(50, 42);
             edit.TabIndex = 10;
-            edit.Text = "Edit";
-            edit.UseVisualStyleBackColor = true;
+            edit.Text = "✏️";
+            edit.UseVisualStyleBackColor = false;
             edit.Click += edit_Click;
             // 
             // archive
             // 
-            archive.Location = new Point(775, 170);
+            archive.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            archive.BackColor = Color.Coral;
+            archive.Location = new Point(834, 13);
+            archive.Margin = new Padding(4);
             archive.Name = "archive";
-            archive.Size = new Size(94, 29);
+            archive.Size = new Size(50, 43);
             archive.TabIndex = 11;
-            archive.Text = "Archive";
-            archive.UseVisualStyleBackColor = true;
+            archive.Text = "📥";
+            archive.UseVisualStyleBackColor = false;
             archive.Click += archive_Click;
+            // 
+            // panel3
+            // 
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.BackColor = SystemColors.ActiveCaption;
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(edit);
+            panel3.Controls.Add(archive);
+            panel3.Controls.Add(add);
+            panel3.Controls.Add(button_archives);
+            panel3.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panel3.ForeColor = SystemColors.ButtonHighlight;
+            panel3.Location = new Point(269, 227);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(900, 75);
+            panel3.TabIndex = 12;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.Location = new Point(364, 142);
+            label4.Name = "label4";
+            label4.Size = new Size(645, 58);
+            label4.TabIndex = 13;
+            label4.Text = "Attendants can manage and record the current stage of each laundry order in real time for accurate tracking";
             // 
             // laundry_attendant_status
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1013, 563);
-            Controls.Add(archive);
-            Controls.Add(edit);
-            Controls.Add(add);
-            Controls.Add(button_archives);
+            ClientSize = new Size(1181, 562);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(table_customers);
-            Margin = new Padding(4);
+            Controls.Add(panel3);
+            Margin = new Padding(5);
             Name = "laundry_attendant_status";
             Text = "laundry_attendant_status";
             Load += laundry_attendant_status_Load;
+            Controls.SetChildIndex(panel3, 0);
             Controls.SetChildIndex(table_customers, 0);
             Controls.SetChildIndex(label3, 0);
-            Controls.SetChildIndex(button_archives, 0);
-            Controls.SetChildIndex(add, 0);
-            Controls.SetChildIndex(edit, 0);
-            Controls.SetChildIndex(archive, 0);
+            Controls.SetChildIndex(label4, 0);
             ((System.ComponentModel.ISupportInitialize)table_customers).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,5 +289,7 @@
         private Button add;
         private Button edit;
         private Button archive;
+        private Panel panel3;
+        private Label label4;
     }
 }

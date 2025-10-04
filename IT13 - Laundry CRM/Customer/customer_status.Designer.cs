@@ -35,9 +35,10 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(307, 51);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(317, 165);
             label1.Name = "label1";
             label1.Size = new Size(774, 61);
             label1.TabIndex = 1;
@@ -45,18 +46,19 @@
             // 
             // flowlayoutpanel_status
             // 
-            flowlayoutpanel_status.Location = new Point(261, 143);
+            flowlayoutpanel_status.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flowlayoutpanel_status.Location = new Point(261, 227);
             flowlayoutpanel_status.Margin = new Padding(4);
             flowlayoutpanel_status.Name = "flowlayoutpanel_status";
-            flowlayoutpanel_status.Size = new Size(907, 406);
+            flowlayoutpanel_status.Size = new Size(907, 322);
             flowlayoutpanel_status.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ActiveCaption;
-            label2.Location = new Point(247, 4);
+            label2.ForeColor = SystemColors.ActiveCaptionText;
+            label2.Location = new Point(247, 100);
             label2.Name = "label2";
             label2.Size = new Size(630, 52);
             label2.TabIndex = 8;
@@ -73,6 +75,7 @@
             Controls.Add(flowlayoutpanel_status);
             Margin = new Padding(5);
             Name = "customer_status";
+            ShowInTaskbar = false;
             Text = "customer_status";
             Load += customer_status_Load;
             Controls.SetChildIndex(flowlayoutpanel_status, 0);
