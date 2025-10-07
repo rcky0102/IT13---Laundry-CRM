@@ -26,6 +26,10 @@ namespace IT13___Laundry_CRM.Customer
         {
             InitializeComponent();
             LoadMessages();
+
+            listbox_messages.DrawMode = DrawMode.OwnerDrawVariable;
+            listbox_messages.MeasureItem += listbox_messages_MeasureItem;
+            listbox_messages.DrawItem += listbox_messages_DrawItem;
         }
 
         private void customer_messages_Load(object sender, EventArgs e)
@@ -77,20 +81,29 @@ namespace IT13___Laundry_CRM.Customer
 
                 currentConversation = messageRepository.GetConversation(CurrentUser.UserId, selectedUserId);
 
-                // Fetch only conversation between current user and selected user
-                var messages = messageRepository.GetConversation(CurrentUser.UserId, selectedUserId);
-
                 listbox_messages.Items.Clear();
 
-                foreach (var msg in messages)
-                {
-                    string sender = msg.sender_id == CurrentUser.UserId ? "You" : $"User {msg.sender_id}";
-                    string receiver = msg.receiver_id == CurrentUser.UserId ? "You" : $"User {msg.receiver_id}";
+                // Preload users for name lookup
+                var users = userRepository.GetUsers();
+                var userDict = users.ToDictionary(u => u.user_id,
+                    u => $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name}");
 
-                    listbox_messages.Items.Add(
-                        $"[{msg.created_at:MM/dd/yyyy HH:mm}] {sender} → {receiver}: {msg.message}"
-                    );
+                foreach (var msg in currentConversation)
+                {
+                    string senderName = msg.sender_id == CurrentUser.UserId
+                        ? "You"
+                        : (userDict.ContainsKey(msg.sender_id) ? userDict[msg.sender_id] : $"User {msg.sender_id}");
+
+                    listbox_messages.Items.Add(new
+                    {
+                        SenderId = msg.sender_id,
+                        SenderName = senderName,
+                        Text = msg.message,
+                        Time = msg.created_at
+                    });
                 }
+
+                listbox_messages.Refresh();
             }
             catch (Exception ex)
             {
@@ -150,7 +163,7 @@ namespace IT13___Laundry_CRM.Customer
                 MessageBox.Show("Error sending message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         private void button_edit_Click(object sender, EventArgs e)
         {
@@ -242,5 +255,57 @@ namespace IT13___Laundry_CRM.Customer
         {
             LoadMessages();
         }
+
+        private void listbox_messages_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+
+            e.DrawBackground();
+            dynamic item = listbox_messages.Items[e.Index];
+            bool isCurrentUser = item.SenderId == CurrentUser.UserId;
+
+            // Chat bubble bounds
+            int bubbleWidth = 300;
+            int margin = 10;
+            int x = isCurrentUser ? e.Bounds.Right - bubbleWidth - margin : margin;
+            int y = e.Bounds.Top + 5;
+
+            // Bubble color
+            Color bubbleColor = isCurrentUser ? Color.LightBlue : Color.LightGray;
+            Color textColor = Color.Black;
+
+            using (SolidBrush brush = new SolidBrush(bubbleColor))
+            using (SolidBrush textBrush = new SolidBrush(textColor))
+            using (Font timeFont = new Font("Segoe UI", 8, FontStyle.Italic))
+            {
+                Rectangle bubbleRect = new Rectangle(x, y, bubbleWidth, e.Bounds.Height - 5);
+                e.Graphics.FillRoundedRectangle(brush, bubbleRect, 10);
+
+                // Draw text
+                e.Graphics.DrawString(item.Text, listbox_messages.Font, textBrush, bubbleRect);
+
+                // Draw timestamp
+                string time = ((DateTime)item.Time).ToString("hh:mm tt");
+                SizeF timeSize = e.Graphics.MeasureString(time, timeFont);
+                e.Graphics.DrawString(time, timeFont, Brushes.Gray,
+                    isCurrentUser ? bubbleRect.Right - timeSize.Width - 5 : bubbleRect.Left + 5,
+                    bubbleRect.Bottom - timeSize.Height - 5);
+            }
+
+            e.DrawFocusRectangle();
+        }
+
+        private void listbox_messages_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+
+            dynamic item = listbox_messages.Items[e.Index];
+            using (var g = listbox_messages.CreateGraphics())
+            {
+                SizeF textSize = g.MeasureString(item.Text, listbox_messages.Font, 300);
+                e.ItemHeight = (int)textSize.Height + 25; // padding
+            }
+        }
     }
 }
+

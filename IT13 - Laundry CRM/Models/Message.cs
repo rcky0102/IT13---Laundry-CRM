@@ -16,6 +16,8 @@ namespace IT13___Laundry_CRM.Models
 
         public DateTime created_at { get; set; } = DateTime.Now;
 
-        public User User { get; set; }  
+        public User User { get; set; }
+        public User Sender { get; set; }   // <-- Add this
+        public User Receiver { get; set; } // <-- Add this
     }
 }

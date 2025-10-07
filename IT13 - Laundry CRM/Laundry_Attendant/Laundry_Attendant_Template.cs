@@ -73,5 +73,18 @@ namespace IT13___Laundry_CRM
                 this.Close();
             }
         }
+
+        private void Laundry_Attendant_Template_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void button_dashboard_Click(object sender, EventArgs e)
+        {
+            Laundry_Attendant_Dashboard dashboard = new Laundry_Attendant_Dashboard();
+            dashboard.Show();
+
+            this.Hide();
+        }
     }
 }

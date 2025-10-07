@@ -88,5 +88,10 @@ namespace IT13___Laundry_CRM
         {
             contextmenustrip_profile.Show(profile, 0, profile.Height);
         }
+
+        private void SIdebarTemplate_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace IT13___Laundry_CRM.Admin
     {
 
         private readonly UserRepository userRepository = new UserRepository();
+        private List<User> allUsers = new List<User>();
 
         public admin_user()
         {
@@ -38,7 +39,7 @@ namespace IT13___Laundry_CRM.Admin
         {
             try
             {
-                List<User> users = userRepository.GetUsers();
+                allUsers = userRepository.GetUsers(); // store in local list
 
                 table_users.AutoGenerateColumns = false;
 
@@ -66,7 +67,7 @@ namespace IT13___Laundry_CRM.Admin
                     table_users.Columns["created_at"].DataPropertyName = "created_at";
                 }
 
-                table_users.DataSource = users;
+                table_users.DataSource = allUsers;
             }
             catch (Exception ex)
             {
@@ -129,6 +130,27 @@ namespace IT13___Laundry_CRM.Admin
             {
                 userRepository.DeleteUser(userId);
                 LoadUsers(); // refresh grid
+            }
+        }
+
+        private void textBox_search_TextChanged(object sender, EventArgs e)
+        {
+            string query = textBox_search.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(query))
+            {
+                table_users.DataSource = allUsers;
+            }
+            else
+            {
+                var filtered = allUsers.Where(u =>
+                    u.user_id.ToString().Contains(query) ||
+                    (!string.IsNullOrEmpty(u.first_name) && u.first_name.ToLower().Contains(query)) ||
+                    (!string.IsNullOrEmpty(u.last_name) && u.last_name.ToLower().Contains(query)) ||
+                    (!string.IsNullOrEmpty(u.username) && u.username.ToLower().Contains(query))
+                ).ToList();
+
+                table_users.DataSource = filtered;
             }
         }
     }

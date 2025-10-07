@@ -42,32 +42,28 @@
             // 
             textbox_subject.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_subject.ForeColor = Color.Yellow;
-            textbox_subject.Location = new Point(261, 199);
-            textbox_subject.Margin = new Padding(4);
+            textbox_subject.Location = new Point(209, 159);
             textbox_subject.Name = "textbox_subject";
-            textbox_subject.Size = new Size(318, 31);
+            textbox_subject.Size = new Size(255, 27);
             textbox_subject.TabIndex = 1;
             // 
             // textbox_feedback
             // 
             textbox_feedback.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_feedback.BorderStyle = BorderStyle.FixedSingle;
-            textbox_feedback.Location = new Point(261, 475);
-            textbox_feedback.Margin = new Padding(4);
+            textbox_feedback.Location = new Point(209, 380);
             textbox_feedback.Multiline = true;
             textbox_feedback.Name = "textbox_feedback";
-            textbox_feedback.Size = new Size(806, 74);
+            textbox_feedback.Size = new Size(645, 60);
             textbox_feedback.TabIndex = 2;
             // 
             // listbox_feedback
             // 
             listbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_feedback.FormattingEnabled = true;
-            listbox_feedback.ItemHeight = 25;
-            listbox_feedback.Location = new Point(261, 238);
-            listbox_feedback.Margin = new Padding(4);
+            listbox_feedback.Location = new Point(209, 190);
             listbox_feedback.Name = "listbox_feedback";
-            listbox_feedback.Size = new Size(907, 229);
+            listbox_feedback.Size = new Size(726, 184);
             listbox_feedback.TabIndex = 3;
             // 
             // button_send
@@ -76,10 +72,9 @@
             button_send.BackColor = SystemColors.MenuHighlight;
             button_send.FlatAppearance.BorderSize = 0;
             button_send.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_send.Location = new Point(1075, 484);
-            button_send.Margin = new Padding(4);
+            button_send.Location = new Point(860, 387);
             button_send.Name = "button_send";
-            button_send.Size = new Size(93, 55);
+            button_send.Size = new Size(74, 44);
             button_send.TabIndex = 4;
             button_send.Text = "📩";
             button_send.UseVisualStyleBackColor = false;
@@ -90,10 +85,9 @@
             button_edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_edit.BackColor = Color.LimeGreen;
             button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(1060, 196);
-            button_edit.Margin = new Padding(4);
+            button_edit.Location = new Point(848, 157);
             button_edit.Name = "button_edit";
-            button_edit.Size = new Size(49, 36);
+            button_edit.Size = new Size(39, 29);
             button_edit.TabIndex = 5;
             button_edit.Text = "✏️";
             button_edit.UseVisualStyleBackColor = false;
@@ -104,10 +98,9 @@
             button_delete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_delete.BackColor = Color.IndianRed;
             button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(1117, 194);
-            button_delete.Margin = new Padding(4);
+            button_delete.Location = new Point(894, 155);
             button_delete.Name = "button_delete";
-            button_delete.Size = new Size(51, 36);
+            button_delete.Size = new Size(41, 29);
             button_delete.TabIndex = 6;
             button_delete.Text = "🗑️";
             button_delete.UseVisualStyleBackColor = false;
@@ -118,9 +111,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(247, 78);
+            label1.Location = new Point(209, 67);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(446, 52);
+            label1.Size = new Size(386, 45);
             label1.TabIndex = 10;
             label1.Text = "💬 Submit Feedback";
             // 
@@ -128,18 +122,19 @@
             // 
             label2.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(337, 140);
+            label2.Location = new Point(270, 112);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(772, 52);
+            label2.Size = new Size(618, 42);
             label2.TabIndex = 11;
             label2.Text = "“Your input plays a vital role in helping us refine and enhance our services to better meet your needs.”";
             // 
             // customer_feedback
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1181, 562);
+            ClientSize = new Size(945, 450);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button_delete);
@@ -149,7 +144,7 @@
             Controls.Add(textbox_feedback);
             Controls.Add(textbox_subject);
             ForeColor = SystemColors.ButtonHighlight;
-            Margin = new Padding(5);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "customer_feedback";
             Text = "customer_feedback";
             Load += customer_feedback_Load;

@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SIdebarTemplate));
             panel1 = new Panel();
             button_feedback = new Button();
-            button3 = new Button();
             button_messages = new Button();
             button_users = new Button();
             button1 = new Button();
@@ -54,15 +53,14 @@
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Controls.Add(button_feedback);
-            panel1.Controls.Add(button3);
             panel1.Controls.Add(button_messages);
             panel1.Controls.Add(button_users);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 71);
+            panel1.Location = new Point(0, 56);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(241, 491);
+            panel1.Size = new Size(202, 438);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -81,21 +79,6 @@
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
             button_feedback.UseVisualStyleBackColor = true;
             button_feedback.Click += button_feedback_Click;
-            // 
-            // button3
-            // 
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = SystemColors.ButtonHighlight;
-            button3.Location = new Point(68, 688);
-            button3.Margin = new Padding(4, 3, 4, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(203, 43);
-            button3.TabIndex = 3;
-            button3.Text = "🚪Log Out";
-            button3.TextAlign = ContentAlignment.MiddleRight;
-            button3.UseVisualStyleBackColor = true;
             // 
             // button_messages
             // 
@@ -149,9 +132,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Cascadia Code", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.HotTrack;
-            label2.Location = new Point(239, 7);
+            label2.Location = new Point(194, 0);
             label2.Name = "label2";
-            label2.Size = new Size(95, 43);
+            label2.Size = new Size(79, 35);
             label2.TabIndex = 5;
             label2.Text = "Care";
             // 
@@ -160,20 +143,20 @@
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(95, 7);
+            label1.Location = new Point(73, 0);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(152, 43);
+            label1.Size = new Size(127, 35);
             label1.TabIndex = 3;
             label1.Text = "Laundry";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(10, -2);
+            pictureBox1.Location = new Point(11, -2);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(77, 67);
+            pictureBox1.Size = new Size(59, 50);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -189,15 +172,15 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1181, 71);
+            panel2.Size = new Size(1181, 56);
             panel2.TabIndex = 1;
             // 
             // profile
             // 
             profile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            profile.Location = new Point(1103, 13);
+            profile.Location = new Point(1109, 10);
             profile.Name = "profile";
-            profile.Size = new Size(43, 32);
+            profile.Size = new Size(43, 35);
             profile.TabIndex = 1;
             profile.Text = "👤";
             profile.UseVisualStyleBackColor = true;
@@ -208,27 +191,28 @@
             contextmenustrip_profile.ImageScalingSize = new Size(20, 20);
             contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { logout });
             contextmenustrip_profile.Name = "contextmenustrip_profile";
-            contextmenustrip_profile.Size = new Size(142, 36);
+            contextmenustrip_profile.Size = new Size(126, 28);
             // 
             // logout
             // 
             logout.Name = "logout";
-            logout.Size = new Size(141, 32);
+            logout.Size = new Size(125, 24);
             logout.Text = "Logout";
             logout.Click += logout_Click;
             // 
             // SIdebarTemplate
             // 
-            AutoScaleDimensions = new SizeF(12F, 27F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1181, 562);
+            ClientSize = new Size(1181, 494);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "SIdebarTemplate";
             Text = "SIdebarTemplate";
+            Load += SIdebarTemplate_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
@@ -245,7 +229,6 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Button button_messages;
-        private Button button3;
         private Button button_feedback;
         private Label label2;
         private Panel panel2;

@@ -43,10 +43,9 @@
             // combobox_users
             // 
             combobox_users.FormattingEnabled = true;
-            combobox_users.Location = new Point(4, 15);
-            combobox_users.Margin = new Padding(4);
+            combobox_users.Location = new Point(3, 12);
             combobox_users.Name = "combobox_users";
-            combobox_users.Size = new Size(308, 33);
+            combobox_users.Size = new Size(247, 28);
             combobox_users.TabIndex = 1;
             combobox_users.SelectedIndexChanged += combobox_users_SelectedIndexChanged;
             // 
@@ -54,12 +53,12 @@
             // 
             listbox_messages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_messages.FormattingEnabled = true;
-            listbox_messages.ItemHeight = 25;
-            listbox_messages.Location = new Point(247, 262);
-            listbox_messages.Margin = new Padding(4);
+            listbox_messages.Location = new Point(198, 210);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(921, 229);
+            listbox_messages.Size = new Size(738, 184);
             listbox_messages.TabIndex = 2;
+            listbox_messages.DrawItem += listbox_messages_DrawItem;
+            listbox_messages.MeasureItem += listbox_messages_MeasureItem;
             // 
             // button_send
             // 
@@ -67,10 +66,9 @@
             button_send.BackColor = SystemColors.HotTrack;
             button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(1101, 499);
-            button_send.Margin = new Padding(4);
+            button_send.Location = new Point(881, 399);
             button_send.Name = "button_send";
-            button_send.Size = new Size(67, 50);
+            button_send.Size = new Size(54, 40);
             button_send.TabIndex = 3;
             button_send.Text = "📩";
             button_send.UseVisualStyleBackColor = false;
@@ -81,10 +79,9 @@
             button_edit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_edit.BackColor = Color.ForestGreen;
             button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(800, 15);
-            button_edit.Margin = new Padding(4);
+            button_edit.Location = new Point(640, 12);
             button_edit.Name = "button_edit";
-            button_edit.Size = new Size(51, 36);
+            button_edit.Size = new Size(41, 29);
             button_edit.TabIndex = 4;
             button_edit.Text = "✏️";
             button_edit.UseVisualStyleBackColor = false;
@@ -95,10 +92,9 @@
             button_delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_delete.BackColor = Color.IndianRed;
             button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(859, 14);
-            button_delete.Margin = new Padding(4);
+            button_delete.Location = new Point(687, 11);
             button_delete.Name = "button_delete";
-            button_delete.Size = new Size(51, 39);
+            button_delete.Size = new Size(41, 31);
             button_delete.TabIndex = 5;
             button_delete.Text = "🗑️";
             button_delete.UseVisualStyleBackColor = false;
@@ -108,11 +104,10 @@
             // 
             textbox_message.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_message.BorderStyle = BorderStyle.FixedSingle;
-            textbox_message.Location = new Point(253, 499);
-            textbox_message.Margin = new Padding(4);
+            textbox_message.Location = new Point(202, 399);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
-            textbox_message.Size = new Size(831, 63);
+            textbox_message.Size = new Size(665, 51);
             textbox_message.TabIndex = 6;
             // 
             // panel3
@@ -123,18 +118,20 @@
             panel3.Controls.Add(combobox_users);
             panel3.Controls.Add(button_edit);
             panel3.Controls.Add(button_delete);
-            panel3.Location = new Point(247, 196);
+            panel3.Location = new Point(198, 157);
+            panel3.Margin = new Padding(2, 2, 2, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(922, 59);
+            panel3.Size = new Size(738, 48);
             panel3.TabIndex = 7;
             // 
             // label2
             // 
             label2.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(327, 125);
+            label2.Location = new Point(262, 100);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(757, 47);
+            label2.Size = new Size(606, 38);
             label2.TabIndex = 9;
             label2.Text = "“This chat allows you to communicate directly with our administrators for timely support and guidance.”";
             // 
@@ -142,25 +139,26 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(247, 78);
+            label1.Location = new Point(198, 62);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(194, 47);
+            label1.Size = new Size(166, 40);
             label1.TabIndex = 10;
             label1.Text = "🔔 Inbox";
             // 
             // customer_messages
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1181, 562);
+            ClientSize = new Size(945, 450);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(textbox_message);
             Controls.Add(button_send);
             Controls.Add(listbox_messages);
             Controls.Add(panel3);
-            Margin = new Padding(5);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "customer_messages";
             Text = "customer_messages";
             Load += customer_messages_Load;

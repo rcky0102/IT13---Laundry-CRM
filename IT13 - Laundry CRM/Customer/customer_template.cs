@@ -63,16 +63,29 @@ namespace IT13___Laundry_CRM
 
             if (result == DialogResult.Yes)
             {
-                
+
                 CurrentUser.User = null;
 
-                
+
                 Form1 loginForm = new Form1();
                 loginForm.Show();
 
                 this.Close();
             }
 
+        }
+
+        private void button_dashboard_Click(object sender, EventArgs e)
+        {
+            customer_dashboard dashboard = new customer_dashboard();
+            dashboard.Show();
+
+            this.Hide();
+        }
+
+        private void customer_template_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

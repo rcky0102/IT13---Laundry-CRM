@@ -55,11 +55,10 @@
             table_customers.BackgroundColor = SystemColors.ButtonHighlight;
             table_customers.BorderStyle = BorderStyle.Fixed3D;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(269, 309);
-            table_customers.Margin = new Padding(4);
+            table_customers.Location = new Point(229, 228);
             table_customers.Name = "table_customers";
             table_customers.RowHeadersWidth = 51;
-            table_customers.Size = new Size(900, 253);
+            table_customers.Size = new Size(692, 202);
             table_customers.TabIndex = 1;
             table_customers.CellContentClick += table_customers_CellContentClick;
             // 
@@ -144,7 +143,7 @@
             textBox1.Location = new Point(294, 18);
             textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(332, 28);
+            textBox1.Size = new Size(332, 25);
             textBox1.TabIndex = 5;
             // 
             // button1
@@ -161,10 +160,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(258, 90);
+            label3.Location = new Point(229, 58);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(514, 52);
+            label3.Size = new Size(445, 45);
             label3.TabIndex = 7;
             label3.Text = "⌚View Laundry Status";
             // 
@@ -172,10 +171,9 @@
             // 
             button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_archives.BackColor = Color.Coral;
-            button_archives.Location = new Point(772, 13);
-            button_archives.Margin = new Padding(4);
+            button_archives.Location = new Point(590, 10);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(57, 43);
+            button_archives.Size = new Size(46, 34);
             button_archives.TabIndex = 8;
             button_archives.Text = "📤";
             button_archives.UseVisualStyleBackColor = false;
@@ -186,10 +184,9 @@
             add.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             add.BackColor = SystemColors.MenuHighlight;
             add.ForeColor = SystemColors.ButtonHighlight;
-            add.Location = new Point(17, 19);
-            add.Margin = new Padding(4);
+            add.Location = new Point(14, 15);
             add.Name = "add";
-            add.Size = new Size(58, 37);
+            add.Size = new Size(46, 30);
             add.TabIndex = 9;
             add.Text = "➕";
             add.UseVisualStyleBackColor = false;
@@ -199,10 +196,9 @@
             // 
             edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             edit.BackColor = Color.LimeGreen;
-            edit.Location = new Point(717, 13);
-            edit.Margin = new Padding(4);
+            edit.Location = new Point(546, 10);
             edit.Name = "edit";
-            edit.Size = new Size(50, 42);
+            edit.Size = new Size(40, 34);
             edit.TabIndex = 10;
             edit.Text = "✏️";
             edit.UseVisualStyleBackColor = false;
@@ -212,10 +208,9 @@
             // 
             archive.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             archive.BackColor = Color.Coral;
-            archive.Location = new Point(834, 13);
-            archive.Margin = new Padding(4);
+            archive.Location = new Point(639, 10);
             archive.Name = "archive";
-            archive.Size = new Size(50, 43);
+            archive.Size = new Size(40, 34);
             archive.TabIndex = 11;
             archive.Text = "📥";
             archive.UseVisualStyleBackColor = false;
@@ -232,34 +227,36 @@
             panel3.Controls.Add(button_archives);
             panel3.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel3.ForeColor = SystemColors.ButtonHighlight;
-            panel3.Location = new Point(269, 227);
+            panel3.Location = new Point(229, 156);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(900, 75);
+            panel3.Size = new Size(692, 60);
             panel3.TabIndex = 12;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.Location = new Point(364, 142);
+            label4.Location = new Point(243, 108);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(645, 58);
+            label4.Size = new Size(516, 46);
             label4.TabIndex = 13;
             label4.Text = "Attendants can manage and record the current stage of each laundry order in real time for accurate tracking";
             // 
             // laundry_attendant_status
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1181, 562);
+            ClientSize = new Size(945, 450);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(table_customers);
             Controls.Add(panel3);
-            Margin = new Padding(5);
+            Margin = new Padding(4);
             Name = "laundry_attendant_status";
-            Text = "laundry_attendant_status";
+            Text = "Laundry Attendant | Status";
             Load += laundry_attendant_status_Load;
             Controls.SetChildIndex(panel3, 0);
             Controls.SetChildIndex(table_customers, 0);
