@@ -24,15 +24,24 @@ namespace IT13___Laundry_CRM.Customer
         {
             InitializeComponent();
             LoadFeedbacks();
+
+            listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
         }
 
         private void LoadFeedbacks()
         {
             try
             {
+                // Get feedbacks for the current logged-in user
                 currentFeedbacks = feedbackRepository.GetFeedbacksByUser(CurrentUser.UserId);
 
                 listbox_feedback.Items.Clear();
+
+                if (currentFeedbacks.Count == 0)
+                {
+                    listbox_feedback.Items.Add("No feedback found.");
+                    return;
+                }
 
                 foreach (var fb in currentFeedbacks)
                 {
@@ -40,15 +49,18 @@ namespace IT13___Laundry_CRM.Customer
                         ? $"{fb.User.first_name} {fb.User.last_name}"
                         : $"User {fb.user_id}";
 
-                    listbox_feedback.Items.Add(
-                        $"[{fb.created_at:MM/dd/yyyy HH:mm}] {user}: {fb.subject} → {fb.feedback}"
-                    );
+                    // Display summary info only (subject, sender, date)
+                    listbox_feedback.Items.Add($"📌 {fb.subject} — by {user} ({fb.created_at:MMM dd, yyyy})");
                 }
+
+                // Attach event handler if not already attached
+                listbox_feedback.SelectedIndexChanged -= listbox_feedback_SelectedIndexChanged;
+                listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading feedback: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading feedback: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -163,6 +175,104 @@ namespace IT13___Laundry_CRM.Customer
                 MessageBox.Show("Error deleting feedback: " + ex.Message, "Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void listbox_feedback_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = listbox_feedback.SelectedIndex;
+            if (index < 0 || index >= currentFeedbacks.Count)
+                return;
+
+            var selectedFeedback = currentFeedbacks[index];
+
+            using (var detailsForm = new FeedbackDetailsForm(selectedFeedback))
+            {
+                detailsForm.ShowDialog();
+            }
+
+            // 👇 Clear the selection to prevent re-triggering
+            listbox_feedback.ClearSelected();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    public class FeedbackDetailsForm : Form
+    {
+        public FeedbackDetailsForm(Feedback feedback)
+        {
+            this.Text = "Feedback Details";
+            this.Size = new Size(700, 600);
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.BackColor = Color.White;
+
+            Label lblSubject = new Label()
+            {
+                Text = $"📌 Subject: {feedback.subject}",
+                Font = new Font("Cascadia Code", 11, FontStyle.Bold),
+                Dock = DockStyle.Top,
+                Height = 50,
+                Padding = new Padding(10)
+            };
+
+            string user = feedback.User != null
+                ? $"{feedback.User.first_name} {feedback.User.last_name}"
+                : $"User {feedback.user_id}";
+
+            Label lblUser = new Label()
+            {
+                Text = $"👤 Submitted by: {user}",
+                Font = new Font("Cascadia Code", 10, FontStyle.Regular),
+                Dock = DockStyle.Top,
+                Height = 40,
+                Padding = new Padding(10)
+            };
+
+            Label lblDate = new Label()
+            {
+                Text = $"🕒 Date: {feedback.created_at:MMMM dd, yyyy hh:mm tt}",
+                Font = new Font("Cascadia Code", 9, FontStyle.Italic),
+                Dock = DockStyle.Top,
+                Height = 40,
+                Padding = new Padding(10)
+            };
+
+            TextBox txtFeedback = new TextBox()
+            {
+                Text = feedback.feedback,
+                Multiline = true,
+                ReadOnly = true,
+                ScrollBars = ScrollBars.Vertical,
+                Dock = DockStyle.Fill,
+                Font = new Font("Cascadia Code", 10, FontStyle.Regular),
+                BackColor = Color.WhiteSmoke,
+                ForeColor = Color.Black,
+                Padding = new Padding(10)
+            };
+
+            //Button btnClose = new Button()
+            //{
+            //    Text = "Close",
+            //    Dock = DockStyle.Bottom,
+            //    Height = 40,
+            //    Font = new Font("Cascadia Code", 10, FontStyle.Bold),
+            //    BackColor = Color.FromArgb(52, 152, 219),
+            //    ForeColor = Color.White,
+            //    FlatStyle = FlatStyle.Flat
+            //};
+            //btnClose.Click += (s, e) => this.Close();
+
+            this.Controls.Add(txtFeedback);
+            //this.Controls.Add(btnClose);
+            this.Controls.Add(lblDate);
+            this.Controls.Add(lblUser);
+            this.Controls.Add(lblSubject);
         }
     }
 }

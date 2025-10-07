@@ -86,6 +86,15 @@ namespace IT13___Laundry_CRM
         private void customer_template_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+
+            System.Drawing.Drawing2D.GraphicsPath buttonPath = new System.Drawing.Drawing2D.GraphicsPath();
+            buttonPath.AddEllipse(0, 0, button_profile.Width, button_profile.Height);
+            button_profile.Region = new Region(buttonPath);
+        }
+
+        private void button_profile_Resize(object sender, EventArgs e)
+        {
+
         }
     }
 }

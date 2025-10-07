@@ -35,7 +35,7 @@
             panel3 = new Panel();
             label_welcome = new Label();
             Luandry_Status = new Panel();
-            labelPercentage = new Label();
+            flowlayoutpanel_status = new FlowLayoutPanel();
             progressBar1 = new ProgressBar();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
@@ -46,32 +46,32 @@
             // 
             label_status.AutoSize = true;
             label_status.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_status.Location = new Point(3, 7);
+            label_status.Location = new Point(11, 7);
             label_status.Name = "label_status";
             label_status.Size = new Size(144, 20);
             label_status.TabIndex = 2;
-            label_status.Text = "Luandry Status:";
+            label_status.Text = "Laundry Status:";
             // 
             // label_message
             // 
             label_message.AutoSize = true;
-            label_message.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_message.Location = new Point(3, 0);
+            label_message.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_message.Location = new Point(13, 16);
             label_message.Name = "label_message";
-            label_message.Size = new Size(64, 18);
+            label_message.Size = new Size(72, 20);
             label_message.TabIndex = 4;
             label_message.Text = "Message";
             // 
             // panel4
             // 
-            panel4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(label1);
             panel4.Controls.Add(panel3);
-            panel4.Location = new Point(212, 273);
-            panel4.Margin = new Padding(2, 2, 2, 2);
+            panel4.Location = new Point(218, 384);
+            panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(633, 134);
+            panel4.Size = new Size(789, 134);
             panel4.TabIndex = 6;
             // 
             // label1
@@ -93,7 +93,7 @@
             panel3.Location = new Point(13, 42);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(601, 64);
+            panel3.Size = new Size(757, 64);
             panel3.TabIndex = 6;
             // 
             // label_welcome
@@ -111,33 +111,31 @@
             // 
             Luandry_Status.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Luandry_Status.BorderStyle = BorderStyle.Fixed3D;
-            Luandry_Status.Controls.Add(labelPercentage);
-            Luandry_Status.Controls.Add(progressBar1);
+            Luandry_Status.Controls.Add(flowlayoutpanel_status);
             Luandry_Status.Controls.Add(label_status);
-            Luandry_Status.Location = new Point(212, 132);
-            Luandry_Status.Margin = new Padding(2, 2, 2, 2);
+            Luandry_Status.Controls.Add(progressBar1);
+            Luandry_Status.Location = new Point(218, 132);
+            Luandry_Status.Margin = new Padding(2);
             Luandry_Status.Name = "Luandry_Status";
-            Luandry_Status.Size = new Size(633, 129);
+            Luandry_Status.Size = new Size(789, 224);
             Luandry_Status.TabIndex = 7;
             Luandry_Status.Paint += Luandry_Status_Paint;
             // 
-            // labelPercentage
+            // flowlayoutpanel_status
             // 
-            labelPercentage.AutoSize = true;
-            labelPercentage.Location = new Point(13, 70);
-            labelPercentage.Margin = new Padding(2, 0, 2, 0);
-            labelPercentage.Name = "labelPercentage";
-            labelPercentage.Size = new Size(29, 20);
-            labelPercentage.TabIndex = 9;
-            labelPercentage.Text = "0%";
+            flowlayoutpanel_status.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            flowlayoutpanel_status.Location = new Point(16, 51);
+            flowlayoutpanel_status.Name = "flowlayoutpanel_status";
+            flowlayoutpanel_status.Size = new Size(754, 133);
+            flowlayoutpanel_status.TabIndex = 8;
             // 
             // progressBar1
             // 
             progressBar1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             progressBar1.Location = new Point(13, 40);
-            progressBar1.Margin = new Padding(2, 2, 2, 2);
+            progressBar1.Margin = new Padding(2);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(572, 27);
+            progressBar1.Size = new Size(757, 161);
             progressBar1.TabIndex = 8;
             // 
             // customer_dashboard
@@ -145,17 +143,17 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(890, 467);
+            ClientSize = new Size(1046, 529);
+            Controls.Add(panel4);
             Controls.Add(Luandry_Status);
             Controls.Add(label_welcome);
-            Controls.Add(panel4);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "customer_dashboard";
-            Text = "customer_dashboard";
+            Text = "Customer | Dashboard";
             Load += customer_dashboard_Load;
-            Controls.SetChildIndex(panel4, 0);
             Controls.SetChildIndex(label_welcome, 0);
             Controls.SetChildIndex(Luandry_Status, 0);
+            Controls.SetChildIndex(panel4, 0);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel3.ResumeLayout(false);
@@ -176,6 +174,6 @@
         private Panel Luandry_Status;
         private Panel panel3;
         private ProgressBar progressBar1;
-        private Label labelPercentage;
+        private FlowLayoutPanel flowlayoutpanel_status;
     }
 }

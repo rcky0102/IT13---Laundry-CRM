@@ -74,7 +74,6 @@
             // 
             feedbackPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             feedbackPanel.AutoScroll = true;
-            feedbackPanel.BorderStyle = BorderStyle.FixedSingle;
             feedbackPanel.Controls.Add(feedbackLabel);
             feedbackPanel.Location = new Point(228, 143);
             feedbackPanel.Name = "feedbackPanel";

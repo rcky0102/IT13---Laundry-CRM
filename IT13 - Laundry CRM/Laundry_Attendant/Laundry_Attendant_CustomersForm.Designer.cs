@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             table_customers = new DataGridView();
             button_add_cutomer = new Button();
             panel2 = new Panel();
@@ -46,13 +47,19 @@
             // 
             // table_customers
             // 
+            dataGridViewCellStyle1.BackColor = Color.White;
+            table_customers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             table_customers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            table_customers.BackgroundColor = SystemColors.ButtonHighlight;
-            table_customers.BorderStyle = BorderStyle.Fixed3D;
+            table_customers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            table_customers.BackgroundColor = SystemColors.Window;
+            table_customers.BorderStyle = BorderStyle.None;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             table_customers.Location = new Point(218, 220);
             table_customers.Name = "table_customers";
+            table_customers.ReadOnly = true;
+            table_customers.RowHeadersVisible = false;
             table_customers.RowHeadersWidth = 51;
+            table_customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             table_customers.Size = new Size(718, 210);
             table_customers.TabIndex = 1;
             // 

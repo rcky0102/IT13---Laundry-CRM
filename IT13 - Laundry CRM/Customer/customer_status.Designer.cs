@@ -74,10 +74,10 @@
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(flowlayoutpanel_status);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "customer_status";
             ShowInTaskbar = false;
-            Text = "customer_status";
+            Text = "Customer | Status";
             Load += customer_status_Load;
             Controls.SetChildIndex(flowlayoutpanel_status, 0);
             Controls.SetChildIndex(label2, 0);

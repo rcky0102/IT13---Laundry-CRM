@@ -42,10 +42,12 @@
             // 
             // combobox_users
             // 
+            combobox_users.BackColor = SystemColors.ButtonFace;
+            combobox_users.Font = new Font("Cascadia Code SemiBold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             combobox_users.FormattingEnabled = true;
-            combobox_users.Location = new Point(3, 12);
+            combobox_users.Location = new Point(18, 14);
             combobox_users.Name = "combobox_users";
-            combobox_users.Size = new Size(247, 28);
+            combobox_users.Size = new Size(400, 30);
             combobox_users.TabIndex = 1;
             combobox_users.SelectedIndexChanged += combobox_users_SelectedIndexChanged;
             // 
@@ -53,9 +55,9 @@
             // 
             listbox_messages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_messages.FormattingEnabled = true;
-            listbox_messages.Location = new Point(198, 210);
+            listbox_messages.Location = new Point(221, 230);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(738, 184);
+            listbox_messages.Size = new Size(749, 264);
             listbox_messages.TabIndex = 2;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
@@ -66,7 +68,7 @@
             button_send.BackColor = SystemColors.HotTrack;
             button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(881, 399);
+            button_send.Location = new Point(919, 521);
             button_send.Name = "button_send";
             button_send.Size = new Size(54, 40);
             button_send.TabIndex = 3;
@@ -79,9 +81,9 @@
             button_edit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_edit.BackColor = Color.ForestGreen;
             button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(640, 12);
+            button_edit.Location = new Point(627, 9);
             button_edit.Name = "button_edit";
-            button_edit.Size = new Size(41, 29);
+            button_edit.Size = new Size(50, 40);
             button_edit.TabIndex = 4;
             button_edit.Text = "✏️";
             button_edit.UseVisualStyleBackColor = false;
@@ -92,9 +94,9 @@
             button_delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_delete.BackColor = Color.IndianRed;
             button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(687, 11);
+            button_delete.Location = new Point(683, 9);
             button_delete.Name = "button_delete";
-            button_delete.Size = new Size(41, 31);
+            button_delete.Size = new Size(50, 40);
             button_delete.TabIndex = 5;
             button_delete.Text = "🗑️";
             button_delete.UseVisualStyleBackColor = false;
@@ -104,10 +106,10 @@
             // 
             textbox_message.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_message.BorderStyle = BorderStyle.FixedSingle;
-            textbox_message.Location = new Point(202, 399);
+            textbox_message.Location = new Point(221, 521);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
-            textbox_message.Size = new Size(665, 51);
+            textbox_message.Size = new Size(692, 40);
             textbox_message.TabIndex = 6;
             // 
             // panel3
@@ -118,10 +120,10 @@
             panel3.Controls.Add(combobox_users);
             panel3.Controls.Add(button_edit);
             panel3.Controls.Add(button_delete);
-            panel3.Location = new Point(198, 157);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Location = new Point(221, 157);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(738, 48);
+            panel3.Size = new Size(749, 68);
             panel3.TabIndex = 7;
             // 
             // label2
@@ -151,16 +153,16 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(945, 450);
+            ClientSize = new Size(991, 572);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(textbox_message);
             Controls.Add(button_send);
             Controls.Add(listbox_messages);
             Controls.Add(panel3);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "customer_messages";
-            Text = "customer_messages";
+            Text = "Customer | Messages";
             Load += customer_messages_Load;
             Controls.SetChildIndex(panel3, 0);
             Controls.SetChildIndex(listbox_messages, 0);

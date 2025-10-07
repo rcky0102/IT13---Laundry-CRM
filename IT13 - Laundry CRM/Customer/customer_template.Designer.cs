@@ -60,7 +60,7 @@
             panel1.Font = new Font("Cascadia Code SemiLight", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel1.Location = new Point(0, 60);
             panel1.Name = "panel1";
-            panel1.Size = new Size(192, 453);
+            panel1.Size = new Size(192, 460);
             panel1.TabIndex = 0;
             // 
             // button_feedback
@@ -68,7 +68,7 @@
             button_feedback.FlatAppearance.BorderSize = 0;
             button_feedback.FlatStyle = FlatStyle.Flat;
             button_feedback.ForeColor = SystemColors.ButtonHighlight;
-            button_feedback.Location = new Point(4, 187);
+            button_feedback.Location = new Point(3, 179);
             button_feedback.Name = "button_feedback";
             button_feedback.Size = new Size(185, 36);
             button_feedback.TabIndex = 3;
@@ -82,7 +82,7 @@
             button_message.FlatAppearance.BorderSize = 0;
             button_message.FlatStyle = FlatStyle.Flat;
             button_message.ForeColor = SystemColors.ButtonHighlight;
-            button_message.Location = new Point(3, 129);
+            button_message.Location = new Point(3, 123);
             button_message.Name = "button_message";
             button_message.Size = new Size(180, 37);
             button_message.TabIndex = 2;
@@ -121,43 +121,47 @@
             // 
             // contextmenustrip_profile
             // 
+            contextmenustrip_profile.Font = new Font("Cascadia Code", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             contextmenustrip_profile.ImageScalingSize = new Size(20, 20);
             contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { profile, logout });
             contextmenustrip_profile.Name = "contextmenustrip_profile";
-            contextmenustrip_profile.Size = new Size(126, 52);
+            contextmenustrip_profile.RenderMode = ToolStripRenderMode.Professional;
+            contextmenustrip_profile.ShowImageMargin = false;
+            contextmenustrip_profile.Size = new Size(186, 100);
             contextmenustrip_profile.Text = "Profile";
             // 
             // profile
             // 
             profile.Name = "profile";
-            profile.Size = new Size(125, 24);
+            profile.Size = new Size(185, 34);
             profile.Text = "Profile";
             profile.Click += profile_Click;
             // 
             // logout
             // 
             logout.Name = "logout";
-            logout.Size = new Size(125, 24);
+            logout.Size = new Size(185, 34);
             logout.Text = "Logout";
             logout.Click += logout_Click;
             // 
             // button_profile
             // 
             button_profile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_profile.Location = new Point(888, 12);
+            button_profile.Location = new Point(874, 9);
             button_profile.Name = "button_profile";
-            button_profile.Size = new Size(35, 29);
+            button_profile.Size = new Size(48, 37);
             button_profile.TabIndex = 1;
-            button_profile.Text = "\U0001f9d1🏿‍🏫";
+            button_profile.Text = "👤";
             button_profile.UseVisualStyleBackColor = true;
             button_profile.Click += button_profile_Click;
+            button_profile.Resize += button_profile_Resize;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Cascadia Code", 15F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ButtonHighlight;
-            label4.Location = new Point(61, 6);
+            label4.Location = new Point(61, 9);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(120, 33);
@@ -167,7 +171,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(2, 2);
+            pictureBox2.Location = new Point(7, 6);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(50, 47);
@@ -180,7 +184,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.RoyalBlue;
-            label3.Location = new Point(170, 9);
+            label3.Location = new Point(171, 10);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(70, 32);
@@ -207,7 +211,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(945, 513);
+            ClientSize = new Size(945, 520);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "customer_template";

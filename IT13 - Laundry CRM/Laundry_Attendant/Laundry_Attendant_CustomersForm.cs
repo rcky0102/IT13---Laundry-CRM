@@ -21,6 +21,8 @@ namespace IT13___Laundry_CRM
         public Laundry_Attendant_CustomersForm()
         {
             InitializeComponent();
+            table_customers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         private void ReadUsers()
