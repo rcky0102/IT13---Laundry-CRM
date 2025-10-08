@@ -43,6 +43,8 @@
             edit = new Button();
             archive = new Button();
             panel3 = new Panel();
+            textbox_search = new TextBox();
+            label5 = new Label();
             label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)table_customers).BeginInit();
             panel2.SuspendLayout();
@@ -52,13 +54,17 @@
             // table_customers
             // 
             table_customers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            table_customers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             table_customers.BackgroundColor = SystemColors.ButtonHighlight;
-            table_customers.BorderStyle = BorderStyle.Fixed3D;
+            table_customers.BorderStyle = BorderStyle.None;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(229, 228);
+            table_customers.Location = new Point(229, 255);
             table_customers.Name = "table_customers";
+            table_customers.ReadOnly = true;
+            table_customers.RowHeadersVisible = false;
             table_customers.RowHeadersWidth = 51;
-            table_customers.Size = new Size(692, 202);
+            table_customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            table_customers.Size = new Size(744, 175);
             table_customers.TabIndex = 1;
             table_customers.CellContentClick += table_customers_CellContentClick;
             // 
@@ -160,7 +166,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(229, 58);
+            label3.Location = new Point(220, 56);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(445, 45);
@@ -170,12 +176,12 @@
             // button_archives
             // 
             button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_archives.BackColor = Color.Coral;
-            button_archives.Location = new Point(590, 10);
+            button_archives.BackColor = Color.Salmon;
+            button_archives.Location = new Point(673, 15);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(46, 34);
+            button_archives.Size = new Size(50, 40);
             button_archives.TabIndex = 8;
-            button_archives.Text = "📤";
+            button_archives.Text = "🗂️";
             button_archives.UseVisualStyleBackColor = false;
             button_archives.Click += button_archives_Click;
             // 
@@ -186,7 +192,7 @@
             add.ForeColor = SystemColors.ButtonHighlight;
             add.Location = new Point(14, 15);
             add.Name = "add";
-            add.Size = new Size(46, 30);
+            add.Size = new Size(50, 40);
             add.TabIndex = 9;
             add.Text = "➕";
             add.UseVisualStyleBackColor = false;
@@ -195,10 +201,10 @@
             // edit
             // 
             edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            edit.BackColor = Color.LimeGreen;
-            edit.Location = new Point(546, 10);
+            edit.BackColor = Color.ForestGreen;
+            edit.Location = new Point(397, 15);
             edit.Name = "edit";
-            edit.Size = new Size(40, 34);
+            edit.Size = new Size(50, 40);
             edit.TabIndex = 10;
             edit.Text = "✏️";
             edit.UseVisualStyleBackColor = false;
@@ -207,12 +213,12 @@
             // archive
             // 
             archive.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            archive.BackColor = Color.Coral;
-            archive.Location = new Point(639, 10);
+            archive.BackColor = Color.Salmon;
+            archive.Location = new Point(453, 15);
             archive.Name = "archive";
-            archive.Size = new Size(40, 34);
+            archive.Size = new Size(50, 40);
             archive.TabIndex = 11;
-            archive.Text = "📥";
+            archive.Text = "📦";
             archive.UseVisualStyleBackColor = false;
             archive.Click += archive_Click;
             // 
@@ -221,6 +227,8 @@
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.ActiveCaption;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(textbox_search);
+            panel3.Controls.Add(label5);
             panel3.Controls.Add(edit);
             panel3.Controls.Add(archive);
             panel3.Controls.Add(add);
@@ -230,17 +238,40 @@
             panel3.Location = new Point(229, 156);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(692, 60);
+            panel3.Size = new Size(744, 75);
             panel3.TabIndex = 12;
+            // 
+            // textbox_search
+            // 
+            textbox_search.BorderStyle = BorderStyle.FixedSingle;
+            textbox_search.Location = new Point(69, 15);
+            textbox_search.Margin = new Padding(2);
+            textbox_search.Multiline = true;
+            textbox_search.Name = "textbox_search";
+            textbox_search.PlaceholderText = "🔎 Search here...";
+            textbox_search.Size = new Size(300, 40);
+            textbox_search.TabIndex = 13;
+            textbox_search.TextChanged += textbox_search_TextChanged;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(532, 26);
+            label5.Name = "label5";
+            label5.Size = new Size(135, 20);
+            label5.TabIndex = 12;
+            label5.Text = "View Archives:";
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.Location = new Point(243, 108);
+            label4.Location = new Point(270, 103);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(516, 46);
+            label4.Size = new Size(568, 46);
             label4.TabIndex = 13;
             label4.Text = "Attendants can manage and record the current stage of each laundry order in real time for accurate tracking";
             // 
@@ -249,7 +280,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(945, 450);
+            ClientSize = new Size(997, 450);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(table_customers);
@@ -266,6 +297,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -288,5 +320,7 @@
         private Button archive;
         private Panel panel3;
         private Label label4;
+        private Label label5;
+        private TextBox textbox_search;
     }
 }

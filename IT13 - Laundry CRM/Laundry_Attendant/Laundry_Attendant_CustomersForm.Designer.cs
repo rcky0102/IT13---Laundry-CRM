@@ -34,7 +34,6 @@
             panel2 = new Panel();
             button_delete = new Button();
             button_edit = new Button();
-            Searchbtn_Customer = new Button();
             textbox_search = new TextBox();
             button1 = new Button();
             label1 = new Label();
@@ -54,13 +53,13 @@
             table_customers.BackgroundColor = SystemColors.Window;
             table_customers.BorderStyle = BorderStyle.None;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(218, 220);
+            table_customers.Location = new Point(218, 251);
             table_customers.Name = "table_customers";
             table_customers.ReadOnly = true;
             table_customers.RowHeadersVisible = false;
             table_customers.RowHeadersWidth = 51;
             table_customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            table_customers.Size = new Size(718, 210);
+            table_customers.Size = new Size(718, 179);
             table_customers.TabIndex = 1;
             // 
             // button_add_cutomer
@@ -68,11 +67,11 @@
             button_add_cutomer.BackColor = Color.RoyalBlue;
             button_add_cutomer.FlatAppearance.BorderSize = 0;
             button_add_cutomer.ForeColor = SystemColors.ButtonHighlight;
-            button_add_cutomer.Location = new Point(21, 11);
+            button_add_cutomer.Location = new Point(19, 15);
             button_add_cutomer.Name = "button_add_cutomer";
-            button_add_cutomer.Size = new Size(71, 29);
+            button_add_cutomer.Size = new Size(50, 40);
             button_add_cutomer.TabIndex = 2;
-            button_add_cutomer.Text = "➕ Add ";
+            button_add_cutomer.Text = "➕";
             button_add_cutomer.UseVisualStyleBackColor = false;
             button_add_cutomer.Click += button_add_cutomer_Click;
             // 
@@ -83,54 +82,51 @@
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(button_delete);
             panel2.Controls.Add(button_edit);
-            panel2.Controls.Add(Searchbtn_Customer);
             panel2.Controls.Add(textbox_search);
             panel2.Controls.Add(button_add_cutomer);
             panel2.Location = new Point(218, 151);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(718, 60);
+            panel2.Size = new Size(718, 75);
             panel2.TabIndex = 3;
             // 
             // button_delete
             // 
-            button_delete.Location = new Point(230, 11);
+            button_delete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_delete.BackColor = Color.IndianRed;
+            button_delete.ForeColor = SystemColors.ButtonHighlight;
+            button_delete.Location = new Point(648, 15);
             button_delete.Name = "button_delete";
-            button_delete.Size = new Size(94, 29);
+            button_delete.Size = new Size(50, 40);
             button_delete.TabIndex = 8;
-            button_delete.Text = "Delete";
-            button_delete.UseVisualStyleBackColor = true;
+            button_delete.Text = "🗑️";
+            button_delete.UseVisualStyleBackColor = false;
             button_delete.Click += button_delete_Click;
             // 
             // button_edit
             // 
-            button_edit.Location = new Point(113, 14);
+            button_edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_edit.BackColor = Color.ForestGreen;
+            button_edit.ForeColor = SystemColors.ButtonHighlight;
+            button_edit.Location = new Point(583, 15);
             button_edit.Name = "button_edit";
-            button_edit.Size = new Size(94, 29);
+            button_edit.Size = new Size(50, 40);
             button_edit.TabIndex = 7;
-            button_edit.Text = "Edit";
-            button_edit.UseVisualStyleBackColor = true;
+            button_edit.Text = "✏️";
+            button_edit.UseVisualStyleBackColor = false;
             button_edit.Click += button_edit_Click;
-            // 
-            // Searchbtn_Customer
-            // 
-            Searchbtn_Customer.Location = new Point(345, 15);
-            Searchbtn_Customer.Margin = new Padding(2);
-            Searchbtn_Customer.Name = "Searchbtn_Customer";
-            Searchbtn_Customer.Size = new Size(34, 27);
-            Searchbtn_Customer.TabIndex = 6;
-            Searchbtn_Customer.Text = "🔎";
-            Searchbtn_Customer.UseVisualStyleBackColor = true;
             // 
             // textbox_search
             // 
-            textbox_search.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textbox_search.BorderStyle = BorderStyle.FixedSingle;
-            textbox_search.Location = new Point(384, 15);
+            textbox_search.Location = new Point(74, 15);
             textbox_search.Margin = new Padding(2);
+            textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
-            textbox_search.Size = new Size(300, 27);
+            textbox_search.PlaceholderText = "🔎 Search here...";
+            textbox_search.Size = new Size(300, 40);
             textbox_search.TabIndex = 5;
+            textbox_search.TextChanged += textbox_search_TextChanged;
             // 
             // button1
             // 
@@ -222,7 +218,6 @@
         private TextBox textbox_search;
         private Label label1;
         private Label label2;
-        private Button Searchbtn_Customer;
         private Label label3;
         private Label label4;
         private Button button_delete;

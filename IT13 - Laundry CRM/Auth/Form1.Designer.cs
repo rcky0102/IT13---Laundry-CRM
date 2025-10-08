@@ -62,7 +62,7 @@
             label2.ForeColor = SystemColors.ButtonHighlight;
             label2.Location = new Point(129, 97);
             label2.Name = "label2";
-            label2.Size = new Size(263, 75);
+            label2.Size = new Size(223, 62);
             label2.TabIndex = 10;
             label2.Text = "Laundry";
             label2.Click += label2_Click;
@@ -76,7 +76,7 @@
             label3.ForeColor = Color.RoyalBlue;
             label3.Location = new Point(290, 154);
             label3.Name = "label3";
-            label3.Size = new Size(164, 75);
+            label3.Size = new Size(139, 62);
             label3.TabIndex = 11;
             label3.Text = "Care";
             // 
@@ -99,7 +99,7 @@
             linkLabel2.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             linkLabel2.Location = new Point(204, 468);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(154, 21);
+            linkLabel2.Size = new Size(136, 18);
             linkLabel2.TabIndex = 8;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Forgot Password?";
@@ -156,7 +156,7 @@
             label1.Location = new Point(166, 551);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(226, 21);
+            label1.Size = new Size(200, 18);
             label1.TabIndex = 7;
             label1.Text = "Doesn't have an account?";
             // 
@@ -167,7 +167,7 @@
             linklabel_reg.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             linklabel_reg.Location = new Point(248, 587);
             linklabel_reg.Name = "linklabel_reg";
-            linklabel_reg.Size = new Size(82, 21);
+            linklabel_reg.Size = new Size(72, 18);
             linklabel_reg.TabIndex = 9;
             linklabel_reg.TabStop = true;
             linklabel_reg.Text = "Register";
@@ -175,7 +175,7 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(12F, 27F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = SystemColors.ActiveCaption;
@@ -194,6 +194,7 @@
             Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

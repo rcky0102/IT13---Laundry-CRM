@@ -34,27 +34,31 @@
             label2 = new Label();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView_archived).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView_archived
             // 
+            dataGridView_archived.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView_archived.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView_archived.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_archived.Location = new Point(21, 151);
-            dataGridView_archived.Margin = new Padding(4, 4, 4, 4);
+            dataGridView_archived.Location = new Point(16, 19);
             dataGridView_archived.Name = "dataGridView_archived";
+            dataGridView_archived.ReadOnly = true;
+            dataGridView_archived.RowHeadersVisible = false;
             dataGridView_archived.RowHeadersWidth = 51;
-            dataGridView_archived.Size = new Size(790, 235);
+            dataGridView_archived.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView_archived.Size = new Size(716, 395);
             dataGridView_archived.TabIndex = 0;
+            dataGridView_archived.CellContentClick += dataGridView_archived_CellContentClick;
             // 
             // button_unarchive
             // 
-            button_unarchive.BackColor = Color.Chocolate;
+            button_unarchive.BackColor = Color.Salmon;
             button_unarchive.ForeColor = SystemColors.ButtonHighlight;
-            button_unarchive.Location = new Point(762, 82);
-            button_unarchive.Margin = new Padding(4, 4, 4, 4);
+            button_unarchive.Location = new Point(699, 117);
             button_unarchive.Name = "button_unarchive";
-            button_unarchive.Size = new Size(49, 36);
+            button_unarchive.Size = new Size(50, 40);
             button_unarchive.TabIndex = 1;
             button_unarchive.Text = "📤";
             button_unarchive.UseVisualStyleBackColor = false;
@@ -64,45 +68,49 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(0, 9);
+            label1.Location = new Point(17, 23);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(349, 43);
+            label1.Size = new Size(292, 35);
             label1.TabIndex = 2;
             label1.Text = "📤 Manage Archive";
             // 
             // label2
             // 
             label2.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(75, 56);
+            label2.Location = new Point(77, 61);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(679, 51);
+            label2.Size = new Size(543, 41);
             label2.TabIndex = 3;
             label2.Text = "Access and review your past laundry orders and messages for easy reference and record-keeping";
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Location = new Point(0, 125);
+            panel1.Controls.Add(dataGridView_archived);
+            panel1.Location = new Point(17, 162);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(826, 275);
+            panel1.Size = new Size(745, 430);
             panel1.TabIndex = 4;
             // 
             // archived_status
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(820, 393);
+            ClientSize = new Size(782, 603);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button_unarchive);
-            Controls.Add(dataGridView_archived);
             Controls.Add(panel1);
-            Margin = new Padding(4, 4, 4, 4);
             Name = "archived_status";
             Text = "archived_status";
             Load += archived_status_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_archived).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }

@@ -72,6 +72,10 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 combobox_customer.DisplayMember = "FullName"; // what shows in the dropdown
                 combobox_customer.ValueMember = "user_id";    // actual value behind each item
                 combobox_customer.SelectedIndex = -1;         // no pre-selection
+                
+                combobox_customer.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                combobox_customer.AutoCompleteSource = AutoCompleteSource.ListItems;
+                combobox_customer.DropDownStyle = ComboBoxStyle.DropDown;
             }
             catch (Exception ex)
             {
@@ -155,6 +159,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

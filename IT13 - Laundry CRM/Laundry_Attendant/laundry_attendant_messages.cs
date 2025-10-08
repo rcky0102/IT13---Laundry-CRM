@@ -28,6 +28,19 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
             LoadMessages();
+
+            int radius = 10;
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(combobox_users.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(combobox_users.Width - radius, combobox_users.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, combobox_users.Height - radius, radius, radius, 90, 90);
+            path.CloseAllFigures();
+            combobox_users.Region = new Region(path);
+
+            // Optional styling
+            combobox_users.FlatStyle = FlatStyle.Flat;
+            combobox_users.BackColor = Color.White;
         }
 
         private void LoadMessages()
@@ -61,7 +74,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                         SenderId = msg.sender_id,
                         SenderName = senderName,
                         Text = msg.message,
-                        Time = msg.created_at
+                        DateTimeDisplay = msg.created_at.ToString("MMM dd, yyyy hh:mm tt")
                     });
                 }
 
@@ -115,7 +128,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
                 if (success)
                 {
-                    MessageBox.Show("Message sent successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Message sent successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     textbox_message.Clear();
                     LoadMessages();
                 }
@@ -156,6 +169,10 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 combobox_users.ValueMember = "user_id";
                 combobox_users.DataSource = filteredUsers;
                 combobox_users.SelectedIndex = -1;
+
+                combobox_users.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                combobox_users.AutoCompleteSource = AutoCompleteSource.ListItems;
+                combobox_users.DropDownStyle = ComboBoxStyle.DropDown;
 
             }
             catch (Exception ex)
@@ -200,7 +217,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
             if (success)
             {
-                MessageBox.Show("Message updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Message updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadMessages();
             }
             else
@@ -236,8 +253,8 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
                     if (success)
                     {
-                        MessageBox.Show("Message deleted successfully!", "Success",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Message deleted successfully!", "Success",
+                        //                MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadMessages(); // Refresh messages after delete
                     }
                     else
@@ -300,7 +317,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 e.Graphics.DrawString(item.Text, listbox_messages.Font, textBrush, bubbleRect);
 
                 // Draw timestamp
-                string time = ((DateTime)item.Time).ToString("hh:mm tt");
+                string time = item.DateTimeDisplay;
                 SizeF timeSize = e.Graphics.MeasureString(time, timeFont);
                 e.Graphics.DrawString(time, timeFont, Brushes.Gray,
                     isCurrentUser ? bubbleRect.Right - timeSize.Width - 5 : bubbleRect.Left + 5,

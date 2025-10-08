@@ -68,5 +68,10 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void dataGridView_archived_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

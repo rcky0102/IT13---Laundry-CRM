@@ -35,7 +35,7 @@ namespace IT13___Laundry_CRM
             LoadCustomers();
         }
 
-        private void LoadCustomers()
+        private void LoadCustomers(string searchText = "")
         {
             try
             {
@@ -43,30 +43,57 @@ namespace IT13___Laundry_CRM
                     .Where(u => u.role.Equals("customer", StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
-                table_customers.AutoGenerateColumns = false;
-
-                if (table_customers.Columns.Count == 0)
+                // Apply search filter
+                if (!string.IsNullOrEmpty(searchText))
                 {
-                    table_customers.Columns.Add("user_id", "ID");
-                    table_customers.Columns["user_id"].DataPropertyName = "user_id";
-
-                    table_customers.Columns.Add("username", "Username");
-                    table_customers.Columns["username"].DataPropertyName = "username";
-
-                    table_customers.Columns.Add("first_name", "First Name");
-                    table_customers.Columns["first_name"].DataPropertyName = "first_name";
-
-                    table_customers.Columns.Add("last_name", "Last Name");
-                    table_customers.Columns["last_name"].DataPropertyName = "last_name";
-
-                    table_customers.Columns.Add("contact", "Contact");
-                    table_customers.Columns["contact"].DataPropertyName = "contact";
-
-                    table_customers.Columns.Add("created_at", "Created At");
-                    table_customers.Columns["created_at"].DataPropertyName = "created_at";
+                    customers = customers
+                        .Where(u =>
+                            u.user_id.ToString().Contains(searchText) ||
+                            (u.first_name ?? "").Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                            (u.last_name ?? "").Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                            (u.username ?? "").Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
                 }
 
-                table_customers.DataSource = customers;
+                table_customers.AutoGenerateColumns = false;
+                table_customers.Columns.Clear(); // clear previous columns
+
+                // ID
+                table_customers.Columns.Add("user_id", "ID");
+                table_customers.Columns["user_id"].DataPropertyName = "user_id";
+
+                // Username
+                table_customers.Columns.Add("username", "Username");
+                table_customers.Columns["username"].DataPropertyName = "username";
+
+                // Full Name
+                table_customers.Columns.Add("full_name", "Full Name");
+                table_customers.Columns["full_name"].DataPropertyName = "full_name";
+
+                // Address
+                table_customers.Columns.Add("address", "Address");
+                table_customers.Columns["address"].DataPropertyName = "address";
+
+                // Contact
+                table_customers.Columns.Add("contact", "Contact");
+                table_customers.Columns["contact"].DataPropertyName = "contact";
+
+                // Created At
+                table_customers.Columns.Add("created_at", "Created At");
+                table_customers.Columns["created_at"].DataPropertyName = "created_at";
+
+                // Prepare data with FullName property
+                var data = customers.Select(u => new
+                {
+                    u.user_id,
+                    u.username,
+                    full_name = $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name}",
+                    u.address,
+                    u.contact,
+                    u.created_at
+                }).ToList();
+
+                table_customers.DataSource = data;
             }
             catch (Exception ex)
             {
@@ -74,6 +101,7 @@ namespace IT13___Laundry_CRM
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void button_add_cutomer_Click(object sender, EventArgs e)
         {
@@ -132,6 +160,11 @@ namespace IT13___Laundry_CRM
                 userepo.DeleteUser(userId);
                 LoadCustomers();
             }
+        }
+
+        private void textbox_search_TextChanged(object sender, EventArgs e)
+        {
+            LoadCustomers(textbox_search.Text.Trim());
         }
     }
 }

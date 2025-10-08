@@ -14,11 +14,23 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
         }
 
-        private void LoadCustomerStatuses()
+        private void LoadCustomerStatuses(string searchText = "")
         {
             try
             {
                 var statuses = statusRepository.GetStatusesWithCustomerNames();
+
+                // Apply search filter
+                if (!string.IsNullOrEmpty(searchText))
+                {
+                    statuses = statuses
+                        .Where(s =>
+                            s.status_id.ToString().Contains(searchText) ||
+                            ((s.User.first_name ?? "").Contains(searchText, StringComparison.OrdinalIgnoreCase)) ||
+                            ((s.User.last_name ?? "").Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                        )
+                        .ToList();
+                }
 
                 // Transform into a list of anonymous objects for the grid
                 var tableData = statuses.Select(s => new
@@ -131,6 +143,9 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         {
             using (create_edit_status status = new create_edit_status())
             {
+
+                status.StartPosition = FormStartPosition.CenterParent;
+
                 if (status.ShowDialog() == DialogResult.OK)
                 {
                     LoadCustomerStatuses(); // refresh grid after adding
@@ -151,6 +166,8 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 string statusText = statusRepository.GetStatusTextById(statusId);
 
                 create_edit_status editForm = new create_edit_status(statusId, userId, statusText);
+
+                editForm.StartPosition = FormStartPosition.CenterParent;
 
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
@@ -189,6 +206,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 MessageBox.Show("Please select a status to archive.", "Archive Status",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void textbox_search_TextChanged(object sender, EventArgs e)
+        {
+            LoadCustomerStatuses(textbox_search.Text.Trim());
         }
     }
 }
