@@ -125,5 +125,74 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 }
             }
         }
+
+        private void ApplySearchFilter()
+        {
+            try
+            {
+                string searchText = textbox_search.Text.Trim().ToLower();
+
+                var filtered = currentFeedbacks.Where(fb =>
+                    (fb.subject ?? "").ToLower().Contains(searchText) ||
+                    (fb.User?.first_name ?? "").ToLower().Contains(searchText) ||
+                    (fb.User?.last_name ?? "").ToLower().Contains(searchText) ||
+                    fb.created_at.ToString("yyyy-MM-dd").Contains(searchText) ||       // date search
+                    fb.created_at.ToString("hh:mm tt").ToLower().Contains(searchText)  // time search
+                ).ToList();
+
+                // Clear panel
+                feedbackPanel.Controls.Clear();
+
+                int yOffset = 10;
+
+                foreach (var fb in filtered)
+                {
+                    string user = fb.User != null
+                        ? $"{fb.User.first_name} {fb.User.last_name}"
+                        : $"User {fb.user_id}";
+
+                    Label feedbackLabel = new Label
+                    {
+                        AutoSize = false,
+                        Width = feedbackPanel.Width - 40,
+                        Location = new Point(10, yOffset),
+                        BorderStyle = BorderStyle.FixedSingle,
+                        Font = new Font("Cascadia Code", 10, FontStyle.Regular),
+                        TextAlign = ContentAlignment.TopLeft,
+                        Padding = new Padding(10),
+                        BackColor = Color.White,
+                        ForeColor = Color.Black,
+                        Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
+                    };
+
+                    feedbackLabel.Text =
+                        $"📌 Subject: {fb.subject}\n" +
+                        $"👤 Submitted by: {user}\n" +
+                        $"💬 Feedback:\n{fb.feedback}\n\n" +
+                        $"🕒 Date and Time: {fb.created_at:MMMM dd, yyyy hh:mm tt}";
+
+                    feedbackLabel.Height = TextRenderer.MeasureText(
+                        feedbackLabel.Text,
+                        feedbackLabel.Font,
+                        new Size(feedbackLabel.Width, int.MaxValue),
+                        TextFormatFlags.WordBreak
+                    ).Height + 20;
+
+                    feedbackPanel.Controls.Add(feedbackLabel);
+
+                    yOffset += feedbackLabel.Height + 10;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error filtering feedback: " + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textbox_search_TextChanged(object sender, EventArgs e)
+        {
+            ApplySearchFilter();
+        }
     }
 }

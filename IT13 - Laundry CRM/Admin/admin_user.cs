@@ -42,32 +42,42 @@ namespace IT13___Laundry_CRM.Admin
                 allUsers = userRepository.GetUsers(); // store in local list
 
                 table_users.AutoGenerateColumns = false;
+                table_users.Columns.Clear(); // clear previous columns
 
-                if (table_users.Columns.Count == 0)
+                table_users.Columns.Add("user_id", "ID");
+                table_users.Columns["user_id"].DataPropertyName = "user_id";
+
+                table_users.Columns.Add("username", "Username");
+                table_users.Columns["username"].DataPropertyName = "username";
+
+                table_users.Columns.Add("role", "Role");
+                table_users.Columns["role"].DataPropertyName = "role";
+
+                table_users.Columns.Add("full_name", "Full Name");
+                table_users.Columns["full_name"].DataPropertyName = "full_name";
+
+                table_users.Columns.Add("address", "Address");
+                table_users.Columns["address"].DataPropertyName = "address";
+
+                table_users.Columns.Add("contact", "Contact");
+                table_users.Columns["contact"].DataPropertyName = "contact";
+
+                table_users.Columns.Add("created_at", "Created At");
+                table_users.Columns["created_at"].DataPropertyName = "created_at";
+
+                // Prepare data with FullName property
+                var data = allUsers.Select(u => new
                 {
-                    table_users.Columns.Add("user_id", "ID");
-                    table_users.Columns["user_id"].DataPropertyName = "user_id";
+                    u.user_id,
+                    u.username,
+                    u.role,
+                    full_name = $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name}",
+                    u.address,
+                    u.contact,
+                    u.created_at
+                }).ToList();
 
-                    table_users.Columns.Add("username", "Username");
-                    table_users.Columns["username"].DataPropertyName = "username";
-
-                    table_users.Columns.Add("role", "Role");
-                    table_users.Columns["role"].DataPropertyName = "role";
-
-                    table_users.Columns.Add("first_name", "First Name");
-                    table_users.Columns["first_name"].DataPropertyName = "first_name";
-
-                    table_users.Columns.Add("last_name", "Last Name");
-                    table_users.Columns["last_name"].DataPropertyName = "last_name";
-
-                    table_users.Columns.Add("contact", "Contact");
-                    table_users.Columns["contact"].DataPropertyName = "contact";
-
-                    table_users.Columns.Add("created_at", "Created At");
-                    table_users.Columns["created_at"].DataPropertyName = "created_at";
-                }
-
-                table_users.DataSource = allUsers;
+                table_users.DataSource = data;
             }
             catch (Exception ex)
             {
@@ -75,6 +85,7 @@ namespace IT13___Laundry_CRM.Admin
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void button_edit_Click(object sender, EventArgs e)
         {
@@ -139,19 +150,34 @@ namespace IT13___Laundry_CRM.Admin
 
             if (string.IsNullOrEmpty(query))
             {
-                table_users.DataSource = allUsers;
+                LoadUsers();
             }
             else
             {
                 var filtered = allUsers.Where(u =>
                     u.user_id.ToString().Contains(query) ||
-                    (!string.IsNullOrEmpty(u.first_name) && u.first_name.ToLower().Contains(query)) ||
-                    (!string.IsNullOrEmpty(u.last_name) && u.last_name.ToLower().Contains(query)) ||
-                    (!string.IsNullOrEmpty(u.username) && u.username.ToLower().Contains(query))
-                ).ToList();
+                    (!string.IsNullOrEmpty(u.first_name) &&
+                     $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name}".ToLower().Contains(query)) ||
+                    (!string.IsNullOrEmpty(u.username) && u.username.ToLower().Contains(query)) ||
+                    (!string.IsNullOrEmpty(u.address) && u.address.ToLower().Contains(query))
+                ).Select(u => new
+                {
+                    u.user_id,
+                    u.username,
+                    u.role,
+                    full_name = $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name}",
+                    u.address,
+                    u.contact,
+                    u.created_at
+                }).ToList();
 
                 table_users.DataSource = filtered;
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

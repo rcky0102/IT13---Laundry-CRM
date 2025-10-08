@@ -77,6 +77,10 @@ namespace IT13___Laundry_CRM
         private void Laundry_Attendant_Template_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+
+            System.Drawing.Drawing2D.GraphicsPath buttonPath = new System.Drawing.Drawing2D.GraphicsPath();
+            buttonPath.AddEllipse(0, 0, profile.Width, profile.Height);
+            profile.Region = new Region(buttonPath);
         }
 
         private void button_dashboard_Click(object sender, EventArgs e)
@@ -85,6 +89,11 @@ namespace IT13___Laundry_CRM
             dashboard.Show();
 
             this.Hide();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

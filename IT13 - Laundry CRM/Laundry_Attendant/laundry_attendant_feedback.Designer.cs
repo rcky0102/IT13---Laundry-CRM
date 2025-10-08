@@ -32,6 +32,7 @@
             label4 = new Label();
             feedbackLabel = new Label();
             feedbackPanel = new Panel();
+            textbox_search = new TextBox();
             feedbackPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -40,7 +41,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(216, 55);
+            label3.Location = new Point(228, 75);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(340, 35);
@@ -52,7 +53,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Cascadia Code", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(263, 90);
+            label4.Location = new Point(277, 110);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(486, 20);
@@ -75,11 +76,23 @@
             feedbackPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             feedbackPanel.AutoScroll = true;
             feedbackPanel.Controls.Add(feedbackLabel);
-            feedbackPanel.Location = new Point(228, 143);
+            feedbackPanel.Location = new Point(228, 199);
             feedbackPanel.Name = "feedbackPanel";
-            feedbackPanel.Size = new Size(699, 274);
+            feedbackPanel.Size = new Size(699, 218);
             feedbackPanel.TabIndex = 12;
             feedbackPanel.Resize += feedbackPanel_Resize;
+            // 
+            // textbox_search
+            // 
+            textbox_search.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textbox_search.BackColor = SystemColors.ButtonFace;
+            textbox_search.Location = new Point(599, 153);
+            textbox_search.Multiline = true;
+            textbox_search.Name = "textbox_search";
+            textbox_search.PlaceholderText = "🔎 Search here...";
+            textbox_search.Size = new Size(300, 40);
+            textbox_search.TabIndex = 13;
+            textbox_search.TextChanged += textbox_search_TextChanged;
             // 
             // laundry_attendant_feedback
             // 
@@ -87,16 +100,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(951, 442);
+            Controls.Add(textbox_search);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(feedbackPanel);
             Margin = new Padding(4);
             Name = "laundry_attendant_feedback";
-            Text = "laundry_attendant_feedback";
+            Text = "Laundry Attendant | Feedback";
             Load += laundry_attendant_feedback_Load;
             Controls.SetChildIndex(feedbackPanel, 0);
             Controls.SetChildIndex(label3, 0);
             Controls.SetChildIndex(label4, 0);
+            Controls.SetChildIndex(textbox_search, 0);
             feedbackPanel.ResumeLayout(false);
             feedbackPanel.PerformLayout();
             ResumeLayout(false);
@@ -108,5 +123,6 @@
         private Label label4;
         private Label feedbackLabel;
         private Panel feedbackPanel;
+        private TextBox textbox_search;
     }
 }

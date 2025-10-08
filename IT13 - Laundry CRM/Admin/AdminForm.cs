@@ -22,6 +22,7 @@ namespace IT13___Laundry_CRM
         public AdminForm()
         {
             InitializeComponent();
+            ShowWelcomeMessage();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,6 +51,14 @@ namespace IT13___Laundry_CRM
 
         }
 
+        private void ShowWelcomeMessage()
+        {
+            if (User.CurrentUser.User != null)
+            {
+                label_welcome.Text = $"Welcome, {User.CurrentUser.User.first_name}!";
+            }
+        }
+
 
         private void LoadLatestFeedback()
         {
@@ -60,9 +69,10 @@ namespace IT13___Laundry_CRM
                 string fullName = $"{latestFeedback.User.first_name} {(string.IsNullOrEmpty(latestFeedback.User.middle_name) ? "" : latestFeedback.User.middle_name + " ")}{latestFeedback.User.last_name}";
 
                 label_feedback.Text = $"Latest Feedback from {fullName}\n" +
-                                      $"Subject: {latestFeedback.subject}\n" +
-                                      $"Message: {latestFeedback.feedback}\n" +
-                                      $"Date: {latestFeedback.created_at:g}";
+                                      $"Subject: {latestFeedback.subject}\n" 
+                                      //$"Message: {latestFeedback.feedback}\n" +
+                                      //$"Date: {latestFeedback.created_at:g}"
+                                      ;
             }
             else
             {
@@ -150,6 +160,11 @@ namespace IT13___Laundry_CRM
             DateTime to = dateTimePickerTo.Value.Date;
 
             ShowCustomerCounts(groupBy, from, to);
+        }
+
+        private void labelCustomerGraph_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

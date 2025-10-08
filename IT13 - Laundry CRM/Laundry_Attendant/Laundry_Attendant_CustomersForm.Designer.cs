@@ -84,7 +84,7 @@
             panel2.Controls.Add(button_edit);
             panel2.Controls.Add(textbox_search);
             panel2.Controls.Add(button_add_cutomer);
-            panel2.Location = new Point(218, 151);
+            panel2.Location = new Point(218, 171);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(718, 75);
@@ -166,7 +166,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(206, 55);
+            label3.Location = new Point(205, 72);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(323, 35);
@@ -177,7 +177,7 @@
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.Location = new Point(266, 100);
+            label4.Location = new Point(266, 116);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(681, 39);

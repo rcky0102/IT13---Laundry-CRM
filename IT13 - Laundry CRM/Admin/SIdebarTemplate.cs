@@ -92,6 +92,23 @@ namespace IT13___Laundry_CRM
         private void SIdebarTemplate_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+
+            System.Drawing.Drawing2D.GraphicsPath buttonPath = new System.Drawing.Drawing2D.GraphicsPath();
+            buttonPath.AddEllipse(0, 0, profile.Width, profile.Height);
+            profile.Region = new Region(buttonPath);
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdminForm adminForm = new AdminForm();  
+            adminForm.Show();
+
+            this.Hide();
         }
     }
 }

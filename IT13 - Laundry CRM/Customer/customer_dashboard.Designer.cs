@@ -101,7 +101,7 @@
             label_welcome.AutoSize = true;
             label_welcome.Font = new Font("Cascadia Code", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label_welcome.ForeColor = SystemColors.ActiveCaptionText;
-            label_welcome.Location = new Point(218, 77);
+            label_welcome.Location = new Point(233, 73);
             label_welcome.Name = "label_welcome";
             label_welcome.Size = new Size(143, 40);
             label_welcome.TabIndex = 3;

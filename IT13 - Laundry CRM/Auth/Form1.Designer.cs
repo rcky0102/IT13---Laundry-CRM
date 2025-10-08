@@ -33,7 +33,6 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            linkLabel2 = new LinkLabel();
             login_button = new Button();
             textbox_password = new TextBox();
             textbox_username = new TextBox();
@@ -92,18 +91,6 @@
             label4.Text = "\"Welcome back! Let's get your laundry organized and hassle-free.\"";
             label4.TextAlign = ContentAlignment.TopCenter;
             // 
-            // linkLabel2
-            // 
-            linkLabel2.AutoSize = true;
-            linkLabel2.BackColor = SystemColors.ActiveCaption;
-            linkLabel2.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel2.Location = new Point(204, 468);
-            linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(136, 18);
-            linkLabel2.TabIndex = 8;
-            linkLabel2.TabStop = true;
-            linkLabel2.Text = "Forgot Password?";
-            // 
             // login_button
             // 
             login_button.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -153,7 +140,7 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(166, 551);
+            label1.Location = new Point(190, 534);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(200, 18);
@@ -165,7 +152,7 @@
             linklabel_reg.AutoSize = true;
             linklabel_reg.BackColor = SystemColors.ActiveCaption;
             linklabel_reg.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linklabel_reg.Location = new Point(248, 587);
+            linklabel_reg.Location = new Point(252, 562);
             linklabel_reg.Name = "linklabel_reg";
             linklabel_reg.Size = new Size(72, 18);
             linklabel_reg.TabIndex = 9;
@@ -183,7 +170,6 @@
             ClientSize = new Size(1262, 673);
             Controls.Add(linklabel_reg);
             Controls.Add(label4);
-            Controls.Add(linkLabel2);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(login_button);
@@ -195,7 +181,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Login";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -207,7 +193,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private LinkLabel linkLabel2;
         private Button login_button;
         private TextBox textbox_password;
         private TextBox textbox_username;

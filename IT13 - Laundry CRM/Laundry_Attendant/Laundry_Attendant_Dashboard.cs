@@ -14,6 +14,7 @@ namespace IT13___Laundry_CRM
 {
     public partial class Laundry_Attendant_Dashboard : Laundry_Attendant_Template
     {
+        private readonly FeedbackRepository feedbackRepository = new FeedbackRepository();
         private readonly StatusRepository statusRepository = new StatusRepository();
         private readonly MessageRepository messageRepository = new MessageRepository();
         private readonly UserRepository userRepository = new UserRepository();
@@ -28,6 +29,7 @@ namespace IT13___Laundry_CRM
             LoadStatusCounts();
             ShowWelcomeMessage();
             LoadLatestMessageSender();
+            LoadLatestFeedback();
 
             ShowCustomerCounts("Day", dateTimePickerFrom.Value.Date, dateTimePickerTo.Value.Date);
 
@@ -75,6 +77,26 @@ namespace IT13___Laundry_CRM
             else
             {
                 label_message.Text = "No messages yet.";
+            }
+        }
+
+        private void LoadLatestFeedback()
+        {
+            var latestFeedback = feedbackRepository.GetLatestFeedback();
+
+            if (latestFeedback != null)
+            {
+                string fullName = $"{latestFeedback.User.first_name} {(string.IsNullOrEmpty(latestFeedback.User.middle_name) ? "" : latestFeedback.User.middle_name + " ")}{latestFeedback.User.last_name}";
+
+                label_feedback.Text = $"Latest Feedback from {fullName}\n" +
+                                      $"Subject: {latestFeedback.subject}\n" 
+                                      //$"Message: {latestFeedback.feedback}\n" +
+                                      //$"Date: {latestFeedback.created_at:g}"
+                                      ;
+            }
+            else
+            {
+                label_feedback.Text = "No feedback available yet.";
             }
         }
 

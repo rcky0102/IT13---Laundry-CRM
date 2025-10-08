@@ -57,6 +57,7 @@
             panel2 = new Panel();
             label13 = new Label();
             panel12 = new Panel();
+            label_feedback = new Label();
             label_message = new Label();
             labelCustomerGraph = new Label();
             buttonLoadGraph = new Button();
@@ -64,6 +65,7 @@
             dateTimePickerFrom = new DateTimePicker();
             dateTimePickerTo = new DateTimePicker();
             panel10 = new Panel();
+            label1 = new Label();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -167,7 +169,6 @@
             // 
             panel3.BackColor = SystemColors.HotTrack;
             panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(label4);
             panel3.Controls.Add(label_pending);
             panel3.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
             panel3.ForeColor = SystemColors.ButtonHighlight;
@@ -373,10 +374,10 @@
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(label13);
             panel2.Controls.Add(panel12);
-            panel2.Location = new Point(229, 727);
+            panel2.Location = new Point(220, 813);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1368, 134);
+            panel2.Size = new Size(1552, 188);
             panel2.TabIndex = 19;
             // 
             // label13
@@ -394,12 +395,23 @@
             // 
             panel12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel12.BackColor = SystemColors.Control;
+            panel12.Controls.Add(label_feedback);
             panel12.Controls.Add(label_message);
             panel12.Location = new Point(8, 44);
             panel12.Margin = new Padding(0);
             panel12.Name = "panel12";
-            panel12.Size = new Size(1340, 64);
+            panel12.Size = new Size(1524, 124);
             panel12.TabIndex = 6;
+            // 
+            // label_feedback
+            // 
+            label_feedback.AutoSize = true;
+            label_feedback.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_feedback.Location = new Point(13, 57);
+            label_feedback.Name = "label_feedback";
+            label_feedback.Size = new Size(72, 20);
+            label_feedback.TabIndex = 5;
+            label_feedback.Text = "Message";
             // 
             // label_message
             // 
@@ -414,44 +426,48 @@
             // labelCustomerGraph
             // 
             labelCustomerGraph.AutoSize = true;
-            labelCustomerGraph.Font = new Font("Cascadia Code", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelCustomerGraph.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelCustomerGraph.Location = new Point(37, 75);
             labelCustomerGraph.Name = "labelCustomerGraph";
-            labelCustomerGraph.Size = new Size(65, 30);
+            labelCustomerGraph.Size = new Size(60, 27);
             labelCustomerGraph.TabIndex = 20;
             labelCustomerGraph.Text = "Load";
             // 
             // buttonLoadGraph
             // 
+            buttonLoadGraph.BackColor = SystemColors.MenuHighlight;
+            buttonLoadGraph.ForeColor = SystemColors.ButtonHighlight;
             buttonLoadGraph.Location = new Point(16, 14);
             buttonLoadGraph.Name = "buttonLoadGraph";
-            buttonLoadGraph.Size = new Size(94, 29);
+            buttonLoadGraph.Size = new Size(50, 40);
             buttonLoadGraph.TabIndex = 21;
-            buttonLoadGraph.Text = "Load";
-            buttonLoadGraph.UseVisualStyleBackColor = true;
+            buttonLoadGraph.Text = "🔃";
+            buttonLoadGraph.UseVisualStyleBackColor = false;
             buttonLoadGraph.Click += buttonLoadGraph_Click;
             // 
             // comboBoxGrouping
             // 
             comboBoxGrouping.BackColor = SystemColors.ButtonFace;
             comboBoxGrouping.FormattingEnabled = true;
-            comboBoxGrouping.Location = new Point(116, 14);
+            comboBoxGrouping.Location = new Point(72, 17);
             comboBoxGrouping.Name = "comboBoxGrouping";
-            comboBoxGrouping.Size = new Size(151, 30);
+            comboBoxGrouping.Size = new Size(200, 30);
             comboBoxGrouping.TabIndex = 22;
             // 
             // dateTimePickerFrom
             // 
+            dateTimePickerFrom.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             dateTimePickerFrom.CalendarMonthBackground = SystemColors.GradientActiveCaption;
             dateTimePickerFrom.CalendarTitleBackColor = SystemColors.GradientActiveCaption;
-            dateTimePickerFrom.Location = new Point(282, 16);
+            dateTimePickerFrom.Location = new Point(997, 18);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
             dateTimePickerFrom.Size = new Size(245, 27);
             dateTimePickerFrom.TabIndex = 23;
             // 
             // dateTimePickerTo
             // 
-            dateTimePickerTo.Location = new Point(553, 16);
+            dateTimePickerTo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dateTimePickerTo.Location = new Point(1284, 18);
             dateTimePickerTo.Name = "dateTimePickerTo";
             dateTimePickerTo.Size = new Size(250, 27);
             dateTimePickerTo.TabIndex = 24;
@@ -460,23 +476,34 @@
             // 
             panel10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel10.BackColor = SystemColors.GradientActiveCaption;
+            panel10.Controls.Add(label1);
             panel10.Controls.Add(dateTimePickerTo);
             panel10.Controls.Add(labelCustomerGraph);
             panel10.Controls.Add(dateTimePickerFrom);
             panel10.Controls.Add(buttonLoadGraph);
             panel10.Controls.Add(comboBoxGrouping);
             panel10.Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel10.Location = new Point(229, 504);
+            panel10.Location = new Point(220, 492);
             panel10.Name = "panel10";
-            panel10.Size = new Size(1368, 205);
+            panel10.Size = new Size(1552, 300);
             panel10.TabIndex = 25;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Location = new Point(1248, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(30, 22);
+            label1.TabIndex = 25;
+            label1.Text = "—>";
             // 
             // Laundry_Attendant_Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1622, 872);
+            ClientSize = new Size(1806, 1035);
             Controls.Add(panel2);
             Controls.Add(panel11);
             Controls.Add(panel9);
@@ -491,20 +518,8 @@
             Controls.Add(panel10);
             Margin = new Padding(4);
             Name = "Laundry_Attendant_Dashboard";
-            Text = "Laundry_Attendant_Dashboard";
+            Text = "Laundry Attendant | Dashboard";
             Load += Laundry_Attendant_Dashboard_Load;
-            Controls.SetChildIndex(panel10, 0);
-            Controls.SetChildIndex(label_welcome, 0);
-            Controls.SetChildIndex(panel5, 0);
-            Controls.SetChildIndex(panel6, 0);
-            Controls.SetChildIndex(panel7, 0);
-            Controls.SetChildIndex(panel8, 0);
-            Controls.SetChildIndex(label3, 0);
-            Controls.SetChildIndex(panel4, 0);
-            Controls.SetChildIndex(panel3, 0);
-            Controls.SetChildIndex(panel9, 0);
-            Controls.SetChildIndex(panel11, 0);
-            Controls.SetChildIndex(panel2, 0);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
@@ -569,5 +584,7 @@
         private DateTimePicker dateTimePickerFrom;
         private DateTimePicker dateTimePickerTo;
         private Panel panel10;
+        private Label label1;
+        private Label label_feedback;
     }
 }

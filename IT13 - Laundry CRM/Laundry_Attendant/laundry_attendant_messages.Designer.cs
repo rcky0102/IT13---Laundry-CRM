@@ -69,9 +69,9 @@
             // 
             listbox_messages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_messages.FormattingEnabled = true;
-            listbox_messages.Location = new Point(221, 225);
+            listbox_messages.Location = new Point(221, 245);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(648, 184);
+            listbox_messages.Size = new Size(648, 164);
             listbox_messages.TabIndex = 2;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
@@ -80,7 +80,7 @@
             // 
             combobox_users.BackColor = SystemColors.ButtonFace;
             combobox_users.FormattingEnabled = true;
-            combobox_users.Location = new Point(19, 19);
+            combobox_users.Location = new Point(15, 20);
             combobox_users.Name = "combobox_users";
             combobox_users.Size = new Size(400, 28);
             combobox_users.TabIndex = 3;
@@ -91,7 +91,7 @@
             button_edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_edit.BackColor = Color.ForestGreen;
             button_edit.ForeColor = SystemColors.HighlightText;
-            button_edit.Location = new Point(527, 12);
+            button_edit.Location = new Point(524, 13);
             button_edit.Name = "button_edit";
             button_edit.Size = new Size(50, 40);
             button_edit.TabIndex = 4;
@@ -104,7 +104,7 @@
             button_delete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_delete.BackColor = Color.IndianRed;
             button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(583, 12);
+            button_delete.Location = new Point(580, 13);
             button_delete.Name = "button_delete";
             button_delete.Size = new Size(50, 40);
             button_delete.TabIndex = 5;
@@ -127,7 +127,7 @@
             label3.BackColor = SystemColors.ButtonHighlight;
             label3.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(208, 58);
+            label3.Location = new Point(221, 71);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(148, 35);
@@ -138,10 +138,10 @@
             // 
             label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(266, 93);
+            label4.Location = new Point(282, 106);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(632, 46);
+            label4.Size = new Size(610, 46);
             label4.TabIndex = 8;
             label4.Text = "View, respond to, and organize customer communications to ensure timely updates and smooth service.\"";
             // 
@@ -153,7 +153,7 @@
             panel2.Controls.Add(combobox_users);
             panel2.Controls.Add(button_edit);
             panel2.Controls.Add(button_delete);
-            panel2.Location = new Point(221, 150);
+            panel2.Location = new Point(221, 170);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(648, 70);
@@ -173,7 +173,7 @@
             Controls.Add(textbox_message);
             Margin = new Padding(4);
             Name = "laundry_attendant_messages";
-            Text = "laundry_attendant_messages";
+            Text = "Laundry Attendant | Message";
             Load += laundry_attendant_messages_Load;
             Controls.SetChildIndex(textbox_message, 0);
             Controls.SetChildIndex(button_send, 0);

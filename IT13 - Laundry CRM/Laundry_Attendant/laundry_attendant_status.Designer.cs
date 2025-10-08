@@ -166,7 +166,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(220, 56);
+            label3.Location = new Point(229, 75);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(445, 45);
@@ -235,7 +235,7 @@
             panel3.Controls.Add(button_archives);
             panel3.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel3.ForeColor = SystemColors.ButtonHighlight;
-            panel3.Location = new Point(229, 156);
+            panel3.Location = new Point(229, 175);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(744, 75);
@@ -268,7 +268,7 @@
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.Location = new Point(270, 103);
+            label4.Location = new Point(286, 120);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(568, 46);

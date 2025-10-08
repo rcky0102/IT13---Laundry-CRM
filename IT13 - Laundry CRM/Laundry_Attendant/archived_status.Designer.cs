@@ -91,7 +91,7 @@
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.Controls.Add(dataGridView_archived);
             panel1.Location = new Point(17, 162);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(745, 430);
             panel1.TabIndex = 4;
@@ -107,7 +107,8 @@
             Controls.Add(button_unarchive);
             Controls.Add(panel1);
             Name = "archived_status";
-            Text = "archived_status";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Laundry Attendant | Archived Status";
             Load += archived_status_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_archived).EndInit();
             panel1.ResumeLayout(false);

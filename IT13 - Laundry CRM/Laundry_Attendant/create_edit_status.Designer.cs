@@ -170,7 +170,8 @@
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Name = "create_edit_status";
-            Text = "create_edit_status";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Laundry Attendant | Create/Edit Status";
             Load += create_edit_status_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

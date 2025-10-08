@@ -37,6 +37,7 @@
             panel3 = new Panel();
             label2 = new Label();
             label1 = new Label();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // combobox_users
@@ -44,7 +45,7 @@
             combobox_users.BackColor = SystemColors.ButtonFace;
             combobox_users.Font = new Font("Cascadia Code SemiBold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             combobox_users.FormattingEnabled = true;
-            combobox_users.Location = new Point(238, 159);
+            combobox_users.Location = new Point(16, 18);
             combobox_users.Name = "combobox_users";
             combobox_users.Size = new Size(400, 30);
             combobox_users.TabIndex = 1;
@@ -54,9 +55,9 @@
             // 
             listbox_messages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_messages.FormattingEnabled = true;
-            listbox_messages.Location = new Point(221, 230);
+            listbox_messages.Location = new Point(221, 250);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(749, 264);
+            listbox_messages.Size = new Size(749, 244);
             listbox_messages.TabIndex = 2;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
@@ -80,7 +81,7 @@
             button_edit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_edit.BackColor = Color.ForestGreen;
             button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(835, 141);
+            button_edit.Location = new Point(617, 13);
             button_edit.Name = "button_edit";
             button_edit.Size = new Size(50, 40);
             button_edit.TabIndex = 4;
@@ -93,7 +94,7 @@
             button_delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_delete.BackColor = Color.IndianRed;
             button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(891, 133);
+            button_delete.Location = new Point(673, 13);
             button_delete.Name = "button_delete";
             button_delete.Size = new Size(50, 40);
             button_delete.TabIndex = 5;
@@ -116,17 +117,20 @@
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.ActiveCaption;
             panel3.BorderStyle = BorderStyle.Fixed3D;
-            panel3.Location = new Point(221, 194);
+            panel3.Controls.Add(button_delete);
+            panel3.Controls.Add(combobox_users);
+            panel3.Controls.Add(button_edit);
+            panel3.Location = new Point(221, 169);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(749, 70);
+            panel3.Size = new Size(746, 75);
             panel3.TabIndex = 7;
             // 
             // label2
             // 
             label2.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(262, 100);
+            label2.Location = new Point(284, 114);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(606, 38);
@@ -137,7 +141,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(198, 62);
+            label1.Location = new Point(221, 74);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(166, 40);
@@ -150,9 +154,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(991, 572);
-            Controls.Add(button_delete);
-            Controls.Add(button_edit);
-            Controls.Add(combobox_users);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(textbox_message);
@@ -169,9 +170,7 @@
             Controls.SetChildIndex(textbox_message, 0);
             Controls.SetChildIndex(label2, 0);
             Controls.SetChildIndex(label1, 0);
-            Controls.SetChildIndex(combobox_users, 0);
-            Controls.SetChildIndex(button_edit, 0);
-            Controls.SetChildIndex(button_delete, 0);
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }

@@ -194,7 +194,7 @@
             // textbox_middlename
             // 
             textbox_middlename.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_middlename.Location = new Point(246, 132);
+            textbox_middlename.Location = new Point(244, 132);
             textbox_middlename.Multiline = true;
             textbox_middlename.Name = "textbox_middlename";
             textbox_middlename.PlaceholderText = "Middle Name:";
@@ -210,7 +210,8 @@
             Controls.Add(label4);
             Controls.Add(panel1);
             Name = "create_edit_customer";
-            Text = "create_edit_customer";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Laundry Attendant | Create/Edit Customer";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

@@ -32,6 +32,7 @@
             label4 = new Label();
             feedbackLabel = new Label();
             feedbackPanel = new Panel();
+            textbox_search = new TextBox();
             feedbackPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,27 +72,42 @@
             // feedbackPanel
             // 
             feedbackPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            feedbackPanel.AutoScroll = true;
             feedbackPanel.Controls.Add(feedbackLabel);
-            feedbackPanel.Location = new Point(235, 160);
+            feedbackPanel.Location = new Point(235, 197);
             feedbackPanel.Name = "feedbackPanel";
-            feedbackPanel.Size = new Size(725, 297);
+            feedbackPanel.Size = new Size(725, 260);
             feedbackPanel.TabIndex = 11;
+            // 
+            // textbox_search
+            // 
+            textbox_search.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textbox_search.BackColor = SystemColors.ButtonFace;
+            textbox_search.Location = new Point(617, 151);
+            textbox_search.Multiline = true;
+            textbox_search.Name = "textbox_search";
+            textbox_search.PlaceholderText = "🔎 Search here...";
+            textbox_search.Size = new Size(300, 40);
+            textbox_search.TabIndex = 14;
+            textbox_search.TextChanged += textbox_search_TextChanged;
             // 
             // admin_feedback
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(988, 482);
+            Controls.Add(textbox_search);
             Controls.Add(feedbackPanel);
             Controls.Add(label4);
             Controls.Add(label3);
             Margin = new Padding(5, 3, 5, 3);
             Name = "admin_feedback";
-            Text = "admin_feedback";
+            Text = "Admin | Feedback";
             Load += admin_feedback_Load;
             Controls.SetChildIndex(label3, 0);
             Controls.SetChildIndex(label4, 0);
             Controls.SetChildIndex(feedbackPanel, 0);
+            Controls.SetChildIndex(textbox_search, 0);
             feedbackPanel.ResumeLayout(false);
             feedbackPanel.PerformLayout();
             ResumeLayout(false);
@@ -103,5 +119,6 @@
         private Label label4;
         private Label feedbackLabel;
         private Panel feedbackPanel;
+        private TextBox textbox_search;
     }
 }
