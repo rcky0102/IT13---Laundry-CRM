@@ -74,7 +74,7 @@
             button_feedback.Location = new Point(5, 220);
             button_feedback.Margin = new Padding(2);
             button_feedback.Name = "button_feedback";
-            button_feedback.Size = new Size(174, 37);
+            button_feedback.Size = new Size(195, 35);
             button_feedback.TabIndex = 4;
             button_feedback.Text = "📲 Feedbacks";
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
@@ -89,7 +89,7 @@
             button3.Location = new Point(5, 170);
             button3.Margin = new Padding(2);
             button3.Name = "button3";
-            button3.Size = new Size(166, 37);
+            button3.Size = new Size(195, 35);
             button3.TabIndex = 3;
             button3.Text = "📩 Messages";
             button3.TextAlign = ContentAlignment.MiddleLeft;
@@ -104,7 +104,7 @@
             button_dashboard.Location = new Point(5, 20);
             button_dashboard.Margin = new Padding(2);
             button_dashboard.Name = "button_dashboard";
-            button_dashboard.Size = new Size(167, 37);
+            button_dashboard.Size = new Size(195, 35);
             button_dashboard.TabIndex = 2;
             button_dashboard.Text = "🏠 DashBoard";
             button_dashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -118,7 +118,7 @@
             button_status.Font = new Font("Cascadia Code SemiLight", 12F);
             button_status.Location = new Point(5, 120);
             button_status.Name = "button_status";
-            button_status.Size = new Size(166, 36);
+            button_status.Size = new Size(195, 35);
             button_status.TabIndex = 1;
             button_status.Text = "⌚ Status";
             button_status.TextAlign = ContentAlignment.MiddleLeft;
@@ -132,7 +132,7 @@
             button_customers.Font = new Font("Cascadia Code SemiLight", 12F);
             button_customers.Location = new Point(5, 70);
             button_customers.Name = "button_customers";
-            button_customers.Size = new Size(186, 35);
+            button_customers.Size = new Size(195, 35);
             button_customers.TabIndex = 0;
             button_customers.Text = "👤 Customers";
             button_customers.TextAlign = ContentAlignment.MiddleLeft;
@@ -151,7 +151,7 @@
             // logout
             // 
             logout.Name = "logout";
-            logout.Size = new Size(185, 32);
+            logout.Size = new Size(131, 32);
             logout.Text = "Logout";
             logout.Click += logout_Click;
             // 

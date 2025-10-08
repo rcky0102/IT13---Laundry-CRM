@@ -62,7 +62,7 @@ namespace IT13___Laundry_CRM
 
             if (currentUserId == 0)
             {
-                MessageBox.Show("No user logged in.");
+                //MessageBox.Show("No user logged in.");
                 return;
             }
 

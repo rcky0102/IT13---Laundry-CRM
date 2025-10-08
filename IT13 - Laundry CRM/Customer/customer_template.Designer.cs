@@ -70,7 +70,7 @@
             button_feedback.ForeColor = SystemColors.ButtonHighlight;
             button_feedback.Location = new Point(5, 170);
             button_feedback.Name = "button_feedback";
-            button_feedback.Size = new Size(185, 36);
+            button_feedback.Size = new Size(195, 35);
             button_feedback.TabIndex = 3;
             button_feedback.Text = "📲 Feedback";
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
@@ -84,7 +84,7 @@
             button_message.ForeColor = SystemColors.ButtonHighlight;
             button_message.Location = new Point(5, 120);
             button_message.Name = "button_message";
-            button_message.Size = new Size(180, 37);
+            button_message.Size = new Size(195, 35);
             button_message.TabIndex = 2;
             button_message.Text = "📩 Messages";
             button_message.TextAlign = ContentAlignment.MiddleLeft;
@@ -98,7 +98,7 @@
             button_status.ForeColor = SystemColors.ButtonHighlight;
             button_status.Location = new Point(5, 70);
             button_status.Name = "button_status";
-            button_status.Size = new Size(180, 36);
+            button_status.Size = new Size(195, 35);
             button_status.TabIndex = 1;
             button_status.Text = "⌚ Status";
             button_status.TextAlign = ContentAlignment.MiddleLeft;
@@ -112,7 +112,7 @@
             button_dashboard.ForeColor = SystemColors.ButtonHighlight;
             button_dashboard.Location = new Point(5, 20);
             button_dashboard.Name = "button_dashboard";
-            button_dashboard.Size = new Size(180, 34);
+            button_dashboard.Size = new Size(195, 35);
             button_dashboard.TabIndex = 0;
             button_dashboard.Text = "📊 DashBoard";
             button_dashboard.TextAlign = ContentAlignment.MiddleLeft;

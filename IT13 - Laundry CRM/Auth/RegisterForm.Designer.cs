@@ -72,6 +72,7 @@
             textbox_password.Location = new Point(21, 76);
             textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
+            textbox_password.PasswordChar = '*';
             textbox_password.PlaceholderText = "Password:";
             textbox_password.Size = new Size(275, 43);
             textbox_password.TabIndex = 1;
@@ -162,7 +163,7 @@
             pictureBox1.BackColor = SystemColors.ActiveCaption;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(7, 82);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(433, 364);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -176,7 +177,7 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(panel2);
             panel1.Location = new Point(2, 2);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(446, 453);
             panel1.TabIndex = 12;
@@ -188,7 +189,7 @@
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label1);
             panel2.Location = new Point(-2, -2);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(446, 79);
             panel2.TabIndex = 14;
@@ -209,7 +210,7 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(8, 2);
-            pictureBox2.Margin = new Padding(2, 2, 2, 2);
+            pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(81, 71);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -244,7 +245,7 @@
             panel3.Controls.Add(textbox_firstname);
             panel3.Controls.Add(textbox_middlename);
             panel3.Location = new Point(452, 10);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(339, 431);
             panel3.TabIndex = 14;

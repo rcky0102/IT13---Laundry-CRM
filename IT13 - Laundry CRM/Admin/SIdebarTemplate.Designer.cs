@@ -73,7 +73,7 @@
             button_feedback.Location = new Point(5, 170);
             button_feedback.Margin = new Padding(4, 3, 4, 3);
             button_feedback.Name = "button_feedback";
-            button_feedback.Size = new Size(181, 50);
+            button_feedback.Size = new Size(195, 35);
             button_feedback.TabIndex = 4;
             button_feedback.Text = "📲 Feedback";
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
@@ -89,7 +89,7 @@
             button_messages.Location = new Point(5, 120);
             button_messages.Margin = new Padding(4, 3, 4, 3);
             button_messages.Name = "button_messages";
-            button_messages.Size = new Size(181, 50);
+            button_messages.Size = new Size(195, 35);
             button_messages.TabIndex = 2;
             button_messages.Text = "📩 Message";
             button_messages.TextAlign = ContentAlignment.MiddleLeft;
@@ -105,7 +105,7 @@
             button_users.Location = new Point(5, 70);
             button_users.Margin = new Padding(4, 3, 4, 3);
             button_users.Name = "button_users";
-            button_users.Size = new Size(181, 43);
+            button_users.Size = new Size(195, 35);
             button_users.TabIndex = 1;
             button_users.Text = "👤 Users";
             button_users.TextAlign = ContentAlignment.MiddleLeft;
@@ -121,7 +121,7 @@
             button1.Location = new Point(5, 20);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
-            button1.Size = new Size(189, 43);
+            button1.Size = new Size(195, 35);
             button1.TabIndex = 0;
             button1.Text = "📊 DashBoard";
             button1.TextAlign = ContentAlignment.MiddleLeft;
@@ -202,7 +202,7 @@
             // logout
             // 
             logout.Name = "logout";
-            logout.Size = new Size(185, 32);
+            logout.Size = new Size(131, 32);
             logout.Text = "Logout";
             logout.Click += logout_Click;
             // 

@@ -55,7 +55,7 @@ namespace IT13___Laundry_CRM.Customer
 
             if (currentUserId == 0)
             {
-                MessageBox.Show("No user logged in.");
+                //MessageBox.Show("No user logged in.");
                 return;
             }
 

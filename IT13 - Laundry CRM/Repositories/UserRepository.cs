@@ -352,28 +352,43 @@ namespace IT13___Laundry_CRM.Repositories
 
 
         // Delete user
-        public void DeleteUser(int user_id)
+        public void DeleteUser(int userId)
         {
-            try
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                conn.Open();
+
+                using (SqlTransaction transaction = conn.BeginTransaction())
                 {
-                    connection.Open();
-
-                    string sql = @"DELETE FROM users WHERE user_id = @user_id";
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    try
                     {
-                        command.Parameters.AddWithValue("@user_id", user_id);
-                        command.ExecuteNonQuery();
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.Transaction = transaction;
+
+                            cmd.CommandText = @"
+                        DELETE FROM Messages WHERE sender_id = @user_id OR receiver_id = @user_id;
+                        DELETE FROM Feedback WHERE user_id = @user_id;
+                        DELETE FROM StatusHistory WHERE user_id = @user_id;
+                        DELETE FROM Status WHERE user_id = @user_id;
+                        DELETE FROM Users WHERE user_id = @user_id;
+                    ";
+
+                            cmd.Parameters.AddWithValue("@user_id", userId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message);
-            }
         }
+
 
     }
 }
