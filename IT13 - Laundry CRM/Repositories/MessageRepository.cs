@@ -12,7 +12,11 @@ namespace IT13___Laundry_CRM.Repositories
     internal class MessageRepository
     {
         private readonly string connectionString =
+<<<<<<< HEAD
     "Data Source=LAPTOP-NGRORR8P\\SQLEXPRESS;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+=======
+    "Data Source=LAPTOP-NGRORR8P\\SQLEXPRESS; Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+>>>>>>> e30cbf9 (ui gadugi)
 
         public List<Message> GetConversation(int userId1, int userId2)
         {
