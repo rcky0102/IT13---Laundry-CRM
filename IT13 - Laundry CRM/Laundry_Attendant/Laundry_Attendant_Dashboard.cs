@@ -1,5 +1,5 @@
-﻿using IT13___Laundry_CRM.Repositories;
-using IT13___Laundry_CRM.Models;
+﻿using IT13___Laundry_CRM.Models;
+using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace IT13___Laundry_CRM
 {
@@ -28,54 +29,65 @@ namespace IT13___Laundry_CRM
         {
             LoadStatusCounts();
             ShowWelcomeMessage();
-            LoadLatestMessageSender();
-            LoadLatestFeedback();
 
-            ShowCustomerCounts("Day", dateTimePickerFrom.Value.Date, dateTimePickerTo.Value.Date);
+            // Initialize chart
+            InitializeChart();
 
+            // Set default dates to today
+            dateTimePickerFrom.Value = DateTime.Today;
+            dateTimePickerTo.Value = DateTime.Today;
 
-            comboBoxGrouping.Items.AddRange(new string[] { "Day", "Week", "Month" });
-            comboBoxGrouping.SelectedIndex = 0;
+            // Remove comboBoxGrouping initialization
+            // comboBoxGrouping.Items.AddRange(new string[] { "Day", "Week", "Month" });
+            // comboBoxGrouping.SelectedIndex = 0;
 
-            // Panel setup (scrollable area)
-            panelCustomerGraph.AutoScroll = true;
-            panelCustomerGraph.BorderStyle = BorderStyle.FixedSingle;
+            // Load Today's data by default
+            LoadTodayData();
+        }
 
-            // Ensure label is inside panel
-            if (labelCustomerGraph.Parent != panelCustomerGraph)
+        private void InitializeChart()
+        {
+            if (chart1 == null) return;
+
+            // Don't clear everything - work with the existing chart from designer
+            // Just configure it properly
+
+            if (chart1.ChartAreas.Count > 0)
             {
-                if (labelCustomerGraph.Parent != null)
-                    labelCustomerGraph.Parent.Controls.Remove(labelCustomerGraph);
+                ChartArea chartArea = chart1.ChartAreas[0];
 
-                panelCustomerGraph.Controls.Add(labelCustomerGraph);
+                // X-axis configuration
+                chartArea.AxisX.LabelStyle.Angle = -45;
+                chartArea.AxisX.Interval = 1;
+                chartArea.AxisX.MajorGrid.Enabled = false;
+                chartArea.AxisX.IsMarginVisible = true;
+                chartArea.AxisX.LabelStyle.Font = new Font("Segoe UI", 8);
+
+                // Y-axis configuration
+                chartArea.AxisY.MajorGrid.Enabled = true;
+                chartArea.AxisY.MajorGrid.LineColor = Color.LightGray;
+                chartArea.AxisY.LabelStyle.Font = new Font("Segoe UI", 8);
+                chartArea.AxisY.Minimum = 0;
+
+                // Enable scrolling and zooming if needed
+                chartArea.CursorX.IsUserEnabled = true;
+                chartArea.CursorX.IsUserSelectionEnabled = true;
+                chartArea.AxisX.ScaleView.Zoomable = true;
             }
 
-            // Label visual setup
-            labelCustomerGraph.AutoSize = true;
-            labelCustomerGraph.Location = new Point(6, 6); // Padding inside panel
-            labelCustomerGraph.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            labelCustomerGraph.Font = new Font("Consolas", 10, FontStyle.Regular);
-
-            // Set label width relative to the panel
-            labelCustomerGraph.MaximumSize = new Size(
-                Math.Max(10, panelCustomerGraph.ClientSize.Width - 20), 0
-            );
-
-            // Adjust label width dynamically on resize
-            panelCustomerGraph.SizeChanged += (s, ev) =>
+            // Set chart title
+            if (chart1.Titles.Count > 0)
             {
-                labelCustomerGraph.MaximumSize = new Size(
-                    Math.Max(10, panelCustomerGraph.ClientSize.Width - 20), 0
-                );
-                labelCustomerGraph.PerformLayout();
-            };
+                chart1.Titles[0].Text = "Customer Transaction Trends";
+                chart1.Titles[0].Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            }
 
-            // Load other data AFTER the layout setup is complete
-            LoadLatestFeedback();
-            LoadLatestMessageSender();
+            // Set default dates to today
+            dateTimePickerFrom.Value = DateTime.Today;
+            dateTimePickerTo.Value = DateTime.Today;
 
-            // Populate the graph after label/panel are ready
-            ShowCustomerCounts("Day", dateTimePickerFrom.Value.Date, dateTimePickerTo.Value.Date);
+            // Load Today's data by default
+            LoadTodayData();
         }
 
         private void ShowWelcomeMessage()
@@ -88,55 +100,32 @@ namespace IT13___Laundry_CRM
 
         private void LoadStatusCounts()
         {
-            var counts = statusRepository.GetStatusCounts();
-
-            label_pending.Text = $"Pending: {counts.GetValueOrDefault("Pending", 0)}";
-            label_washing.Text = $"Washing: {counts.GetValueOrDefault("Washing", 0)}";
-            label_drying.Text = $"Drying: {counts.GetValueOrDefault("Drying", 0)}";
-            label_ironing.Text = $"Ironing/Folding: {counts.GetValueOrDefault("Ironing/Folding", 0)}";
-            label_ready.Text = $"Ready for Pickup: {counts.GetValueOrDefault("Ready for Pickup", 0)}";
-            label_completed.Text = $"Completed: {counts.GetValueOrDefault("Completed/Picked Up", 0)}";
-            label_cancelled.Text = $"Cancelled: {counts.GetValueOrDefault("Cancelled", 0)}";
-            label_onhold.Text = $"On Hold: {counts.GetValueOrDefault("On Hold", 0)}";
-        }
-
-        private void LoadLatestMessageSender()
-        {
-            if (User.CurrentUser.User == null) return;
-
-            var latestMessage = messageRepository.GetLatestMessageForUser(User.CurrentUser.UserId);
-
-            if (latestMessage != null && latestMessage.User != null)
+            try
             {
-                string fullName = $"{latestMessage.User.first_name} " +
-                                  $"{(string.IsNullOrEmpty(latestMessage.User.middle_name) ? "" : latestMessage.User.middle_name + " ")}" +
-                                  $"{latestMessage.User.last_name}";
+                var counts = statusRepository.GetStatusCounts();
 
-                label_message.Text = $"Latest message from: {fullName}";
+                // Update labels safely
+                if (label_pending != null)
+                    label_pending.Text = $"Pending: {counts.GetValueOrDefault("Pending", 0)}";
+                if (label_washing != null)
+                    label_washing.Text = $"Washing: {counts.GetValueOrDefault("Washing", 0)}";
+                if (label_drying != null)
+                    label_drying.Text = $"Drying: {counts.GetValueOrDefault("Drying", 0)}";
+                if (label_ironing != null)
+                    label_ironing.Text = $"Ironing/Folding: {counts.GetValueOrDefault("Ironing/Folding", 0)}";
+                if (label_ready != null)
+                    label_ready.Text = $"Ready for Pickup: {counts.GetValueOrDefault("Ready for Pickup", 0)}";
+                if (label_completed != null)
+                    label_completed.Text = $"Completed: {counts.GetValueOrDefault("Completed", 0)}";
+                if (label_cancelled != null)
+                    label_cancelled.Text = $"Cancelled: {counts.GetValueOrDefault("Cancelled", 0)}";
+                if (label_onhold != null)
+                    label_onhold.Text = $"On Hold: {counts.GetValueOrDefault("On Hold", 0)}";
             }
-            else
+            catch (Exception ex)
             {
-                label_message.Text = "No messages yet.";
-            }
-        }
-
-        private void LoadLatestFeedback()
-        {
-            var latestFeedback = feedbackRepository.GetLatestFeedback();
-
-            if (latestFeedback != null)
-            {
-                string fullName = $"{latestFeedback.User.first_name} {(string.IsNullOrEmpty(latestFeedback.User.middle_name) ? "" : latestFeedback.User.middle_name + " ")}{latestFeedback.User.last_name}";
-
-                label_feedback.Text = $"Latest Feedback from {fullName}\n" +
-                                      $"Subject: {latestFeedback.subject}\n" 
-                                      //$"Message: {latestFeedback.feedback}\n" +
-                                      //$"Date: {latestFeedback.created_at:g}"
-                                      ;
-            }
-            else
-            {
-                label_feedback.Text = "No feedback available yet.";
+                MessageBox.Show($"Error loading status counts: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -144,91 +133,63 @@ namespace IT13___Laundry_CRM
         {
             try
             {
-                // Retrieve all customers
-                List<User> customers = userRepository.GetUsers()
-                    .Where(u => u.role.Equals("customer", StringComparison.OrdinalIgnoreCase))
-                    .ToList();
+                // Get customer transactions within the date range
+                var transactions = statusRepository.GetCustomerTransactionsByDateRange(from, to.AddDays(1).AddSeconds(-1));
 
-                // Filter by date range
-                customers = customers
-                    .Where(c => c.created_at >= from && c.created_at <= to.AddDays(1).AddSeconds(-1))
-                    .ToList();
-
-                // Grouping logic
                 Dictionary<string, int> groupedData = new Dictionary<string, int>();
 
                 switch (groupBy)
                 {
                     case "Day":
-                        groupedData = customers
-                            .GroupBy(c => c.created_at.Date)
-                            .OrderBy(g => g.Key)
-                            .ToDictionary(g => g.Key.ToString("yyyy-MM-dd"), g => g.Count());
+                        // Group by hour for today - ensure we have all 24 hours
+                        for (int hour = 0; hour < 24; hour++)
+                        {
+                            string hourLabel = $"{hour:00}:00";
+                            int customerCount = transactions
+                                .Where(t => t.created_at.Hour == hour)
+                                .Select(t => t.user_id)
+                                .Distinct()
+                                .Count();
+                            groupedData[hourLabel] = customerCount;
+                        }
                         break;
 
                     case "Week":
-                        groupedData = customers
-                            .GroupBy(c => System.Globalization.CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
-                                c.created_at, System.Globalization.CalendarWeekRule.FirstDay, DayOfWeek.Monday))
-                            .OrderBy(g => g.Key)
-                            .ToDictionary(g => "Week " + g.Key, g => g.Count());
+                        // Group by day for last 7 days - ensure we have all 7 days
+                        for (int i = 6; i >= 0; i--)
+                        {
+                            DateTime day = DateTime.Today.AddDays(-i);
+                            string dayLabel = day.ToString("MMM dd");
+                            int customerCount = transactions
+                                .Where(t => t.created_at.Date == day.Date)
+                                .Select(t => t.user_id)
+                                .Distinct()
+                                .Count();
+                            groupedData[dayLabel] = customerCount;
+                        }
                         break;
 
                     case "Month":
-                        groupedData = customers
-                            .GroupBy(c => new { c.created_at.Year, c.created_at.Month })
-                            .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Month)
-                            .ToDictionary(g => $"{g.Key.Year}-{g.Key.Month:00}", g => g.Count());
+                        // Group by day for last 30 days - ensure we have all 30 days
+                        for (int i = 29; i >= 0; i--)
+                        {
+                            DateTime day = DateTime.Today.AddDays(-i);
+                            string dayLabel = day.ToString("MMM dd");
+                            int customerCount = transactions
+                                .Where(t => t.created_at.Date == day.Date)
+                                .Select(t => t.user_id)
+                                .Distinct()
+                                .Count();
+                            groupedData[dayLabel] = customerCount;
+                        }
                         break;
                 }
 
-                // 🧹 Clear existing items before adding new ones
-                panelCustomerGraph.Controls.Clear();
+                // Debug: Check if we have the right number of data points
+                Console.WriteLine($"GroupBy: {groupBy}, DataPoints: {groupedData.Count}");
 
-                int yOffset = 10; // Spacing between bars
-                int maxBarWidth = panelCustomerGraph.Width - 60; // Padding inside the panel
-                int maxValue = groupedData.Count > 0 ? groupedData.Values.Max() : 1; // For scaling
-
-                foreach (var kvp in groupedData)
-                {
-                    // Create a label for each grouped result (like a horizontal bar)
-                    Label barLabel = new Label
-                    {
-                        AutoSize = false,
-                        Width = maxBarWidth,
-                        Location = new Point(10, yOffset),
-                        BorderStyle = BorderStyle.FixedSingle,
-                        Font = new Font("Cascadia Code", 10, FontStyle.Regular),
-                        Padding = new Padding(10),
-                        BackColor = Color.White,
-                        ForeColor = Color.Black,
-                        TextAlign = ContentAlignment.MiddleLeft,
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-                    };
-
-                    // Build the text-based "bar"
-                    int scaledLength = (int)((kvp.Value / (double)maxValue) * 30); // Adjust "30" for bar length
-                    string bar = new string('█', scaledLength);
-
-                    barLabel.Text = $"{kvp.Key}  |  {bar} ({kvp.Value})";
-
-                    // Measure and auto-adjust height
-                    barLabel.Height = TextRenderer.MeasureText(
-                        barLabel.Text,
-                        barLabel.Font,
-                        new Size(barLabel.Width, int.MaxValue),
-                        TextFormatFlags.WordBreak
-                    ).Height + 30;
-
-                    // Add to panel
-                    panelCustomerGraph.Controls.Add(barLabel);
-
-                    // Increment for next item
-                    yOffset += barLabel.Height + 10;
-                }
-
-                // Scroll always starts at top
-                panelCustomerGraph.AutoScrollPosition = new Point(0, 0);
+                // Update the chart with the grouped data
+                UpdateChart(groupedData, groupBy);
             }
             catch (Exception ex)
             {
@@ -237,19 +198,297 @@ namespace IT13___Laundry_CRM
             }
         }
 
+        private void UpdateChart(Dictionary<string, int> data, string chartType)
+        {
+            if (chart1 == null) return;
+
+            // Debug the data
+            DebugChartData(data);
+
+            try
+            {
+                // Clear only the series, keep chart areas and titles from designer
+                chart1.Series.Clear();
+
+                // Create a new series
+                Series series = new Series("Customer Transactions");
+
+                // Use Column chart type as requested
+                series.ChartType = SeriesChartType.Column;
+                series.Color = Color.SteelBlue;
+                series.BorderColor = Color.DarkBlue;
+                series.BorderWidth = 1;
+                series.IsValueShownAsLabel = true;
+                series.LabelFormat = "0";
+                series.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+                series["PointWidth"] = "0.6";
+                series.IsXValueIndexed = true; // This helps with proper spacing
+
+                // Add data points
+                int dataIndex = 0;
+                foreach (var item in data)
+                {
+                    DataPoint point = new DataPoint();
+
+                    // Use numeric X values for proper spacing, but show text labels
+                    point.SetValueXY(dataIndex, item.Value);
+                    point.AxisLabel = item.Key; // This sets the X-axis label
+                    point.Label = item.Value > 0 ? item.Value.ToString() : "";
+
+                    series.Points.Add(point);
+                    dataIndex++;
+                }
+
+                // Add the series to the chart
+                chart1.Series.Add(series);
+
+                // Update chart title based on grouping
+                if (chart1.Titles.Count > 0)
+                {
+                    string titleText = chartType switch
+                    {
+                        "Day" => "Customer Transactions - Today (24 Hours)",
+                        "Week" => "Customer Transactions - Last 7 Days",
+                        "Month" => "Customer Transactions - Last 30 Days",
+                        _ => "Customer Transactions"
+                    };
+                    chart1.Titles[0].Text = titleText;
+                }
+
+                // Configure chart area if it exists
+                if (chart1.ChartAreas.Count > 0)
+                {
+                    ChartArea area = chart1.ChartAreas[0];
+
+                    // Ensure proper Y-axis scaling
+                    if (data.Count > 0 && data.Values.Max() > 0)
+                    {
+                        int maxValue = data.Values.Max();
+                        area.AxisY.Maximum = maxValue + 1;
+                    }
+                    else
+                    {
+                        area.AxisY.Maximum = 10;
+                    }
+
+                    area.AxisY.Minimum = 0;
+
+                    // Set X-axis interval based on data count
+                    if (data.Count > 10)
+                    {
+                        area.AxisX.Interval = Math.Ceiling(data.Count / 10.0);
+                    }
+                    else
+                    {
+                        area.AxisX.Interval = 1;
+                    }
+                }
+
+                // Refresh the chart
+                chart1.Invalidate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating chart: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Color GetColorForValue(int value, int maxValue)
+        {
+            if (maxValue == 0) return Color.SteelBlue;
+
+            // Create a gradient from light blue to dark blue based on value
+            float ratio = (float)value / maxValue;
+            int red = (int)(105 + (ratio * 50));   // 105-155
+            int green = (int)(150 + (ratio * 50)); // 150-200
+            int blue = (int)(200 + (ratio * 55));  // 200-255
+
+            return Color.FromArgb(red, green, blue);
+        }
+
         private void buttonLoadGraph_Click(object sender, EventArgs e)
         {
-            if (comboBoxGrouping.SelectedItem == null)
-            {
-                MessageBox.Show("Please select a grouping option.");
-                return;
-            }
-
-            string groupBy = comboBoxGrouping.SelectedItem.ToString();
             DateTime from = dateTimePickerFrom.Value.Date;
             DateTime to = dateTimePickerTo.Value.Date;
 
+            if (from > to)
+            {
+                MessageBox.Show("Start date cannot be after end date.", "Warning",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Automatically determine grouping based on date range
+            string groupBy = DetermineGrouping(from, to);
+
             ShowCustomerCounts(groupBy, from, to);
+
+            // Update button appearance for custom range
+            UpdateButtonAppearance(buttonLoadGraph);
+        }
+
+        private string DetermineGrouping(DateTime from, DateTime to)
+        {
+            TimeSpan span = to - from;
+
+            if (span.TotalDays <= 1)
+            {
+                return "Day"; // Single day or less
+            }
+            else if (span.TotalDays <= 7)
+            {
+                return "Week"; // Up to 7 days
+            }
+            else
+            {
+                return "Month"; // More than 7 days
+            }
+        }
+
+        private void LoadTodayData()
+        {
+            DateTime today = DateTime.Today;
+            DateTime startOfToday = today;
+            DateTime endOfToday = today.AddDays(1).AddSeconds(-1);
+
+            if (dateTimePickerFrom != null) dateTimePickerFrom.Value = startOfToday;
+            if (dateTimePickerTo != null) dateTimePickerTo.Value = endOfToday;
+
+            // Use "Day" grouping for today
+            ShowCustomerCounts("Day", startOfToday, endOfToday);
+            UpdateButtonAppearance(buttonLoadGraphToday);
+        }
+
+        private void LoadWeekData()
+        {
+            DateTime today = DateTime.Today;
+            DateTime startOfWeek = today.AddDays(-6); // Last 7 days including today
+            DateTime endOfWeek = today.AddDays(1).AddSeconds(-1);
+
+            if (dateTimePickerFrom != null) dateTimePickerFrom.Value = startOfWeek;
+            if (dateTimePickerTo != null) dateTimePickerTo.Value = endOfWeek;
+
+            // Use "Week" grouping for week view
+            ShowCustomerCounts("Week", startOfWeek, endOfWeek);
+            UpdateButtonAppearance(buttonLoadGraphWeek);
+        }
+
+        private void LoadMonthData()
+        {
+            DateTime today = DateTime.Today;
+            DateTime startOfMonth = today.AddDays(-29); // Last 30 days including today
+            DateTime endOfMonth = today.AddDays(1).AddSeconds(-1);
+
+            if (dateTimePickerFrom != null) dateTimePickerFrom.Value = startOfMonth;
+            if (dateTimePickerTo != null) dateTimePickerTo.Value = endOfMonth;
+
+            // Use "Month" grouping for month view
+            ShowCustomerCounts("Month", startOfMonth, endOfMonth);
+            UpdateButtonAppearance(buttonLoadGraphMonth);
+        }
+
+        private void UpdateButtonAppearance(Button activeButton)
+        {
+            if (activeButton == null) return;
+
+            // Reset all buttons to default appearance
+            var buttons = new[] { buttonLoadGraphToday, buttonLoadGraphWeek, buttonLoadGraphMonth, buttonLoadGraph };
+
+            foreach (var button in buttons)
+            {
+                if (button != null)
+                {
+                    button.BackColor = SystemColors.Control;
+                    button.ForeColor = SystemColors.ControlText;
+                    button.Font = new Font(button.Font, FontStyle.Regular);
+                }
+            }
+
+            // Set active button appearance
+            activeButton.BackColor = SystemColors.MenuHighlight;
+            activeButton.ForeColor = SystemColors.HighlightText;
+            activeButton.Font = new Font(activeButton.Font, FontStyle.Bold);
+        }
+
+        // Button click event handlers
+        private void buttonLoadGraphToday_Click(object sender, EventArgs e)
+        {
+            LoadTodayData();
+        }
+
+        private void buttonLoadGraphWeek_Click(object sender, EventArgs e)
+        {
+            LoadWeekData();
+        }
+
+        private void buttonLoadGraphMonth_Click(object sender, EventArgs e)
+        {
+            LoadMonthData();
+        }
+
+        // Refresh status counts
+        private void btnRefreshStatus_Click(object sender, EventArgs e)
+        {
+            LoadStatusCounts();
+        }
+
+        private void DebugChartData(Dictionary<string, int> data)
+        {
+            Console.WriteLine("=== CHART DATA DEBUG ===");
+            Console.WriteLine($"Total data points: {data.Count}");
+
+            if (data.Count == 0)    
+            {
+                Console.WriteLine("NO DATA POINTS!");
+                return;
+            }
+
+            foreach (var item in data.Take(5)) // Show first 5 items
+            {
+                Console.WriteLine($"'{item.Key}': {item.Value}");
+            }
+
+            if (data.Count > 5)
+            {
+                Console.WriteLine($"... and {data.Count - 5} more");
+            }
+
+            Console.WriteLine($"Min value: {data.Values.Min()}, Max value: {data.Values.Max()}");
+            Console.WriteLine("========================");
+        }
+
+        // Optional: Add method to show status distribution as a pie chart
+        private void ShowStatusDistribution()
+        {
+            try
+            {
+                var counts = statusRepository.GetStatusCounts();
+
+                // Create a new chart or clear existing one
+                Chart statusChart = new Chart();
+                ChartArea chartArea = new ChartArea();
+                statusChart.ChartAreas.Add(chartArea);
+
+                Series series = new Series("Status Distribution");
+                series.ChartType = SeriesChartType.Pie;
+
+                foreach (var status in counts)
+                {
+                    if (status.Value > 0)
+                    {
+                        series.Points.AddXY(status.Key, status.Value);
+                    }
+                }
+
+                statusChart.Series.Add(series);
+                // Add this chart to your form or show in a separate container
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading status distribution: " + ex.Message, "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
