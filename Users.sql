@@ -1,0 +1,1 @@
+﻿INSERT INTO Users ("username", "password", "role") VALUES ('admin', 'pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=', 'admin');

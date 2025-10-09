@@ -10,8 +10,8 @@ namespace IT13___Laundry_CRM.Repositories
     internal class UserRepository
     {
         private readonly string connectionString =
-            "Data Source=RAVEN-13\\SQLEXPRESS01;Initial Catalog=LaundryDb; Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
-
+            "Data Source=GILGWE\\SQLEXPRESS;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        //Changed
         // Get all users
         public List<User> GetUsers()
         {

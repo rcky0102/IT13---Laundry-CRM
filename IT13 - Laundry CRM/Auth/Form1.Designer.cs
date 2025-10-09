@@ -61,7 +61,7 @@
             label2.ForeColor = SystemColors.ButtonHighlight;
             label2.Location = new Point(129, 97);
             label2.Name = "label2";
-            label2.Size = new Size(223, 62);
+            label2.Size = new Size(263, 75);
             label2.TabIndex = 10;
             label2.Text = "Laundry";
             label2.Click += label2_Click;
@@ -75,16 +75,16 @@
             label3.ForeColor = Color.RoyalBlue;
             label3.Location = new Point(290, 154);
             label3.Name = "label3";
-            label3.Size = new Size(139, 62);
+            label3.Size = new Size(164, 75);
             label3.TabIndex = 11;
             label3.Text = "Care";
             // 
             // label4
             // 
             label4.BackColor = SystemColors.ActiveCaption;
-            label4.Font = new Font("Cascadia Code", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Gadugi", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(515, 534);
+            label4.Location = new Point(520, 544);
             label4.Name = "label4";
             label4.Size = new Size(719, 120);
             label4.TabIndex = 13;
@@ -97,6 +97,7 @@
             login_button.BackColor = Color.RoyalBlue;
             login_button.FlatAppearance.BorderColor = Color.Blue;
             login_button.FlatAppearance.BorderSize = 20;
+            login_button.Font = new Font("Gadugi", 8F);
             login_button.ForeColor = SystemColors.ButtonHighlight;
             login_button.Location = new Point(129, 413);
             login_button.Margin = new Padding(3, 2, 3, 2);
@@ -111,7 +112,7 @@
             // 
             textbox_password.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textbox_password.BackColor = SystemColors.ButtonHighlight;
-            textbox_password.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_password.Font = new Font("Gadugi", 8F);
             textbox_password.Location = new Point(112, 332);
             textbox_password.Margin = new Padding(3, 2, 3, 2);
             textbox_password.Multiline = true;
@@ -125,7 +126,7 @@
             // 
             textbox_username.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textbox_username.BackColor = SystemColors.ControlLightLight;
-            textbox_username.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_username.Font = new Font("Gadugi", 8F);
             textbox_username.ForeColor = SystemColors.ActiveCaptionText;
             textbox_username.Location = new Point(112, 241);
             textbox_username.Margin = new Padding(3, 2, 3, 2);
@@ -139,11 +140,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaption;
-            label1.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Gadugi", 8F);
             label1.Location = new Point(190, 534);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(200, 18);
+            label1.Size = new Size(185, 19);
             label1.TabIndex = 7;
             label1.Text = "Doesn't have an account?";
             // 
@@ -151,10 +152,10 @@
             // 
             linklabel_reg.AutoSize = true;
             linklabel_reg.BackColor = SystemColors.ActiveCaption;
-            linklabel_reg.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            linklabel_reg.Font = new Font("Gadugi", 8F);
             linklabel_reg.Location = new Point(252, 562);
             linklabel_reg.Name = "linklabel_reg";
-            linklabel_reg.Size = new Size(72, 18);
+            linklabel_reg.Size = new Size(66, 19);
             linklabel_reg.TabIndex = 9;
             linklabel_reg.TabStop = true;
             linklabel_reg.Text = "Register";
@@ -162,7 +163,7 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 22F);
+            AutoScaleDimensions = new SizeF(12F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = SystemColors.ActiveCaption;
