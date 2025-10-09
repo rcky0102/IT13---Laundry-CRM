@@ -38,8 +38,6 @@
             button1 = new Button();
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)table_customers).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -53,13 +51,14 @@
             table_customers.BackgroundColor = SystemColors.Window;
             table_customers.BorderStyle = BorderStyle.None;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(218, 251);
+            table_customers.Location = new Point(272, 186);
+            table_customers.Margin = new Padding(4, 4, 4, 4);
             table_customers.Name = "table_customers";
             table_customers.ReadOnly = true;
             table_customers.RowHeadersVisible = false;
             table_customers.RowHeadersWidth = 51;
             table_customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            table_customers.Size = new Size(718, 179);
+            table_customers.Size = new Size(898, 352);
             table_customers.TabIndex = 1;
             // 
             // button_add_cutomer
@@ -67,9 +66,10 @@
             button_add_cutomer.BackColor = Color.RoyalBlue;
             button_add_cutomer.FlatAppearance.BorderSize = 0;
             button_add_cutomer.ForeColor = SystemColors.ButtonHighlight;
-            button_add_cutomer.Location = new Point(19, 15);
+            button_add_cutomer.Location = new Point(24, 19);
+            button_add_cutomer.Margin = new Padding(4, 4, 4, 4);
             button_add_cutomer.Name = "button_add_cutomer";
-            button_add_cutomer.Size = new Size(50, 40);
+            button_add_cutomer.Size = new Size(62, 50);
             button_add_cutomer.TabIndex = 2;
             button_add_cutomer.Text = "➕";
             button_add_cutomer.UseVisualStyleBackColor = false;
@@ -84,20 +84,22 @@
             panel2.Controls.Add(button_edit);
             panel2.Controls.Add(textbox_search);
             panel2.Controls.Add(button_add_cutomer);
-            panel2.Location = new Point(218, 171);
+            panel2.Location = new Point(272, 87);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(718, 75);
+            panel2.Size = new Size(896, 93);
             panel2.TabIndex = 3;
+            panel2.Paint += panel2_Paint;
             // 
             // button_delete
             // 
             button_delete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_delete.BackColor = Color.IndianRed;
             button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(648, 15);
+            button_delete.Location = new Point(810, 19);
+            button_delete.Margin = new Padding(4, 4, 4, 4);
             button_delete.Name = "button_delete";
-            button_delete.Size = new Size(50, 40);
+            button_delete.Size = new Size(62, 50);
             button_delete.TabIndex = 8;
             button_delete.Text = "🗑️";
             button_delete.UseVisualStyleBackColor = false;
@@ -108,9 +110,10 @@
             button_edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_edit.BackColor = Color.ForestGreen;
             button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(583, 15);
+            button_edit.Location = new Point(729, 19);
+            button_edit.Margin = new Padding(4, 4, 4, 4);
             button_edit.Name = "button_edit";
-            button_edit.Size = new Size(50, 40);
+            button_edit.Size = new Size(62, 50);
             button_edit.TabIndex = 7;
             button_edit.Text = "✏️";
             button_edit.UseVisualStyleBackColor = false;
@@ -119,12 +122,12 @@
             // textbox_search
             // 
             textbox_search.BorderStyle = BorderStyle.FixedSingle;
-            textbox_search.Location = new Point(74, 15);
+            textbox_search.Location = new Point(92, 19);
             textbox_search.Margin = new Padding(2);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.PlaceholderText = "🔎 Search here...";
-            textbox_search.Size = new Size(300, 40);
+            textbox_search.Size = new Size(374, 50);
             textbox_search.TabIndex = 5;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
@@ -162,51 +165,24 @@
             label2.TabIndex = 5;
             label2.Text = "\"Currently managing 128 active customers.\"";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Cascadia Code", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(205, 72);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(323, 35);
-            label3.TabIndex = 4;
-            label3.Text = "👤 Manage Customers\r\n";
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.Location = new Point(266, 116);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(681, 39);
-            label4.TabIndex = 5;
-            label4.Text = "Easily view and track updates from the laundry service, ensuring you stay informed about your orders.\"";
-            // 
             // Laundry_Attendant_CustomersForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(947, 442);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            ClientSize = new Size(1184, 552);
             Controls.Add(table_customers);
             Controls.Add(panel2);
-            Margin = new Padding(4);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "Laundry_Attendant_CustomersForm";
             Text = "Laundry Attendant | Customers";
             Load += Laundry_Attendant_CustomersForm_Load;
             Controls.SetChildIndex(panel2, 0);
             Controls.SetChildIndex(table_customers, 0);
-            Controls.SetChildIndex(label3, 0);
-            Controls.SetChildIndex(label4, 0);
             ((System.ComponentModel.ISupportInitialize)table_customers).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -218,8 +194,6 @@
         private TextBox textbox_search;
         private Label label1;
         private Label label2;
-        private Label label3;
-        private Label label4;
         private Button button_delete;
         private Button button_edit;
     }

@@ -28,44 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label3 = new Label();
-            label4 = new Label();
             feedbackLabel = new Label();
             feedbackPanel = new Panel();
             textbox_search = new TextBox();
             feedbackPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(241, 76);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(340, 35);
-            label3.TabIndex = 8;
-            label3.Text = "💬 Customer Feedback";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(278, 111);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(432, 18);
-            label4.TabIndex = 9;
-            label4.Text = "\"See what your users are saying and respond quickly.\"";
-            // 
             // feedbackLabel
             // 
             feedbackLabel.AutoSize = true;
-            feedbackLabel.Location = new Point(28, 20);
+            feedbackLabel.Location = new Point(34, 25);
+            feedbackLabel.Margin = new Padding(4, 0, 4, 0);
             feedbackLabel.Name = "feedbackLabel";
-            feedbackLabel.Size = new Size(70, 22);
+            feedbackLabel.Size = new Size(63, 24);
             feedbackLabel.TabIndex = 10;
             feedbackLabel.Text = "label5";
             // 
@@ -74,38 +49,38 @@
             feedbackPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             feedbackPanel.AutoScroll = true;
             feedbackPanel.Controls.Add(feedbackLabel);
-            feedbackPanel.Location = new Point(235, 197);
+            feedbackPanel.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            feedbackPanel.Location = new Point(282, 137);
+            feedbackPanel.Margin = new Padding(4, 4, 4, 4);
             feedbackPanel.Name = "feedbackPanel";
-            feedbackPanel.Size = new Size(725, 260);
+            feedbackPanel.Size = new Size(870, 424);
             feedbackPanel.TabIndex = 11;
             // 
             // textbox_search
             // 
             textbox_search.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textbox_search.BackColor = SystemColors.ButtonFace;
-            textbox_search.Location = new Point(617, 151);
+            textbox_search.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_search.Location = new Point(814, 81);
+            textbox_search.Margin = new Padding(4, 4, 4, 4);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.PlaceholderText = "🔎 Search here...";
-            textbox_search.Size = new Size(300, 40);
+            textbox_search.Size = new Size(359, 48);
             textbox_search.TabIndex = 14;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
             // admin_feedback
             // 
-            AutoScaleDimensions = new SizeF(10F, 22F);
+            AutoScaleDimensions = new SizeF(12F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(988, 482);
+            ClientSize = new Size(1186, 592);
             Controls.Add(textbox_search);
             Controls.Add(feedbackPanel);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Margin = new Padding(5, 3, 5, 3);
+            Margin = new Padding(6, 4, 6, 4);
             Name = "admin_feedback";
             Text = "Admin | Feedback";
             Load += admin_feedback_Load;
-            Controls.SetChildIndex(label3, 0);
-            Controls.SetChildIndex(label4, 0);
             Controls.SetChildIndex(feedbackPanel, 0);
             Controls.SetChildIndex(textbox_search, 0);
             feedbackPanel.ResumeLayout(false);
@@ -115,8 +90,6 @@
         }
 
         #endregion
-        private Label label3;
-        private Label label4;
         private Label feedbackLabel;
         private Panel feedbackPanel;
         private TextBox textbox_search;

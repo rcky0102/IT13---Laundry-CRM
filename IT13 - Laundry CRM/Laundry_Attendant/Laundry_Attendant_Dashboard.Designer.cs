@@ -84,9 +84,10 @@
             label_pending.AutoSize = true;
             label_pending.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_pending.ForeColor = SystemColors.ButtonHighlight;
-            label_pending.Location = new Point(3, 0);
+            label_pending.Location = new Point(4, 0);
+            label_pending.Margin = new Padding(4, 0, 4, 0);
             label_pending.Name = "label_pending";
-            label_pending.Size = new Size(96, 27);
+            label_pending.Size = new Size(112, 32);
             label_pending.TabIndex = 3;
             label_pending.Text = "Pending";
             // 
@@ -94,8 +95,9 @@
             // 
             label_washing.AutoSize = true;
             label_washing.Location = new Point(-2, 0);
+            label_washing.Margin = new Padding(4, 0, 4, 0);
             label_washing.Name = "label_washing";
-            label_washing.Size = new Size(96, 27);
+            label_washing.Size = new Size(111, 28);
             label_washing.TabIndex = 4;
             label_washing.Text = "Washing";
             // 
@@ -103,8 +105,9 @@
             // 
             label_drying.AutoSize = true;
             label_drying.Location = new Point(-2, 0);
+            label_drying.Margin = new Padding(4, 0, 4, 0);
             label_drying.Name = "label_drying";
-            label_drying.Size = new Size(84, 27);
+            label_drying.Size = new Size(90, 28);
             label_drying.TabIndex = 5;
             label_drying.Text = "Drying";
             // 
@@ -112,8 +115,9 @@
             // 
             label_ironing.AutoSize = true;
             label_ironing.Location = new Point(-2, -2);
+            label_ironing.Margin = new Padding(4, 0, 4, 0);
             label_ironing.Name = "label_ironing";
-            label_ironing.Size = new Size(96, 27);
+            label_ironing.Size = new Size(97, 28);
             label_ironing.TabIndex = 6;
             label_ironing.Text = "Ironing";
             // 
@@ -121,8 +125,9 @@
             // 
             label_ready.AutoSize = true;
             label_ready.Location = new Point(-2, 0);
+            label_ready.Margin = new Padding(4, 0, 4, 0);
             label_ready.Name = "label_ready";
-            label_ready.Size = new Size(72, 27);
+            label_ready.Size = new Size(82, 28);
             label_ready.TabIndex = 7;
             label_ready.Text = "Ready";
             // 
@@ -130,8 +135,9 @@
             // 
             label_completed.AutoSize = true;
             label_completed.Location = new Point(-2, -2);
+            label_completed.Margin = new Padding(4, 0, 4, 0);
             label_completed.Name = "label_completed";
-            label_completed.Size = new Size(108, 27);
+            label_completed.Size = new Size(121, 28);
             label_completed.TabIndex = 8;
             label_completed.Text = "Complete";
             // 
@@ -139,8 +145,9 @@
             // 
             label_cancelled.AutoSize = true;
             label_cancelled.Location = new Point(-2, 0);
+            label_cancelled.Margin = new Padding(4, 0, 4, 0);
             label_cancelled.Name = "label_cancelled";
-            label_cancelled.Size = new Size(120, 27);
+            label_cancelled.Size = new Size(122, 28);
             label_cancelled.TabIndex = 9;
             label_cancelled.Text = "Cancelled";
             // 
@@ -148,8 +155,9 @@
             // 
             label_onhold.AutoSize = true;
             label_onhold.Location = new Point(-2, 0);
+            label_onhold.Margin = new Padding(4, 0, 4, 0);
             label_onhold.Name = "label_onhold";
-            label_onhold.Size = new Size(84, 27);
+            label_onhold.Size = new Size(96, 28);
             label_onhold.TabIndex = 10;
             label_onhold.Text = "Onhold";
             // 
@@ -157,11 +165,12 @@
             // 
             label_welcome.AutoSize = true;
             label_welcome.BackColor = SystemColors.ButtonHighlight;
-            label_welcome.Font = new Font("Cascadia Code SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_welcome.Font = new Font("Gadugi", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_welcome.ForeColor = SystemColors.ActiveCaptionText;
-            label_welcome.Location = new Point(225, 66);
+            label_welcome.Location = new Point(281, 82);
+            label_welcome.Margin = new Padding(4, 0, 4, 0);
             label_welcome.Name = "label_welcome";
-            label_welcome.Size = new Size(161, 40);
+            label_welcome.Size = new Size(187, 43);
             label_welcome.TabIndex = 11;
             label_welcome.Text = "Welcome!";
             // 
@@ -170,12 +179,12 @@
             panel3.BackColor = SystemColors.HotTrack;
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(label_pending);
-            panel3.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            panel3.Font = new Font("Gadugi", 12F, FontStyle.Bold);
             panel3.ForeColor = SystemColors.ButtonHighlight;
-            panel3.Location = new Point(246, 150);
+            panel3.Location = new Point(308, 188);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(250, 150);
+            panel3.Size = new Size(312, 187);
             panel3.TabIndex = 13;
             // 
             // label4
@@ -194,21 +203,21 @@
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label5);
             panel4.Controls.Add(label_ready);
-            panel4.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            panel4.Font = new Font("Gadugi", 12F, FontStyle.Bold);
             panel4.ForeColor = SystemColors.ButtonHighlight;
-            panel4.Location = new Point(520, 150);
+            panel4.Location = new Point(650, 188);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(250, 150);
+            panel4.Size = new Size(312, 187);
             panel4.TabIndex = 14;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(206, 109);
+            label5.Location = new Point(258, 136);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(40, 27);
+            label5.Size = new Size(39, 28);
             label5.TabIndex = 20;
             label5.Text = "✅";
             // 
@@ -218,21 +227,21 @@
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(label7);
             panel5.Controls.Add(label_drying);
-            panel5.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            panel5.Font = new Font("Gadugi", 12F, FontStyle.Bold);
             panel5.ForeColor = SystemColors.ButtonHighlight;
-            panel5.Location = new Point(1068, 150);
+            panel5.Location = new Point(1335, 188);
             panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(250, 150);
+            panel5.Size = new Size(312, 187);
             panel5.TabIndex = 15;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(206, 109);
+            label7.Location = new Point(258, 136);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(40, 27);
+            label7.Size = new Size(39, 28);
             label7.TabIndex = 20;
             label7.Text = "💨";
             // 
@@ -242,21 +251,21 @@
             panel6.BorderStyle = BorderStyle.FixedSingle;
             panel6.Controls.Add(label6);
             panel6.Controls.Add(label_washing);
-            panel6.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            panel6.Font = new Font("Gadugi", 12F, FontStyle.Bold);
             panel6.ForeColor = SystemColors.ButtonHighlight;
-            panel6.Location = new Point(794, 150);
+            panel6.Location = new Point(992, 188);
             panel6.Margin = new Padding(2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(250, 150);
+            panel6.Size = new Size(312, 187);
             panel6.TabIndex = 16;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(209, 109);
+            label6.Location = new Point(261, 136);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(40, 27);
+            label6.Size = new Size(39, 28);
             label6.TabIndex = 20;
             label6.Text = "\U0001f9fc";
             // 
@@ -266,21 +275,21 @@
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(label10);
             panel7.Controls.Add(label_onhold);
-            panel7.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            panel7.Font = new Font("Gadugi", 12F, FontStyle.Bold);
             panel7.ForeColor = SystemColors.ButtonHighlight;
-            panel7.Location = new Point(794, 322);
+            panel7.Location = new Point(992, 402);
             panel7.Margin = new Padding(2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(250, 150);
+            panel7.Size = new Size(312, 187);
             panel7.TabIndex = 16;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(209, 111);
+            label10.Location = new Point(261, 139);
             label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(40, 27);
+            label10.Size = new Size(39, 28);
             label10.TabIndex = 20;
             label10.Text = "⏸️";
             // 
@@ -290,21 +299,21 @@
             panel8.BorderStyle = BorderStyle.FixedSingle;
             panel8.Controls.Add(label9);
             panel8.Controls.Add(label_completed);
-            panel8.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            panel8.Font = new Font("Gadugi", 12F, FontStyle.Bold);
             panel8.ForeColor = SystemColors.ButtonHighlight;
-            panel8.Location = new Point(245, 323);
+            panel8.Location = new Point(306, 404);
             panel8.Margin = new Padding(2);
             panel8.Name = "panel8";
-            panel8.Size = new Size(250, 150);
+            panel8.Size = new Size(312, 187);
             panel8.TabIndex = 16;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(206, 110);
+            label9.Location = new Point(258, 138);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(40, 27);
+            label9.Size = new Size(39, 28);
             label9.TabIndex = 20;
             label9.Text = "✨";
             // 
@@ -314,21 +323,21 @@
             panel9.BorderStyle = BorderStyle.FixedSingle;
             panel9.Controls.Add(label8);
             panel9.Controls.Add(label_ironing);
-            panel9.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            panel9.Font = new Font("Gadugi", 12F, FontStyle.Bold);
             panel9.ForeColor = SystemColors.ButtonHighlight;
-            panel9.Location = new Point(520, 323);
+            panel9.Location = new Point(650, 404);
             panel9.Margin = new Padding(2);
             panel9.Name = "panel9";
-            panel9.Size = new Size(250, 150);
+            panel9.Size = new Size(312, 187);
             panel9.TabIndex = 16;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(206, 110);
+            label8.Location = new Point(258, 138);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(40, 27);
+            label8.Size = new Size(39, 28);
             label8.TabIndex = 20;
             label8.Text = "👔";
             // 
@@ -338,32 +347,32 @@
             panel11.BorderStyle = BorderStyle.FixedSingle;
             panel11.Controls.Add(label11);
             panel11.Controls.Add(label_cancelled);
-            panel11.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            panel11.Font = new Font("Gadugi", 12F, FontStyle.Bold);
             panel11.ForeColor = SystemColors.ButtonHighlight;
-            panel11.Location = new Point(1068, 322);
+            panel11.Location = new Point(1335, 402);
             panel11.Margin = new Padding(2);
             panel11.Name = "panel11";
-            panel11.Size = new Size(250, 150);
+            panel11.Size = new Size(312, 187);
             panel11.TabIndex = 16;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(206, 111);
+            label11.Location = new Point(258, 139);
             label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
-            label11.Size = new Size(40, 27);
+            label11.Size = new Size(39, 28);
             label11.TabIndex = 20;
             label11.Text = "❌";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Cascadia Code SemiLight", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(246, 106);
+            label3.Font = new Font("Gadugi", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.Location = new Point(308, 132);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(160, 22);
+            label3.Size = new Size(151, 24);
             label3.TabIndex = 18;
             label3.Text = "Order Overview:";
             // 
@@ -374,20 +383,20 @@
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(label13);
             panel2.Controls.Add(panel12);
-            panel2.Location = new Point(220, 856);
+            panel2.Location = new Point(275, 1070);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(890, 188);
+            panel2.Size = new Size(1112, 234);
             panel2.TabIndex = 19;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(2, 3);
+            label13.Location = new Point(2, 4);
             label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
-            label13.Size = new Size(300, 27);
+            label13.Size = new Size(350, 32);
             label13.TabIndex = 5;
             label13.Text = "Mesage and Notification:";
             // 
@@ -397,19 +406,20 @@
             panel12.BackColor = SystemColors.ButtonHighlight;
             panel12.Controls.Add(label_feedback);
             panel12.Controls.Add(label_message);
-            panel12.Location = new Point(8, 44);
+            panel12.Location = new Point(10, 55);
             panel12.Margin = new Padding(0);
             panel12.Name = "panel12";
-            panel12.Size = new Size(862, 124);
+            panel12.Size = new Size(1078, 155);
             panel12.TabIndex = 6;
             // 
             // label_feedback
             // 
             label_feedback.AutoSize = true;
             label_feedback.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_feedback.Location = new Point(13, 57);
+            label_feedback.Location = new Point(16, 71);
+            label_feedback.Margin = new Padding(4, 0, 4, 0);
             label_feedback.Name = "label_feedback";
-            label_feedback.Size = new Size(72, 20);
+            label_feedback.Size = new Size(87, 24);
             label_feedback.TabIndex = 5;
             label_feedback.Text = "Message";
             // 
@@ -417,19 +427,21 @@
             // 
             label_message.AutoSize = true;
             label_message.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_message.Location = new Point(13, 16);
+            label_message.Location = new Point(16, 20);
+            label_message.Margin = new Padding(4, 0, 4, 0);
             label_message.Name = "label_message";
-            label_message.Size = new Size(72, 20);
+            label_message.Size = new Size(87, 24);
             label_message.TabIndex = 4;
             label_message.Text = "Message";
             // 
             // labelCustomerGraph
             // 
             labelCustomerGraph.AutoSize = true;
-            labelCustomerGraph.Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelCustomerGraph.Location = new Point(37, 75);
+            labelCustomerGraph.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelCustomerGraph.Location = new Point(12, 17);
+            labelCustomerGraph.Margin = new Padding(4, 0, 4, 0);
             labelCustomerGraph.Name = "labelCustomerGraph";
-            labelCustomerGraph.Size = new Size(50, 22);
+            labelCustomerGraph.Size = new Size(53, 24);
             labelCustomerGraph.TabIndex = 20;
             labelCustomerGraph.Text = "Load";
             // 
@@ -437,9 +449,10 @@
             // 
             buttonLoadGraph.BackColor = SystemColors.MenuHighlight;
             buttonLoadGraph.ForeColor = SystemColors.ButtonHighlight;
-            buttonLoadGraph.Location = new Point(236, 502);
+            buttonLoadGraph.Location = new Point(295, 628);
+            buttonLoadGraph.Margin = new Padding(4, 4, 4, 4);
             buttonLoadGraph.Name = "buttonLoadGraph";
-            buttonLoadGraph.Size = new Size(50, 40);
+            buttonLoadGraph.Size = new Size(62, 50);
             buttonLoadGraph.TabIndex = 21;
             buttonLoadGraph.Text = "🔃";
             buttonLoadGraph.UseVisualStyleBackColor = false;
@@ -449,9 +462,10 @@
             // 
             comboBoxGrouping.BackColor = SystemColors.ButtonFace;
             comboBoxGrouping.FormattingEnabled = true;
-            comboBoxGrouping.Location = new Point(292, 505);
+            comboBoxGrouping.Location = new Point(365, 631);
+            comboBoxGrouping.Margin = new Padding(4, 4, 4, 4);
             comboBoxGrouping.Name = "comboBoxGrouping";
-            comboBoxGrouping.Size = new Size(200, 28);
+            comboBoxGrouping.Size = new Size(249, 33);
             comboBoxGrouping.TabIndex = 22;
             // 
             // dateTimePickerFrom
@@ -459,17 +473,19 @@
             dateTimePickerFrom.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             dateTimePickerFrom.CalendarMonthBackground = SystemColors.GradientActiveCaption;
             dateTimePickerFrom.CalendarTitleBackColor = SystemColors.GradientActiveCaption;
-            dateTimePickerFrom.Location = new Point(555, 506);
+            dateTimePickerFrom.Location = new Point(694, 632);
+            dateTimePickerFrom.Margin = new Padding(4, 4, 4, 4);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
-            dateTimePickerFrom.Size = new Size(245, 27);
+            dateTimePickerFrom.Size = new Size(305, 31);
             dateTimePickerFrom.TabIndex = 23;
             // 
             // dateTimePickerTo
             // 
             dateTimePickerTo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dateTimePickerTo.Location = new Point(842, 506);
+            dateTimePickerTo.Location = new Point(1052, 632);
+            dateTimePickerTo.Margin = new Padding(4, 4, 4, 4);
             dateTimePickerTo.Name = "dateTimePickerTo";
-            dateTimePickerTo.Size = new Size(250, 27);
+            dateTimePickerTo.Size = new Size(312, 31);
             dateTimePickerTo.TabIndex = 24;
             // 
             // panelCustomerGraph
@@ -478,27 +494,29 @@
             panelCustomerGraph.BackColor = SystemColors.ButtonHighlight;
             panelCustomerGraph.Controls.Add(labelCustomerGraph);
             panelCustomerGraph.Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelCustomerGraph.Location = new Point(220, 548);
+            panelCustomerGraph.Location = new Point(275, 685);
+            panelCustomerGraph.Margin = new Padding(4, 4, 4, 4);
             panelCustomerGraph.Name = "panelCustomerGraph";
-            panelCustomerGraph.Size = new Size(890, 289);
+            panelCustomerGraph.Size = new Size(1112, 361);
             panelCustomerGraph.TabIndex = 25;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(806, 510);
+            label1.Location = new Point(1008, 638);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(34, 20);
+            label1.Size = new Size(42, 25);
             label1.TabIndex = 25;
             label1.Text = "—>";
             // 
             // Laundry_Attendant_Dashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1144, 1055);
+            ClientSize = new Size(1430, 1050);
             Controls.Add(label1);
             Controls.Add(dateTimePickerTo);
             Controls.Add(panel2);
@@ -516,7 +534,7 @@
             Controls.Add(panel5);
             Controls.Add(label_welcome);
             Controls.Add(panelCustomerGraph);
-            Margin = new Padding(4);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "Laundry_Attendant_Dashboard";
             Text = "Laundry Attendant | Dashboard";
             Load += Laundry_Attendant_Dashboard_Load;

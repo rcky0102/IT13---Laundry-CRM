@@ -90,5 +90,10 @@ namespace IT13___Laundry_CRM.Customer
         {
 
         }
+
+        private void textbox_address_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

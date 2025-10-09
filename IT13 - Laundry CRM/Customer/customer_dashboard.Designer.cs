@@ -45,20 +45,22 @@
             // label_status
             // 
             label_status.AutoSize = true;
-            label_status.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_status.Location = new Point(11, 7);
+            label_status.Font = new Font("Gadugi", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_status.Location = new Point(14, 9);
+            label_status.Margin = new Padding(4, 0, 4, 0);
             label_status.Name = "label_status";
-            label_status.Size = new Size(144, 20);
+            label_status.Size = new Size(158, 26);
             label_status.TabIndex = 2;
             label_status.Text = "Laundry Status:";
             // 
             // label_message
             // 
             label_message.AutoSize = true;
-            label_message.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_message.Location = new Point(13, 16);
+            label_message.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_message.Location = new Point(16, 20);
+            label_message.Margin = new Padding(4, 0, 4, 0);
             label_message.Name = "label_message";
-            label_message.Size = new Size(72, 20);
+            label_message.Size = new Size(80, 21);
             label_message.TabIndex = 4;
             label_message.Text = "Message";
             // 
@@ -68,20 +70,21 @@
             panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(label1);
             panel4.Controls.Add(panel3);
-            panel4.Location = new Point(218, 384);
+            panel4.Font = new Font("Gadugi", 8F);
+            panel4.Location = new Point(272, 480);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(789, 134);
+            panel4.Size = new Size(985, 166);
             panel4.TabIndex = 6;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(2, 3);
+            label1.Font = new Font("Gadugi", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(14, 9);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(300, 27);
+            label1.Size = new Size(253, 26);
             label1.TabIndex = 5;
             label1.Text = "Mesage and Notification:";
             // 
@@ -90,20 +93,21 @@
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.Control;
             panel3.Controls.Add(label_message);
-            panel3.Location = new Point(13, 42);
+            panel3.Location = new Point(16, 52);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(757, 64);
+            panel3.Size = new Size(946, 80);
             panel3.TabIndex = 6;
             // 
             // label_welcome
             // 
             label_welcome.AutoSize = true;
-            label_welcome.Font = new Font("Cascadia Code", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_welcome.Font = new Font("Gadugi", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label_welcome.ForeColor = SystemColors.ActiveCaptionText;
-            label_welcome.Location = new Point(233, 73);
+            label_welcome.Location = new Point(268, 99);
+            label_welcome.Margin = new Padding(4, 0, 4, 0);
             label_welcome.Name = "label_welcome";
-            label_welcome.Size = new Size(143, 40);
+            label_welcome.Size = new Size(151, 39);
             label_welcome.TabIndex = 3;
             label_welcome.Text = "Welcome";
             // 
@@ -114,40 +118,42 @@
             Luandry_Status.Controls.Add(flowlayoutpanel_status);
             Luandry_Status.Controls.Add(label_status);
             Luandry_Status.Controls.Add(progressBar1);
-            Luandry_Status.Location = new Point(218, 132);
+            Luandry_Status.Font = new Font("Gadugi", 8F);
+            Luandry_Status.Location = new Point(272, 165);
             Luandry_Status.Margin = new Padding(2);
             Luandry_Status.Name = "Luandry_Status";
-            Luandry_Status.Size = new Size(789, 224);
+            Luandry_Status.Size = new Size(985, 279);
             Luandry_Status.TabIndex = 7;
             Luandry_Status.Paint += Luandry_Status_Paint;
             // 
             // flowlayoutpanel_status
             // 
             flowlayoutpanel_status.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            flowlayoutpanel_status.Location = new Point(16, 51);
+            flowlayoutpanel_status.Location = new Point(20, 64);
+            flowlayoutpanel_status.Margin = new Padding(4, 4, 4, 4);
             flowlayoutpanel_status.Name = "flowlayoutpanel_status";
-            flowlayoutpanel_status.Size = new Size(754, 133);
+            flowlayoutpanel_status.Size = new Size(942, 166);
             flowlayoutpanel_status.TabIndex = 8;
             // 
             // progressBar1
             // 
             progressBar1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            progressBar1.Location = new Point(13, 40);
+            progressBar1.Location = new Point(16, 50);
             progressBar1.Margin = new Padding(2);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(757, 161);
+            progressBar1.Size = new Size(946, 201);
             progressBar1.TabIndex = 8;
             // 
             // customer_dashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1046, 529);
+            ClientSize = new Size(1308, 661);
             Controls.Add(panel4);
             Controls.Add(Luandry_Status);
             Controls.Add(label_welcome);
-            Margin = new Padding(4);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "customer_dashboard";
             Text = "Customer | Dashboard";
             Load += customer_dashboard_Load;

@@ -51,9 +51,10 @@
             // label_message
             // 
             label_message.AutoSize = true;
-            label_message.Location = new Point(18, 18);
+            label_message.Location = new Point(22, 22);
+            label_message.Margin = new Padding(4, 0, 4, 0);
             label_message.Name = "label_message";
-            label_message.Size = new Size(70, 22);
+            label_message.Size = new Size(84, 28);
             label_message.TabIndex = 3;
             label_message.Text = "label3";
             // 
@@ -61,9 +62,10 @@
             // 
             buttonLoadGraph.BackColor = SystemColors.Highlight;
             buttonLoadGraph.ForeColor = SystemColors.ButtonHighlight;
-            buttonLoadGraph.Location = new Point(254, 133);
+            buttonLoadGraph.Location = new Point(257, 161);
+            buttonLoadGraph.Margin = new Padding(4);
             buttonLoadGraph.Name = "buttonLoadGraph";
-            buttonLoadGraph.Size = new Size(50, 40);
+            buttonLoadGraph.Size = new Size(60, 49);
             buttonLoadGraph.TabIndex = 4;
             buttonLoadGraph.Text = "🔃";
             buttonLoadGraph.UseVisualStyleBackColor = false;
@@ -72,34 +74,41 @@
             // dateTimePickerFrom
             // 
             dateTimePickerFrom.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dateTimePickerFrom.Location = new Point(617, 138);
+            dateTimePickerFrom.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dateTimePickerFrom.Location = new Point(740, 169);
+            dateTimePickerFrom.Margin = new Padding(4);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
-            dateTimePickerFrom.Size = new Size(250, 27);
+            dateTimePickerFrom.Size = new Size(299, 34);
             dateTimePickerFrom.TabIndex = 5;
             // 
             // dateTimePickerTo
             // 
             dateTimePickerTo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dateTimePickerTo.Location = new Point(909, 138);
+            dateTimePickerTo.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dateTimePickerTo.Location = new Point(1091, 169);
+            dateTimePickerTo.Margin = new Padding(4);
             dateTimePickerTo.Name = "dateTimePickerTo";
-            dateTimePickerTo.Size = new Size(250, 27);
+            dateTimePickerTo.Size = new Size(299, 34);
             dateTimePickerTo.TabIndex = 6;
             // 
             // comboBoxGrouping
             // 
             comboBoxGrouping.BackColor = SystemColors.ButtonFace;
             comboBoxGrouping.FormattingEnabled = true;
-            comboBoxGrouping.Location = new Point(310, 137);
+            comboBoxGrouping.Location = new Point(325, 168);
+            comboBoxGrouping.Margin = new Padding(4);
             comboBoxGrouping.Name = "comboBoxGrouping";
-            comboBoxGrouping.Size = new Size(200, 30);
+            comboBoxGrouping.Size = new Size(239, 35);
             comboBoxGrouping.TabIndex = 7;
             // 
             // labelCustomerGraph
             // 
             labelCustomerGraph.AutoSize = true;
-            labelCustomerGraph.Location = new Point(37, 86);
+            labelCustomerGraph.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelCustomerGraph.Location = new Point(22, 20);
+            labelCustomerGraph.Margin = new Padding(4, 0, 4, 0);
             labelCustomerGraph.Name = "labelCustomerGraph";
-            labelCustomerGraph.Size = new Size(70, 22);
+            labelCustomerGraph.Size = new Size(63, 24);
             labelCustomerGraph.TabIndex = 8;
             labelCustomerGraph.Text = "label3";
             labelCustomerGraph.Click += labelCustomerGraph_Click;
@@ -110,18 +119,20 @@
             panelCustomerGraph.BackColor = SystemColors.ButtonHighlight;
             panelCustomerGraph.Controls.Add(labelCustomerGraph);
             panelCustomerGraph.Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelCustomerGraph.Location = new Point(223, 182);
+            panelCustomerGraph.Location = new Point(232, 223);
+            panelCustomerGraph.Margin = new Padding(4);
             panelCustomerGraph.Name = "panelCustomerGraph";
-            panelCustomerGraph.Size = new Size(932, 575);
+            panelCustomerGraph.Size = new Size(1154, 706);
             panelCustomerGraph.TabIndex = 26;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(873, 140);
+            label1.Location = new Point(1048, 172);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(30, 22);
+            label1.Size = new Size(36, 28);
             label1.TabIndex = 9;
             label1.Text = "—>";
             // 
@@ -142,20 +153,20 @@
             panel3.BorderStyle = BorderStyle.Fixed3D;
             panel3.Controls.Add(label13);
             panel3.Controls.Add(panel12);
-            panel3.Location = new Point(223, 780);
+            panel3.Location = new Point(268, 957);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(932, 205);
+            panel3.Size = new Size(1118, 251);
             panel3.TabIndex = 27;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(2, 3);
+            label13.Location = new Point(2, 4);
             label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
-            label13.Size = new Size(180, 27);
+            label13.Size = new Size(210, 32);
             label13.TabIndex = 5;
             label13.Text = "Notifications:";
             // 
@@ -165,18 +176,19 @@
             panel12.BackColor = SystemColors.ButtonHighlight;
             panel12.Controls.Add(label_feedback);
             panel12.Controls.Add(label_message);
-            panel12.Location = new Point(17, 46);
+            panel12.Location = new Point(20, 56);
             panel12.Margin = new Padding(0);
             panel12.Name = "panel12";
-            panel12.Size = new Size(893, 139);
+            panel12.Size = new Size(1072, 171);
             panel12.TabIndex = 6;
             // 
             // label_feedback
             // 
             label_feedback.AutoSize = true;
-            label_feedback.Location = new Point(18, 72);
+            label_feedback.Location = new Point(22, 88);
+            label_feedback.Margin = new Padding(4, 0, 4, 0);
             label_feedback.Name = "label_feedback";
-            label_feedback.Size = new Size(170, 22);
+            label_feedback.Size = new Size(204, 28);
             label_feedback.TabIndex = 2;
             label_feedback.Text = "Latest Feedback:";
             // 
@@ -195,19 +207,20 @@
             // 
             label_welcome.AutoSize = true;
             label_welcome.BackColor = SystemColors.ButtonHighlight;
-            label_welcome.Font = new Font("Cascadia Code SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_welcome.Font = new Font("Gadugi", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_welcome.ForeColor = SystemColors.ActiveCaptionText;
-            label_welcome.Location = new Point(242, 79);
+            label_welcome.Location = new Point(232, 97);
+            label_welcome.Margin = new Padding(4, 0, 4, 0);
             label_welcome.Name = "label_welcome";
-            label_welcome.Size = new Size(161, 40);
+            label_welcome.Size = new Size(187, 43);
             label_welcome.TabIndex = 28;
             label_welcome.Text = "Welcome!";
             // 
             // AdminForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 22F);
+            AutoScaleDimensions = new SizeF(12F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1167, 1006);
+            ClientSize = new Size(1400, 1050);
             Controls.Add(label1);
             Controls.Add(label_welcome);
             Controls.Add(panel3);
@@ -216,7 +229,7 @@
             Controls.Add(comboBoxGrouping);
             Controls.Add(dateTimePickerFrom);
             Controls.Add(buttonLoadGraph);
-            Margin = new Padding(5, 3, 5, 3);
+            Margin = new Padding(6, 4, 6, 4);
             Name = "AdminForm";
             Text = "Admin | Dashboard";
             Load += AdminForm_Load;

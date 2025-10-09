@@ -12,7 +12,7 @@ namespace IT13___Laundry_CRM.Repositories
     internal class MessageRepository
     {
         private readonly string connectionString =
-    "Data Source=LAPTOP-NGRORR8P\\SQLEXPRESS;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+    "Data Source=RAVEN-13\\SQLEXPRESS01;Initial Catalog=LaundryDb; Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
         public List<Message> GetConversation(int userId1, int userId2)
         {

@@ -60,7 +60,7 @@
             panel1.Location = new Point(0, 60);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(202, 434);
+            panel1.Size = new Size(202, 615);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -68,7 +68,7 @@
             // 
             button_feedback.FlatAppearance.BorderSize = 0;
             button_feedback.FlatStyle = FlatStyle.Flat;
-            button_feedback.Font = new Font("Cascadia Code", 12F);
+            button_feedback.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_feedback.ForeColor = SystemColors.ButtonHighlight;
             button_feedback.Location = new Point(5, 170);
             button_feedback.Margin = new Padding(4, 3, 4, 3);
@@ -84,7 +84,7 @@
             // 
             button_messages.FlatAppearance.BorderSize = 0;
             button_messages.FlatStyle = FlatStyle.Flat;
-            button_messages.Font = new Font("Cascadia Code", 12F);
+            button_messages.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_messages.ForeColor = SystemColors.ButtonHighlight;
             button_messages.Location = new Point(5, 120);
             button_messages.Margin = new Padding(4, 3, 4, 3);
@@ -100,7 +100,7 @@
             // 
             button_users.FlatAppearance.BorderSize = 0;
             button_users.FlatStyle = FlatStyle.Flat;
-            button_users.Font = new Font("Cascadia Code", 12F);
+            button_users.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_users.ForeColor = SystemColors.ButtonHighlight;
             button_users.Location = new Point(5, 70);
             button_users.Margin = new Padding(4, 3, 4, 3);
@@ -116,12 +116,12 @@
             // 
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Cascadia Code", 12F);
+            button1.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ButtonHighlight;
             button1.Location = new Point(5, 20);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
-            button1.Size = new Size(195, 35);
+            button1.Size = new Size(195, 44);
             button1.TabIndex = 0;
             button1.Text = "📊 DashBoard";
             button1.TextAlign = ContentAlignment.MiddleLeft;
@@ -139,7 +139,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(941, 60);
+            panel2.Size = new Size(1232, 60);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
@@ -162,7 +162,7 @@
             label3.Location = new Point(169, 8);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(70, 32);
+            label3.Size = new Size(81, 37);
             label3.TabIndex = 7;
             label3.Text = "Care";
             // 
@@ -174,7 +174,7 @@
             label4.Location = new Point(59, 7);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(120, 33);
+            label4.Size = new Size(143, 40);
             label4.TabIndex = 8;
             label4.Text = "Laundry";
             // 
@@ -182,7 +182,7 @@
             // 
             profile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             profile.Font = new Font("Cascadia Code", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            profile.Location = new Point(877, 4);
+            profile.Location = new Point(1168, 4);
             profile.Name = "profile";
             profile.Size = new Size(50, 44);
             profile.TabIndex = 1;
@@ -197,21 +197,21 @@
             contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { logout });
             contextmenustrip_profile.Name = "contextmenustrip_profile";
             contextmenustrip_profile.ShowImageMargin = false;
-            contextmenustrip_profile.Size = new Size(132, 36);
+            contextmenustrip_profile.Size = new Size(148, 42);
             // 
             // logout
             // 
             logout.Name = "logout";
-            logout.Size = new Size(131, 32);
+            logout.Size = new Size(147, 38);
             logout.Text = "Logout";
             logout.Click += logout_Click;
             // 
             // SIdebarTemplate
             // 
-            AutoScaleDimensions = new SizeF(10F, 22F);
+            AutoScaleDimensions = new SizeF(12F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(941, 494);
+            ClientSize = new Size(1232, 675);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);

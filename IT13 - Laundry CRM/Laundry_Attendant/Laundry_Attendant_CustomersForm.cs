@@ -166,5 +166,10 @@ namespace IT13___Laundry_CRM
         {
             LoadCustomers(textbox_search.Text.Trim());
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

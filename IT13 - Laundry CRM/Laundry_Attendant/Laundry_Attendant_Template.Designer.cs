@@ -61,20 +61,21 @@
             panel1.Dock = DockStyle.Left;
             panel1.Font = new Font("Cascadia Code SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             panel1.ForeColor = SystemColors.ButtonHighlight;
-            panel1.Location = new Point(0, 60);
+            panel1.Location = new Point(0, 74);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 390);
+            panel1.Size = new Size(250, 488);
             panel1.TabIndex = 0;
             // 
             // button_feedback
             // 
             button_feedback.FlatAppearance.BorderSize = 0;
             button_feedback.FlatStyle = FlatStyle.Flat;
-            button_feedback.Font = new Font("Cascadia Code SemiLight", 12F);
-            button_feedback.Location = new Point(5, 220);
+            button_feedback.Font = new Font("Gadugi", 12F);
+            button_feedback.Location = new Point(6, 275);
             button_feedback.Margin = new Padding(2);
             button_feedback.Name = "button_feedback";
-            button_feedback.Size = new Size(195, 35);
+            button_feedback.Size = new Size(244, 44);
             button_feedback.TabIndex = 4;
             button_feedback.Text = "📲 Feedbacks";
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
@@ -85,11 +86,11 @@
             // 
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Cascadia Code SemiLight", 12F);
-            button3.Location = new Point(5, 170);
+            button3.Font = new Font("Gadugi", 12F);
+            button3.Location = new Point(6, 212);
             button3.Margin = new Padding(2);
             button3.Name = "button3";
-            button3.Size = new Size(195, 35);
+            button3.Size = new Size(244, 44);
             button3.TabIndex = 3;
             button3.Text = "📩 Messages";
             button3.TextAlign = ContentAlignment.MiddleLeft;
@@ -100,11 +101,11 @@
             // 
             button_dashboard.FlatAppearance.BorderSize = 0;
             button_dashboard.FlatStyle = FlatStyle.Flat;
-            button_dashboard.Font = new Font("Cascadia Code SemiLight", 12F);
-            button_dashboard.Location = new Point(5, 20);
+            button_dashboard.Font = new Font("Gadugi", 12F);
+            button_dashboard.Location = new Point(6, 25);
             button_dashboard.Margin = new Padding(2);
             button_dashboard.Name = "button_dashboard";
-            button_dashboard.Size = new Size(195, 35);
+            button_dashboard.Size = new Size(244, 44);
             button_dashboard.TabIndex = 2;
             button_dashboard.Text = "🏠 DashBoard";
             button_dashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -115,10 +116,11 @@
             // 
             button_status.FlatAppearance.BorderSize = 0;
             button_status.FlatStyle = FlatStyle.Flat;
-            button_status.Font = new Font("Cascadia Code SemiLight", 12F);
-            button_status.Location = new Point(5, 120);
+            button_status.Font = new Font("Gadugi", 12F);
+            button_status.Location = new Point(6, 150);
+            button_status.Margin = new Padding(4, 4, 4, 4);
             button_status.Name = "button_status";
-            button_status.Size = new Size(195, 35);
+            button_status.Size = new Size(244, 44);
             button_status.TabIndex = 1;
             button_status.Text = "⌚ Status";
             button_status.TextAlign = ContentAlignment.MiddleLeft;
@@ -129,10 +131,11 @@
             // 
             button_customers.FlatAppearance.BorderSize = 0;
             button_customers.FlatStyle = FlatStyle.Flat;
-            button_customers.Font = new Font("Cascadia Code SemiLight", 12F);
-            button_customers.Location = new Point(5, 70);
+            button_customers.Font = new Font("Gadugi", 12F);
+            button_customers.Location = new Point(6, 88);
+            button_customers.Margin = new Padding(4, 4, 4, 4);
             button_customers.Name = "button_customers";
-            button_customers.Size = new Size(195, 35);
+            button_customers.Size = new Size(244, 44);
             button_customers.TabIndex = 0;
             button_customers.Text = "👤 Customers";
             button_customers.TextAlign = ContentAlignment.MiddleLeft;
@@ -146,12 +149,12 @@
             contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { logout });
             contextmenustrip_profile.Name = "contextmenustrip_profile";
             contextmenustrip_profile.ShowImageMargin = false;
-            contextmenustrip_profile.Size = new Size(132, 36);
+            contextmenustrip_profile.Size = new Size(148, 42);
             // 
             // logout
             // 
             logout.Name = "logout";
-            logout.Size = new Size(131, 32);
+            logout.Size = new Size(147, 38);
             logout.Text = "Logout";
             logout.Click += logout_Click;
             // 
@@ -160,9 +163,10 @@
             profile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             profile.FlatStyle = FlatStyle.System;
             profile.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            profile.Location = new Point(881, 7);
+            profile.Location = new Point(1102, 9);
+            profile.Margin = new Padding(4, 4, 4, 4);
             profile.Name = "profile";
-            profile.Size = new Size(50, 40);
+            profile.Size = new Size(62, 50);
             profile.TabIndex = 2;
             profile.Text = "👤";
             profile.UseVisualStyleBackColor = true;
@@ -180,17 +184,17 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(945, 60);
+            panel3.Size = new Size(1181, 74);
             panel3.TabIndex = 3;
             panel3.Paint += panel3_Paint;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(6, 4);
+            pictureBox2.Location = new Point(8, 5);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(50, 47);
+            pictureBox2.Size = new Size(62, 59);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
@@ -200,10 +204,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.RoyalBlue;
-            label3.Location = new Point(168, 8);
+            label3.Location = new Point(210, 10);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(70, 32);
+            label3.Size = new Size(81, 37);
             label3.TabIndex = 4;
             label3.Text = "Care";
             // 
@@ -212,21 +216,22 @@
             label4.AutoSize = true;
             label4.Font = new Font("Cascadia Code", 15F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ButtonHighlight;
-            label4.Location = new Point(58, 7);
+            label4.Location = new Point(72, 9);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(120, 33);
+            label4.Size = new Size(143, 40);
             label4.TabIndex = 5;
             label4.Text = "Laundry";
             // 
             // Laundry_Attendant_Template
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(945, 450);
+            ClientSize = new Size(1181, 562);
             Controls.Add(panel1);
             Controls.Add(panel3);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Laundry_Attendant_Template";
             Text = "Laundry Attendant | Template";
             Load += Laundry_Attendant_Template_Load;
