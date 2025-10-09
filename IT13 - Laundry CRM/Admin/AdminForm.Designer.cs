@@ -34,7 +34,7 @@
             dateTimePickerTo = new DateTimePicker();
             comboBoxGrouping = new ComboBox();
             labelCustomerGraph = new Label();
-            panel_graph = new Panel();
+            panelCustomerGraph = new Panel();
             label1 = new Label();
             label3 = new Label();
             panel3 = new Panel();
@@ -43,7 +43,7 @@
             label_feedback = new Label();
             label4 = new Label();
             label_welcome = new Label();
-            panel_graph.SuspendLayout();
+            panelCustomerGraph.SuspendLayout();
             panel3.SuspendLayout();
             panel12.SuspendLayout();
             SuspendLayout();
@@ -61,7 +61,7 @@
             // 
             buttonLoadGraph.BackColor = SystemColors.Highlight;
             buttonLoadGraph.ForeColor = SystemColors.ButtonHighlight;
-            buttonLoadGraph.Location = new Point(19, 14);
+            buttonLoadGraph.Location = new Point(254, 133);
             buttonLoadGraph.Name = "buttonLoadGraph";
             buttonLoadGraph.Size = new Size(50, 40);
             buttonLoadGraph.TabIndex = 4;
@@ -72,7 +72,7 @@
             // dateTimePickerFrom
             // 
             dateTimePickerFrom.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dateTimePickerFrom.Location = new Point(328, 19);
+            dateTimePickerFrom.Location = new Point(617, 138);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
             dateTimePickerFrom.Size = new Size(250, 27);
             dateTimePickerFrom.TabIndex = 5;
@@ -80,7 +80,7 @@
             // dateTimePickerTo
             // 
             dateTimePickerTo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dateTimePickerTo.Location = new Point(620, 19);
+            dateTimePickerTo.Location = new Point(909, 138);
             dateTimePickerTo.Name = "dateTimePickerTo";
             dateTimePickerTo.Size = new Size(250, 27);
             dateTimePickerTo.TabIndex = 6;
@@ -89,7 +89,7 @@
             // 
             comboBoxGrouping.BackColor = SystemColors.ButtonFace;
             comboBoxGrouping.FormattingEnabled = true;
-            comboBoxGrouping.Location = new Point(75, 18);
+            comboBoxGrouping.Location = new Point(310, 137);
             comboBoxGrouping.Name = "comboBoxGrouping";
             comboBoxGrouping.Size = new Size(200, 30);
             comboBoxGrouping.TabIndex = 7;
@@ -104,27 +104,22 @@
             labelCustomerGraph.Text = "label3";
             labelCustomerGraph.Click += labelCustomerGraph_Click;
             // 
-            // panel_graph
+            // panelCustomerGraph
             // 
-            panel_graph.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel_graph.BackColor = SystemColors.GradientActiveCaption;
-            panel_graph.Controls.Add(label1);
-            panel_graph.Controls.Add(labelCustomerGraph);
-            panel_graph.Controls.Add(dateTimePickerTo);
-            panel_graph.Controls.Add(comboBoxGrouping);
-            panel_graph.Controls.Add(dateTimePickerFrom);
-            panel_graph.Controls.Add(buttonLoadGraph);
-            panel_graph.Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel_graph.Location = new Point(223, 144);
-            panel_graph.Name = "panel_graph";
-            panel_graph.Size = new Size(878, 300);
-            panel_graph.TabIndex = 26;
+            panelCustomerGraph.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelCustomerGraph.BackColor = SystemColors.ButtonHighlight;
+            panelCustomerGraph.Controls.Add(labelCustomerGraph);
+            panelCustomerGraph.Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panelCustomerGraph.Location = new Point(223, 182);
+            panelCustomerGraph.Name = "panelCustomerGraph";
+            panelCustomerGraph.Size = new Size(932, 575);
+            panelCustomerGraph.TabIndex = 26;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(584, 21);
+            label1.Location = new Point(873, 140);
             label1.Name = "label1";
             label1.Size = new Size(30, 22);
             label1.TabIndex = 9;
@@ -147,10 +142,10 @@
             panel3.BorderStyle = BorderStyle.Fixed3D;
             panel3.Controls.Add(label13);
             panel3.Controls.Add(panel12);
-            panel3.Location = new Point(223, 470);
+            panel3.Location = new Point(223, 780);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(878, 205);
+            panel3.Size = new Size(932, 205);
             panel3.TabIndex = 27;
             // 
             // label13
@@ -167,13 +162,13 @@
             // panel12
             // 
             panel12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel12.BackColor = SystemColors.Control;
+            panel12.BackColor = SystemColors.ButtonHighlight;
             panel12.Controls.Add(label_feedback);
             panel12.Controls.Add(label_message);
             panel12.Location = new Point(17, 46);
             panel12.Margin = new Padding(0);
             panel12.Name = "panel12";
-            panel12.Size = new Size(839, 139);
+            panel12.Size = new Size(893, 139);
             panel12.TabIndex = 6;
             // 
             // label_feedback
@@ -212,19 +207,29 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1113, 791);
+            ClientSize = new Size(1167, 1006);
+            Controls.Add(label1);
             Controls.Add(label_welcome);
             Controls.Add(panel3);
-            Controls.Add(panel_graph);
+            Controls.Add(dateTimePickerTo);
+            Controls.Add(panelCustomerGraph);
+            Controls.Add(comboBoxGrouping);
+            Controls.Add(dateTimePickerFrom);
+            Controls.Add(buttonLoadGraph);
             Margin = new Padding(5, 3, 5, 3);
             Name = "AdminForm";
             Text = "Admin | Dashboard";
             Load += AdminForm_Load;
-            Controls.SetChildIndex(panel_graph, 0);
+            Controls.SetChildIndex(buttonLoadGraph, 0);
+            Controls.SetChildIndex(dateTimePickerFrom, 0);
+            Controls.SetChildIndex(comboBoxGrouping, 0);
+            Controls.SetChildIndex(panelCustomerGraph, 0);
+            Controls.SetChildIndex(dateTimePickerTo, 0);
             Controls.SetChildIndex(panel3, 0);
             Controls.SetChildIndex(label_welcome, 0);
-            panel_graph.ResumeLayout(false);
-            panel_graph.PerformLayout();
+            Controls.SetChildIndex(label1, 0);
+            panelCustomerGraph.ResumeLayout(false);
+            panelCustomerGraph.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel12.ResumeLayout(false);
@@ -240,7 +245,7 @@
         private DateTimePicker dateTimePickerTo;
         private ComboBox comboBoxGrouping;
         private Label labelCustomerGraph;
-        private Panel panel_graph;
+        private Panel panelCustomerGraph;
         private Label label3;
         private Panel panel3;
         private Label label13;
