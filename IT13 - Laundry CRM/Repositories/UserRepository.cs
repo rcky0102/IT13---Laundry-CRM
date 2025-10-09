@@ -11,10 +11,14 @@ namespace IT13___Laundry_CRM.Repositories
     {
         private readonly string connectionString =
 <<<<<<< HEAD
+<<<<<<< HEAD
             "Data Source=LAPTOP-NGRORR8P\\SQLEXPRESS;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
 =======
             "Data Source=LAPTOP-NGRORR8P\\SQLEXPRESS; Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
 >>>>>>> e30cbf9 (ui gadugi)
+=======
+            "Data Source=GILGWE\\SQLEXPRESS;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+>>>>>>> 01d16142ab20084db456627e578487a282f25ac9
 
         // Get all users
         public List<User> GetUsers()
