@@ -71,6 +71,61 @@ namespace IT13___Laundry_CRM.Repositories
                 return statuses;
             }
 
+
+        public List<Status> GetAllStatusTransactions()
+        {
+            var statuses = new List<Status>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sql = @"
+                        SELECT s.status_id, s.user_id, s.status, s.created_at, s.is_archived,
+                               u.first_name, u.middle_name, u.last_name
+                        FROM Status s
+                        INNER JOIN Users u ON s.user_id = u.user_id
+                        ORDER BY s.created_at ASC";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var user = new User
+                                {
+                                    user_id = reader.GetInt32(1),
+                                    first_name = reader.IsDBNull(5) ? null : reader.GetString(5),
+                                    middle_name = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    last_name = reader.IsDBNull(7) ? null : reader.GetString(7)
+                                };
+
+                                var status = new Status
+                                {
+                                    status_id = reader.GetInt32(0),
+                                    user_id = reader.GetInt32(1),
+                                    status = reader.GetString(2),
+                                    created_at = reader.GetDateTime(3),
+                                    User = user
+                                };
+
+                                statuses.Add(status);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+
+            return statuses;
+        }
+
         public List<Status> GetStatusesByUserId(int userId)
         {
             var statuses = new List<Status>();
@@ -114,6 +169,50 @@ namespace IT13___Laundry_CRM.Repositories
                 }
             }
 
+            return statuses;
+        }
+
+        public List<Status> GetCustomerTransactionsByDateRange(DateTime from, DateTime to)
+        {
+            var statuses = new List<Status>();
+
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"SELECT DISTINCT s.user_id, s.created_at,
+                                u.first_name, u.middle_name, u.last_name
+                         FROM Status s
+                         INNER JOIN Users u ON s.user_id = u.user_id
+                         WHERE s.created_at >= @FromDate AND s.created_at <= @ToDate
+                         AND u.role = 'customer'
+                         ORDER BY s.created_at ASC";
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@FromDate", from);
+                    cmd.Parameters.AddWithValue("@ToDate", to);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var status = new Status
+                            {
+                                user_id = (int)reader["user_id"],
+                                created_at = (DateTime)reader["created_at"],
+                                User = new User
+                                {
+                                    user_id = (int)reader["user_id"],
+                                    first_name = reader["first_name"].ToString(),
+                                    middle_name = reader["middle_name"].ToString(),
+                                    last_name = reader["last_name"].ToString()
+                                }
+                            };
+                            statuses.Add(status);
+                        }
+                    }
+                }
+            }
             return statuses;
         }
 
