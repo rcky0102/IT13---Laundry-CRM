@@ -21,88 +21,70 @@ namespace IT13___Laundry_CRM.Customer
         private readonly MessageRepository messageRepository = new MessageRepository();
 
         private List<Message> currentConversation = new List<Message>();
+        private List<User> allUsers = new List<User>();
+        private User selectedUser = null;
+        private List<User> filteredUsers = new List<User>();
 
         public customer_messages()
         {
             InitializeComponent();
-            LoadMessages();
+            LoadAllUsers();
 
             listbox_messages.DrawMode = DrawMode.OwnerDrawVariable;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
 
-            int radius = 10;
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            path.AddArc(0, 0, radius, radius, 180, 90);
-            path.AddArc(combobox_users.Width - radius, 0, radius, radius, 270, 90);
-            path.AddArc(combobox_users.Width - radius, combobox_users.Height - radius, radius, radius, 0, 90);
-            path.AddArc(0, combobox_users.Height - radius, radius, radius, 90, 90);
-            path.CloseAllFigures();
-            combobox_users.Region = new Region(path);
 
-            // Optional styling
-            combobox_users.FlatStyle = FlatStyle.Flat;
-            combobox_users.BackColor = Color.White;
+            textbox_searchUser.TextChanged += textbox_searchUser_TextChanged;
+            listbox_users.SelectedIndexChanged += listbox_users_SelectedIndexChanged;
+        }
+
+        private void LoadAllUsers()
+        {
+            try
+            {
+                allUsers = userRepository.GetUsers()
+                    .Where(u => u.role == "laundry_attendant" || u.role == "admin")
+                    .ToList();
+
+                UpdateUserList(allUsers);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading users: " + ex.Message);
+            }
+        }
+
+        private void UpdateUserList(List<User> users)
+        {
+            filteredUsers = users; // save filtered list
+            listbox_users.Items.Clear();
+            foreach (var u in users)
+            {
+                listbox_users.Items.Add($"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name} ({u.role})");
+            }
         }
 
         private void customer_messages_Load(object sender, EventArgs e)
         {
-            LoadUsersToComboBox();
-
-            combobox_users.SelectedIndexChanged += combobox_users_SelectedIndexChanged;
-        }
-
-        private void LoadUsersToComboBox()
-        {
-            try
-            {
-                var users = userRepository.GetUsers();
-
-                var filteredUsers = users
-                    .Where(u => u.role == "laundry_attendant" || u.role == "admin")
-                    .Select(u => new UserComboItem
-                    {
-                        user_id = u.user_id,
-                        FullName = $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name} ({u.role})"
-                    })
-                    .ToList();
-
-                combobox_users.DisplayMember = "FullName";
-                combobox_users.ValueMember = "user_id";
-                combobox_users.DataSource = filteredUsers;
-                combobox_users.SelectedIndex = -1;
-
-                combobox_users.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                combobox_users.AutoCompleteSource = AutoCompleteSource.ListItems;
-                combobox_users.DropDownStyle = ComboBoxStyle.DropDown;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading users: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void LoadMessages()
         {
             try
             {
-                if (combobox_users.SelectedIndex == -1)
+                if (selectedUser == null)
                 {
                     listbox_messages.Items.Clear();
                     return;
                 }
 
-                int selectedUserId = (int)combobox_users.SelectedValue;
-
-                currentConversation = messageRepository.GetConversation(CurrentUser.UserId, selectedUserId);
-
+                currentConversation = messageRepository.GetConversation(CurrentUser.UserId, selectedUser.user_id);
                 listbox_messages.Items.Clear();
 
                 // Preload users for name lookup
-                var users = userRepository.GetUsers();
-                var userDict = users.ToDictionary(u => u.user_id,
+                var userDict = allUsers.ToDictionary(u => u.user_id,
                     u => $"{u.first_name} {(string.IsNullOrEmpty(u.middle_name) ? "" : u.middle_name + " ")}{u.last_name}");
 
                 foreach (var msg in currentConversation)
@@ -124,154 +106,127 @@ namespace IT13___Laundry_CRM.Customer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading conversation: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading conversation: " + ex.Message);
             }
         }
 
         private void button_send_Click(object sender, EventArgs e)
         {
-            try
+            if (selectedUser == null)
             {
-                // Ensure a user is selected
-                if (combobox_users.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Please select a user to send the message to.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Get the receiver ID from the combo box
-                int receiverId = (int)combobox_users.SelectedValue;
-
-                // Get the message text
-                string messageText = textbox_message.Text.Trim(); // Make sure you have a TextBox named 'textbox_message'
-
-                if (string.IsNullOrEmpty(messageText))
-                {
-                    MessageBox.Show("Please enter a message before sending.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Create the Message object
-                Message message = new Message
-                {
-                    sender_id = CurrentUser.UserId, // Replace with your current logged-in user logic
-                    receiver_id = receiverId,
-                    message = messageText,
-                    created_at = DateTime.Now
-                };
-
-                // Save the message
-                bool success = messageRepository.AddMessage(message);
-
-                if (success)
-                {
-                    //MessageBox.Show("Message sent successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    textbox_message.Clear();
-                    LoadMessages();
-                }
-                else
-                {
-                    MessageBox.Show("Failed to send the message.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Please select a user first.");
+                return;
             }
-            catch (Exception ex)
+
+            string messageText = textbox_message.Text.Trim();
+            if (string.IsNullOrEmpty(messageText)) return;
+
+            Message message = new Message
             {
-                MessageBox.Show("Error sending message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sender_id = CurrentUser.UserId,
+                receiver_id = selectedUser.user_id,
+                message = messageText,
+                created_at = DateTime.Now
+            };
+
+            if (messageRepository.AddMessage(message))
+            {
+                textbox_message.Clear();
+                LoadMessages();
+            }
+            else
+            {
+                MessageBox.Show("Failed to send message.");
             }
         }
 
 
         private void button_edit_Click(object sender, EventArgs e)
         {
-            if (listbox_messages.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select a message to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (listbox_messages.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Please select a message to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
-            // Get the selected message
-            var selectedMessage = currentConversation[listbox_messages.SelectedIndex];
+            //// Get the selected message
+            //var selectedMessage = currentConversation[listbox_messages.SelectedIndex];
 
-            // Only allow editing if the current user is the sender
-            if (selectedMessage.sender_id != CurrentUser.UserId)
-            {
-                MessageBox.Show("You can only edit your own messages.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //// Only allow editing if the current user is the sender
+            //if (selectedMessage.sender_id != CurrentUser.UserId)
+            //{
+            //    MessageBox.Show("You can only edit your own messages.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
-            // Show input dialog to edit the text
-            string newText = Microsoft.VisualBasic.Interaction.InputBox(
-                "Edit your message:",
-                "Edit Message",
-                selectedMessage.message
-            );
+            //// Show input dialog to edit the text
+            //string newText = Microsoft.VisualBasic.Interaction.InputBox(
+            //    "Edit your message:",
+            //    "Edit Message",
+            //    selectedMessage.message
+            //);
 
-            if (string.IsNullOrWhiteSpace(newText)) return;
+            //if (string.IsNullOrWhiteSpace(newText)) return;
 
-            // Update in DB
-            bool success = messageRepository.UpdateMessage(selectedMessage.message_id, newText);
+            //// Update in DB
+            //bool success = messageRepository.UpdateMessage(selectedMessage.message_id, newText);
 
-            if (success)
-            {
-                //MessageBox.Show("Message updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadMessages();
-            }
-            else
-            {
-                MessageBox.Show("Failed to update message.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (success)
+            //{
+            //    //MessageBox.Show("Message updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    LoadMessages();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Failed to update message.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void button_delete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Check if user selected a message
-                if (listbox_messages.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Please select a message to delete.", "Warning",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+            //try
+            //{
+            //    // Check if user selected a message
+            //    if (listbox_messages.SelectedIndex == -1)
+            //    {
+            //        MessageBox.Show("Please select a message to delete.", "Warning",
+            //                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
 
-                // Get the selected message object
-                var selectedMessage = currentConversation[listbox_messages.SelectedIndex];
+            //    // Get the selected message object
+            //    var selectedMessage = currentConversation[listbox_messages.SelectedIndex];
 
-                // Confirm delete
-                var confirm = MessageBox.Show("Are you sure you want to delete this message?",
-                                              "Confirm Delete",
-                                              MessageBoxButtons.YesNo,
-                                              MessageBoxIcon.Question);
+            //    // Confirm delete
+            //    var confirm = MessageBox.Show("Are you sure you want to delete this message?",
+            //                                  "Confirm Delete",
+            //                                  MessageBoxButtons.YesNo,
+            //                                  MessageBoxIcon.Question);
 
-                if (confirm == DialogResult.Yes)
-                {
-                    bool success = messageRepository.DeleteMessage(selectedMessage.message_id);
+            //    if (confirm == DialogResult.Yes)
+            //    {
+            //        bool success = messageRepository.DeleteMessage(selectedMessage.message_id);
 
-                    if (success)
-                    {
-                        //MessageBox.Show("Message deleted successfully!", "Success",
-                        //                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadMessages(); // Refresh messages after delete
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to delete the message.", "Error",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error deleting message: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //        if (success)
+            //        {
+            //            //MessageBox.Show("Message deleted successfully!", "Success",
+            //            //                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            LoadMessages(); // Refresh messages after delete
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Failed to delete the message.", "Error",
+            //                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error deleting message: " + ex.Message, "Error",
+            //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
-        private void combobox_users_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadMessages();
-        }
 
         private void listbox_messages_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -322,6 +277,26 @@ namespace IT13___Laundry_CRM.Customer
                 SizeF textSize = g.MeasureString(item.Text, listbox_messages.Font, 300);
                 e.ItemHeight = (int)textSize.Height + 25; // padding
             }
+        }
+
+        private void textbox_searchUser_TextChanged(object sender, EventArgs e)
+        {
+            string search = textbox_searchUser.Text.Trim().ToLower();
+            var filtered = allUsers
+                .Where(u => u.first_name.ToLower().Contains(search) ||
+                            (u.middle_name != null && u.middle_name.ToLower().Contains(search)) ||
+                            u.last_name.ToLower().Contains(search) ||
+                            u.role.ToLower().Contains(search))
+                .ToList();
+            UpdateUserList(filtered);
+        }
+
+        private void listbox_users_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listbox_users.SelectedIndex == -1) return;
+
+            selectedUser = filteredUsers[listbox_users.SelectedIndex]; // use filteredUsers, not allUsers
+            LoadMessages();
         }
     }
 }

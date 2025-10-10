@@ -28,36 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            combobox_users = new ComboBox();
             listbox_messages = new ListBox();
             button_send = new Button();
-            button_edit = new Button();
-            button_delete = new Button();
             textbox_message = new TextBox();
             panel3 = new Panel();
-            label2 = new Label();
-            label1 = new Label();
+            textbox_searchUser = new TextBox();
+            listbox_users = new ListBox();
             panel3.SuspendLayout();
             SuspendLayout();
-            // 
-            // combobox_users
-            // 
-            combobox_users.BackColor = SystemColors.ButtonFace;
-            combobox_users.Font = new Font("Cascadia Code SemiBold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            combobox_users.FormattingEnabled = true;
-            combobox_users.Location = new Point(16, 18);
-            combobox_users.Name = "combobox_users";
-            combobox_users.Size = new Size(400, 30);
-            combobox_users.TabIndex = 1;
-            combobox_users.SelectedIndexChanged += combobox_users_SelectedIndexChanged;
             // 
             // listbox_messages
             // 
             listbox_messages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_messages.FormattingEnabled = true;
-            listbox_messages.Location = new Point(221, 250);
+            listbox_messages.Location = new Point(547, 161);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(749, 244);
+            listbox_messages.Size = new Size(420, 244);
             listbox_messages.TabIndex = 2;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
@@ -68,7 +54,7 @@
             button_send.BackColor = SystemColors.HotTrack;
             button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(919, 521);
+            button_send.Location = new Point(919, 450);
             button_send.Name = "button_send";
             button_send.Size = new Size(54, 40);
             button_send.TabIndex = 3;
@@ -76,37 +62,11 @@
             button_send.UseVisualStyleBackColor = false;
             button_send.Click += button_send_Click;
             // 
-            // button_edit
-            // 
-            button_edit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button_edit.BackColor = Color.ForestGreen;
-            button_edit.ForeColor = SystemColors.ButtonHighlight;
-            button_edit.Location = new Point(617, 13);
-            button_edit.Name = "button_edit";
-            button_edit.Size = new Size(50, 40);
-            button_edit.TabIndex = 4;
-            button_edit.Text = "✏️";
-            button_edit.UseVisualStyleBackColor = false;
-            button_edit.Click += button_edit_Click;
-            // 
-            // button_delete
-            // 
-            button_delete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button_delete.BackColor = Color.IndianRed;
-            button_delete.ForeColor = SystemColors.ButtonHighlight;
-            button_delete.Location = new Point(673, 13);
-            button_delete.Name = "button_delete";
-            button_delete.Size = new Size(50, 40);
-            button_delete.TabIndex = 5;
-            button_delete.Text = "🗑️";
-            button_delete.UseVisualStyleBackColor = false;
-            button_delete.Click += button_delete_Click;
-            // 
             // textbox_message
             // 
             textbox_message.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_message.BorderStyle = BorderStyle.FixedSingle;
-            textbox_message.Location = new Point(221, 521);
+            textbox_message.Location = new Point(221, 450);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
             textbox_message.Size = new Size(692, 40);
@@ -117,36 +77,29 @@
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.ActiveCaption;
             panel3.BorderStyle = BorderStyle.Fixed3D;
-            panel3.Controls.Add(button_delete);
-            panel3.Controls.Add(combobox_users);
-            panel3.Controls.Add(button_edit);
-            panel3.Location = new Point(221, 169);
+            panel3.Controls.Add(textbox_searchUser);
+            panel3.Location = new Point(221, 80);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(746, 75);
             panel3.TabIndex = 7;
             // 
-            // label2
+            // textbox_searchUser
             // 
-            label2.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(284, 114);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(606, 38);
-            label2.TabIndex = 9;
-            label2.Text = "“This chat allows you to communicate directly with our administrators for timely support and guidance.”";
+            textbox_searchUser.Location = new Point(23, 19);
+            textbox_searchUser.Name = "textbox_searchUser";
+            textbox_searchUser.Size = new Size(213, 27);
+            textbox_searchUser.TabIndex = 8;
+            textbox_searchUser.TextChanged += textbox_searchUser_TextChanged;
             // 
-            // label1
+            // listbox_users
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cascadia Code", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(221, 74);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(166, 40);
-            label1.TabIndex = 10;
-            label1.Text = "🔔 Inbox";
+            listbox_users.FormattingEnabled = true;
+            listbox_users.Location = new Point(221, 161);
+            listbox_users.Name = "listbox_users";
+            listbox_users.Size = new Size(301, 244);
+            listbox_users.TabIndex = 8;
+            listbox_users.SelectedIndexChanged += listbox_users_SelectedIndexChanged;
             // 
             // customer_messages
             // 
@@ -154,8 +107,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(991, 572);
-            Controls.Add(label1);
-            Controls.Add(label2);
+            Controls.Add(listbox_users);
             Controls.Add(textbox_message);
             Controls.Add(button_send);
             Controls.Add(listbox_messages);
@@ -168,23 +120,19 @@
             Controls.SetChildIndex(listbox_messages, 0);
             Controls.SetChildIndex(button_send, 0);
             Controls.SetChildIndex(textbox_message, 0);
-            Controls.SetChildIndex(label2, 0);
-            Controls.SetChildIndex(label1, 0);
+            Controls.SetChildIndex(listbox_users, 0);
             panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ComboBox combobox_users;
         private ListBox listbox_messages;
         private Button button_send;
-        private Button button_edit;
-        private Button button_delete;
         private TextBox textbox_message;
         private Panel panel3;
-        private Label label2;
-        private Label label1;
+        private TextBox textbox_searchUser;
+        private ListBox listbox_users;
     }
 }
