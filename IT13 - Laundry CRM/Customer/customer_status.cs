@@ -47,6 +47,15 @@ namespace IT13___Laundry_CRM.Customer
         private void customer_status_Load(object sender, EventArgs e)
         {
             LoadMyStatuses();
+            ShowWelcomeMessage();
+        }
+
+        private void ShowWelcomeMessage()
+        {
+            if (User.CurrentUser.User != null)
+            {
+                label_welcome.Text = $"Welcome, {User.CurrentUser.User.first_name}!";
+            }
         }
 
         private void LoadMyStatuses()

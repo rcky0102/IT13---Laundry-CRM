@@ -28,42 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             flowlayoutpanel_status = new FlowLayoutPanel();
-            label2 = new Label();
+            panel3 = new Panel();
+            label_welcome = new Label();
+            label1 = new Label();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label1.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(279, 117);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(619, 49);
-            label1.TabIndex = 1;
-            label1.Text = "“Track every step of your laundry process, from washing and drying to folding and delivery, all in one place.”";
             // 
             // flowlayoutpanel_status
             // 
             flowlayoutpanel_status.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            flowlayoutpanel_status.Location = new Point(209, 182);
+            flowlayoutpanel_status.Location = new Point(206, 168);
             flowlayoutpanel_status.Name = "flowlayoutpanel_status";
-            flowlayoutpanel_status.Size = new Size(726, 258);
+            flowlayoutpanel_status.Size = new Size(726, 277);
             flowlayoutpanel_status.TabIndex = 2;
             // 
-            // label2
+            // panel3
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Cascadia Code SemiBold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(222, 70);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(546, 45);
-            label2.TabIndex = 8;
-            label2.Text = "⌚View Your Laundry Status";
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Location = new Point(212, 163);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(721, 125);
+            panel3.TabIndex = 7;
+            // 
+            // label_welcome
+            // 
+            label_welcome.AutoSize = true;
+            label_welcome.Font = new Font("Cascadia Code", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_welcome.ForeColor = SystemColors.ActiveCaptionText;
+            label_welcome.Location = new Point(239, 73);
+            label_welcome.Name = "label_welcome";
+            label_welcome.Size = new Size(143, 40);
+            label_welcome.TabIndex = 5;
+            label_welcome.Text = "Welcome";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Gadugi", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(225, 140);
+            label1.Name = "label1";
+            label1.Size = new Size(134, 20);
+            label1.TabIndex = 6;
+            label1.Text = "Laundry Status:";
             // 
             // customer_status
             // 
@@ -71,25 +78,27 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(945, 450);
-            Controls.Add(label1);
-            Controls.Add(label2);
             Controls.Add(flowlayoutpanel_status);
+            Controls.Add(label1);
+            Controls.Add(label_welcome);
+            Controls.Add(panel3);
             Margin = new Padding(4);
             Name = "customer_status";
             ShowInTaskbar = false;
             Text = "Customer | Status";
             Load += customer_status_Load;
-            Controls.SetChildIndex(flowlayoutpanel_status, 0);
-            Controls.SetChildIndex(label2, 0);
+            Controls.SetChildIndex(panel3, 0);
+            Controls.SetChildIndex(label_welcome, 0);
             Controls.SetChildIndex(label1, 0);
+            Controls.SetChildIndex(flowlayoutpanel_status, 0);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
         private FlowLayoutPanel flowlayoutpanel_status;
-        private Label label2;
+        private Label label_welcome;
+        private Label label1;
+        private Panel panel3;
     }
 }
