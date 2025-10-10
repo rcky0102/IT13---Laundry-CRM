@@ -1,10 +1,11 @@
-﻿using IT13___Laundry_CRM.Repositories;
-using IT13___Laundry_CRM.Models;
+﻿using IT13___Laundry_CRM.Models;
+using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,15 +38,59 @@ namespace IT13___Laundry_CRM.Customer
 
             textbox_searchUser.TextChanged += textbox_searchUser_TextChanged;
             listbox_users.SelectedIndexChanged += listbox_users_SelectedIndexChanged;
+
+            MakeRounded(textbox_message);
+            MakeRounded(listbox_messages);
+            MakeRounded(textbox_searchUser);
+            MakeRounded(listbox_users);
+            MakeRounded(button_send);
+            MakeRounded(panel3);
+
+            listbox_users.DrawMode = DrawMode.OwnerDrawFixed;
+            listbox_users.ItemHeight = 60;
+            listbox_users.DrawItem += listbox_users_DrawItem;
+
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void LoadAllUsers()
         {
             try
             {
+                // Get all relevant users
                 allUsers = userRepository.GetUsers()
                     .Where(u => u.role == "laundry_attendant" || u.role == "admin")
                     .ToList();
+
+                // Get the latest message datetime per user
+                var userLatestMessage = allUsers.Select(u =>
+                {
+                    var latestMsg = messageRepository.GetConversation(CurrentUser.UserId, u.user_id)
+                                                     .OrderByDescending(m => m.created_at)
+                                                     .FirstOrDefault();
+                    return new { User = u, LastMessageTime = latestMsg?.created_at ?? DateTime.MinValue };
+                });
+
+                // Sort users by latest message datetime descending
+                allUsers = userLatestMessage
+                           .OrderByDescending(x => x.LastMessageTime)
+                           .Select(x => x.User)
+                           .ToList();
 
                 UpdateUserList(allUsers);
             }
@@ -67,7 +112,7 @@ namespace IT13___Laundry_CRM.Customer
 
         private void customer_messages_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void LoadMessages()
@@ -297,6 +342,60 @@ namespace IT13___Laundry_CRM.Customer
 
             selectedUser = filteredUsers[listbox_users.SelectedIndex]; // use filteredUsers, not allUsers
             LoadMessages();
+        }
+
+        private void listbox_users_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+
+            e.DrawBackground();
+            User user = filteredUsers[e.Index];
+
+            Graphics g = e.Graphics;
+            Rectangle bounds = e.Bounds;
+            bool isSelected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
+
+            // Background
+            Color backColor = isSelected ? Color.AliceBlue : SystemColors.GradientInactiveCaption;
+            using (SolidBrush bgBrush = new SolidBrush(backColor))
+            {
+                g.FillRectangle(bgBrush, bounds);
+            }
+
+            // Rounded avatar placeholder
+            int avatarSize = 40;
+            int padding = 10;
+            Rectangle avatarRect = new Rectangle(bounds.Left + padding, bounds.Top + (bounds.Height - avatarSize) / 2, avatarSize, avatarSize);
+            using (SolidBrush avatarBrush = new SolidBrush(Color.Gray))
+            {
+                GraphicsPath avatarPath = new GraphicsPath();
+                avatarPath.AddEllipse(avatarRect);
+                g.FillPath(avatarBrush, avatarPath);
+            }
+
+            // Name
+            string displayName = $"{user.first_name} {(string.IsNullOrEmpty(user.middle_name) ? "" : user.middle_name + " ")}{user.last_name}";
+            using (Font nameFont = new Font("Gadugi", 10, FontStyle.Bold))
+            using (SolidBrush nameBrush = new SolidBrush(Color.Black))
+            {
+                g.DrawString(displayName, nameFont, nameBrush, avatarRect.Right + padding, bounds.Top + 10);
+            }
+
+            // Role
+            using (Font roleFont = new Font("Gadugi", 8, FontStyle.Italic))
+            using (SolidBrush roleBrush = new SolidBrush(Color.DarkGray))
+            {
+                g.DrawString(user.role, roleFont, roleBrush, avatarRect.Right + padding, bounds.Top + 30);
+            }
+
+            // --- Add border around the item ---
+            using (Pen borderPen = new Pen(Color.LightGray, 1))
+            {
+                Rectangle borderRect = new Rectangle(bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
+                g.DrawRectangle(borderPen, borderRect);
+            }
+
+            e.DrawFocusRectangle();
         }
     }
 }
