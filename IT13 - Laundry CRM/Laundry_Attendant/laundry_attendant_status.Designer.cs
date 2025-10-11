@@ -37,18 +37,23 @@
             SearchBtn_Status = new Button();
             textBox1 = new TextBox();
             button1 = new Button();
-            label3 = new Label();
             button_archives = new Button();
             add = new Button();
-            edit = new Button();
-            archive = new Button();
             panel3 = new Panel();
+            label2 = new Label();
             textbox_search = new TextBox();
-            label5 = new Label();
-            label4 = new Label();
+            panelPagination = new Panel();
+            lblTotalRecords = new Label();
+            cmbPageSize = new ComboBox();
+            lblPageInfo = new Label();
+            btnLast = new Button();
+            btnNext = new Button();
+            btnPrevious = new Button();
+            btnFirst = new Button();
             ((System.ComponentModel.ISupportInitialize)table_customers).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panelPagination.SuspendLayout();
             SuspendLayout();
             // 
             // table_customers
@@ -58,13 +63,14 @@
             table_customers.BackgroundColor = SystemColors.ButtonHighlight;
             table_customers.BorderStyle = BorderStyle.None;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(229, 255);
+            table_customers.Location = new Point(259, 185);
+            table_customers.Margin = new Padding(4);
             table_customers.Name = "table_customers";
             table_customers.ReadOnly = true;
             table_customers.RowHeadersVisible = false;
             table_customers.RowHeadersWidth = 51;
             table_customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            table_customers.Size = new Size(744, 175);
+            table_customers.Size = new Size(1010, 370);
             table_customers.TabIndex = 1;
             table_customers.CellContentClick += table_customers_CellContentClick;
             // 
@@ -149,7 +155,7 @@
             textBox1.Location = new Point(294, 18);
             textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(332, 25);
+            textBox1.Size = new Size(332, 28);
             textBox1.TabIndex = 5;
             // 
             // button1
@@ -161,25 +167,17 @@
             button1.Text = "🔎";
             button1.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Cascadia Code", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(229, 75);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(445, 45);
-            label3.TabIndex = 7;
-            label3.Text = "⌚View Laundry Status";
-            // 
             // button_archives
             // 
-            button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_archives.BackColor = Color.Salmon;
-            button_archives.Location = new Point(673, 15);
+            button_archives.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button_archives.BackColor = SystemColors.ActiveCaption;
+            button_archives.FlatAppearance.BorderSize = 0;
+            button_archives.FlatStyle = FlatStyle.Flat;
+            button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.Location = new Point(716, 20);
+            button_archives.Margin = new Padding(4);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(50, 40);
+            button_archives.Size = new Size(62, 50);
             button_archives.TabIndex = 8;
             button_archives.Text = "🗂️";
             button_archives.UseVisualStyleBackColor = false;
@@ -187,119 +185,190 @@
             // 
             // add
             // 
-            add.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            add.BackColor = SystemColors.MenuHighlight;
+            add.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            add.BackColor = SystemColors.Highlight;
+            add.FlatAppearance.BorderSize = 0;
+            add.FlatStyle = FlatStyle.Flat;
+            add.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             add.ForeColor = SystemColors.ButtonHighlight;
-            add.Location = new Point(14, 15);
+            add.Location = new Point(788, 23);
+            add.Margin = new Padding(4);
             add.Name = "add";
-            add.Size = new Size(50, 40);
+            add.Size = new Size(202, 40);
             add.TabIndex = 9;
-            add.Text = "➕";
+            add.Text = "➕ Add Cutomer";
             add.UseVisualStyleBackColor = false;
             add.Click += add_Click;
-            // 
-            // edit
-            // 
-            edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            edit.BackColor = Color.ForestGreen;
-            edit.Location = new Point(397, 15);
-            edit.Name = "edit";
-            edit.Size = new Size(50, 40);
-            edit.TabIndex = 10;
-            edit.Text = "✏️";
-            edit.UseVisualStyleBackColor = false;
-            edit.Click += edit_Click;
-            // 
-            // archive
-            // 
-            archive.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            archive.BackColor = Color.Salmon;
-            archive.Location = new Point(453, 15);
-            archive.Name = "archive";
-            archive.Size = new Size(50, 40);
-            archive.TabIndex = 11;
-            archive.Text = "📦";
-            archive.UseVisualStyleBackColor = false;
-            archive.Click += archive_Click;
             // 
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.ActiveCaption;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(label2);
             panel3.Controls.Add(textbox_search);
-            panel3.Controls.Add(label5);
-            panel3.Controls.Add(edit);
-            panel3.Controls.Add(archive);
             panel3.Controls.Add(add);
             panel3.Controls.Add(button_archives);
             panel3.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel3.ForeColor = SystemColors.ButtonHighlight;
-            panel3.Location = new Point(229, 175);
+            panel3.Location = new Point(257, 96);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(744, 75);
+            panel3.Size = new Size(1012, 83);
             panel3.TabIndex = 12;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(616, 37);
+            label2.Name = "label2";
+            label2.Size = new Size(102, 19);
+            label2.TabIndex = 14;
+            label2.Text = "View Archive:";
             // 
             // textbox_search
             // 
-            textbox_search.BorderStyle = BorderStyle.FixedSingle;
-            textbox_search.Location = new Point(69, 15);
+            textbox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_search.Location = new Point(13, 20);
             textbox_search.Margin = new Padding(2);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.PlaceholderText = "🔎 Search here...";
-            textbox_search.Size = new Size(300, 40);
+            textbox_search.Size = new Size(415, 43);
             textbox_search.TabIndex = 13;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
-            // label5
+            // panelPagination
             // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label5.AutoSize = true;
-            label5.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(532, 26);
-            label5.Name = "label5";
-            label5.Size = new Size(135, 20);
-            label5.TabIndex = 12;
-            label5.Text = "View Archives:";
+            panelPagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelPagination.BackColor = SystemColors.ButtonHighlight;
+            panelPagination.BorderStyle = BorderStyle.FixedSingle;
+            panelPagination.Controls.Add(lblTotalRecords);
+            panelPagination.Controls.Add(cmbPageSize);
+            panelPagination.Controls.Add(lblPageInfo);
+            panelPagination.Controls.Add(btnLast);
+            panelPagination.Controls.Add(btnNext);
+            panelPagination.Controls.Add(btnPrevious);
+            panelPagination.Controls.Add(btnFirst);
+            panelPagination.Location = new Point(271, 563);
+            panelPagination.Margin = new Padding(4);
+            panelPagination.Name = "panelPagination";
+            panelPagination.Size = new Size(996, 61);
+            panelPagination.TabIndex = 14;
             // 
-            // label4
+            // lblTotalRecords
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.Location = new Point(286, 120);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(568, 46);
-            label4.TabIndex = 13;
-            label4.Text = "Attendants can manage and record the current stage of each laundry order in real time for accurate tracking";
+            lblTotalRecords.Anchor = AnchorStyles.Bottom;
+            lblTotalRecords.AutoSize = true;
+            lblTotalRecords.Font = new Font("Gadugi", 9F);
+            lblTotalRecords.Location = new Point(430, 23);
+            lblTotalRecords.Margin = new Padding(4, 0, 4, 0);
+            lblTotalRecords.Name = "lblTotalRecords";
+            lblTotalRecords.Size = new Size(137, 21);
+            lblTotalRecords.TabIndex = 5;
+            lblTotalRecords.Text = "Total Records: 0";
+            // 
+            // cmbPageSize
+            // 
+            cmbPageSize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cmbPageSize.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPageSize.Font = new Font("Gadugi", 9F);
+            cmbPageSize.FormattingEnabled = true;
+            cmbPageSize.Items.AddRange(new object[] { "5", "10", "20", "50" });
+            cmbPageSize.Location = new Point(690, 20);
+            cmbPageSize.Margin = new Padding(4);
+            cmbPageSize.Name = "cmbPageSize";
+            cmbPageSize.Size = new Size(74, 29);
+            cmbPageSize.TabIndex = 6;
+            cmbPageSize.SelectedIndexChanged += cmbPageSize_SelectedIndexChanged;
+            // 
+            // lblPageInfo
+            // 
+            lblPageInfo.AutoSize = true;
+            lblPageInfo.Font = new Font("Gadugi", 9F);
+            lblPageInfo.Location = new Point(212, 24);
+            lblPageInfo.Margin = new Padding(4, 0, 4, 0);
+            lblPageInfo.Name = "lblPageInfo";
+            lblPageInfo.Size = new Size(101, 21);
+            lblPageInfo.TabIndex = 4;
+            lblPageInfo.Text = "Page 1 of 1";
+            // 
+            // btnLast
+            // 
+            btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnLast.Font = new Font("Gadugi", 9F);
+            btnLast.Location = new Point(888, 19);
+            btnLast.Margin = new Padding(4);
+            btnLast.Name = "btnLast";
+            btnLast.Size = new Size(75, 31);
+            btnLast.TabIndex = 3;
+            btnLast.Text = "Last";
+            btnLast.UseVisualStyleBackColor = true;
+            btnLast.Click += btnLast_Click;
+            // 
+            // btnNext
+            // 
+            btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnNext.Font = new Font("Gadugi", 9F);
+            btnNext.Location = new Point(786, 19);
+            btnNext.Margin = new Padding(4);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(94, 31);
+            btnNext.TabIndex = 2;
+            btnNext.Text = "Next";
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
+            // 
+            // btnPrevious
+            // 
+            btnPrevious.Font = new Font("Gadugi", 9F);
+            btnPrevious.Location = new Point(100, 19);
+            btnPrevious.Margin = new Padding(4);
+            btnPrevious.Name = "btnPrevious";
+            btnPrevious.Size = new Size(94, 31);
+            btnPrevious.TabIndex = 1;
+            btnPrevious.Text = "Previous";
+            btnPrevious.UseVisualStyleBackColor = true;
+            btnPrevious.Click += btnPrevious_Click;
+            // 
+            // btnFirst
+            // 
+            btnFirst.Font = new Font("Gadugi", 9F);
+            btnFirst.Location = new Point(12, 19);
+            btnFirst.Margin = new Padding(4);
+            btnFirst.Name = "btnFirst";
+            btnFirst.Size = new Size(75, 31);
+            btnFirst.TabIndex = 0;
+            btnFirst.Text = "First";
+            btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.Click += btnFirst_Click;
             // 
             // laundry_attendant_status
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(997, 450);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            ClientSize = new Size(1286, 637);
+            Controls.Add(panelPagination);
             Controls.Add(table_customers);
             Controls.Add(panel3);
-            Margin = new Padding(4);
+            Margin = new Padding(5);
             Name = "laundry_attendant_status";
             Text = "Laundry Attendant | Status";
             Load += laundry_attendant_status_Load;
             Controls.SetChildIndex(panel3, 0);
             Controls.SetChildIndex(table_customers, 0);
-            Controls.SetChildIndex(label3, 0);
-            Controls.SetChildIndex(label4, 0);
+            Controls.SetChildIndex(panelPagination, 0);
             ((System.ComponentModel.ISupportInitialize)table_customers).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panelPagination.ResumeLayout(false);
+            panelPagination.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -312,15 +381,19 @@
         private Panel panel2;
         private Button button1;
         private TextBox textBox1;
-        private Label label3;
         private Button SearchBtn_Status;
         private Button button_archives;
         private Button add;
-        private Button edit;
-        private Button archive;
         private Panel panel3;
-        private Label label4;
-        private Label label5;
         private TextBox textbox_search;
+        private Panel panelPagination;
+        private Label lblTotalRecords;
+        private ComboBox cmbPageSize;
+        private Label lblPageInfo;
+        private Button btnLast;
+        private Button btnNext;
+        private Button btnPrevious;
+        private Button btnFirst;
+        private Label label2;
     }
 }
