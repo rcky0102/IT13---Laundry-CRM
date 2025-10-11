@@ -1,10 +1,11 @@
-﻿using IT13___Laundry_CRM.Repositories;
-using IT13___Laundry_CRM.Models;
+﻿using IT13___Laundry_CRM.Models;
+using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,33 @@ namespace IT13___Laundry_CRM.Customer
             LoadFeedbacks();
 
             listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
+
+            MakeRounded(textbox_subject);
+            MakeRounded(textbox_feedback);
+            MakeRounded(button_send);
+            MakeRounded(button_send);
+            MakeRounded(listbox_feedback);
+
+            listbox_feedback.DrawMode = DrawMode.OwnerDrawFixed;
+            listbox_feedback.ItemHeight = 50; // Adjust based on font size
+            listbox_feedback.BorderStyle = BorderStyle.None; // Rounded corners handled separately
+            listbox_feedback.DrawItem += listbox_feedback_DrawItem;
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void LoadFeedbacks()
@@ -197,6 +225,55 @@ namespace IT13___Laundry_CRM.Customer
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void listbox_feedback_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0 || e.Index >= currentFeedbacks.Count) return;
+
+            e.DrawBackground();
+            Feedback fb = currentFeedbacks[e.Index];
+
+            Graphics g = e.Graphics;
+            Rectangle bounds = e.Bounds;
+            bool isSelected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
+
+            int padding = 10;
+
+            // Background
+            Color backColor = isSelected ? Color.FromArgb(52, 152, 219) : Color.White;
+            using (SolidBrush bgBrush = new SolidBrush(backColor))
+            {
+                g.FillRectangle(bgBrush, bounds);
+            }
+
+            // Subject (acts as "Name") - bold, larger font
+            using (Font subjectFont = new Font("Cascadia Code", 10, FontStyle.Bold))
+            using (SolidBrush subjectBrush = new SolidBrush(isSelected ? Color.White : Color.Black))
+            {
+                g.DrawString(fb.subject, subjectFont, subjectBrush, bounds.Left + padding, bounds.Top + 5);
+            }
+
+            // Sender and date/time - smaller, gray font
+            string user = fb.User != null
+                ? $"{fb.User.first_name} {fb.User.last_name}"
+                : $"User {fb.user_id}";
+            string details = $"by {user} — {fb.created_at:MMM dd, yyyy hh:mm tt}";
+
+            using (Font detailsFont = new Font("Cascadia Code", 8, FontStyle.Italic))
+            using (SolidBrush detailsBrush = new SolidBrush(isSelected ? Color.WhiteSmoke : Color.Gray))
+            {
+                g.DrawString(details, detailsFont, detailsBrush, bounds.Left + padding, bounds.Top + 25);
+            }
+
+            // Optional: border around each item
+            using (Pen borderPen = new Pen(Color.LightGray, 1))
+            {
+                Rectangle borderRect = new Rectangle(bounds.Left, bounds.Top, bounds.Width - 1, bounds.Height - 1);
+                g.DrawRectangle(borderPen, borderRect);
+            }
+
+            e.DrawFocusRectangle();
         }
     }
 

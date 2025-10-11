@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(customer_template));
             panel1 = new Panel();
+            button2 = new Button();
+            button1 = new Button();
             button_feedback = new Button();
             button_message = new Button();
             button_status = new Button();
@@ -53,6 +55,8 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(button_feedback);
             panel1.Controls.Add(button_message);
             panel1.Controls.Add(button_status);
@@ -63,60 +67,95 @@
             panel1.Size = new Size(200, 460);
             panel1.TabIndex = 0;
             // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom;
+            button2.BackColor = SystemColors.GradientActiveCaption;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = SystemColors.ButtonHighlight;
+            button2.Location = new Point(5, 225);
+            button2.Name = "button2";
+            button2.Size = new Size(192, 35);
+            button2.TabIndex = 5;
+            button2.Text = "➜] Logout";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom;
+            button1.BackColor = SystemColors.GradientActiveCaption;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(5, 184);
+            button1.Name = "button1";
+            button1.Size = new Size(192, 35);
+            button1.TabIndex = 4;
+            button1.Text = "👤 Profile";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // button_feedback
             // 
+            button_feedback.BackColor = SystemColors.GradientActiveCaption;
             button_feedback.FlatAppearance.BorderSize = 0;
             button_feedback.FlatStyle = FlatStyle.Flat;
             button_feedback.ForeColor = SystemColors.ButtonHighlight;
-            button_feedback.Location = new Point(5, 170);
+            button_feedback.Location = new Point(5, 143);
             button_feedback.Name = "button_feedback";
-            button_feedback.Size = new Size(195, 35);
+            button_feedback.Size = new Size(192, 35);
             button_feedback.TabIndex = 3;
             button_feedback.Text = "📲 Feedback";
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
-            button_feedback.UseVisualStyleBackColor = true;
+            button_feedback.UseVisualStyleBackColor = false;
             button_feedback.Click += button_feedback_Click;
             // 
             // button_message
             // 
+            button_message.BackColor = SystemColors.GradientActiveCaption;
             button_message.FlatAppearance.BorderSize = 0;
             button_message.FlatStyle = FlatStyle.Flat;
             button_message.ForeColor = SystemColors.ButtonHighlight;
-            button_message.Location = new Point(5, 120);
+            button_message.Location = new Point(5, 102);
             button_message.Name = "button_message";
-            button_message.Size = new Size(195, 35);
+            button_message.Size = new Size(192, 35);
             button_message.TabIndex = 2;
             button_message.Text = "📩 Messages";
             button_message.TextAlign = ContentAlignment.MiddleLeft;
-            button_message.UseVisualStyleBackColor = true;
+            button_message.UseVisualStyleBackColor = false;
             button_message.Click += button_message_Click;
             // 
             // button_status
             // 
+            button_status.BackColor = SystemColors.GradientActiveCaption;
             button_status.FlatAppearance.BorderSize = 0;
             button_status.FlatStyle = FlatStyle.Flat;
             button_status.ForeColor = SystemColors.ButtonHighlight;
-            button_status.Location = new Point(5, 70);
+            button_status.Location = new Point(5, 61);
             button_status.Name = "button_status";
-            button_status.Size = new Size(195, 35);
+            button_status.Size = new Size(192, 35);
             button_status.TabIndex = 1;
             button_status.Text = "⌚ Status";
             button_status.TextAlign = ContentAlignment.MiddleLeft;
-            button_status.UseVisualStyleBackColor = true;
+            button_status.UseVisualStyleBackColor = false;
             button_status.Click += button_status_Click;
             // 
             // button_dashboard
             // 
+            button_dashboard.BackColor = SystemColors.GradientActiveCaption;
             button_dashboard.FlatAppearance.BorderSize = 0;
             button_dashboard.FlatStyle = FlatStyle.Flat;
             button_dashboard.ForeColor = SystemColors.ButtonHighlight;
             button_dashboard.Location = new Point(5, 20);
             button_dashboard.Name = "button_dashboard";
-            button_dashboard.Size = new Size(195, 35);
+            button_dashboard.Size = new Size(192, 35);
             button_dashboard.TabIndex = 0;
             button_dashboard.Text = "📊 DashBoard";
             button_dashboard.TextAlign = ContentAlignment.MiddleLeft;
-            button_dashboard.UseVisualStyleBackColor = true;
+            button_dashboard.UseVisualStyleBackColor = false;
             button_dashboard.Click += button_dashboard_Click;
             // 
             // contextmenustrip_profile
@@ -241,5 +280,7 @@
         private PictureBox pictureBox2;
         private Label label3;
         private Panel panel2;
+        private Button button1;
+        private Button button2;
     }
 }

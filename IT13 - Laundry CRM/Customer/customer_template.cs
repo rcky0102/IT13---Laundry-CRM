@@ -96,5 +96,10 @@ namespace IT13___Laundry_CRM
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

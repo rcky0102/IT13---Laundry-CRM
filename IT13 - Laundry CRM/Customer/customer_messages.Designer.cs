@@ -46,7 +46,7 @@
             listbox_messages.ItemHeight = 27;
             listbox_messages.Location = new Point(668, 81);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(305, 274);
+            listbox_messages.Size = new Size(305, 355);
             listbox_messages.TabIndex = 2;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
@@ -57,7 +57,7 @@
             button_send.BackColor = SystemColors.HotTrack;
             button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(919, 363);
+            button_send.Location = new Point(919, 449);
             button_send.Name = "button_send";
             button_send.Size = new Size(54, 40);
             button_send.TabIndex = 3;
@@ -71,7 +71,7 @@
             textbox_message.BackColor = SystemColors.ButtonFace;
             textbox_message.BorderStyle = BorderStyle.FixedSingle;
             textbox_message.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_message.Location = new Point(668, 363);
+            textbox_message.Location = new Point(668, 449);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
             textbox_message.Size = new Size(245, 40);
@@ -111,7 +111,7 @@
             listbox_users.ItemHeight = 27;
             listbox_users.Location = new Point(221, 161);
             listbox_users.Name = "listbox_users";
-            listbox_users.Size = new Size(441, 245);
+            listbox_users.Size = new Size(441, 326);
             listbox_users.TabIndex = 8;
             listbox_users.DrawItem += listbox_users_DrawItem;
             listbox_users.SelectedIndexChanged += listbox_users_SelectedIndexChanged;
@@ -121,7 +121,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(991, 410);
+            ClientSize = new Size(991, 496);
             Controls.Add(listbox_users);
             Controls.Add(textbox_message);
             Controls.Add(button_send);
