@@ -28,26 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(customer_template));
             panel1 = new Panel();
-            button2 = new Button();
-            button1 = new Button();
+            button_logout = new Button();
+            button_profile = new Button();
             button_feedback = new Button();
             button_message = new Button();
             button_status = new Button();
             button_dashboard = new Button();
-            contextmenustrip_profile = new ContextMenuStrip(components);
-            profile = new ToolStripMenuItem();
-            logout = new ToolStripMenuItem();
-            button_profile = new Button();
             label4 = new Label();
             pictureBox2 = new PictureBox();
             label3 = new Label();
             panel2 = new Panel();
             button_notif = new Button();
             panel1.SuspendLayout();
-            contextmenustrip_profile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -56,8 +50,8 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(button_logout);
+            panel1.Controls.Add(button_profile);
             panel1.Controls.Add(button_feedback);
             panel1.Controls.Add(button_message);
             panel1.Controls.Add(button_status);
@@ -68,36 +62,37 @@
             panel1.Size = new Size(200, 460);
             panel1.TabIndex = 0;
             // 
-            // button2
+            // button_logout
             // 
-            button2.Anchor = AnchorStyles.Bottom;
-            button2.BackColor = SystemColors.GradientActiveCaption;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(5, 225);
-            button2.Name = "button2";
-            button2.Size = new Size(192, 35);
-            button2.TabIndex = 5;
-            button2.Text = "➜] Logout";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
+            button_logout.Anchor = AnchorStyles.Bottom;
+            button_logout.BackColor = SystemColors.GradientActiveCaption;
+            button_logout.FlatAppearance.BorderSize = 0;
+            button_logout.FlatStyle = FlatStyle.Flat;
+            button_logout.ForeColor = SystemColors.ButtonHighlight;
+            button_logout.Location = new Point(5, 225);
+            button_logout.Name = "button_logout";
+            button_logout.Size = new Size(192, 35);
+            button_logout.TabIndex = 5;
+            button_logout.Text = "➜] Logout";
+            button_logout.TextAlign = ContentAlignment.MiddleLeft;
+            button_logout.UseVisualStyleBackColor = false;
+            button_logout.Click += button_logout_Click;
             // 
-            // button1
+            // button_profile
             // 
-            button1.Anchor = AnchorStyles.Bottom;
-            button1.BackColor = SystemColors.GradientActiveCaption;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(5, 184);
-            button1.Name = "button1";
-            button1.Size = new Size(192, 35);
-            button1.TabIndex = 4;
-            button1.Text = "👤 Profile";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            button_profile.Anchor = AnchorStyles.Bottom;
+            button_profile.BackColor = SystemColors.GradientActiveCaption;
+            button_profile.FlatAppearance.BorderSize = 0;
+            button_profile.FlatStyle = FlatStyle.Flat;
+            button_profile.ForeColor = SystemColors.ButtonHighlight;
+            button_profile.Location = new Point(5, 184);
+            button_profile.Name = "button_profile";
+            button_profile.Size = new Size(192, 35);
+            button_profile.TabIndex = 4;
+            button_profile.Text = "👤 Profile";
+            button_profile.TextAlign = ContentAlignment.MiddleLeft;
+            button_profile.UseVisualStyleBackColor = false;
+            button_profile.Click += button_profile_Click;
             // 
             // button_feedback
             // 
@@ -159,44 +154,6 @@
             button_dashboard.UseVisualStyleBackColor = false;
             button_dashboard.Click += button_dashboard_Click;
             // 
-            // contextmenustrip_profile
-            // 
-            contextmenustrip_profile.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            contextmenustrip_profile.ImageScalingSize = new Size(20, 20);
-            contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { profile, logout });
-            contextmenustrip_profile.Name = "contextmenustrip_profile";
-            contextmenustrip_profile.RenderMode = ToolStripRenderMode.Professional;
-            contextmenustrip_profile.ShowImageMargin = false;
-            contextmenustrip_profile.Size = new Size(144, 68);
-            contextmenustrip_profile.Text = "Profile";
-            // 
-            // profile
-            // 
-            profile.Name = "profile";
-            profile.Size = new Size(143, 32);
-            profile.Text = "Profile";
-            profile.Click += profile_Click;
-            // 
-            // logout
-            // 
-            logout.Name = "logout";
-            logout.Size = new Size(143, 32);
-            logout.Text = "Logout";
-            logout.Click += logout_Click;
-            // 
-            // button_profile
-            // 
-            button_profile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_profile.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_profile.Location = new Point(881, 6);
-            button_profile.Name = "button_profile";
-            button_profile.Size = new Size(50, 40);
-            button_profile.TabIndex = 1;
-            button_profile.Text = "👤";
-            button_profile.UseVisualStyleBackColor = true;
-            button_profile.Click += button_profile_Click;
-            button_profile.Resize += button_profile_Resize;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -239,7 +196,6 @@
             panel2.Controls.Add(button_notif);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(button_profile);
             panel2.Controls.Add(label4);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
@@ -252,7 +208,7 @@
             // 
             button_notif.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_notif.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_notif.Location = new Point(588, 6);
+            button_notif.Location = new Point(868, 7);
             button_notif.Name = "button_notif";
             button_notif.Size = new Size(50, 40);
             button_notif.TabIndex = 4;
@@ -272,7 +228,6 @@
             Text = "Customer | Template";
             Load += customer_template_Load;
             panel1.ResumeLayout(false);
-            contextmenustrip_profile.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -286,16 +241,12 @@
         private Button button_status;
         private Button button_message;
         private Button button_feedback;
-        private ContextMenuStrip contextmenustrip_profile;
-        private ToolStripMenuItem profile;
-        private ToolStripMenuItem logout;
-        private Button button_profile;
         private Label label4;
         private PictureBox pictureBox2;
         private Label label3;
         private Panel panel2;
-        private Button button1;
-        private Button button2;
+        private Button button_profile;
+        private Button button_logout;
         private Button button_notif;
     }
 }

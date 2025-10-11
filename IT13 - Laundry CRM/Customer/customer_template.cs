@@ -53,37 +53,6 @@ namespace IT13___Laundry_CRM
             this.Hide();
         }
 
-        private void button_profile_Click(object sender, EventArgs e)
-        {
-            contextmenustrip_profile.Show(button_profile, 0, button_profile.Height);
-        }
-
-        private void profile_Click(object sender, EventArgs e)
-        {
-            customer_profile profile = new customer_profile();
-            profile.ShowDialog();
-
-        }
-
-        private void logout_Click(object sender, EventArgs e)
-        {
-
-            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
-                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-
-                CurrentUser.User = null;
-
-
-                Form1 loginForm = new Form1();
-                loginForm.Show();
-
-                this.Close();
-            }
-
-        }
 
         private void button_dashboard_Click(object sender, EventArgs e)
         {
@@ -97,19 +66,10 @@ namespace IT13___Laundry_CRM
         {
             this.WindowState = FormWindowState.Maximized;
 
-            System.Drawing.Drawing2D.GraphicsPath buttonPath = new System.Drawing.Drawing2D.GraphicsPath();
-            buttonPath.AddEllipse(0, 0, button_profile.Width, button_profile.Height);
-            button_profile.Region = new Region(buttonPath);
-
             SetupNotificationPanel();
         }
 
         private void button_profile_Resize(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
         {
 
         }
@@ -245,7 +205,7 @@ namespace IT13___Laundry_CRM
                 statusPanel.Click += (s, e) =>
                 {
                     MessageBox.Show($"View full laundry status");
-                    customer_status status = new customer_status(); 
+                    customer_status status = new customer_status();
                     status.Show();
 
                     this.Hide();
@@ -294,5 +254,34 @@ namespace IT13___Laundry_CRM
             control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_profile_Click(object sender, EventArgs e)
+        {
+            customer_profile profile = new customer_profile();
+            profile.ShowDialog();
+
+        }
+
+        private void button_logout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
+                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+
+                CurrentUser.User = null;
+
+
+                Form1 loginForm = new Form1();
+                loginForm.Show();
+
+                this.Close();
+            }
+        }
     }
 }
