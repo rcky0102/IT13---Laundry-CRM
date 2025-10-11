@@ -11,8 +11,13 @@ namespace IT13___Laundry_CRM.Repositories
     internal class StatusRepository
     {
         private readonly string connectionString =
+<<<<<<< Updated upstream
     "Data Source=LAPTOP-NGRORR8P\\SQLEXPRESS;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
+=======
+            "Data Source=RAVEN-13\\SQLEXPRESS01;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        //Changed
+>>>>>>> Stashed changes
         public List<Status> GetStatusesWithCustomerNames()
         {
             var statuses = new List<Status>();
