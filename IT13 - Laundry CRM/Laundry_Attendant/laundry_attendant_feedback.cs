@@ -31,6 +31,8 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
             listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
             textbox_search.TextChanged += textbox_search_TextChanged;
+            listbox_feedback.MouseDown += listbox_feedback_MouseDown;
+
 
             textbox_search.TextChanged += (s, e) => LoadFeedbacks();
 
@@ -123,6 +125,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         {
             int index = listbox_feedback.SelectedIndex;
             if (index < 0 || index >= currentFeedbacks.Count) return;
+
+            // 🧠 Prevent opening details when clicking the Archive button
+            Point cursorPos = listbox_feedback.PointToClient(Cursor.Position);
+            if (archiveButtonBounds.Any(rect => rect.Contains(cursorPos)))
+                return;
 
             var selectedFeedback = currentFeedbacks[index];
             using (var detailsForm = new FeedbackDetailsForm(selectedFeedback))
@@ -238,14 +245,25 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                     {
                         if (feedbackRepository.ArchiveFeedback(fb.feedback_id))
                         {
-                            MessageBox.Show("Feedback archived successfully!", "Archived",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadFeedbacks();
+                            MessageBox.Show("Feedback archived successfully!", "Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // 🧹 Instantly remove from current list without reloading
+                            currentFeedbacks.RemoveAt(i);
+                            listbox_feedback.Items.RemoveAt(i);
+                            archiveButtonBounds.RemoveAt(i);
                         }
+
                     }
                     return;
                 }
             }
+        }
+
+        private void button_archives_Click(object sender, EventArgs e)
+        {
+            archived_feedback archives = new archived_feedback();
+            archives.FormClosed += (s, args) => LoadFeedbacks();
+            archives.ShowDialog();
         }
     }
 

@@ -238,20 +238,78 @@ namespace IT13___Laundry_CRM.Repositories
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "UPDATE Feedback SET is_archived = 1, updated_at = GETDATE() WHERE feedback_id = @feedback_id";
-                    using (var cmd = new SqlCommand(query, conn))
+                    string query = "UPDATE feedback SET is_archived = 1 WHERE feedback_id = @id";
+                    using (var command = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@feedback_id", feedbackId);
-                        return cmd.ExecuteNonQuery() > 0;
+                        command.Parameters.AddWithValue("@id", feedbackId);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error archiving feedback: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error archiving feedback: " + ex.Message);
                 return false;
             }
         }
+
+
+        public List<Feedback> GetArchivedFeedbacks()
+        {
+            var feedbacks = new List<Feedback>();
+
+            string query = @"SELECT f.*, u.first_name, u.middle_name, u.last_name
+                     FROM Feedback f
+                     LEFT JOIN Users u ON f.user_id = u.user_id
+                     WHERE f.is_archived = 1
+                     ORDER BY f.created_at DESC";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        feedbacks.Add(new Feedback
+                        {
+                            feedback_id = (int)reader["feedback_id"],
+                            user_id = (int)reader["user_id"],
+                            subject = reader["subject"].ToString(),
+                            feedback = reader["feedback"].ToString(),
+                            is_archived = (bool)reader["is_archived"],
+                            created_at = (DateTime)reader["created_at"],
+                            updated_at = (DateTime)reader["updated_at"],
+                            User = new User
+                            {
+                                first_name = reader["first_name"].ToString(),
+                                middle_name = reader["middle_name"].ToString(),
+                                last_name = reader["last_name"].ToString()
+                            }
+                        });
+                    }
+                }
+            }
+            return feedbacks;
+        }
+
+        public void UnarchiveFeedback(int feedbackId)
+        {
+            string query = "UPDATE Feedback SET is_archived = 0, updated_at = GETDATE() WHERE feedback_id = @feedback_id";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@feedback_id", feedbackId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
 
     }
