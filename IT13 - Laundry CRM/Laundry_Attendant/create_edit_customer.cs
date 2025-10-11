@@ -183,5 +183,10 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         {
             this.Close();
         }
+
+        private void create_edit_customer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
