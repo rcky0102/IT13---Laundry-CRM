@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SIdebarTemplate));
             panel1 = new Panel();
+            button2 = new Button();
             button_feedback = new Button();
             button_messages = new Button();
             button_users = new Button();
@@ -52,6 +53,7 @@
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(button_feedback);
             panel1.Controls.Add(button_messages);
             panel1.Controls.Add(button_users);
@@ -63,6 +65,22 @@
             panel1.Size = new Size(202, 434);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // button2
+            // 
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Cascadia Code", 12F);
+            button2.ForeColor = SystemColors.ButtonHighlight;
+            button2.Location = new Point(5, 228);
+            button2.Margin = new Padding(4, 3, 4, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(195, 35);
+            button2.TabIndex = 5;
+            button2.Text = "📲 Reports";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_2;
             // 
             // button_feedback
             // 
@@ -241,5 +259,6 @@
         private PictureBox pictureBox2;
         private Label label3;
         private Label label4;
+        private Button button2;
     }
 }

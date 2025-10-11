@@ -105,10 +105,18 @@ namespace IT13___Laundry_CRM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm();  
+            AdminForm adminForm = new AdminForm();
             adminForm.Show();
 
             this.Hide();
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            admin_reports reports = new admin_reports();    
+            reports.Show();
+
+            this.Hide();    
         }
     }
 }
