@@ -45,6 +45,7 @@
             pictureBox2 = new PictureBox();
             label3 = new Label();
             panel2 = new Panel();
+            button_notif = new Button();
             panel1.SuspendLayout();
             contextmenustrip_profile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -235,6 +236,7 @@
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
             panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(button_notif);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(button_profile);
@@ -245,6 +247,18 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(945, 60);
             panel2.TabIndex = 4;
+            // 
+            // button_notif
+            // 
+            button_notif.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_notif.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_notif.Location = new Point(588, 6);
+            button_notif.Name = "button_notif";
+            button_notif.Size = new Size(50, 40);
+            button_notif.TabIndex = 4;
+            button_notif.Text = "👤";
+            button_notif.UseVisualStyleBackColor = true;
+            button_notif.Click += button_notif_Click;
             // 
             // customer_template
             // 
@@ -282,5 +296,6 @@
         private Panel panel2;
         private Button button1;
         private Button button2;
+        private Button button_notif;
     }
 }

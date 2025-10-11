@@ -111,6 +111,7 @@
             Luandry_Status.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Luandry_Status.BorderStyle = BorderStyle.Fixed3D;
             Luandry_Status.Controls.Add(label_status);
+            Luandry_Status.Controls.Add(flowlayoutpanel_status);
             Luandry_Status.Location = new Point(218, 132);
             Luandry_Status.Margin = new Padding(2);
             Luandry_Status.Name = "Luandry_Status";
@@ -121,9 +122,9 @@
             // flowlayoutpanel_status
             // 
             flowlayoutpanel_status.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            flowlayoutpanel_status.Location = new Point(291, 257);
+            flowlayoutpanel_status.Location = new Point(26, 30);
             flowlayoutpanel_status.Name = "flowlayoutpanel_status";
-            flowlayoutpanel_status.Size = new Size(726, 159);
+            flowlayoutpanel_status.Size = new Size(465, 129);
             flowlayoutpanel_status.TabIndex = 8;
             // 
             // customer_dashboard
@@ -132,7 +133,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1046, 529);
-            Controls.Add(flowlayoutpanel_status);
             Controls.Add(panel4);
             Controls.Add(Luandry_Status);
             Controls.Add(label_welcome);
@@ -140,6 +140,9 @@
             Name = "customer_dashboard";
             Text = "Customer | Dashboard";
             Load += customer_dashboard_Load;
+            Controls.SetChildIndex(label_welcome, 0);
+            Controls.SetChildIndex(Luandry_Status, 0);
+            Controls.SetChildIndex(panel4, 0);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel3.ResumeLayout(false);
