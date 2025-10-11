@@ -26,6 +26,9 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         private User selectedUser = null;
         private List<User> filteredUsers = new List<User>();
 
+        private System.Windows.Forms.Timer searchTimer;
+
+
         public laundry_attendant_messages()
         {
             InitializeComponent();
@@ -35,6 +38,9 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
 
+            searchTimer = new System.Windows.Forms.Timer();
+            searchTimer.Interval = 1000; // delay 300ms
+            searchTimer.Tick += SearchTimer_Tick;
 
             textbox_searchUser.TextChanged += textbox_searchUser_TextChanged;
             listbox_users.SelectedIndexChanged += listbox_users_SelectedIndexChanged;
@@ -44,7 +50,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             MakeRounded(textbox_searchUser);
             MakeRounded(listbox_users);
             MakeRounded(button_send);
-            MakeRounded(panel3);
+            MakeRounded(panel2);
 
             listbox_users.DrawMode = DrawMode.OwnerDrawFixed;
             listbox_users.ItemHeight = 60;
@@ -436,13 +442,23 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
         private void textbox_searchUser_TextChanged(object sender, EventArgs e)
         {
+            searchTimer.Stop();
+            searchTimer.Start();
+        }
+
+        private void SearchTimer_Tick(object sender, EventArgs e)
+        {
+            searchTimer.Stop(); // stop timer while running search
+
             string search = textbox_searchUser.Text.Trim().ToLower();
+
             var filtered = allUsers
                 .Where(u => u.first_name.ToLower().Contains(search) ||
                             (u.middle_name != null && u.middle_name.ToLower().Contains(search)) ||
                             u.last_name.ToLower().Contains(search) ||
                             u.role.ToLower().Contains(search))
                 .ToList();
+
             UpdateUserList(filtered);
         }
 
@@ -506,6 +522,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             }
 
             e.DrawFocusRectangle();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

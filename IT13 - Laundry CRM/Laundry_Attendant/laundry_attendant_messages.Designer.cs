@@ -55,7 +55,7 @@
             listbox_users.Font = new Font("Gadugi", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             listbox_users.FormattingEnabled = true;
             listbox_users.ItemHeight = 27;
-            listbox_users.Location = new Point(221, 157);
+            listbox_users.Location = new Point(221, 161);
             listbox_users.Name = "listbox_users";
             listbox_users.Size = new Size(441, 353);
             listbox_users.TabIndex = 13;
@@ -108,11 +108,12 @@
             panel2.BackColor = SystemColors.GradientInactiveCaption;
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(textbox_searchUser);
-            panel2.Location = new Point(221, 76);
+            panel2.Location = new Point(222, 81);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(440, 75);
+            panel2.Size = new Size(724, 75);
             panel2.TabIndex = 12;
+            panel2.Paint += panel2_Paint;
             // 
             // textbox_searchUser
             // 
