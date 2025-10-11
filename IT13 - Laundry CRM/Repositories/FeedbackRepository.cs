@@ -231,5 +231,28 @@ namespace IT13___Laundry_CRM.Repositories
             return null;
         }
 
+        public bool ArchiveFeedback(int feedbackId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "UPDATE Feedback SET is_archived = 1, updated_at = GETDATE() WHERE feedback_id = @feedback_id";
+                    using (var cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@feedback_id", feedbackId);
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error archiving feedback: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
     }
 }

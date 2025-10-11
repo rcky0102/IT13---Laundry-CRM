@@ -14,6 +14,8 @@ namespace IT13___Laundry_CRM.Models
         public string subject { get; set; } = "";
         public string feedback { get; set; } = "";
 
+        public bool is_archived { get; set; } = false;
+
         public DateTime created_at { get; set; } = DateTime.Now;
         public DateTime updated_at { get; set; } = DateTime.Now;
 

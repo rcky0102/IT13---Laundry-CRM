@@ -28,72 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            feedbackLabel = new Label();
-            feedbackPanel = new Panel();
+            listbox_feedback = new ListBox();
             textbox_search = new TextBox();
-            feedbackPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // feedbackLabel
+            // listbox_feedback
             // 
-            feedbackLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            feedbackLabel.AutoSize = true;
-            feedbackLabel.Font = new Font("Gadugi", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            feedbackLabel.Location = new Point(14, 18);
-            feedbackLabel.Margin = new Padding(4, 0, 4, 0);
-            feedbackLabel.Name = "feedbackLabel";
-            feedbackLabel.Size = new Size(70, 26);
-            feedbackLabel.TabIndex = 11;
-            feedbackLabel.Text = "label5";
-            // 
-            // feedbackPanel
-            // 
-            feedbackPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            feedbackPanel.AutoScroll = true;
-            feedbackPanel.Controls.Add(feedbackLabel);
-            feedbackPanel.Location = new Point(285, 187);
-            feedbackPanel.Margin = new Padding(4);
-            feedbackPanel.Name = "feedbackPanel";
-            feedbackPanel.Size = new Size(904, 352);
-            feedbackPanel.TabIndex = 12;
-            feedbackPanel.Resize += feedbackPanel_Resize;
+            listbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            listbox_feedback.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            listbox_feedback.FormattingEnabled = true;
+            listbox_feedback.Location = new Point(228, 134);
+            listbox_feedback.Name = "listbox_feedback";
+            listbox_feedback.Size = new Size(711, 264);
+            listbox_feedback.TabIndex = 14;
+            listbox_feedback.DrawItem += listbox_feedback_DrawItem;
+            listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
+            listbox_feedback.MouseDown += listbox_feedback_MouseDown;
             // 
             // textbox_search
             // 
             textbox_search.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            textbox_search.BackColor = SystemColors.ButtonHighlight;
-            textbox_search.Location = new Point(285, 107);
-            textbox_search.Margin = new Padding(4);
-            textbox_search.Multiline = true;
+            textbox_search.Location = new Point(549, 101);
             textbox_search.Name = "textbox_search";
-            textbox_search.PlaceholderText = "🔎 Search here...";
-            textbox_search.Size = new Size(889, 49);
-            textbox_search.TabIndex = 13;
+            textbox_search.Size = new Size(364, 27);
+            textbox_search.TabIndex = 15;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
             // laundry_attendant_feedback
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1189, 552);
+            ClientSize = new Size(951, 420);
             Controls.Add(textbox_search);
-            Controls.Add(feedbackPanel);
-            Margin = new Padding(5);
+            Controls.Add(listbox_feedback);
+            Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new Padding(4);
             Name = "laundry_attendant_feedback";
             Text = "Laundry Attendant | Feedback";
             Load += laundry_attendant_feedback_Load;
-            Controls.SetChildIndex(feedbackPanel, 0);
+            Controls.SetChildIndex(listbox_feedback, 0);
             Controls.SetChildIndex(textbox_search, 0);
-            feedbackPanel.ResumeLayout(false);
-            feedbackPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label feedbackLabel;
-        private Panel feedbackPanel;
+        private ListBox listbox_feedback;
         private TextBox textbox_search;
     }
 }

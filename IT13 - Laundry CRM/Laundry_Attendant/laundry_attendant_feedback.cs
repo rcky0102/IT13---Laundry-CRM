@@ -1,14 +1,17 @@
-﻿using IT13___Laundry_CRM.Models;
+﻿using IT13___Laundry_CRM.Customer;
+using IT13___Laundry_CRM.Models;
 using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static IT13___Laundry_CRM.Models.User;
 using Feedback = IT13___Laundry_CRM.Models.Feedback;
 
 namespace IT13___Laundry_CRM.Laundry_Attendant
@@ -18,85 +21,92 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         private readonly FeedbackRepository feedbackRepository = new FeedbackRepository();
 
         private List<Feedback> currentFeedbacks = new List<Feedback>();
+        private List<Feedback> allFeedbacks = new List<Feedback>();
+        private List<Rectangle> archiveButtonBounds = new List<Rectangle>();
 
         public laundry_attendant_feedback()
         {
             InitializeComponent();
             LoadFeedbacks();
+
+            listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
+            textbox_search.TextChanged += textbox_search_TextChanged;
+
+            textbox_search.TextChanged += (s, e) => LoadFeedbacks();
+
+
+
+            MakeRounded(listbox_feedback);
+
+            listbox_feedback.DrawMode = DrawMode.OwnerDrawFixed;
+            listbox_feedback.ItemHeight = 50; // Adjust based on font size
+            listbox_feedback.BorderStyle = BorderStyle.None; // Rounded corners handled separately
+            listbox_feedback.DrawItem += listbox_feedback_DrawItem;
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void LoadFeedbacks()
         {
             try
             {
-                // Retrieve feedbacks based on user role
-                if (User.CurrentUser.Role == "laundry_attendant")
-                {
-                    currentFeedbacks = feedbackRepository.GetAllFeedback();
-                }
+                // ✅ Retrieve only non-archived feedbacks
+                if (CurrentUser.Role == "laundry_attendant")
+                    currentFeedbacks = feedbackRepository.GetAllFeedback().Where(f => !f.is_archived).ToList();
                 else
+                    currentFeedbacks = feedbackRepository.GetFeedbacksByUser(CurrentUser.UserId).Where(f => !f.is_archived).ToList();
+
+                string searchQuery = textbox_search.Text.Trim().ToLower();
+                if (!string.IsNullOrWhiteSpace(searchQuery))
                 {
-                    currentFeedbacks = feedbackRepository.GetFeedbacksByUser(User.CurrentUser.UserId);
+                    currentFeedbacks = currentFeedbacks.Where(fb =>
+                        (fb.subject ?? "").ToLower().Contains(searchQuery) ||
+                        (fb.User?.first_name ?? "").ToLower().Contains(searchQuery) ||
+                        (fb.User?.last_name ?? "").ToLower().Contains(searchQuery) ||
+                        fb.created_at.ToString("MMMM dd, yyyy").ToLower().Contains(searchQuery) ||
+                        fb.created_at.ToString("hh:mm tt").ToLower().Contains(searchQuery)
+                    ).ToList();
                 }
 
-                // Clear the panel before adding new feedback items
-                feedbackPanel.Controls.Clear();
+                listbox_feedback.Items.Clear();
+                archiveButtonBounds.Clear();
 
-                int yOffset = 10; // Vertical space between labels
+                if (currentFeedbacks.Count == 0)
+                {
+                    listbox_feedback.Items.Add("No feedback found.");
+                    return;
+                }
 
                 foreach (var fb in currentFeedbacks)
                 {
-                    string user = fb.User != null
-                        ? $"{fb.User.first_name} {fb.User.last_name}"
-                        : $"User {fb.user_id}";
-
-                    // Create a label for each feedback
-                    Label feedbackLabel = new Label
-                    {
-                        AutoSize = false,
-                        Width = feedbackPanel.Width - 40, // Leave some padding from panel edge
-                        Location = new Point(10, yOffset),
-                        BorderStyle = BorderStyle.FixedSingle,
-                        Font = new Font("Cascadia Code", 10, FontStyle.Regular), // 👈 Cascadia Code font
-                        TextAlign = ContentAlignment.TopLeft,
-                        Padding = new Padding(10),
-                        BackColor = Color.White,
-                        ForeColor = Color.Black,
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-                    };
-
-                    // Construct the display text
-                    feedbackLabel.Text =
-                        $"📌 Subject: {fb.subject}\n" +
-                        $"👤 Submitted by: {user}\n" +
-                        $"💬 Feedback:\n{fb.feedback}\n\n" +
-                        $"🕒 Date and Time: {fb.created_at:MMMM dd, yyyy hh:mm tt}";
-
-                    // Auto-adjust label height to fit text
-                    feedbackLabel.Height = TextRenderer.MeasureText(
-                        feedbackLabel.Text,
-                        feedbackLabel.Font,
-                        new Size(feedbackLabel.Width, int.MaxValue),
-                        TextFormatFlags.WordBreak
-                    ).Height + 20;
-
-                    // Add label to the panel
-                    feedbackPanel.Controls.Add(feedbackLabel);
-
-                    // Move down for next feedback
-                    yOffset += feedbackLabel.Height + 10;
+                    string user = fb.User != null ? $"{fb.User.first_name} {fb.User.last_name}" : $"User {fb.user_id}";
+                    listbox_feedback.Items.Add($"📌 {fb.subject} — by {user} ({fb.created_at:MMM dd, yyyy})");
                 }
+
+                listbox_feedback.SelectedIndexChanged -= listbox_feedback_SelectedIndexChanged;
+                listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error loading feedback: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show("Error loading feedback: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
@@ -107,43 +117,93 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
         }
 
-        private void feedbackPanel_Resize(object sender, EventArgs e)
-        {
-            foreach (Control ctrl in feedbackPanel.Controls)
-            {
-                if (ctrl is Label lbl)
-                {
-                    lbl.Width = feedbackPanel.Width - 40;
 
-                    // Recalculate height on resize for proper text wrapping
-                    lbl.Height = TextRenderer.MeasureText(
-                        lbl.Text,
-                        lbl.Font,
-                        new Size(lbl.Width, int.MaxValue),
-                        TextFormatFlags.WordBreak
-                    ).Height + 20;
-                }
-            }
+
+        private void listbox_feedback_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = listbox_feedback.SelectedIndex;
+            if (index < 0 || index >= currentFeedbacks.Count) return;
+
+            var selectedFeedback = currentFeedbacks[index];
+            using (var detailsForm = new FeedbackDetailsForm(selectedFeedback))
+                detailsForm.ShowDialog();
+
+            listbox_feedback.ClearSelected();
         }
 
-        private void ApplySearchFilter()
+        private void listbox_feedback_DrawItem(object sender, DrawItemEventArgs e)
         {
+            if (e.Index < 0 || e.Index >= currentFeedbacks.Count) return;
+            e.DrawBackground();
+
+            Feedback fb = currentFeedbacks[e.Index];
+            Graphics g = e.Graphics;
+            Rectangle bounds = e.Bounds;
+            bool isSelected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
+
+            Color backColor = isSelected ? Color.FromArgb(52, 152, 219) : Color.White;
+            using (SolidBrush bgBrush = new SolidBrush(backColor))
+                g.FillRectangle(bgBrush, bounds);
+
+            int padding = 10;
+            using (Font subjectFont = new Font("Cascadia Code", 10, FontStyle.Bold))
+            using (SolidBrush subjectBrush = new SolidBrush(isSelected ? Color.White : Color.Black))
+                g.DrawString(fb.subject, subjectFont, subjectBrush, bounds.Left + padding, bounds.Top + 5);
+
+            string user = fb.User != null ? $"{fb.User.first_name} {fb.User.last_name}" : $"User {fb.user_id}";
+            string details = $"by {user} — {fb.created_at:MMM dd, yyyy hh:mm tt}";
+            using (Font detailsFont = new Font("Cascadia Code", 8, FontStyle.Italic))
+            using (SolidBrush detailsBrush = new SolidBrush(isSelected ? Color.WhiteSmoke : Color.Gray))
+                g.DrawString(details, detailsFont, detailsBrush, bounds.Left + padding, bounds.Top + 25);
+
+            // 🗂 Archive button (right side)
+            int buttonWidth = 80;
+            int buttonHeight = 25;
+            Rectangle archiveRect = new Rectangle(bounds.Right - buttonWidth - 10, bounds.Top + 12, buttonWidth, buttonHeight);
+            using (SolidBrush buttonBrush = new SolidBrush(Color.FromArgb(231, 76, 60)))
+                g.FillRectangle(buttonBrush, archiveRect);
+            using (Font buttonFont = new Font("Cascadia Code", 8, FontStyle.Bold))
+            using (SolidBrush textBrush = new SolidBrush(Color.White))
+                g.DrawString("Archive", buttonFont, textBrush, archiveRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+
+            // Save clickable bounds
+            if (archiveButtonBounds.Count <= e.Index)
+                archiveButtonBounds.Add(archiveRect);
+            else
+                archiveButtonBounds[e.Index] = archiveRect;
+
+            e.DrawFocusRectangle();
+        }
+
+        private void textbox_search_TextChanged(object sender, EventArgs e)
+        {
+            string query = textbox_search.Text.Trim().ToLower();
+
+            // If search box is empty, reload all feedbacks
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                LoadFeedbacks();
+                return;
+            }
+
             try
             {
-                string searchText = textbox_search.Text.Trim().ToLower();
-
+                // Filter feedbacks by subject, name, date, or time
                 var filtered = currentFeedbacks.Where(fb =>
-                    (fb.subject ?? "").ToLower().Contains(searchText) ||
-                    (fb.User?.first_name ?? "").ToLower().Contains(searchText) ||
-                    (fb.User?.last_name ?? "").ToLower().Contains(searchText) ||
-                    fb.created_at.ToString("yyyy-MM-dd").Contains(searchText) ||       // date search
-                    fb.created_at.ToString("hh:mm tt").ToLower().Contains(searchText)  // time search
+                    (fb.subject != null && fb.subject.ToLower().Contains(query)) ||
+                    (fb.User != null && fb.User.first_name.ToLower().Contains(query)) ||
+                    (fb.User != null && fb.User.last_name.ToLower().Contains(query)) ||
+                    (fb.created_at.ToString("MMMM dd, yyyy").ToLower().Contains(query)) ||
+                    (fb.created_at.ToString("hh:mm tt").ToLower().Contains(query))
                 ).ToList();
 
-                // Clear panel
-                feedbackPanel.Controls.Clear();
+                listbox_feedback.Items.Clear();
 
-                int yOffset = 10;
+                if (filtered.Count == 0)
+                {
+                    listbox_feedback.Items.Add("No feedback found.");
+                    return;
+                }
 
                 foreach (var fb in filtered)
                 {
@@ -151,48 +211,117 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                         ? $"{fb.User.first_name} {fb.User.last_name}"
                         : $"User {fb.user_id}";
 
-                    Label feedbackLabel = new Label
-                    {
-                        AutoSize = false,
-                        Width = feedbackPanel.Width - 40,
-                        Location = new Point(10, yOffset),
-                        BorderStyle = BorderStyle.FixedSingle,
-                        Font = new Font("Cascadia Code", 10, FontStyle.Regular),
-                        TextAlign = ContentAlignment.TopLeft,
-                        Padding = new Padding(10),
-                        BackColor = Color.White,
-                        ForeColor = Color.Black,
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-                    };
-
-                    feedbackLabel.Text =
-                        $"📌 Subject: {fb.subject}\n" +
-                        $"👤 Submitted by: {user}\n" +
-                        $"💬 Feedback:\n{fb.feedback}\n\n" +
-                        $"🕒 Date and Time: {fb.created_at:MMMM dd, yyyy hh:mm tt}";
-
-                    feedbackLabel.Height = TextRenderer.MeasureText(
-                        feedbackLabel.Text,
-                        feedbackLabel.Font,
-                        new Size(feedbackLabel.Width, int.MaxValue),
-                        TextFormatFlags.WordBreak
-                    ).Height + 20;
-
-                    feedbackPanel.Controls.Add(feedbackLabel);
-
-                    yOffset += feedbackLabel.Height + 10;
+                    listbox_feedback.Items.Add($"📌 {fb.subject} — by {user} ({fb.created_at:MMM dd, yyyy})");
                 }
+
+                // Keep the filtered list for selection details
+                currentFeedbacks = filtered;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error filtering feedback: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error searching feedback: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void textbox_search_TextChanged(object sender, EventArgs e)
+        private void listbox_feedback_MouseDown(object sender, MouseEventArgs e)
         {
-            ApplySearchFilter();
+            for (int i = 0; i < archiveButtonBounds.Count; i++)
+            {
+                if (archiveButtonBounds[i].Contains(e.Location))
+                {
+                    var fb = currentFeedbacks[i];
+                    DialogResult result = MessageBox.Show($"Archive feedback \"{fb.subject}\"?", "Confirm Archive",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        if (feedbackRepository.ArchiveFeedback(fb.feedback_id))
+                        {
+                            MessageBox.Show("Feedback archived successfully!", "Archived",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadFeedbacks();
+                        }
+                    }
+                    return;
+                }
+            }
+        }
+    }
+
+    public class FeedbackDetailsForm : Form
+    {
+        public FeedbackDetailsForm(Feedback feedback)
+        {
+            this.Text = "Feedback Details";
+            this.Size = new Size(700, 600);
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.BackColor = Color.White;
+
+            Label lblSubject = new Label()
+            {
+                Text = $"📌 Subject: {feedback.subject}",
+                Font = new Font("Cascadia Code", 11, FontStyle.Bold),
+                Dock = DockStyle.Top,
+                Height = 50,
+                Padding = new Padding(10)
+            };
+
+            string user = feedback.User != null
+                ? $"{feedback.User.first_name} {feedback.User.last_name}"
+                : $"User {feedback.user_id}";
+
+            Label lblUser = new Label()
+            {
+                Text = $"👤 Submitted by: {user}",
+                Font = new Font("Cascadia Code", 10, FontStyle.Regular),
+                Dock = DockStyle.Top,
+                Height = 40,
+                Padding = new Padding(10)
+            };
+
+            Label lblDate = new Label()
+            {
+                Text = $"🕒 Date: {feedback.created_at:MMMM dd, yyyy hh:mm tt}",
+                Font = new Font("Cascadia Code", 9, FontStyle.Italic),
+                Dock = DockStyle.Top,
+                Height = 40,
+                Padding = new Padding(10)
+            };
+
+            TextBox txtFeedback = new TextBox()
+            {
+                Text = feedback.feedback,
+                Multiline = true,
+                ReadOnly = true,
+                ScrollBars = ScrollBars.Vertical,
+                Dock = DockStyle.Fill,
+                Font = new Font("Cascadia Code", 10, FontStyle.Regular),
+                BackColor = Color.WhiteSmoke,
+                ForeColor = Color.Black,
+                Padding = new Padding(10)
+            };
+
+            //Button btnClose = new Button()
+            //{
+            //    Text = "Close",
+            //    Dock = DockStyle.Bottom,
+            //    Height = 40,
+            //    Font = new Font("Cascadia Code", 10, FontStyle.Bold),
+            //    BackColor = Color.FromArgb(52, 152, 219),
+            //    ForeColor = Color.White,
+            //    FlatStyle = FlatStyle.Flat
+            //};
+            //btnClose.Click += (s, e) => this.Close();
+
+            this.Controls.Add(txtFeedback);
+            //this.Controls.Add(btnClose);
+            this.Controls.Add(lblDate);
+            this.Controls.Add(lblUser);
+            this.Controls.Add(lblSubject);
         }
     }
 }
