@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SIdebarTemplate));
             panel1 = new Panel();
             button2 = new Button();
@@ -40,19 +39,18 @@
             pictureBox2 = new PictureBox();
             label3 = new Label();
             label4 = new Label();
-            profile = new Button();
-            contextmenustrip_profile = new ContextMenuStrip(components);
-            logout = new ToolStripMenuItem();
+            button_notif = new Button();
+            button_logout = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            contextmenustrip_profile.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(button_logout);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button_feedback);
             panel1.Controls.Add(button_messages);
@@ -72,7 +70,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Cascadia Code", 12F);
             button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(5, 228);
+            button2.Location = new Point(5, 220);
             button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
             button2.Size = new Size(195, 35);
@@ -150,10 +148,10 @@
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
             panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(button_notif);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(profile);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -196,33 +194,38 @@
             label4.TabIndex = 8;
             label4.Text = "Laundry";
             // 
-            // profile
+            // button_notif
             // 
-            profile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            profile.Font = new Font("Cascadia Code", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            profile.Location = new Point(877, 4);
-            profile.Name = "profile";
-            profile.Size = new Size(50, 44);
-            profile.TabIndex = 1;
-            profile.Text = "👤";
-            profile.UseVisualStyleBackColor = true;
-            profile.Click += profile_Click;
+            button_notif.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_notif.FlatAppearance.BorderSize = 0;
+            button_notif.FlatAppearance.MouseDownBackColor = Color.RoyalBlue;
+            button_notif.FlatAppearance.MouseOverBackColor = Color.RoyalBlue;
+            button_notif.FlatStyle = FlatStyle.Flat;
+            button_notif.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_notif.ForeColor = SystemColors.ButtonHighlight;
+            button_notif.Location = new Point(877, 7);
+            button_notif.Name = "button_notif";
+            button_notif.Size = new Size(50, 40);
+            button_notif.TabIndex = 10;
+            button_notif.Text = "🔔";
+            button_notif.UseVisualStyleBackColor = true;
+            button_notif.Click += button_notif_Click;
             // 
-            // contextmenustrip_profile
+            // button_logout
             // 
-            contextmenustrip_profile.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            contextmenustrip_profile.ImageScalingSize = new Size(20, 20);
-            contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { logout });
-            contextmenustrip_profile.Name = "contextmenustrip_profile";
-            contextmenustrip_profile.ShowImageMargin = false;
-            contextmenustrip_profile.Size = new Size(132, 36);
-            // 
-            // logout
-            // 
-            logout.Name = "logout";
-            logout.Size = new Size(131, 32);
-            logout.Text = "Logout";
-            logout.Click += logout_Click;
+            button_logout.FlatAppearance.BorderSize = 0;
+            button_logout.FlatStyle = FlatStyle.Flat;
+            button_logout.Font = new Font("Cascadia Code", 12F);
+            button_logout.ForeColor = SystemColors.ButtonHighlight;
+            button_logout.Location = new Point(5, 270);
+            button_logout.Margin = new Padding(4, 3, 4, 3);
+            button_logout.Name = "button_logout";
+            button_logout.Size = new Size(195, 35);
+            button_logout.TabIndex = 6;
+            button_logout.Text = "➜] Logout";
+            button_logout.TextAlign = ContentAlignment.MiddleLeft;
+            button_logout.UseVisualStyleBackColor = true;
+            button_logout.Click += button_logout_Click;
             // 
             // SIdebarTemplate
             // 
@@ -241,7 +244,6 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            contextmenustrip_profile.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -253,12 +255,11 @@
         private Button button_messages;
         private Button button_feedback;
         private Panel panel2;
-        private Button profile;
-        private ContextMenuStrip contextmenustrip_profile;
-        private ToolStripMenuItem logout;
         private PictureBox pictureBox2;
         private Label label3;
         private Label label4;
         private Button button2;
+        private Button button_notif;
+        private Button button_logout;
     }
 }

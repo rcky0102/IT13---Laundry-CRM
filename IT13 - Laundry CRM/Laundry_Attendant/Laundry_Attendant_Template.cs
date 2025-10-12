@@ -29,6 +29,8 @@ namespace IT13___Laundry_CRM
         {
             this.WindowState = FormWindowState.Maximized;
 
+            SetupNotificationPanel();
+
             // create the indicator panel
             indicator = new Panel();
             indicator.Size = new Size(6, button_dashboard.Height);
