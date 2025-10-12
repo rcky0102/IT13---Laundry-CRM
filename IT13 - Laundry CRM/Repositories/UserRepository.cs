@@ -394,5 +394,44 @@ namespace IT13___Laundry_CRM.Repositories
         }
 
 
+        public List<User> GetCustomersByRegistrationDateRange(DateTime from, DateTime to)
+        {
+            var users = new List<User>();
+
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"SELECT user_id, first_name, middle_name, last_name, created_at
+                         FROM Users
+                         WHERE role = 'customer'
+                         AND created_at >= @FromDate AND created_at <= @ToDate
+                         ORDER BY created_at ASC";
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@FromDate", from);
+                    cmd.Parameters.AddWithValue("@ToDate", to);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var user = new User
+                            {
+                                user_id = (int)reader["user_id"],
+                                first_name = reader["first_name"].ToString(),
+                                middle_name = reader["middle_name"].ToString(),
+                                last_name = reader["last_name"].ToString(),
+                                created_at = (DateTime)reader["created_at"]
+                            };
+                            users.Add(user);
+                        }
+                    }
+                }
+            }
+            return users;
+        }
+
+
     }
 }

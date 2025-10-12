@@ -303,10 +303,6 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             }
         }
 
-        private void combobox_users_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadMessages();
-        }
 
         private void listbox_messages_MeasureItem(object sender, MeasureItemEventArgs e)
         {

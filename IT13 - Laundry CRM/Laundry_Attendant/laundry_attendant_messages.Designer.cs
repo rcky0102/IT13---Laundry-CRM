@@ -56,9 +56,9 @@
             listbox_users.Font = new Font("Gadugi", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             listbox_users.FormattingEnabled = true;
             listbox_users.ItemHeight = 27;
-            listbox_users.Location = new Point(256, 186);
+            listbox_users.Location = new Point(256, 159);
             listbox_users.Name = "listbox_users";
-            listbox_users.Size = new Size(238, 353);
+            listbox_users.Size = new Size(238, 380);
             listbox_users.TabIndex = 13;
             listbox_users.DrawItem += listbox_users_DrawItem;
             listbox_users.SelectedIndexChanged += listbox_users_SelectedIndexChanged;
@@ -151,7 +151,7 @@
             Controls.Add(button_send);
             Controls.Add(listbox_messages);
             Controls.Add(panel2);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "laundry_attendant_messages";
             Text = "Laundry Attendant | Message";
             Load += laundry_attendant_messages_Load;

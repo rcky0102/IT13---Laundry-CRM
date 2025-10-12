@@ -78,7 +78,7 @@ namespace IT13___Laundry_CRM
             // Set chart title
             if (chart1.Titles.Count > 0)
             {
-                chart1.Titles[0].Text = "Customer Transaction Trends";
+                chart1.Titles[0].Text = "Number of Customers";
                 chart1.Titles[0].Font = new Font("Segoe UI", 12, FontStyle.Bold);
             }
 
@@ -133,63 +133,52 @@ namespace IT13___Laundry_CRM
         {
             try
             {
-                // Get customer transactions within the date range
-                var transactions = statusRepository.GetCustomerTransactionsByDateRange(from, to.AddDays(1).AddSeconds(-1));
+                var customers = userRepository.GetCustomersByRegistrationDateRange(from, to.AddDays(1).AddSeconds(-1));
 
                 Dictionary<string, int> groupedData = new Dictionary<string, int>();
 
                 switch (groupBy)
                 {
                     case "Day":
-                        // Group by hour for today - ensure we have all 24 hours
                         for (int hour = 0; hour < 24; hour++)
                         {
                             string hourLabel = $"{hour:00}:00";
-                            int customerCount = transactions
-                                .Where(t => t.created_at.Hour == hour)
-                                .Select(t => t.user_id)
-                                .Distinct()
-                                .Count();
-                            groupedData[hourLabel] = customerCount;
+                            int count = customers.Count(c => c.created_at.Hour == hour);
+                            groupedData[hourLabel] = count;
                         }
                         break;
 
                     case "Week":
-                        // Group by day for last 7 days - ensure we have all 7 days
                         for (int i = 6; i >= 0; i--)
                         {
                             DateTime day = DateTime.Today.AddDays(-i);
                             string dayLabel = day.ToString("MMM dd");
-                            int customerCount = transactions
-                                .Where(t => t.created_at.Date == day.Date)
-                                .Select(t => t.user_id)
-                                .Distinct()
-                                .Count();
-                            groupedData[dayLabel] = customerCount;
+                            int count = customers.Count(c => c.created_at.Date == day.Date);
+                            groupedData[dayLabel] = count;
                         }
                         break;
 
                     case "Month":
-                        // Group by day for last 30 days - ensure we have all 30 days
                         for (int i = 29; i >= 0; i--)
                         {
                             DateTime day = DateTime.Today.AddDays(-i);
                             string dayLabel = day.ToString("MMM dd");
-                            int customerCount = transactions
-                                .Where(t => t.created_at.Date == day.Date)
-                                .Select(t => t.user_id)
-                                .Distinct()
-                                .Count();
-                            groupedData[dayLabel] = customerCount;
+                            int count = customers.Count(c => c.created_at.Date == day.Date);
+                            groupedData[dayLabel] = count;
+                        }
+                        break;
+
+                    case "Custom":
+                        for (DateTime day = from.Date; day <= to.Date; day = day.AddDays(1))
+                        {
+                            string dayLabel = day.ToString("MMM dd");
+                            int count = customers.Count(c => c.created_at.Date == day.Date);
+                            groupedData[dayLabel] = count;
                         }
                         break;
                 }
 
-                // Debug: Check if we have the right number of data points
-                Console.WriteLine($"GroupBy: {groupBy}, DataPoints: {groupedData.Count}");
-
-                // Update the chart with the grouped data
-                UpdateChart(groupedData, groupBy);
+                UpdateChart(groupedData, groupBy, from, to);
             }
             catch (Exception ex)
             {
@@ -198,7 +187,7 @@ namespace IT13___Laundry_CRM
             }
         }
 
-        private void UpdateChart(Dictionary<string, int> data, string chartType)
+        private void UpdateChart(Dictionary<string, int> data, string chartType, DateTime from, DateTime to)
         {
             if (chart1 == null) return;
 
@@ -211,7 +200,7 @@ namespace IT13___Laundry_CRM
                 chart1.Series.Clear();
 
                 // Create a new series
-                Series series = new Series("Customer Transactions");
+                Series series = new Series("Number of Customers");
 
                 // Use Column chart type as requested
                 series.ChartType = SeriesChartType.Column;
@@ -247,11 +236,13 @@ namespace IT13___Laundry_CRM
                 {
                     string titleText = chartType switch
                     {
-                        "Day" => "Customer Transactions - Today (24 Hours)",
-                        "Week" => "Customer Transactions - Last 7 Days",
-                        "Month" => "Customer Transactions - Last 30 Days",
-                        _ => "Customer Transactions"
+                        "Day" => "Number of Customers - Today (24 Hours)",
+                        "Week" => "Number of Customers - Last 7 Days",
+                        "Month" => "Number of Customers - Last 30 Days",
+                        "Custom" => $"Number of Customerss ({from:MMM dd, yyyy} - {to:MMM dd, yyyy})",
+                        _ => "Number of Customers"
                     };
+
                     chart1.Titles[0].Text = titleText;
                 }
 
@@ -333,17 +324,13 @@ namespace IT13___Laundry_CRM
             TimeSpan span = to - from;
 
             if (span.TotalDays <= 1)
-            {
-                return "Day"; // Single day or less
-            }
+                return "Day";
             else if (span.TotalDays <= 7)
-            {
-                return "Week"; // Up to 7 days
-            }
+                return "Week";
+            else if (span.TotalDays <= 30)
+                return "Month";
             else
-            {
-                return "Month"; // More than 7 days
-            }
+                return "Custom";
         }
 
         private void LoadTodayData()

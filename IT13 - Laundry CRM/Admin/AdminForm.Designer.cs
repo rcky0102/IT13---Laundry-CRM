@@ -83,7 +83,7 @@
             label_welcome.BackColor = SystemColors.ButtonHighlight;
             label_welcome.Font = new Font("Cascadia Code SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_welcome.ForeColor = SystemColors.ActiveCaptionText;
-            label_welcome.Location = new Point(194, 72);
+            label_welcome.Location = new Point(242, 79);
             label_welcome.Margin = new Padding(2, 0, 2, 0);
             label_welcome.Name = "label_welcome";
             label_welcome.Size = new Size(161, 40);
@@ -93,110 +93,110 @@
             // lblTotalUsers
             // 
             lblTotalUsers.AutoSize = true;
-            lblTotalUsers.Location = new Point(194, 127);
+            lblTotalUsers.Location = new Point(259, 140);
             lblTotalUsers.Margin = new Padding(2, 0, 2, 0);
             lblTotalUsers.Name = "lblTotalUsers";
-            lblTotalUsers.Size = new Size(79, 20);
+            lblTotalUsers.Size = new Size(120, 22);
             lblTotalUsers.TabIndex = 29;
             lblTotalUsers.Text = "Total users";
             // 
             // lblActiveUsers
             // 
             lblActiveUsers.AutoSize = true;
-            lblActiveUsers.Location = new Point(634, 127);
+            lblActiveUsers.Location = new Point(792, 140);
             lblActiveUsers.Margin = new Padding(2, 0, 2, 0);
             lblActiveUsers.Name = "lblActiveUsers";
-            lblActiveUsers.Size = new Size(50, 20);
+            lblActiveUsers.Size = new Size(70, 22);
             lblActiveUsers.TabIndex = 30;
             lblActiveUsers.Text = "Active";
             // 
             // lblArchivedUsers
             // 
             lblArchivedUsers.AutoSize = true;
-            lblArchivedUsers.Location = new Point(618, 165);
+            lblArchivedUsers.Location = new Point(772, 182);
             lblArchivedUsers.Margin = new Padding(2, 0, 2, 0);
             lblArchivedUsers.Name = "lblArchivedUsers";
-            lblArchivedUsers.Size = new Size(60, 20);
+            lblArchivedUsers.Size = new Size(90, 22);
             lblArchivedUsers.TabIndex = 31;
             lblArchivedUsers.Text = "Inactive";
             // 
             // lblAdminCount
             // 
             lblAdminCount.AutoSize = true;
-            lblAdminCount.Location = new Point(533, 132);
+            lblAdminCount.Location = new Point(666, 145);
             lblAdminCount.Margin = new Padding(2, 0, 2, 0);
             lblAdminCount.Name = "lblAdminCount";
-            lblAdminCount.Size = new Size(53, 20);
+            lblAdminCount.Size = new Size(60, 22);
             lblAdminCount.TabIndex = 32;
             lblAdminCount.Text = "Admin";
             // 
             // lblAttendantCount
             // 
             lblAttendantCount.AutoSize = true;
-            lblAttendantCount.Location = new Point(419, 127);
+            lblAttendantCount.Location = new Point(524, 140);
             lblAttendantCount.Margin = new Padding(2, 0, 2, 0);
             lblAttendantCount.Name = "lblAttendantCount";
-            lblAttendantCount.Size = new Size(75, 40);
+            lblAttendantCount.Size = new Size(100, 44);
             lblAttendantCount.TabIndex = 33;
             lblAttendantCount.Text = "Laundry \r\nAttendant";
             // 
             // lblCustomerCount
             // 
             lblCustomerCount.AutoSize = true;
-            lblCustomerCount.Location = new Point(322, 127);
+            lblCustomerCount.Location = new Point(402, 140);
             lblCustomerCount.Margin = new Padding(2, 0, 2, 0);
             lblCustomerCount.Name = "lblCustomerCount";
-            lblCustomerCount.Size = new Size(72, 20);
+            lblCustomerCount.Size = new Size(90, 22);
             lblCustomerCount.TabIndex = 34;
             lblCustomerCount.Text = "Customer";
             // 
             // lblNewUsersMonth
             // 
             lblNewUsersMonth.AutoSize = true;
-            lblNewUsersMonth.Location = new Point(505, 235);
+            lblNewUsersMonth.Location = new Point(631, 258);
             lblNewUsersMonth.Margin = new Padding(2, 0, 2, 0);
             lblNewUsersMonth.Name = "lblNewUsersMonth";
-            lblNewUsersMonth.Size = new Size(50, 20);
+            lblNewUsersMonth.Size = new Size(70, 22);
             lblNewUsersMonth.TabIndex = 35;
             lblNewUsersMonth.Text = "label9";
             // 
             // lblNewUsersLastMonth
             // 
             lblNewUsersLastMonth.AutoSize = true;
-            lblNewUsersLastMonth.Location = new Point(582, 235);
+            lblNewUsersLastMonth.Location = new Point(728, 258);
             lblNewUsersLastMonth.Margin = new Padding(2, 0, 2, 0);
             lblNewUsersLastMonth.Name = "lblNewUsersLastMonth";
-            lblNewUsersLastMonth.Size = new Size(58, 20);
+            lblNewUsersLastMonth.Size = new Size(80, 22);
             lblNewUsersLastMonth.TabIndex = 36;
             lblNewUsersLastMonth.Text = "label10";
             // 
             // lblLatestUser
             // 
             lblLatestUser.AutoSize = true;
-            lblLatestUser.Location = new Point(180, 223);
+            lblLatestUser.Location = new Point(225, 245);
             lblLatestUser.Margin = new Padding(2, 0, 2, 0);
             lblLatestUser.Name = "lblLatestUser";
-            lblLatestUser.Size = new Size(158, 20);
+            lblLatestUser.Size = new Size(240, 22);
             lblLatestUser.TabIndex = 37;
             lblLatestUser.Text = "Latest  Registered user";
             // 
             // lblLatestUserDate
             // 
             lblLatestUserDate.AutoSize = true;
-            lblLatestUserDate.Location = new Point(194, 254);
+            lblLatestUserDate.Location = new Point(242, 279);
             lblLatestUserDate.Margin = new Padding(2, 0, 2, 0);
             lblLatestUserDate.Name = "lblLatestUserDate";
-            lblLatestUserDate.Size = new Size(110, 20);
+            lblLatestUserDate.Size = new Size(170, 22);
             lblLatestUserDate.TabIndex = 38;
             lblLatestUserDate.Text = "latest user date";
             // 
             // lblGrowthRate
             // 
             lblGrowthRate.AutoSize = true;
-            lblGrowthRate.Location = new Point(410, 254);
+            lblGrowthRate.Location = new Point(512, 279);
             lblGrowthRate.Margin = new Padding(2, 0, 2, 0);
             lblGrowthRate.Name = "lblGrowthRate";
-            lblGrowthRate.Size = new Size(50, 20);
+            lblGrowthRate.Size = new Size(70, 22);
             lblGrowthRate.TabIndex = 39;
             lblGrowthRate.Text = "label1";
             // 
@@ -208,7 +208,7 @@
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
-            chart1.Location = new Point(187, 348);
+            chart1.Location = new Point(234, 383);
             chart1.Margin = new Padding(2, 4, 2, 4);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
@@ -218,7 +218,7 @@
             series1.Name = "Series1";
             series1.YValuesPerPoint = 2;
             chart1.Series.Add(series1);
-            chart1.Size = new Size(1000, 349);
+            chart1.Size = new Size(1250, 384);
             chart1.TabIndex = 40;
             chart1.Text = "chart1";
             title1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
@@ -229,20 +229,20 @@
             // 
             // dateTimePickerTo
             // 
-            dateTimePickerTo.Location = new Point(480, 304);
-            dateTimePickerTo.Margin = new Padding(3, 2, 3, 2);
+            dateTimePickerTo.Location = new Point(600, 334);
+            dateTimePickerTo.Margin = new Padding(4, 2, 4, 2);
             dateTimePickerTo.Name = "dateTimePickerTo";
-            dateTimePickerTo.Size = new Size(251, 27);
+            dateTimePickerTo.Size = new Size(313, 27);
             dateTimePickerTo.TabIndex = 43;
             // 
             // dateTimePickerFrom
             // 
             dateTimePickerFrom.CalendarMonthBackground = SystemColors.GradientActiveCaption;
             dateTimePickerFrom.CalendarTitleBackColor = SystemColors.GradientActiveCaption;
-            dateTimePickerFrom.Location = new Point(215, 304);
-            dateTimePickerFrom.Margin = new Padding(3, 2, 3, 2);
+            dateTimePickerFrom.Location = new Point(269, 334);
+            dateTimePickerFrom.Margin = new Padding(4, 2, 4, 2);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
-            dateTimePickerFrom.Size = new Size(245, 27);
+            dateTimePickerFrom.Size = new Size(305, 27);
             dateTimePickerFrom.TabIndex = 42;
             // 
             // buttonLoadGraph
@@ -250,52 +250,56 @@
             buttonLoadGraph.BackColor = SystemColors.Highlight;
             buttonLoadGraph.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonLoadGraph.ForeColor = SystemColors.ButtonHighlight;
-            buttonLoadGraph.Location = new Point(748, 303);
-            buttonLoadGraph.Margin = new Padding(3, 2, 3, 2);
+            buttonLoadGraph.Location = new Point(935, 333);
+            buttonLoadGraph.Margin = new Padding(4, 2, 4, 2);
             buttonLoadGraph.Name = "buttonLoadGraph";
-            buttonLoadGraph.Size = new Size(90, 30);
+            buttonLoadGraph.Size = new Size(112, 33);
             buttonLoadGraph.TabIndex = 41;
             buttonLoadGraph.Text = "Custom";
             buttonLoadGraph.UseVisualStyleBackColor = false;
+            buttonLoadGraph.Click += buttonLoadGraph_Click;
             // 
             // buttonLoadGraphMonth
             // 
             buttonLoadGraphMonth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphMonth.Location = new Point(1081, 302);
-            buttonLoadGraphMonth.Margin = new Padding(3, 4, 3, 4);
+            buttonLoadGraphMonth.Location = new Point(1351, 332);
+            buttonLoadGraphMonth.Margin = new Padding(4, 4, 4, 4);
             buttonLoadGraphMonth.Name = "buttonLoadGraphMonth";
-            buttonLoadGraphMonth.Size = new Size(83, 30);
+            buttonLoadGraphMonth.Size = new Size(104, 33);
             buttonLoadGraphMonth.TabIndex = 46;
             buttonLoadGraphMonth.Text = "Month";
             buttonLoadGraphMonth.UseVisualStyleBackColor = true;
+            buttonLoadGraphMonth.Click += buttonLoadGraphMonth_Click;
             // 
             // buttonLoadGraphWeek
             // 
             buttonLoadGraphWeek.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphWeek.Location = new Point(985, 303);
-            buttonLoadGraphWeek.Margin = new Padding(3, 4, 3, 4);
+            buttonLoadGraphWeek.Location = new Point(1231, 333);
+            buttonLoadGraphWeek.Margin = new Padding(4, 4, 4, 4);
             buttonLoadGraphWeek.Name = "buttonLoadGraphWeek";
-            buttonLoadGraphWeek.Size = new Size(90, 30);
+            buttonLoadGraphWeek.Size = new Size(112, 33);
             buttonLoadGraphWeek.TabIndex = 45;
             buttonLoadGraphWeek.Text = "Week";
             buttonLoadGraphWeek.UseVisualStyleBackColor = true;
+            buttonLoadGraphWeek.Click += buttonLoadGraphWeek_Click;
             // 
             // buttonLoadGraphToday
             // 
             buttonLoadGraphToday.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphToday.Location = new Point(911, 303);
-            buttonLoadGraphToday.Margin = new Padding(3, 4, 3, 4);
+            buttonLoadGraphToday.Location = new Point(1139, 333);
+            buttonLoadGraphToday.Margin = new Padding(4, 4, 4, 4);
             buttonLoadGraphToday.Name = "buttonLoadGraphToday";
-            buttonLoadGraphToday.Size = new Size(68, 30);
+            buttonLoadGraphToday.Size = new Size(85, 33);
             buttonLoadGraphToday.TabIndex = 44;
             buttonLoadGraphToday.Text = "Today";
             buttonLoadGraphToday.UseVisualStyleBackColor = true;
+            buttonLoadGraphToday.Click += buttonLoadGraphToday_Click;
             // 
             // AdminForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1198, 915);
+            ClientSize = new Size(1498, 1006);
             Controls.Add(buttonLoadGraphMonth);
             Controls.Add(buttonLoadGraphWeek);
             Controls.Add(buttonLoadGraphToday);
@@ -315,10 +319,29 @@
             Controls.Add(lblActiveUsers);
             Controls.Add(lblTotalUsers);
             Controls.Add(label_welcome);
-            Margin = new Padding(4, 3, 4, 3);
+            Margin = new Padding(5, 3, 5, 3);
             Name = "AdminForm";
             Text = "Admin | Dashboard";
             Load += AdminForm_Load;
+            Controls.SetChildIndex(label_welcome, 0);
+            Controls.SetChildIndex(lblTotalUsers, 0);
+            Controls.SetChildIndex(lblActiveUsers, 0);
+            Controls.SetChildIndex(lblArchivedUsers, 0);
+            Controls.SetChildIndex(lblAdminCount, 0);
+            Controls.SetChildIndex(lblAttendantCount, 0);
+            Controls.SetChildIndex(lblCustomerCount, 0);
+            Controls.SetChildIndex(lblNewUsersMonth, 0);
+            Controls.SetChildIndex(lblNewUsersLastMonth, 0);
+            Controls.SetChildIndex(lblLatestUser, 0);
+            Controls.SetChildIndex(lblLatestUserDate, 0);
+            Controls.SetChildIndex(lblGrowthRate, 0);
+            Controls.SetChildIndex(chart1, 0);
+            Controls.SetChildIndex(buttonLoadGraph, 0);
+            Controls.SetChildIndex(dateTimePickerFrom, 0);
+            Controls.SetChildIndex(dateTimePickerTo, 0);
+            Controls.SetChildIndex(buttonLoadGraphToday, 0);
+            Controls.SetChildIndex(buttonLoadGraphWeek, 0);
+            Controls.SetChildIndex(buttonLoadGraphMonth, 0);
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
             PerformLayout();
