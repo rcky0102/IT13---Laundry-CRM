@@ -174,7 +174,7 @@
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
             button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_archives.Location = new Point(716, 20);
+            button_archives.Location = new Point(714, 18);
             button_archives.Margin = new Padding(4);
             button_archives.Name = "button_archives";
             button_archives.Size = new Size(62, 50);
@@ -191,7 +191,7 @@
             add.FlatStyle = FlatStyle.Flat;
             add.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             add.ForeColor = SystemColors.ButtonHighlight;
-            add.Location = new Point(788, 23);
+            add.Location = new Point(786, 21);
             add.Margin = new Padding(4);
             add.Name = "add";
             add.Size = new Size(202, 40);
@@ -204,14 +204,14 @@
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.ActiveCaption;
-            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.BorderStyle = BorderStyle.Fixed3D;
             panel3.Controls.Add(label2);
             panel3.Controls.Add(textbox_search);
             panel3.Controls.Add(add);
             panel3.Controls.Add(button_archives);
             panel3.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel3.ForeColor = SystemColors.ButtonHighlight;
-            panel3.Location = new Point(257, 96);
+            panel3.Location = new Point(259, 78);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(1012, 83);
@@ -222,7 +222,7 @@
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(616, 37);
+            label2.Location = new Point(614, 35);
             label2.Name = "label2";
             label2.Size = new Size(102, 19);
             label2.TabIndex = 14;
@@ -244,7 +244,7 @@
             // 
             panelPagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelPagination.BackColor = SystemColors.ButtonHighlight;
-            panelPagination.BorderStyle = BorderStyle.FixedSingle;
+            panelPagination.BorderStyle = BorderStyle.Fixed3D;
             panelPagination.Controls.Add(lblTotalRecords);
             panelPagination.Controls.Add(cmbPageSize);
             panelPagination.Controls.Add(lblPageInfo);
@@ -252,10 +252,10 @@
             panelPagination.Controls.Add(btnNext);
             panelPagination.Controls.Add(btnPrevious);
             panelPagination.Controls.Add(btnFirst);
-            panelPagination.Location = new Point(271, 563);
+            panelPagination.Location = new Point(259, 576);
             panelPagination.Margin = new Padding(4);
             panelPagination.Name = "panelPagination";
-            panelPagination.Size = new Size(996, 61);
+            panelPagination.Size = new Size(1008, 48);
             panelPagination.TabIndex = 14;
             // 
             // lblTotalRecords
@@ -263,7 +263,7 @@
             lblTotalRecords.Anchor = AnchorStyles.Bottom;
             lblTotalRecords.AutoSize = true;
             lblTotalRecords.Font = new Font("Gadugi", 9F);
-            lblTotalRecords.Location = new Point(430, 23);
+            lblTotalRecords.Location = new Point(435, 8);
             lblTotalRecords.Margin = new Padding(4, 0, 4, 0);
             lblTotalRecords.Name = "lblTotalRecords";
             lblTotalRecords.Size = new Size(137, 21);
@@ -277,7 +277,7 @@
             cmbPageSize.Font = new Font("Gadugi", 9F);
             cmbPageSize.FormattingEnabled = true;
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "20", "50" });
-            cmbPageSize.Location = new Point(690, 20);
+            cmbPageSize.Location = new Point(700, 5);
             cmbPageSize.Margin = new Padding(4);
             cmbPageSize.Name = "cmbPageSize";
             cmbPageSize.Size = new Size(74, 29);
@@ -288,7 +288,7 @@
             // 
             lblPageInfo.AutoSize = true;
             lblPageInfo.Font = new Font("Gadugi", 9F);
-            lblPageInfo.Location = new Point(212, 24);
+            lblPageInfo.Location = new Point(204, 11);
             lblPageInfo.Margin = new Padding(4, 0, 4, 0);
             lblPageInfo.Name = "lblPageInfo";
             lblPageInfo.Size = new Size(101, 21);
@@ -299,7 +299,7 @@
             // 
             btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLast.Font = new Font("Gadugi", 9F);
-            btnLast.Location = new Point(888, 19);
+            btnLast.Location = new Point(898, 4);
             btnLast.Margin = new Padding(4);
             btnLast.Name = "btnLast";
             btnLast.Size = new Size(75, 31);
@@ -312,7 +312,7 @@
             // 
             btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnNext.Font = new Font("Gadugi", 9F);
-            btnNext.Location = new Point(786, 19);
+            btnNext.Location = new Point(796, 4);
             btnNext.Margin = new Padding(4);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(94, 31);
@@ -324,7 +324,7 @@
             // btnPrevious
             // 
             btnPrevious.Font = new Font("Gadugi", 9F);
-            btnPrevious.Location = new Point(100, 19);
+            btnPrevious.Location = new Point(92, 6);
             btnPrevious.Margin = new Padding(4);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Size = new Size(94, 31);
@@ -336,7 +336,7 @@
             // btnFirst
             // 
             btnFirst.Font = new Font("Gadugi", 9F);
-            btnFirst.Location = new Point(12, 19);
+            btnFirst.Location = new Point(4, 6);
             btnFirst.Margin = new Padding(4);
             btnFirst.Name = "btnFirst";
             btnFirst.Size = new Size(75, 31);
