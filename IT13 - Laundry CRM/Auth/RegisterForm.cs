@@ -93,8 +93,8 @@ namespace IT13___Laundry_CRM
 
                         if (user.role == "customer")
                         {
-                            MessageBox.Show("Welcome Laundry Customer!", "Login Successful",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show("Welcome Laundry Customer!", "Login Successful",
+                            //    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             customer_dashboard customerform = new customer_dashboard();
                             customerform.Show();
