@@ -1,6 +1,9 @@
-﻿using IT13___Laundry_CRM.Laundry_Attendant;
+﻿using IT13___Laundry_CRM.Customer;
+using IT13___Laundry_CRM.Laundry_Attendant;
+using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using static IT13___Laundry_CRM.Models.User;
 
@@ -8,9 +11,14 @@ namespace IT13___Laundry_CRM
 {
     public partial class Laundry_Attendant_Template : Form
     {
+        private readonly MessageRepository messageRepository = new MessageRepository();
+
         private Button activeButton;                // currently active button
         private Panel indicator;                    // small moving indicator on the left
         public static string LastActiveButtonName;  // persists last active when hiding/showing
+
+        private Panel panelNotifications;
+        private bool notifPanelVisible = false;
 
         public Laundry_Attendant_Template()
         {
@@ -21,11 +29,6 @@ namespace IT13___Laundry_CRM
         {
             this.WindowState = FormWindowState.Maximized;
 
-            // make profile circular (your existing code)
-            var gp = new System.Drawing.Drawing2D.GraphicsPath();
-            gp.AddEllipse(0, 0, profile.Width, profile.Height);
-            profile.Region = new Region(gp);
-
             // create the indicator panel
             indicator = new Panel();
             indicator.Size = new Size(6, button_dashboard.Height);
@@ -34,19 +37,6 @@ namespace IT13___Laundry_CRM
             indicator.Location = new Point(0, button_dashboard.Top);
             panel1.Controls.Add(indicator);
             indicator.BringToFront();
-
-            // initialize all buttons to default style
-            foreach (Control c in panel1.Controls)
-            {
-                if (c is Button btn && btn != profile)
-                {
-                    btn.BackColor = panel1.BackColor;
-                    btn.ForeColor = Color.White;
-                    btn.FlatStyle = FlatStyle.Flat;
-                    btn.FlatAppearance.BorderSize = 0;
-                    btn.UseVisualStyleBackColor = false;
-                }
-            }
 
             // restore last active button
             if (!string.IsNullOrEmpty(LastActiveButtonName))
@@ -123,12 +113,12 @@ namespace IT13___Laundry_CRM
             this.Hide();
         }
 
-        private void profile_Click(object sender, EventArgs e)
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
         {
-            contextmenustrip_profile.Show(profile, 0, profile.Height);
         }
 
-        private void logout_Click(object sender, EventArgs e)
+        private void button_logout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -142,8 +132,152 @@ namespace IT13___Laundry_CRM
             }
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void button_notif_Click(object sender, EventArgs e)
         {
+            notifPanelVisible = !notifPanelVisible;
+
+            if (notifPanelVisible)
+            {
+                PopulateNotifications();
+                panelNotifications.BringToFront();
+                panelNotifications.Visible = true;
+            }
+            else
+            {
+                panelNotifications.Visible = false;
+            }
+        }
+
+        private void SetupNotificationPanel()
+        {
+            panelNotifications = new Panel
+            {
+                Size = new Size(300, 120),
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle,
+                Visible = false
+            };
+
+            MakeRounded(panelNotifications, 15);
+            this.Controls.Add(panelNotifications);
+
+            panelNotifications.Location = new Point(button_notif.Right - panelNotifications.Width, button_notif.Bottom + 5);
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90);
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90);
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90);
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90);
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
+        }
+
+        private void PopulateNotifications()
+        {
+            if (CurrentUser.User == null || panelNotifications == null) return;
+
+            panelNotifications.Controls.Clear();
+
+            int padding = 15;
+            int yOffset = 0;
+
+            // --- Latest Message ---
+            var latestMessage = messageRepository.GetLatestMessageForUser(CurrentUser.User.user_id);
+            if (latestMessage != null && latestMessage.User != null)
+            {
+                string fullName = $"{latestMessage.User.first_name} " +
+                                  $"{(string.IsNullOrEmpty(latestMessage.User.middle_name) ? "" : latestMessage.User.middle_name + " ")}" +
+                                  $"{latestMessage.User.last_name}";
+
+                Panel messagePanel = new Panel
+                {
+                    Size = new Size(panelNotifications.Width - 2, 80),
+                    Location = new Point(1, yOffset),
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand
+                };
+
+                messagePanel.MouseEnter += (s, e) => messagePanel.BackColor = Color.FromArgb(230, 240, 255);
+                messagePanel.MouseLeave += (s, e) => messagePanel.BackColor = Color.White;
+
+                RichTextBox lblMessage = new RichTextBox
+                {
+                    BorderStyle = BorderStyle.None,
+                    BackColor = Color.White,
+                    ReadOnly = true,
+                    Font = new Font("Cascadia Code", 12),
+                    Location = new Point(padding, 10),
+                    Width = panelNotifications.Width - 40,
+                    Height = 50,
+                    ScrollBars = RichTextBoxScrollBars.None
+                };
+
+                lblMessage.AppendText("📩 Latest message from:\n");
+                lblMessage.SelectionFont = new Font("Cascadia Code", 11, FontStyle.Bold);
+                lblMessage.AppendText(fullName);
+
+                messagePanel.Controls.Add(lblMessage);
+
+                messagePanel.Click += (s, e) =>
+                {
+                    customer_messages msg = new customer_messages();
+                    msg.Show();
+                    this.Hide();
+                };
+
+                panelNotifications.Controls.Add(messagePanel);
+                yOffset += messagePanel.Height + 10;
+            }
+
+            // --- Latest Laundry Status ---
+            //var statuses = statusRepository.GetStatusesByUserId(CurrentUser.User.user_id);
+            //var latestStatus = statuses.FirstOrDefault();
+
+            //if (latestStatus != null)
+            //{
+            //    Panel statusPanel = new Panel
+            //    {
+            //        Size = new Size(panelNotifications.Width - 2, 120),
+            //        Location = new Point(1, yOffset),
+            //        BackColor = Color.White,
+            //        Cursor = Cursors.Hand
+            //    };
+
+            //    statusPanel.MouseEnter += (s, e) => statusPanel.BackColor = Color.FromArgb(230, 240, 255);
+            //    statusPanel.MouseLeave += (s, e) => statusPanel.BackColor = Color.White;
+
+            //    RichTextBox lblStatus = new RichTextBox
+            //    {
+            //        ReadOnly = true,
+            //        BorderStyle = BorderStyle.None,
+            //        BackColor = this.BackColor,
+            //        Font = new Font("Cascadia Code", 10),
+            //        Location = new Point(padding, 15),
+            //        Width = 380,
+            //        Height = 60
+            //    };
+
+            //    lblStatus.Text = $"🧺 Laundry Status Update:\n{latestStatus.status}\nDate: {latestStatus.created_at:g}";
+            //    statusPanel.Controls.Add(lblStatus);
+
+            //    statusPanel.Click += (s, e) =>
+            //    {
+            //        customer_status status = new customer_status();
+            //        status.Show();
+            //        this.Hide();
+            //    };
+
+            //    panelNotifications.Controls.Add(statusPanel);
+            //    yOffset += statusPanel.Height + 10;
+            //}
+
+            panelNotifications.Height = Math.Min(yOffset + 10, 400);
         }
     }
 }

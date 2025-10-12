@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
+using PdfSharp.Pdf;
 
 
 namespace IT13___Laundry_CRM.Admin
@@ -17,7 +18,7 @@ namespace IT13___Laundry_CRM.Admin
 
         private void admin_reports_Load(object sender, EventArgs e)
         {
-            dtpStart.Value = DateTime.Today.AddDays(-7); // default last 7 days
+            dtpStart.Value = DateTime.Today.AddMonths(-1);
             dtpEnd.Value = DateTime.Today;
         }
 
@@ -28,172 +29,146 @@ namespace IT13___Laundry_CRM.Admin
 
         private void GenerateReport()
         {
-            DateTime startPeriod = dtpStart.Value.Date;
-            DateTime endPeriod = dtpEnd.Value.Date.AddDays(1).AddSeconds(-1); // include full day
+            DateTime start = dtpStart.Value.Date;
+            DateTime end = dtpEnd.Value.Date.AddDays(1).AddSeconds(-1);
 
-            UserSummary userSummary = null;
-            StatusSummary statusSummary = null;
-            List<TopUserStatus> topUsers = new List<TopUserStatus>();
-            List<RecentStatusChange> recentChanges = new List<RecentStatusChange>();
-            List<StatusCount> statusCounts = new List<StatusCount>();
+            var userSummary = new UserSummary();
+            var monthlyUsers = new List<MonthlyUser>();
+            var roleDistribution = new List<RoleCount>();
+            var archivedStatus = new List<ArchiveCount>();
+            var addressDistribution = new List<AddressCount>();
+            var growthTrend = new List<UserGrowth>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                // =======================
-                // User Summary
-                // =======================
-                var userSummaryCmd = new SqlCommand(@"
+                // 1️⃣ User Count by Role
+                var roleCmd = new SqlCommand(@"
                     SELECT 
-                        COUNT(*) AS TotalUsers,
                         SUM(CASE WHEN role = 'admin' THEN 1 ELSE 0 END) AS Admins,
                         SUM(CASE WHEN role = 'laundry_attendant' THEN 1 ELSE 0 END) AS LaundryAttendants,
                         SUM(CASE WHEN role = 'customer' THEN 1 ELSE 0 END) AS Customers,
-                        SUM(CASE WHEN created_at BETWEEN @start AND @end THEN 1 ELSE 0 END) AS NewUsers
+                        COUNT(*) AS Total
                     FROM Users", conn);
-                userSummaryCmd.Parameters.AddWithValue("@start", startPeriod);
-                userSummaryCmd.Parameters.AddWithValue("@end", endPeriod);
 
-                using (var reader = userSummaryCmd.ExecuteReader())
+                using (var reader = roleCmd.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        userSummary = new UserSummary
-                        {
-                            TotalUsers = (int)reader["TotalUsers"],
-                            Admins = (int)reader["Admins"],
-                            LaundryAttendants = (int)reader["LaundryAttendants"],
-                            Customers = (int)reader["Customers"],
-                            NewUsers = (int)reader["NewUsers"]
-                        };
+                        userSummary.Admins = reader.GetInt32(0);
+                        userSummary.LaundryAttendants = reader.GetInt32(1);
+                        userSummary.Customers = reader.GetInt32(2);
+                        userSummary.TotalUsers = reader.GetInt32(3);
                     }
                 }
 
-                // =======================
-                // Status Summary
-                // =======================
-                var statusSummaryCmd = new SqlCommand(@"
-                    SELECT 
-                        COUNT(*) AS TotalStatuses,
-                        SUM(CASE WHEN status = 'Active' THEN 1 ELSE 0 END) AS ActiveStatuses,
-                        SUM(CASE WHEN status = 'Archived' THEN 1 ELSE 0 END) AS ArchivedStatuses
-                    FROM StatusHistory
-                    WHERE created_at BETWEEN @start AND @end", conn);
-                statusSummaryCmd.Parameters.AddWithValue("@start", startPeriod);
-                statusSummaryCmd.Parameters.AddWithValue("@end", endPeriod);
-
-                using (var reader = statusSummaryCmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        statusSummary = new StatusSummary
-                        {
-                            TotalStatuses = (int)reader["TotalStatuses"],
-                            ActiveStatuses = (int)reader["ActiveStatuses"],
-                            ArchivedStatuses = (int)reader["ArchivedStatuses"]
-                        };
-                    }
-                }
-
-                // =======================
-                // Status Counts by Type
-                // =======================
-                var statusCountCmd = new SqlCommand(@"
-                    SELECT status, COUNT(*) AS Count
-                    FROM StatusHistory
+                // 2️⃣ New Users per Month
+                var monthCmd = new SqlCommand(@"
+                    SELECT FORMAT(created_at, 'yyyy-MM') AS Month, COUNT(*) AS Count
+                    FROM Users
                     WHERE created_at BETWEEN @start AND @end
-                    GROUP BY status", conn);
-                statusCountCmd.Parameters.AddWithValue("@start", startPeriod);
-                statusCountCmd.Parameters.AddWithValue("@end", endPeriod);
+                    GROUP BY FORMAT(created_at, 'yyyy-MM')
+                    ORDER BY Month", conn);
+                monthCmd.Parameters.AddWithValue("@start", start);
+                monthCmd.Parameters.AddWithValue("@end", end);
 
-                using (var reader = statusCountCmd.ExecuteReader())
+                using (var reader = monthCmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        statusCounts.Add(new StatusCount
+                        monthlyUsers.Add(new MonthlyUser
                         {
-                            Status = reader["status"].ToString(),
+                            Month = reader["Month"].ToString(),
                             Count = (int)reader["Count"]
                         });
                     }
                 }
 
-                // =======================
-                // Top Users
-                // =======================
-                var topUsersCmd = new SqlCommand(@"
-                    SELECT TOP 5 u.username, COUNT(*) AS StatusUpdates
-                    FROM StatusHistory sh
-                    INNER JOIN Users u ON sh.user_id = u.user_id
-                    WHERE sh.created_at BETWEEN @start AND @end
-                    GROUP BY u.username
-                    ORDER BY StatusUpdates DESC", conn);
-                topUsersCmd.Parameters.AddWithValue("@start", startPeriod);
-                topUsersCmd.Parameters.AddWithValue("@end", endPeriod);
+                // 3️⃣ Active vs Archived Users
+                var archivedCmd = new SqlCommand(@"
+                    SELECT 
+                        CASE WHEN is_archived = 0 THEN 'Active' ELSE 'Archived' END AS Status,
+                        COUNT(*) AS Count
+                    FROM Users
+                    GROUP BY is_archived", conn);
 
-                using (var reader = topUsersCmd.ExecuteReader())
+                using (var reader = archivedCmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        topUsers.Add(new TopUserStatus
+                        archivedStatus.Add(new ArchiveCount
                         {
-                            Username = reader["username"].ToString(),
-                            StatusUpdates = (int)reader["StatusUpdates"]
+                            Status = reader["Status"].ToString(),
+                            Count = (int)reader["Count"]
                         });
                     }
                 }
 
-                // =======================
-                // Recent Status Changes
-                // =======================
-                var recentChangesCmd = new SqlCommand(@"
-                    SELECT TOP 10 u.username, sh.status, sh.created_at AS Date
-                    FROM StatusHistory sh
-                    INNER JOIN Users u ON sh.user_id = u.user_id
-                    WHERE sh.created_at BETWEEN @start AND @end
-                    ORDER BY sh.created_at DESC", conn);
-                recentChangesCmd.Parameters.AddWithValue("@start", startPeriod);
-                recentChangesCmd.Parameters.AddWithValue("@end", endPeriod);
+                // 4️⃣ Role Distribution Chart (same data as #1)
+                roleDistribution.Add(new RoleCount { Role = "Admin", Count = userSummary.Admins });
+                roleDistribution.Add(new RoleCount { Role = "Laundry Attendant", Count = userSummary.LaundryAttendants });
+                roleDistribution.Add(new RoleCount { Role = "Customer", Count = userSummary.Customers });
 
-                using (var reader = recentChangesCmd.ExecuteReader())
+                // 5️⃣ User Growth Over Time (cumulative)
+                var growthCmd = new SqlCommand(@"
+                    SELECT FORMAT(created_at, 'yyyy-MM') AS Month, COUNT(*) AS NewUsers
+                    FROM Users
+                    WHERE created_at <= @end
+                    GROUP BY FORMAT(created_at, 'yyyy-MM')
+                    ORDER BY Month", conn);
+                growthCmd.Parameters.AddWithValue("@end", end);
+
+                int cumulative = 0;
+                using (var reader = growthCmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        recentChanges.Add(new RecentStatusChange
+                        cumulative += (int)reader["NewUsers"];
+                        growthTrend.Add(new UserGrowth
                         {
-                            Username = reader["username"].ToString(),
-                            Status = reader["status"].ToString(),
-                            Date = (DateTime)reader["Date"]
+                            Month = reader["Month"].ToString(),
+                            TotalUsers = cumulative
                         });
                     }
                 }
 
-                // =======================
-                // Optional Insights
-                // =======================
-                var avgStatusCmd = new SqlCommand(@"
-                    SELECT AVG(StatusCount) AS AvgStatusPerUser FROM 
-                    (
-                        SELECT COUNT(*) AS StatusCount
-                        FROM StatusHistory
-                        GROUP BY user_id
-                    ) t", conn);
+                // 6️⃣ Address-based Distribution
+                var addressCmd = new SqlCommand(@"
+                    SELECT address, COUNT(*) AS Count
+                    FROM Users
+                    WHERE address IS NOT NULL AND address <> ''
+                    GROUP BY address
+                    ORDER BY Count DESC", conn);
 
-                double avgStatusPerUser = Convert.ToDouble(avgStatusCmd.ExecuteScalar());
-                lblAverageStatus.Text = $"Average Statuses per User: {avgStatusPerUser:F2}";
+                using (var reader = addressCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        addressDistribution.Add(new AddressCount
+                        {
+                            Address = reader["address"].ToString(),
+                            Count = (int)reader["Count"]
+                        });
+                    }
+                }
             }
 
-            // =======================
-            // Update UI
-            // =======================
-            lblSummary.Text = $"User & Status Activity Report | Period: {startPeriod:yyyy-MM-dd} - {endPeriod:yyyy-MM-dd}\n" +
-                              $"Total Users: {userSummary.TotalUsers} | Admins: {userSummary.Admins} | Laundry Attendants: {userSummary.LaundryAttendants} | Customers: {userSummary.Customers}\n" +
-                              $"New Users: {userSummary.NewUsers} | Total Statuses: {statusSummary.TotalStatuses} | Active: {statusSummary.ActiveStatuses} | Archived: {statusSummary.ArchivedStatuses}";
+            // ====== Update UI or Summary Label ======
+            lblSummary.Text =
+                $"User Report | Period: {start:yyyy-MM-dd} - {end:yyyy-MM-dd}\n" +
+                $"Total Users: {userSummary.TotalUsers} | Admins: {userSummary.Admins} | " +
+                $"Attendants: {userSummary.LaundryAttendants} | Customers: {userSummary.Customers}";
 
-            dgvTopUsers.DataSource = topUsers;
-            dgvRecentChanges.DataSource = recentChanges;
-            dgvStatusCounts.DataSource = statusCounts;
+            dgvRoles.DataSource = roleDistribution;
+            dgvMonthlyUsers.DataSource = monthlyUsers;
+            dgvArchived.DataSource = archivedStatus;
+            dgvGrowth.DataSource = growthTrend;
+            dgvAddress.DataSource = addressDistribution;
+        }
+
+        private void dgvRecentChanges_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
 
         private void btnExportPDF_Click(object sender, EventArgs e)
@@ -204,54 +179,51 @@ namespace IT13___Laundry_CRM.Admin
         private void ExportToPDF()
         {
             GlobalFontSettings.FontResolver = new FontResolver();
-
-            var pdf = new PdfSharp.Pdf.PdfDocument();
+            var pdf = new PdfDocument();
             var page = pdf.AddPage();
             var gfx = XGraphics.FromPdfPage(page);
             int y = 20;
 
-            // Header / Summary
-            gfx.DrawString(lblSummary.Text, new XFont("Arial", 12, XFontStyleEx.Bold), XBrushes.Black,
+            gfx.DrawString("User Reports", new XFont("Arial", 16, XFontStyleEx.Bold), XBrushes.Black,
                 new XRect(20, y, page.Width - 40, page.Height), XStringFormats.TopLeft);
-            y += 100;
+            y += 40;
 
-            // Top Users table
-            gfx.DrawString("Top Users:", new XFont("Arial", 12, XFontStyleEx.Bold), XBrushes.Black, new XPoint(20, y));
-            y += 20;
-            foreach (DataGridViewRow row in dgvTopUsers.Rows)
-            {
-                if (row.IsNewRow) continue;
-                gfx.DrawString($"{row.Cells[0].Value} - {row.Cells[1].Value} updates",
-                    new XFont("Arial", 10), XBrushes.Black, new XPoint(20, y));
-                y += 20;
-            }
+            gfx.DrawString(lblSummary.Text, new XFont("Arial", 10), XBrushes.Black,
+                new XRect(20, y, page.Width - 40, page.Height), XStringFormats.TopLeft);
+            y += 80;
 
-            // Recent Status Changes table
-            y += 20;
-            gfx.DrawString("Recent Status Changes:", new XFont("Arial", 12, XFontStyleEx.Bold), XBrushes.Black, new XPoint(20, y));
-            y += 20;
-            foreach (DataGridViewRow row in dgvRecentChanges.Rows)
-            {
-                if (row.IsNewRow) continue;
-                gfx.DrawString($"{row.Cells[0].Value} - {row.Cells[1].Value} - {row.Cells[2].Value}",
-                    new XFont("Arial", 10), XBrushes.Black, new XPoint(20, y));
-                y += 20;
-            }
+            DrawTable(gfx, ref y, "1. User Count by Role", dgvRoles);
+            DrawTable(gfx, ref y, "2. New Users per Month", dgvMonthlyUsers);
+            DrawTable(gfx, ref y, "3. Active vs Archived Users", dgvArchived);
+            DrawTable(gfx, ref y, "4. Role Distribution", dgvRoles);
+            DrawTable(gfx, ref y, "5. User Growth Over Time", dgvGrowth);
+            DrawTable(gfx, ref y, "6. Address-based Distribution", dgvAddress);
 
-            string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-            string filePath = Path.Combine(downloadsPath, "UserStatusReport.pdf");
-
+            string downloads = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            string filePath = Path.Combine(downloads, "UserReports.pdf");
             pdf.Save(filePath);
             MessageBox.Show($"PDF exported successfully!\nSaved to: {filePath}");
-
         }
 
-
-        private void dgvRecentChanges_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DrawTable(XGraphics gfx, ref int y, string title, DataGridView dgv)
         {
+            gfx.DrawString(title, new XFont("Arial", 12, XFontStyleEx.Bold), XBrushes.Black, new XPoint(20, y));
+            y += 20;
 
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.IsNewRow) continue;
+                string line = string.Join(" | ", row.Cells.Cast<DataGridViewCell>().Select(c => c.Value?.ToString()));
+                gfx.DrawString(line, new XFont("Arial", 9), XBrushes.Black, new XPoint(30, y));
+                y += 15;
+            }
+            y += 30;
         }
     }
+
+
+       
+   // ==================== MODEL CLASSES ====================
 
     public class UserSummary
     {
@@ -259,53 +231,53 @@ namespace IT13___Laundry_CRM.Admin
         public int Admins { get; set; }
         public int LaundryAttendants { get; set; }
         public int Customers { get; set; }
-        public int NewUsers { get; set; }
     }
 
-    public class StatusSummary
+    public class MonthlyUser
     {
-        public int TotalStatuses { get; set; }
-        public int ActiveStatuses { get; set; }
-        public int ArchivedStatuses { get; set; }
+        public string Month { get; set; }
+        public int Count { get; set; }
     }
 
-    public class TopUserStatus
+    public class RoleCount
     {
-        public string Username { get; set; }
-        public int StatusUpdates { get; set; }
+        public string Role { get; set; }
+        public int Count { get; set; }
     }
 
-    public class RecentStatusChange
-    {
-        public string Username { get; set; }
-        public string Status { get; set; }
-        public DateTime Date { get; set; }
-    }
-
-    public class StatusCount
+    public class ArchiveCount
     {
         public string Status { get; set; }
         public int Count { get; set; }
     }
+
+    public class UserGrowth
+    {
+        public string Month { get; set; }
+        public int TotalUsers { get; set; }
+    }
+
+    public class AddressCount
+    {
+        public string Address { get; set; }
+        public int Count { get; set; }
+    }
+
     public class FontResolver : IFontResolver
     {
-        // Provide font bytes from file or embedded resource
         public byte[] GetFont(string faceName)
         {
-            if (faceName == "Arial#") // custom identifier
+            if (faceName == "Arial#")
             {
-                return File.ReadAllBytes(@"C:\Windows\Fonts\arial.ttf"); // path to ttf file
+                return File.ReadAllBytes(@"C:\Windows\Fonts\arial.ttf");
             }
-
             return null;
         }
 
         public FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic)
         {
             if (familyName.Equals("Arial", StringComparison.OrdinalIgnoreCase))
-            {
                 return new FontResolverInfo("Arial#");
-            }
 
             return null;
         }

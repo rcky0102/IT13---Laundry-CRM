@@ -41,7 +41,7 @@
             listbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_feedback.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listbox_feedback.FormattingEnabled = true;
-            listbox_feedback.Location = new Point(258, 172);
+            listbox_feedback.Location = new Point(256, 164);
             listbox_feedback.Name = "listbox_feedback";
             listbox_feedback.Size = new Size(1033, 364);
             listbox_feedback.TabIndex = 14;
@@ -54,7 +54,7 @@
             textbox_search.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textbox_search.Location = new Point(651, 15);
             textbox_search.Name = "textbox_search";
-            textbox_search.Size = new Size(364, 31);
+            textbox_search.Size = new Size(364, 27);
             textbox_search.TabIndex = 15;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
@@ -67,7 +67,7 @@
             label2.Location = new Point(475, 18);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(102, 19);
+            label2.Size = new Size(89, 17);
             label2.TabIndex = 17;
             label2.Text = "View Archive:";
             // 
@@ -102,7 +102,7 @@
             // 
             // laundry_attendant_feedback
             // 
-            AutoScaleDimensions = new SizeF(10F, 21F);
+            AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1306, 614);
