@@ -18,32 +18,33 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 {
     public partial class laundry_attendant_feedback : Laundry_Attendant_Template
     {
-        private readonly FeedbackRepository feedbackRepository = new FeedbackRepository();
 
-        private List<Feedback> currentFeedbacks = new List<Feedback>();
-        private List<Feedback> allFeedbacks = new List<Feedback>();
+        private readonly FeedbackRepository feedbackRepository = new FeedbackRepository();
+        private List<Feedback> currentFeedbacks = new List<Feedback>(); // All feedbacks for filter
+        private List<Feedback> displayFeedbacks = new List<Feedback>();
         private List<Rectangle> archiveButtonBounds = new List<Rectangle>();
 
         public laundry_attendant_feedback()
         {
             InitializeComponent();
-            LoadFeedbacks();
+
+            comboBoxFilter.Items.Add("Unarchived");
+            comboBoxFilter.Items.Add("Archived");
+            comboBoxFilter.SelectedIndex = 0;
+            comboBoxFilter.SelectedIndexChanged += comboBoxFilter_SelectedIndexChanged;
 
             listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
-            textbox_search.TextChanged += textbox_search_TextChanged;
             listbox_feedback.MouseDown += listbox_feedback_MouseDown;
-
-
-            textbox_search.TextChanged += (s, e) => LoadFeedbacks();
-
-
+            textbox_search.TextChanged += textbox_search_TextChanged;
 
             MakeRounded(listbox_feedback);
 
             listbox_feedback.DrawMode = DrawMode.OwnerDrawFixed;
-            listbox_feedback.ItemHeight = 50; // Adjust based on font size
-            listbox_feedback.BorderStyle = BorderStyle.None; // Rounded corners handled separately
+            listbox_feedback.ItemHeight = 50;
+            listbox_feedback.BorderStyle = BorderStyle.None;
             listbox_feedback.DrawItem += listbox_feedback_DrawItem;
+
+            LoadFeedbacks();
         }
 
         private void MakeRounded(Control control, int radius = 20)
@@ -66,41 +67,22 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         {
             try
             {
-                // ✅ Retrieve only non-archived feedbacks
+                bool showArchived = comboBoxFilter.SelectedItem?.ToString() == "Archived";
+
                 if (CurrentUser.Role == "laundry_attendant")
-                    currentFeedbacks = feedbackRepository.GetAllFeedback().Where(f => !f.is_archived).ToList();
+                {
+                    currentFeedbacks = showArchived
+                        ? feedbackRepository.GetArchivedFeedbacks().ToList()
+                        : feedbackRepository.GetUnarchivedFeedbacks().ToList();
+                }
                 else
-                    currentFeedbacks = feedbackRepository.GetFeedbacksByUser(CurrentUser.UserId).Where(f => !f.is_archived).ToList();
-
-                string searchQuery = textbox_search.Text.Trim().ToLower();
-                if (!string.IsNullOrWhiteSpace(searchQuery))
                 {
-                    currentFeedbacks = currentFeedbacks.Where(fb =>
-                        (fb.subject ?? "").ToLower().Contains(searchQuery) ||
-                        (fb.User?.first_name ?? "").ToLower().Contains(searchQuery) ||
-                        (fb.User?.last_name ?? "").ToLower().Contains(searchQuery) ||
-                        fb.created_at.ToString("MMMM dd, yyyy").ToLower().Contains(searchQuery) ||
-                        fb.created_at.ToString("hh:mm tt").ToLower().Contains(searchQuery)
-                    ).ToList();
+                    currentFeedbacks = showArchived
+                        ? feedbackRepository.GetArchivedFeedbacksByUser(CurrentUser.UserId).ToList()
+                        : feedbackRepository.GetUnarchivedFeedbacksByUser(CurrentUser.UserId).ToList();
                 }
 
-                listbox_feedback.Items.Clear();
-                archiveButtonBounds.Clear();
-
-                if (currentFeedbacks.Count == 0)
-                {
-                    listbox_feedback.Items.Add("No feedback found.");
-                    return;
-                }
-
-                foreach (var fb in currentFeedbacks)
-                {
-                    string user = fb.User != null ? $"{fb.User.first_name} {fb.User.last_name}" : $"User {fb.user_id}";
-                    listbox_feedback.Items.Add($"📌 {fb.subject} — by {user} ({fb.created_at:MMM dd, yyyy})");
-                }
-
-                listbox_feedback.SelectedIndexChanged -= listbox_feedback_SelectedIndexChanged;
-                listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
+                ApplySearch();
             }
             catch (Exception ex)
             {
@@ -108,6 +90,36 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             }
         }
 
+        private void ApplySearch()
+        {
+            string searchQuery = textbox_search.Text.Trim().ToLower();
+
+            displayFeedbacks = currentFeedbacks
+                .Where(fb =>
+                    string.IsNullOrWhiteSpace(searchQuery) ||
+                    (fb.subject != null && fb.subject.ToLower().Contains(searchQuery)) ||
+                    (fb.User != null && fb.User.first_name.ToLower().Contains(searchQuery)) ||
+                    (fb.User != null && fb.User.last_name.ToLower().Contains(searchQuery)) ||
+                    fb.created_at.ToString("MMMM dd, yyyy").ToLower().Contains(searchQuery) ||
+                    fb.created_at.ToString("hh:mm tt").ToLower().Contains(searchQuery)
+                )
+                .ToList();
+
+            listbox_feedback.Items.Clear();
+            archiveButtonBounds.Clear();
+
+            if (displayFeedbacks.Count == 0)
+            {
+                listbox_feedback.Items.Add("No feedback found.");
+                return;
+            }
+
+            foreach (var fb in displayFeedbacks)
+            {
+                string user = fb.User != null ? $"{fb.User.first_name} {fb.User.last_name}" : $"User {fb.user_id}";
+                listbox_feedback.Items.Add($"📌 {fb.subject} — by {user} ({fb.created_at:MMM dd, yyyy})");
+            }
+        }
 
 
 
@@ -124,14 +136,12 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         private void listbox_feedback_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = listbox_feedback.SelectedIndex;
-            if (index < 0 || index >= currentFeedbacks.Count) return;
+            if (index < 0 || index >= displayFeedbacks.Count) return; // use displayFeedbacks
 
-            // 🧠 Prevent opening details when clicking the Archive button
             Point cursorPos = listbox_feedback.PointToClient(Cursor.Position);
-            if (archiveButtonBounds.Any(rect => rect.Contains(cursorPos)))
-                return;
+            if (archiveButtonBounds.Any(rect => rect.Contains(cursorPos))) return;
 
-            var selectedFeedback = currentFeedbacks[index];
+            var selectedFeedback = displayFeedbacks[index]; // use displayFeedbacks
             using (var detailsForm = new FeedbackDetailsForm(selectedFeedback))
                 detailsForm.ShowDialog();
 
@@ -140,10 +150,10 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
         private void listbox_feedback_DrawItem(object sender, DrawItemEventArgs e)
         {
-            if (e.Index < 0 || e.Index >= currentFeedbacks.Count) return;
-            e.DrawBackground();
+            if (e.Index < 0 || e.Index >= displayFeedbacks.Count) return; // use displayFeedbacks
 
-            Feedback fb = currentFeedbacks[e.Index];
+            e.DrawBackground();
+            Feedback fb = displayFeedbacks[e.Index]; // use displayFeedbacks
             Graphics g = e.Graphics;
             Rectangle bounds = e.Bounds;
             bool isSelected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
@@ -163,7 +173,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             using (SolidBrush detailsBrush = new SolidBrush(isSelected ? Color.WhiteSmoke : Color.Gray))
                 g.DrawString(details, detailsFont, detailsBrush, bounds.Left + padding, bounds.Top + 25);
 
-            // 🗂 Archive button (right side)
+            // Archive button
             int buttonWidth = 80;
             int buttonHeight = 25;
             Rectangle archiveRect = new Rectangle(bounds.Right - buttonWidth - 10, bounds.Top + 12, buttonWidth, buttonHeight);
@@ -173,7 +183,6 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             using (SolidBrush textBrush = new SolidBrush(Color.White))
                 g.DrawString("Archive", buttonFont, textBrush, archiveRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
 
-            // Save clickable bounds
             if (archiveButtonBounds.Count <= e.Index)
                 archiveButtonBounds.Add(archiveRect);
             else
@@ -181,54 +190,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
             e.DrawFocusRectangle();
         }
+      
 
         private void textbox_search_TextChanged(object sender, EventArgs e)
         {
-            string query = textbox_search.Text.Trim().ToLower();
-
-            // If search box is empty, reload all feedbacks
-            if (string.IsNullOrWhiteSpace(query))
-            {
-                LoadFeedbacks();
-                return;
-            }
-
-            try
-            {
-                // Filter feedbacks by subject, name, date, or time
-                var filtered = currentFeedbacks.Where(fb =>
-                    (fb.subject != null && fb.subject.ToLower().Contains(query)) ||
-                    (fb.User != null && fb.User.first_name.ToLower().Contains(query)) ||
-                    (fb.User != null && fb.User.last_name.ToLower().Contains(query)) ||
-                    (fb.created_at.ToString("MMMM dd, yyyy").ToLower().Contains(query)) ||
-                    (fb.created_at.ToString("hh:mm tt").ToLower().Contains(query))
-                ).ToList();
-
-                listbox_feedback.Items.Clear();
-
-                if (filtered.Count == 0)
-                {
-                    listbox_feedback.Items.Add("No feedback found.");
-                    return;
-                }
-
-                foreach (var fb in filtered)
-                {
-                    string user = fb.User != null
-                        ? $"{fb.User.first_name} {fb.User.last_name}"
-                        : $"User {fb.user_id}";
-
-                    listbox_feedback.Items.Add($"📌 {fb.subject} — by {user} ({fb.created_at:MMM dd, yyyy})");
-                }
-
-                // Keep the filtered list for selection details
-                currentFeedbacks = filtered;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error searching feedback: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ApplySearch();
         }
 
         private void listbox_feedback_MouseDown(object sender, MouseEventArgs e)
@@ -237,7 +203,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             {
                 if (archiveButtonBounds[i].Contains(e.Location))
                 {
-                    var fb = currentFeedbacks[i];
+                    var fb = displayFeedbacks[i]; // use displayFeedbacks
                     DialogResult result = MessageBox.Show($"Archive feedback \"{fb.subject}\"?", "Confirm Archive",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -246,24 +212,18 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                         if (feedbackRepository.ArchiveFeedback(fb.feedback_id))
                         {
                             MessageBox.Show("Feedback archived successfully!", "Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // 🧹 Instantly remove from current list without reloading
-                            currentFeedbacks.RemoveAt(i);
-                            listbox_feedback.Items.RemoveAt(i);
-                            archiveButtonBounds.RemoveAt(i);
+                            LoadFeedbacks(); // reload based on current filter
                         }
-
                     }
                     return;
                 }
             }
         }
 
-        private void button_archives_Click(object sender, EventArgs e)
+
+        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            archived_feedback archives = new archived_feedback();
-            archives.FormClosed += (s, args) => LoadFeedbacks();
-            archives.ShowDialog();
+            LoadFeedbacks();
         }
     }
 

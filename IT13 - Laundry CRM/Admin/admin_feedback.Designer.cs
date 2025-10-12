@@ -28,68 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label3 = new Label();
-            label4 = new Label();
-            feedbackLabel = new Label();
-            feedbackPanel = new Panel();
+            listbox_feedback = new ListBox();
             textbox_search = new TextBox();
-            feedbackPanel.SuspendLayout();
+            label2 = new Label();
+            button_archives = new Button();
             SuspendLayout();
             // 
-            // label3
+            // listbox_feedback
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(241, 76);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(340, 35);
-            label3.TabIndex = 8;
-            label3.Text = "💬 Customer Feedback";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Cascadia Code SemiLight", 8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(278, 111);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(432, 18);
-            label4.TabIndex = 9;
-            label4.Text = "\"See what your users are saying and respond quickly.\"";
-            // 
-            // feedbackLabel
-            // 
-            feedbackLabel.AutoSize = true;
-            feedbackLabel.Location = new Point(28, 20);
-            feedbackLabel.Name = "feedbackLabel";
-            feedbackLabel.Size = new Size(70, 22);
-            feedbackLabel.TabIndex = 10;
-            feedbackLabel.Text = "label5";
-            // 
-            // feedbackPanel
-            // 
-            feedbackPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            feedbackPanel.AutoScroll = true;
-            feedbackPanel.Controls.Add(feedbackLabel);
-            feedbackPanel.Location = new Point(235, 197);
-            feedbackPanel.Name = "feedbackPanel";
-            feedbackPanel.Size = new Size(725, 260);
-            feedbackPanel.TabIndex = 11;
+            listbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            listbox_feedback.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            listbox_feedback.FormattingEnabled = true;
+            listbox_feedback.Location = new Point(230, 161);
+            listbox_feedback.Name = "listbox_feedback";
+            listbox_feedback.Size = new Size(740, 304);
+            listbox_feedback.TabIndex = 19;
+            listbox_feedback.DrawItem += listbox_feedback_DrawItem;
+            listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
+            listbox_feedback.MouseDown += listbox_feedback_MouseDown;
             // 
             // textbox_search
             // 
             textbox_search.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            textbox_search.BackColor = SystemColors.ButtonFace;
-            textbox_search.Location = new Point(617, 151);
-            textbox_search.Multiline = true;
+            textbox_search.Location = new Point(606, 105);
             textbox_search.Name = "textbox_search";
-            textbox_search.PlaceholderText = "🔎 Search here...";
-            textbox_search.Size = new Size(300, 40);
-            textbox_search.TabIndex = 14;
-            textbox_search.TextChanged += textbox_search_TextChanged;
+            textbox_search.Size = new Size(364, 27);
+            textbox_search.TabIndex = 20;
+            //textbox_search.TextChanged += textbox_search_TextChanged_1;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.GradientInactiveCaption;
+            label2.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(430, 108);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(89, 17);
+            label2.TabIndex = 22;
+            label2.Text = "View Archive:";
+            // 
+            // button_archives
+            // 
+            button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_archives.BackColor = SystemColors.GradientInactiveCaption;
+            button_archives.FlatAppearance.BorderSize = 0;
+            button_archives.FlatStyle = FlatStyle.Flat;
+            button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.ForeColor = SystemColors.ActiveCaptionText;
+            button_archives.Location = new Point(537, 96);
+            button_archives.Name = "button_archives";
+            button_archives.Size = new Size(50, 40);
+            button_archives.TabIndex = 21;
+            button_archives.Text = "🗂️";
+            button_archives.UseVisualStyleBackColor = false;
+            button_archives.Click += button_archives_Click;
             // 
             // admin_feedback
             // 
@@ -97,28 +91,26 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(988, 482);
             Controls.Add(textbox_search);
-            Controls.Add(feedbackPanel);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(button_archives);
+            Controls.Add(listbox_feedback);
             Margin = new Padding(5, 3, 5, 3);
             Name = "admin_feedback";
             Text = "Admin | Feedback";
             Load += admin_feedback_Load;
-            Controls.SetChildIndex(label3, 0);
-            Controls.SetChildIndex(label4, 0);
-            Controls.SetChildIndex(feedbackPanel, 0);
+            Controls.SetChildIndex(listbox_feedback, 0);
+            Controls.SetChildIndex(button_archives, 0);
+            Controls.SetChildIndex(label2, 0);
             Controls.SetChildIndex(textbox_search, 0);
-            feedbackPanel.ResumeLayout(false);
-            feedbackPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label label3;
-        private Label label4;
-        private Label feedbackLabel;
-        private Panel feedbackPanel;
+
+        private ListBox listbox_feedback;
         private TextBox textbox_search;
+        private Label label2;
+        private Button button_archives;
     }
 }

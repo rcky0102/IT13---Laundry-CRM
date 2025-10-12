@@ -254,45 +254,45 @@ namespace IT13___Laundry_CRM.Repositories
         }
 
 
-        public List<Feedback> GetArchivedFeedbacks()
-        {
-            var feedbacks = new List<Feedback>();
+        //public List<Feedback> GetArchivedFeedbacks()
+        //{
+        //    var feedbacks = new List<Feedback>();
 
-            string query = @"SELECT f.*, u.first_name, u.middle_name, u.last_name
-                     FROM Feedback f
-                     LEFT JOIN Users u ON f.user_id = u.user_id
-                     WHERE f.is_archived = 1
-                     ORDER BY f.created_at DESC";
+        //    string query = @"SELECT f.*, u.first_name, u.middle_name, u.last_name
+        //             FROM Feedback f
+        //             LEFT JOIN Users u ON f.user_id = u.user_id
+        //             WHERE f.is_archived = 1
+        //             ORDER BY f.created_at DESC";
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        feedbacks.Add(new Feedback
-                        {
-                            feedback_id = (int)reader["feedback_id"],
-                            user_id = (int)reader["user_id"],
-                            subject = reader["subject"].ToString(),
-                            feedback = reader["feedback"].ToString(),
-                            is_archived = (bool)reader["is_archived"],
-                            created_at = (DateTime)reader["created_at"],
-                            updated_at = (DateTime)reader["updated_at"],
-                            User = new User
-                            {
-                                first_name = reader["first_name"].ToString(),
-                                middle_name = reader["middle_name"].ToString(),
-                                last_name = reader["last_name"].ToString()
-                            }
-                        });
-                    }
-                }
-            }
-            return feedbacks;
-        }
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    {
+        //        conn.Open();
+        //        using (SqlCommand cmd = new SqlCommand(query, conn))
+        //        using (SqlDataReader reader = cmd.ExecuteReader())
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                feedbacks.Add(new Feedback
+        //                {
+        //                    feedback_id = (int)reader["feedback_id"],
+        //                    user_id = (int)reader["user_id"],
+        //                    subject = reader["subject"].ToString(),
+        //                    feedback = reader["feedback"].ToString(),
+        //                    is_archived = (bool)reader["is_archived"],
+        //                    created_at = (DateTime)reader["created_at"],
+        //                    updated_at = (DateTime)reader["updated_at"],
+        //                    User = new User
+        //                    {
+        //                        first_name = reader["first_name"].ToString(),
+        //                        middle_name = reader["middle_name"].ToString(),
+        //                        last_name = reader["last_name"].ToString()
+        //                    }
+        //                });
+        //            }
+        //        }
+        //    }
+        //    return feedbacks;
+        //}
 
         public void UnarchiveFeedback(int feedbackId)
         {
@@ -309,6 +309,105 @@ namespace IT13___Laundry_CRM.Repositories
             }
         }
 
+        public List<Feedback> GetArchivedFeedbacks()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"
+                    SELECT f.*, u.first_name, u.last_name
+                    FROM feedback f
+                    LEFT JOIN users u ON f.user_id = u.user_id
+                    WHERE f.is_archived = 1";
+
+                var cmd = new SqlCommand(query, conn);
+                var reader = cmd.ExecuteReader();
+                List<Feedback> result = new List<Feedback>();
+                while (reader.Read())
+                {
+                    result.Add(MapFeedback(reader));
+                }
+                return result;
+            }
+        }
+
+        public List<Feedback> GetUnarchivedFeedbacks()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"
+                    SELECT f.*, u.first_name, u.last_name
+                    FROM feedback f
+                    LEFT JOIN users u ON f.user_id = u.user_id
+                    WHERE f.is_archived = 0";
+
+                var cmd = new SqlCommand(query, conn);
+                var reader = cmd.ExecuteReader();
+                List<Feedback> result = new List<Feedback>();
+                while (reader.Read())
+                {
+                    result.Add(MapFeedback(reader));
+                }
+                return result;
+            }
+        }
+
+
+        public List<Feedback> GetArchivedFeedbacksByUser(int userId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM feedback WHERE is_archived = 1 AND user_id = @userId";
+                var cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@userId", userId);
+                var reader = cmd.ExecuteReader();
+                List<Feedback> result = new List<Feedback>();
+                while (reader.Read())
+                {
+                    result.Add(MapFeedback(reader));
+                }
+                return result;
+            }
+        }
+
+        public List<Feedback> GetUnarchivedFeedbacksByUser(int userId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM feedback WHERE is_archived = 0 AND user_id = @userId";
+                var cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@userId", userId);
+                var reader = cmd.ExecuteReader();
+                List<Feedback> result = new List<Feedback>();
+                while (reader.Read())
+                {
+                    result.Add(MapFeedback(reader));
+                }
+                return result;
+            }
+        }
+
+        private Feedback MapFeedback(SqlDataReader reader)
+        {
+            return new Feedback
+            {
+                feedback_id = (int)reader["feedback_id"],
+                user_id = (int)reader["user_id"],
+                subject = reader["subject"].ToString(),
+                feedback = reader["feedback"].ToString(),
+                created_at = (DateTime)reader["created_at"],
+                is_archived = (bool)reader["is_archived"],
+                User = new User
+                {
+                    user_id = (int)reader["user_id"],
+                    first_name = reader["first_name"].ToString(),
+                    last_name = reader["last_name"].ToString()
+                }
+            };
+        }
 
 
     }

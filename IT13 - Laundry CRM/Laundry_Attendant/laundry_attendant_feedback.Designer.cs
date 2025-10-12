@@ -30,9 +30,8 @@
         {
             listbox_feedback = new ListBox();
             textbox_search = new TextBox();
-            label2 = new Label();
-            button_archives = new Button();
             panel2 = new Panel();
+            comboBoxFilter = new ComboBox();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,47 +57,26 @@
             textbox_search.TabIndex = 15;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.BackColor = SystemColors.GradientInactiveCaption;
-            label2.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(475, 18);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(89, 17);
-            label2.TabIndex = 17;
-            label2.Text = "View Archive:";
-            // 
-            // button_archives
-            // 
-            button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_archives.BackColor = SystemColors.GradientInactiveCaption;
-            button_archives.FlatAppearance.BorderSize = 0;
-            button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_archives.ForeColor = SystemColors.ActiveCaptionText;
-            button_archives.Location = new Point(582, 6);
-            button_archives.Name = "button_archives";
-            button_archives.Size = new Size(50, 40);
-            button_archives.TabIndex = 16;
-            button_archives.Text = "🗂️";
-            button_archives.UseVisualStyleBackColor = false;
-            button_archives.Click += button_archives_Click;
-            // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.GradientInactiveCaption;
             panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(comboBoxFilter);
             panel2.Controls.Add(textbox_search);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(button_archives);
             panel2.Location = new Point(256, 82);
             panel2.Name = "panel2";
             panel2.Size = new Size(1035, 62);
             panel2.TabIndex = 18;
+            // 
+            // comboBoxFilter
+            // 
+            comboBoxFilter.FormattingEnabled = true;
+            comboBoxFilter.Location = new Point(41, 18);
+            comboBoxFilter.Name = "comboBoxFilter";
+            comboBoxFilter.Size = new Size(151, 27);
+            comboBoxFilter.TabIndex = 18;
+            comboBoxFilter.SelectedIndexChanged += comboBoxFilter_SelectedIndexChanged;
             // 
             // laundry_attendant_feedback
             // 
@@ -122,8 +100,7 @@
         #endregion
         private ListBox listbox_feedback;
         private TextBox textbox_search;
-        private Label label2;
-        private Button button_archives;
         private Panel panel2;
+        private ComboBox comboBoxFilter;
     }
 }
