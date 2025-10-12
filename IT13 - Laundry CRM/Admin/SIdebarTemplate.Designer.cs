@@ -211,7 +211,6 @@
             // 
             // button_logout
             // 
-<<<<<<< HEAD
             button_logout.FlatAppearance.BorderSize = 0;
             button_logout.FlatStyle = FlatStyle.Flat;
             button_logout.Font = new Font("Cascadia Code", 12F);
@@ -225,21 +224,6 @@
             button_logout.TextAlign = ContentAlignment.MiddleLeft;
             button_logout.UseVisualStyleBackColor = true;
             button_logout.Click += button_logout_Click;
-=======
-            contextmenustrip_profile.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            contextmenustrip_profile.ImageScalingSize = new Size(20, 20);
-            contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { logout });
-            contextmenustrip_profile.Name = "contextmenustrip_profile";
-            contextmenustrip_profile.ShowImageMargin = false;
-            contextmenustrip_profile.Size = new Size(148, 42);
-            // 
-            // logout
-            // 
-            logout.Name = "logout";
-            logout.Size = new Size(147, 38);
-            logout.Text = "Logout";
-            logout.Click += logout_Click;
->>>>>>> ddf4e79 (chokss2)
             // 
             // SIdebarTemplate
             // 

@@ -217,46 +217,46 @@ namespace IT13___Laundry_CRM
             }
 
             // --- Latest Laundry Status ---
-            //var statuses = statusRepository.GetStatusesByUserId(CurrentUser.User.user_id);
-            //var latestStatus = statuses.FirstOrDefault();
+            var statuses = statusRepository.GetStatusesByUserId(CurrentUser.User.user_id);
+            var latestStatus = statuses.FirstOrDefault();
 
-            //if (latestStatus != null)
-            //{
-            //    Panel statusPanel = new Panel
-            //    {
-            //        Size = new Size(panelNotifications.Width - 2, 120),
-            //        Location = new Point(1, yOffset),
-            //        BackColor = Color.White,
-            //        Cursor = Cursors.Hand
-            //    };
+            if (latestStatus != null)
+            {
+                Panel statusPanel = new Panel
+                {
+                    Size = new Size(panelNotifications.Width - 2, 120),
+                    Location = new Point(1, yOffset),
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand
+                };
 
-            //    statusPanel.MouseEnter += (s, e) => statusPanel.BackColor = Color.FromArgb(230, 240, 255);
-            //    statusPanel.MouseLeave += (s, e) => statusPanel.BackColor = Color.White;
+                statusPanel.MouseEnter += (s, e) => statusPanel.BackColor = Color.FromArgb(230, 240, 255);
+                statusPanel.MouseLeave += (s, e) => statusPanel.BackColor = Color.White;
 
-            //    RichTextBox lblStatus = new RichTextBox
-            //    {
-            //        ReadOnly = true,
-            //        BorderStyle = BorderStyle.None,
-            //        BackColor = this.BackColor,
-            //        Font = new Font("Cascadia Code", 10),
-            //        Location = new Point(padding, 15),
-            //        Width = 380,
-            //        Height = 60
-            //    };
+                RichTextBox lblStatus = new RichTextBox
+                {
+                    ReadOnly = true,
+                    BorderStyle = BorderStyle.None,
+                    BackColor = this.BackColor,
+                    Font = new Font("Cascadia Code", 10),
+                    Location = new Point(padding, 15),
+                    Width = 380,
+                    Height = 60
+                };
 
-            //    lblStatus.Text = $"🧺 Laundry Status Update:\n{latestStatus.status}\nDate: {latestStatus.created_at:g}";
-            //    statusPanel.Controls.Add(lblStatus);
+                lblStatus.Text = $"🧺 Laundry Status Update:\n{latestStatus.status}\nDate: {latestStatus.created_at:g}";
+                statusPanel.Controls.Add(lblStatus);
 
-            //    statusPanel.Click += (s, e) =>
-            //    {
-            //        customer_status status = new customer_status();
-            //        status.Show();
-            //        this.Hide();
-            //    };
+                statusPanel.Click += (s, e) =>
+                {
+                    customer_status status = new customer_status();
+                    status.Show();
+                    this.Hide();
+                };
 
-            //    panelNotifications.Controls.Add(statusPanel);
-            //    yOffset += statusPanel.Height + 10;
-            //}
+                panelNotifications.Controls.Add(statusPanel);
+                yOffset += statusPanel.Height + 10;
+            }
 
             panelNotifications.Height = Math.Min(yOffset + 10, 400);
         }
