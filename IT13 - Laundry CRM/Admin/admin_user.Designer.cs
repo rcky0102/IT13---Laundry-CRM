@@ -20,6 +20,7 @@
             button_add = new Button();
             table_users = new DataGridView();
             panel2 = new Panel();
+            label1 = new Label();
             textBox_search = new TextBox();
             cmbRoleFilter = new ComboBox();
             cmbPageSize = new ComboBox();
@@ -30,7 +31,6 @@
             btnPrevious = new Button();
             btnFirst = new Button();
             panelPagination = new Panel();
-            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)table_users).BeginInit();
             panel2.SuspendLayout();
             panelPagination.SuspendLayout();
@@ -83,6 +83,17 @@
             panel2.Size = new Size(928, 75);
             panel2.TabIndex = 6;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(284, 24);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 19);
+            label1.TabIndex = 8;
+            label1.Text = "Role Filter:";
+            // 
             // textBox_search
             // 
             textBox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -99,7 +110,7 @@
             cmbRoleFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRoleFilter.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbRoleFilter.Items.AddRange(new object[] { "All", "Admin", "Staff", "Customer" });
-            cmbRoleFilter.Location = new Point(389, 19);
+            cmbRoleFilter.Location = new Point(372, 19);
             cmbRoleFilter.Name = "cmbRoleFilter";
             cmbRoleFilter.Size = new Size(120, 29);
             cmbRoleFilter.TabIndex = 7;
@@ -108,17 +119,17 @@
             // cmbPageSize
             // 
             cmbPageSize.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPageSize.Font = new Font("Cascadia Code", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbPageSize.Font = new Font("Gadugi", 8F);
             cmbPageSize.FormattingEnabled = true;
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "25", "50" });
             cmbPageSize.Location = new Point(694, 10);
             cmbPageSize.Name = "cmbPageSize";
-            cmbPageSize.Size = new Size(60, 29);
+            cmbPageSize.Size = new Size(60, 27);
             cmbPageSize.TabIndex = 11;
             // 
             // btnLast
             // 
-            btnLast.Font = new Font("Cascadia Code", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLast.Font = new Font("Gadugi", 8F);
             btnLast.Location = new Point(854, 9);
             btnLast.Name = "btnLast";
             btnLast.Size = new Size(67, 28);
@@ -128,7 +139,7 @@
             // 
             // btnNext
             // 
-            btnNext.Font = new Font("Cascadia Code", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNext.Font = new Font("Gadugi", 8F);
             btnNext.Location = new Point(776, 10);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(72, 28);
@@ -139,26 +150,26 @@
             // lblTotalRecords
             // 
             lblTotalRecords.AutoSize = true;
-            lblTotalRecords.Font = new Font("Cascadia Code", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotalRecords.Font = new Font("Gadugi", 8F);
             lblTotalRecords.Location = new Point(410, 14);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(154, 21);
+            lblTotalRecords.Size = new Size(119, 19);
             lblTotalRecords.TabIndex = 8;
             lblTotalRecords.Text = "Total Records: 0";
             // 
             // lblPageInfo
             // 
             lblPageInfo.AutoSize = true;
-            lblPageInfo.Font = new Font("Cascadia Code", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPageInfo.Font = new Font("Gadugi", 8F);
             lblPageInfo.Location = new Point(209, 13);
             lblPageInfo.Name = "lblPageInfo";
-            lblPageInfo.Size = new Size(109, 21);
+            lblPageInfo.Size = new Size(87, 19);
             lblPageInfo.TabIndex = 7;
             lblPageInfo.Text = "Page 1 of 1";
             // 
             // btnPrevious
             // 
-            btnPrevious.Font = new Font("Cascadia Code", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPrevious.Font = new Font("Gadugi", 8F);
             btnPrevious.Location = new Point(101, 9);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Size = new Size(102, 28);
@@ -168,7 +179,7 @@
             // 
             // btnFirst
             // 
-            btnFirst.Font = new Font("Cascadia Code", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnFirst.Font = new Font("Gadugi", 8F);
             btnFirst.Location = new Point(20, 9);
             btnFirst.Name = "btnFirst";
             btnFirst.Size = new Size(75, 28);
@@ -193,17 +204,6 @@
             panelPagination.Name = "panelPagination";
             panelPagination.Size = new Size(929, 45);
             panelPagination.TabIndex = 9;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(274, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(118, 21);
-            label1.TabIndex = 8;
-            label1.Text = "Role Filter:";
             // 
             // admin_user
             // 
