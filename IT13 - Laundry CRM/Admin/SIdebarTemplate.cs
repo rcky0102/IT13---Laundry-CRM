@@ -1,12 +1,8 @@
 ﻿using IT13___Laundry_CRM.Admin;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static IT13___Laundry_CRM.Models.User;
 
@@ -14,109 +10,137 @@ namespace IT13___Laundry_CRM
 {
     public partial class SIdebarTemplate : Form
     {
+        private Button activeButton;                 // Currently active button
+        private Panel indicator;                     // Left indicator bar
+        public static string LastActiveButtonName;  // Remember last active button across forms
+
         public SIdebarTemplate()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button_laundry_attendant_Click(object sender, EventArgs e)
-        {
-            //UserForm userform = new UserForm();
-            //userform.Show();
-
-            //this.Hide();
-        }
-
-        private void button_users_Click(object sender, EventArgs e)
-        {
-            admin_user user = new admin_user();
-            user.Show();
-
-            this.Hide();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button_messages_Click(object sender, EventArgs e)
-        {
-            admin_messages messages = new admin_messages();
-            messages.Show();
-
-            this.Hide();
-        }
-
-        private void button_feedback_Click(object sender, EventArgs e)
-        {
-            admin_feedback feedback = new admin_feedback();
-            feedback.Show();
-
-            this.Hide();
-        }
-
-        private void logout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
-                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-
-                CurrentUser.User = null;
-
-
-                Form1 loginForm = new Form1();
-                loginForm.Show();
-
-                this.Close();
-            }
-        }
-
-        private void profile_Click(object sender, EventArgs e)
-        {
-            contextmenustrip_profile.Show(profile, 0, profile.Height);
         }
 
         private void SIdebarTemplate_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
 
-            System.Drawing.Drawing2D.GraphicsPath buttonPath = new System.Drawing.Drawing2D.GraphicsPath();
-            buttonPath.AddEllipse(0, 0, profile.Width, profile.Height);
-            profile.Region = new Region(buttonPath);
+            // Circle profile pic
+            var path = new GraphicsPath();
+            path.AddEllipse(0, 0, profile.Width, profile.Height);
+            profile.Region = new Region(path);
+
+            // Create indicator panel
+            indicator = new Panel
+            {
+                Size = new Size(6, button1.Height),
+                BackColor = Color.White,
+                Visible = false,
+                Location = new Point(0, button1.Top)
+            };
+            panel1.Controls.Add(indicator);
+            indicator.BringToFront();
+
+            // Initialize button styles
+            foreach (Control c in panel1.Controls)
+            {
+                if (c is Button btn)
+                {
+                    btn.BackColor = panel1.BackColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
+                    btn.UseVisualStyleBackColor = false;
+                }
+            }
+
+            // Restore last active button
+            if (!string.IsNullOrEmpty(LastActiveButtonName))
+            {
+                var found = panel1.Controls.Find(LastActiveButtonName, true);
+                if (found.Length > 0 && found[0] is Button saved)
+                    ActivateButton(saved);
+            }
+            else
+            {
+                ActivateButton(button1); // Default dashboard
+            }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void ActivateButton(Button clickedButton)
         {
+            // Reset previous
+            if (activeButton != null)
+            {
+                activeButton.BackColor = panel1.BackColor;
+                activeButton.ForeColor = Color.White;
+            }
 
+            // Set new active
+            activeButton = clickedButton;
+            LastActiveButtonName = clickedButton.Name;
+
+            activeButton.BackColor = Color.White;
+            activeButton.ForeColor = Color.RoyalBlue;
+
+            // Move indicator
+            indicator.Visible = true;
+            indicator.Height = activeButton.Height;
+            indicator.Top = activeButton.Top;
+            indicator.Left = 0;
         }
+
+        private void OpenForm(Form form, Button clickedButton)
+        {
+            ActivateButton(clickedButton);
+            form.Show();
+            this.Hide();
+        }
+
+        // --- NAVIGATION BUTTONS ---
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm();
-            adminForm.Show();
+            OpenForm(new AdminForm(), button1);
+        }
 
-            this.Hide();
+        private void button_users_Click(object sender, EventArgs e)
+        {
+            OpenForm(new admin_user(), button_users);
+        }
+
+        private void button_messages_Click(object sender, EventArgs e)
+        {
+            OpenForm(new admin_messages(), button_messages);
+        }
+
+        private void button_feedback_Click(object sender, EventArgs e)
+        {
+            OpenForm(new admin_feedback(), button_feedback);
         }
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            admin_reports reports = new admin_reports();    
-            reports.Show();
+            OpenForm(new admin_reports(), button2);
+        }
 
-            this.Hide();    
+        // Profile click
+        private void profile_Click(object sender, EventArgs e)
+        {
+            contextmenustrip_profile.Show(profile, 0, profile.Height);
+        }
+
+        // Logout
+        private void logout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                CurrentUser.User = null;
+                Form1 loginForm = new Form1();
+                loginForm.Show();
+                this.Close();
+            }
         }
     }
 }
