@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IT13___Laundry_CRM.Models;
+using IT13___Laundry_CRM.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using IT13___Laundry_CRM.Models;
-using IT13___Laundry_CRM.Repositories;
+using static IT13___Laundry_CRM.Models.User;
 
 namespace IT13___Laundry_CRM
 {
@@ -33,19 +34,25 @@ namespace IT13___Laundry_CRM
                 {
                     username = textbox_username.Text.Trim(),
                     password = textbox_password.Text, // will be hashed inside CreateUser
-                    role = "customer", // fixed role for registration
-                    first_name = string.IsNullOrWhiteSpace(textbox_firstname.Text) ? null : textbox_firstname.Text.Trim(),
+                    role = "customer", // fixed role
+                    first_name = textbox_firstname.Text.Trim(),
                     middle_name = string.IsNullOrWhiteSpace(textbox_middlename.Text) ? null : textbox_middlename.Text.Trim(),
-                    last_name = string.IsNullOrWhiteSpace(textbox_lastname.Text) ? null : textbox_lastname.Text.Trim(),
-                    address = string.IsNullOrWhiteSpace(textbox_address.Text) ? null : textbox_address.Text.Trim(),
-                    contact = string.IsNullOrWhiteSpace(textbox_contact.Text) ? null : textbox_contact.Text.Trim(),
+                    last_name = textbox_lastname.Text.Trim(),
+                    address = textbox_address.Text.Trim(),
+                    contact = textbox_contact.Text.Trim(),
                     created_at = DateTime.Now
                 };
 
-                // Simple validation
-                if (string.IsNullOrEmpty(newUser.username) || string.IsNullOrEmpty(newUser.password))
+                // 🔸 Validate required fields
+                if (string.IsNullOrWhiteSpace(newUser.username) ||
+                    string.IsNullOrWhiteSpace(newUser.password) ||
+                    string.IsNullOrWhiteSpace(newUser.first_name) ||
+                    string.IsNullOrWhiteSpace(newUser.last_name) ||
+                    string.IsNullOrWhiteSpace(newUser.address) ||
+                    string.IsNullOrWhiteSpace(newUser.contact))
                 {
-                    MessageBox.Show("Username and Password are required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please fill out all required fields.",
+                        "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -53,21 +60,63 @@ namespace IT13___Laundry_CRM
                 var userRepository = new UserRepository();
                 userRepository.CreateUser(newUser);
 
-                MessageBox.Show("User registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Registration successful! Logging you in...", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                customer_dashboard dashboard = new customer_dashboard(); 
-                dashboard.Show();
+                // ✅ Auto-login logic
+                AutoLoginAfterRegister(newUser.username, newUser.password);
 
-                this.Hide();
-
-               
-                ClearForm();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error during registration: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void AutoLoginAfterRegister(string username, string password)
+        {
+            var userRepository = new UserRepository();
+            User? user = userRepository.GetUserByUsername(username);
+
+            if (user != null)
+            {
+                // Hash entered password (the same way as login does)
+                using (var sha256 = System.Security.Cryptography.SHA256.Create())
+                {
+                    byte[] bytes = Encoding.UTF8.GetBytes(password);
+                    byte[] hash = sha256.ComputeHash(bytes);
+                    string hashedPassword = Convert.ToBase64String(hash);
+
+                    if (user.password == hashedPassword)
+                    {
+                        CurrentUser.User = user;
+
+                        if (user.role == "customer")
+                        {
+                            MessageBox.Show("Welcome Laundry Customer!", "Login Successful",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            customer_dashboard customerform = new customer_dashboard();
+                            customerform.Show();
+                            this.Hide();
+                        }
+                        else if (user.role == "admin")
+                        {
+                            AdminForm adminForm = new AdminForm();
+                            adminForm.Show();
+                            this.Hide();
+                        }
+                        else if (user.role == "laundry_attendant")
+                        {
+                            Laundry_Attendant_Dashboard attendantForm = new Laundry_Attendant_Dashboard();
+                            attendantForm.Show();
+                            this.Hide();
+                        }
+                    }
+                }
+            }
+        }
+
 
         private void button_cancel_Click(object sender, EventArgs e)
         {

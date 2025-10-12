@@ -148,11 +148,16 @@ namespace IT13___Laundry_CRM.Repositories
                                     username = reader.GetString(reader.GetOrdinal("username")),
                                     password = reader.GetString(reader.GetOrdinal("password")),
                                     role = reader.GetString(reader.GetOrdinal("role")),
-                                    first_name = reader.GetString(reader.GetOrdinal("first_name")),
-                                    middle_name = reader.GetString(reader.GetOrdinal("middle_name")),
-                                    last_name = reader.GetString(reader.GetOrdinal("last_name")),
-                                    address = reader.GetString(reader.GetOrdinal("address")),
-                                    contact = reader.GetString(reader.GetOrdinal("contact")),
+                                    first_name = reader.IsDBNull(reader.GetOrdinal("first_name"))
+                                                 ? null : reader.GetString(reader.GetOrdinal("first_name")),
+                                    middle_name = reader.IsDBNull(reader.GetOrdinal("middle_name"))
+                                                  ? null : reader.GetString(reader.GetOrdinal("middle_name")),
+                                    last_name = reader.IsDBNull(reader.GetOrdinal("last_name"))
+                                                ? null : reader.GetString(reader.GetOrdinal("last_name")),
+                                    address = reader.IsDBNull(reader.GetOrdinal("address"))
+                                              ? null : reader.GetString(reader.GetOrdinal("address")),
+                                    contact = reader.IsDBNull(reader.GetOrdinal("contact"))
+                                              ? null : reader.GetString(reader.GetOrdinal("contact")),
                                     created_at = reader.GetDateTime(reader.GetOrdinal("created_at"))
                                 };
                             }
@@ -167,6 +172,7 @@ namespace IT13___Laundry_CRM.Repositories
 
             return null;
         }
+
 
 
         // Get user by ID
