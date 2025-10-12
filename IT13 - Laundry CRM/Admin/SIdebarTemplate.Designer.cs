@@ -64,13 +64,12 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(202, 434);
             panel1.TabIndex = 0;
-          
             // 
             // button2
             // 
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Cascadia Code", 12F);
+            button2.Font = new Font("Gadugi", 12F);
             button2.ForeColor = SystemColors.ButtonHighlight;
             button2.Location = new Point(5, 228);
             button2.Margin = new Padding(4, 3, 4, 3);
@@ -86,7 +85,7 @@
             // 
             button_feedback.FlatAppearance.BorderSize = 0;
             button_feedback.FlatStyle = FlatStyle.Flat;
-            button_feedback.Font = new Font("Cascadia Code", 12F);
+            button_feedback.Font = new Font("Gadugi", 12F);
             button_feedback.ForeColor = SystemColors.ButtonHighlight;
             button_feedback.Location = new Point(5, 170);
             button_feedback.Margin = new Padding(4, 3, 4, 3);
@@ -102,7 +101,7 @@
             // 
             button_messages.FlatAppearance.BorderSize = 0;
             button_messages.FlatStyle = FlatStyle.Flat;
-            button_messages.Font = new Font("Cascadia Code", 12F);
+            button_messages.Font = new Font("Gadugi", 12F);
             button_messages.ForeColor = SystemColors.ButtonHighlight;
             button_messages.Location = new Point(5, 120);
             button_messages.Margin = new Padding(4, 3, 4, 3);
@@ -118,7 +117,7 @@
             // 
             button_users.FlatAppearance.BorderSize = 0;
             button_users.FlatStyle = FlatStyle.Flat;
-            button_users.Font = new Font("Cascadia Code", 12F);
+            button_users.Font = new Font("Gadugi", 12F);
             button_users.ForeColor = SystemColors.ButtonHighlight;
             button_users.Location = new Point(5, 70);
             button_users.Margin = new Padding(4, 3, 4, 3);
@@ -134,7 +133,7 @@
             // 
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Cascadia Code", 12F);
+            button1.Font = new Font("Gadugi", 12F);
             button1.ForeColor = SystemColors.ButtonHighlight;
             button1.Location = new Point(5, 20);
             button1.Margin = new Padding(4, 3, 4, 3);
@@ -159,7 +158,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(941, 60);
             panel2.TabIndex = 1;
-           
             // 
             // pictureBox2
             // 
@@ -177,10 +175,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.RoyalBlue;
-            label3.Location = new Point(169, 8);
+            label3.Location = new Point(192, 11);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(70, 32);
+            label3.Size = new Size(81, 37);
             label3.TabIndex = 7;
             label3.Text = "Care";
             // 
@@ -192,7 +190,7 @@
             label4.Location = new Point(59, 7);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(120, 33);
+            label4.Size = new Size(143, 40);
             label4.TabIndex = 8;
             label4.Text = "Laundry";
             // 
@@ -215,18 +213,18 @@
             contextmenustrip_profile.Items.AddRange(new ToolStripItem[] { logout });
             contextmenustrip_profile.Name = "contextmenustrip_profile";
             contextmenustrip_profile.ShowImageMargin = false;
-            contextmenustrip_profile.Size = new Size(132, 36);
+            contextmenustrip_profile.Size = new Size(148, 42);
             // 
             // logout
             // 
             logout.Name = "logout";
-            logout.Size = new Size(131, 32);
+            logout.Size = new Size(147, 38);
             logout.Text = "Logout";
             logout.Click += logout_Click;
             // 
             // SIdebarTemplate
             // 
-            AutoScaleDimensions = new SizeF(10F, 22F);
+            AutoScaleDimensions = new SizeF(12F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(941, 494);
