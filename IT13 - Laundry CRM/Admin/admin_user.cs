@@ -40,7 +40,9 @@ namespace IT13___Laundry_CRM.Admin
         {
             try
             {
-                allUsers = userRepository.GetUsers();
+                allUsers = userRepository.GetUsers()
+                                         .Where(u => !u.is_archived) // 🟩 Only active users
+                                         .ToList();
                 totalRecords = allUsers.Count;
                 ApplyFiltersAndPagination();
             }
@@ -50,6 +52,7 @@ namespace IT13___Laundry_CRM.Admin
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void ApplyFiltersAndPagination()
         {
@@ -119,21 +122,14 @@ namespace IT13___Laundry_CRM.Admin
             table_users.Columns.Add("created_at", "Created At");
             table_users.Columns["created_at"].DataPropertyName = "created_at";
 
-            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
-            editColumn.Name = "edit";
-            editColumn.HeaderText = "Action";
-            editColumn.Text = "✔";
-            editColumn.UseColumnTextForButtonValue = true;
-            editColumn.Width = 60;
-            table_users.Columns.Add(editColumn);
-
-            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
-            deleteColumn.Name = "delete";
-            deleteColumn.HeaderText = "Action";
-            deleteColumn.Text = "🗑";
-            deleteColumn.UseColumnTextForButtonValue = true;
-            deleteColumn.Width = 60;
-            table_users.Columns.Add(deleteColumn);
+            // 🟩 Combined Action Column
+            DataGridViewButtonColumn actionColumn = new DataGridViewButtonColumn();
+            actionColumn.Name = "actions";
+            actionColumn.HeaderText = "Actions";
+            actionColumn.Text = "";
+            actionColumn.UseColumnTextForButtonValue = false;
+            actionColumn.Width = 100;
+            table_users.Columns.Add(actionColumn);
 
             var data = users.Select(u => new
             {
@@ -147,26 +143,50 @@ namespace IT13___Laundry_CRM.Admin
             }).ToList();
 
             table_users.DataSource = data;
+
+            // Add event handlers
+            table_users.CellPainting -= table_users_CellPainting;
+            table_users.CellPainting += table_users_CellPainting;
+
+            table_users.CellClick -= table_users_CellClick;
+            table_users.CellClick += table_users_CellClick;
         }
+
 
         private void table_users_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
+            // Only handle clicks on the Actions column
+            if (table_users.Columns[e.ColumnIndex].Name != "actions") return;
+
+            // Get the user ID
             var userIdVal = table_users.Rows[e.RowIndex].Cells["user_id"].Value?.ToString();
             if (string.IsNullOrEmpty(userIdVal)) return;
 
             int userId = int.Parse(userIdVal);
 
-            if (e.ColumnIndex == table_users.Columns["edit"].Index)
+            // Determine where the user clicked inside the cell
+            var cell = table_users[e.ColumnIndex, e.RowIndex];
+            var clickPosition = table_users.PointToClient(Cursor.Position);
+            var cellRect = table_users.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+            int relativeX = clickPosition.X - cellRect.Left;
+
+            // Adjust the threshold depending on your icon spacing
+            if (relativeX < 45)
             {
+
                 EditUser(userId);
             }
-            else if (e.ColumnIndex == table_users.Columns["delete"].Index)
+            else
             {
-                DeleteUser(userId);
+
+                ArchiveUser(userId);
             }
         }
+
+
+
 
         private void EditUser(int userId)
         {
@@ -177,15 +197,26 @@ namespace IT13___Laundry_CRM.Admin
             if (form.ShowDialog() == DialogResult.OK) LoadUsers();
         }
 
-        private void DeleteUser(int userId)
+        private void ArchiveUser(int userId)
         {
-            var confirm = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButtons.YesNo);
+            var confirm = MessageBox.Show(
+                "Are you sure you want to archive this user?",
+                "Confirm Archive",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
             if (confirm == DialogResult.Yes)
             {
-                userRepository.DeleteUser(userId);
-                LoadUsers();
+                userRepository.ArchiveUser(userId);
+
+                MessageBox.Show("User successfully archived.", "Archived",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadUsers(); // Refresh the active user list
             }
         }
+
 
         private void textBox_search_TextChanged(object sender, EventArgs e)
         {
@@ -239,6 +270,47 @@ namespace IT13___Laundry_CRM.Admin
         {
             var form = new admin_create_edit_user();
             if (form.ShowDialog() == DialogResult.OK) LoadUsers();
+        }
+
+        private void table_users_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == table_users.Columns["actions"].Index && e.RowIndex >= 0)
+            {
+                e.PaintBackground(e.ClipBounds, true);
+
+                int buttonSize = 20;
+                int spacing = 10; // space between icons
+                int totalWidth = (buttonSize * 2) + spacing;
+
+                // Center icons horizontally
+                int xStart = e.CellBounds.Left + (e.CellBounds.Width - totalWidth) / 2;
+                int yCenter = e.CellBounds.Top + (e.CellBounds.Height - buttonSize) / 2;
+
+                // Define edit and archive rectangles
+                Rectangle editRect = new Rectangle(xStart, yCenter, buttonSize, buttonSize);
+                Rectangle archiveRect = new Rectangle(xStart + buttonSize + spacing, yCenter, buttonSize, buttonSize);
+
+                // Draw edit (✔)
+                TextRenderer.DrawText(e.Graphics, "✔", e.CellStyle.Font, editRect, Color.Green,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+
+                // Draw archive (🗄)
+                TextRenderer.DrawText(e.Graphics, "🗄", e.CellStyle.Font, archiveRect, Color.IndianRed,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+
+                e.Handled = true;
+            }
+        }
+
+        private void button_archives_Click(object sender, EventArgs e)
+        {
+            archived_users archive = new archived_users();
+            archive.FormClosed += (s, args) =>
+            {
+                // When the archive window is closed, refresh the main users table
+                LoadUsers();
+            };
+            archive.ShowDialog();
         }
     }
 }

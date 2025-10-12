@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SIdebarTemplate));
             panel1 = new Panel();
+            button_logout = new Button();
             button2 = new Button();
             button_feedback = new Button();
             button_messages = new Button();
             button_users = new Button();
             button1 = new Button();
             panel2 = new Panel();
+            button_notif = new Button();
             pictureBox2 = new PictureBox();
             label3 = new Label();
             label4 = new Label();
-            button_notif = new Button();
-            button_logout = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -62,6 +62,22 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(202, 434);
             panel1.TabIndex = 0;
+            // 
+            // button_logout
+            // 
+            button_logout.FlatAppearance.BorderSize = 0;
+            button_logout.FlatStyle = FlatStyle.Flat;
+            button_logout.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_logout.ForeColor = SystemColors.ButtonHighlight;
+            button_logout.Location = new Point(5, 270);
+            button_logout.Margin = new Padding(4, 3, 4, 3);
+            button_logout.Name = "button_logout";
+            button_logout.Size = new Size(195, 35);
+            button_logout.TabIndex = 6;
+            button_logout.Text = "➜] Logout";
+            button_logout.TextAlign = ContentAlignment.MiddleLeft;
+            button_logout.UseVisualStyleBackColor = true;
+            button_logout.Click += button_logout_Click;
             // 
             // button2
             // 
@@ -157,6 +173,23 @@
             panel2.Size = new Size(941, 60);
             panel2.TabIndex = 1;
             // 
+            // button_notif
+            // 
+            button_notif.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_notif.FlatAppearance.BorderSize = 0;
+            button_notif.FlatAppearance.MouseDownBackColor = Color.RoyalBlue;
+            button_notif.FlatAppearance.MouseOverBackColor = Color.RoyalBlue;
+            button_notif.FlatStyle = FlatStyle.Flat;
+            button_notif.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_notif.ForeColor = SystemColors.ButtonHighlight;
+            button_notif.Location = new Point(877, 7);
+            button_notif.Name = "button_notif";
+            button_notif.Size = new Size(50, 40);
+            button_notif.TabIndex = 10;
+            button_notif.Text = "🔔";
+            button_notif.UseVisualStyleBackColor = true;
+            button_notif.Click += button_notif_Click;
+            // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
@@ -176,7 +209,7 @@
             label3.Location = new Point(192, 11);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(81, 37);
+            label3.Size = new Size(70, 32);
             label3.TabIndex = 7;
             label3.Text = "Care";
             // 
@@ -188,46 +221,13 @@
             label4.Location = new Point(59, 7);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(143, 40);
+            label4.Size = new Size(120, 33);
             label4.TabIndex = 8;
             label4.Text = "Laundry";
             // 
-            // button_notif
-            // 
-            button_notif.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_notif.FlatAppearance.BorderSize = 0;
-            button_notif.FlatAppearance.MouseDownBackColor = Color.RoyalBlue;
-            button_notif.FlatAppearance.MouseOverBackColor = Color.RoyalBlue;
-            button_notif.FlatStyle = FlatStyle.Flat;
-            button_notif.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_notif.ForeColor = SystemColors.ButtonHighlight;
-            button_notif.Location = new Point(877, 7);
-            button_notif.Name = "button_notif";
-            button_notif.Size = new Size(50, 40);
-            button_notif.TabIndex = 10;
-            button_notif.Text = "🔔";
-            button_notif.UseVisualStyleBackColor = true;
-            button_notif.Click += button_notif_Click;
-            // 
-            // button_logout
-            // 
-            button_logout.FlatAppearance.BorderSize = 0;
-            button_logout.FlatStyle = FlatStyle.Flat;
-            button_logout.Font = new Font("Cascadia Code", 12F);
-            button_logout.ForeColor = SystemColors.ButtonHighlight;
-            button_logout.Location = new Point(5, 270);
-            button_logout.Margin = new Padding(4, 3, 4, 3);
-            button_logout.Name = "button_logout";
-            button_logout.Size = new Size(195, 35);
-            button_logout.TabIndex = 6;
-            button_logout.Text = "➜] Logout";
-            button_logout.TextAlign = ContentAlignment.MiddleLeft;
-            button_logout.UseVisualStyleBackColor = true;
-            button_logout.Click += button_logout_Click;
-            // 
             // SIdebarTemplate
             // 
-            AutoScaleDimensions = new SizeF(12F, 27F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(941, 494);

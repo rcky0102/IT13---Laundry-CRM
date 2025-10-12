@@ -22,6 +22,8 @@ namespace IT13___Laundry_CRM.Models
         public string address { get; set; } = "";
 
         public string contact { get; set; } = "";
+
+        public bool is_archived { get; set; } = false;
         public DateTime created_at { get; set; } = DateTime.Now;
 
 

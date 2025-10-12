@@ -31,6 +31,7 @@
             btnPrevious = new Button();
             btnFirst = new Button();
             panelPagination = new Panel();
+            button_archives = new Button();
             ((System.ComponentModel.ISupportInitialize)table_users).BeginInit();
             panel2.SuspendLayout();
             panelPagination.SuspendLayout();
@@ -67,12 +68,14 @@
             table_users.Size = new Size(916, 440);
             table_users.TabIndex = 3;
             table_users.CellClick += table_users_CellClick;
+            table_users.CellPainting += table_users_CellPainting;
             // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ActiveCaption;
             panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(button_archives);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(textBox_search);
             panel2.Controls.Add(cmbRoleFilter);
@@ -90,7 +93,7 @@
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(284, 24);
             label1.Name = "label1";
-            label1.Size = new Size(82, 19);
+            label1.Size = new Size(71, 17);
             label1.TabIndex = 8;
             label1.Text = "Role Filter:";
             // 
@@ -110,9 +113,9 @@
             cmbRoleFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRoleFilter.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbRoleFilter.Items.AddRange(new object[] { "All", "Admin", "Staff", "Customer" });
-            cmbRoleFilter.Location = new Point(372, 19);
+            cmbRoleFilter.Location = new Point(378, 23);
             cmbRoleFilter.Name = "cmbRoleFilter";
-            cmbRoleFilter.Size = new Size(120, 29);
+            cmbRoleFilter.Size = new Size(120, 27);
             cmbRoleFilter.TabIndex = 7;
             cmbRoleFilter.SelectedIndexChanged += cmbRoleFilter_SelectedIndexChanged;
             // 
@@ -124,7 +127,7 @@
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "25", "50" });
             cmbPageSize.Location = new Point(694, 10);
             cmbPageSize.Name = "cmbPageSize";
-            cmbPageSize.Size = new Size(60, 27);
+            cmbPageSize.Size = new Size(60, 24);
             cmbPageSize.TabIndex = 11;
             // 
             // btnLast
@@ -153,7 +156,7 @@
             lblTotalRecords.Font = new Font("Gadugi", 8F);
             lblTotalRecords.Location = new Point(410, 14);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(119, 19);
+            lblTotalRecords.Size = new Size(105, 17);
             lblTotalRecords.TabIndex = 8;
             lblTotalRecords.Text = "Total Records: 0";
             // 
@@ -163,7 +166,7 @@
             lblPageInfo.Font = new Font("Gadugi", 8F);
             lblPageInfo.Location = new Point(209, 13);
             lblPageInfo.Name = "lblPageInfo";
-            lblPageInfo.Size = new Size(87, 19);
+            lblPageInfo.Size = new Size(78, 17);
             lblPageInfo.TabIndex = 7;
             lblPageInfo.Text = "Page 1 of 1";
             // 
@@ -205,9 +208,24 @@
             panelPagination.Size = new Size(929, 45);
             panelPagination.TabIndex = 9;
             // 
+            // button_archives
+            // 
+            button_archives.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button_archives.BackColor = SystemColors.ActiveCaption;
+            button_archives.FlatAppearance.BorderSize = 0;
+            button_archives.FlatStyle = FlatStyle.Flat;
+            button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.Location = new Point(625, 15);
+            button_archives.Name = "button_archives";
+            button_archives.Size = new Size(50, 40);
+            button_archives.TabIndex = 9;
+            button_archives.Text = "🗂️";
+            button_archives.UseVisualStyleBackColor = false;
+            button_archives.Click += button_archives_Click;
+            // 
             // admin_user
             // 
-            AutoScaleDimensions = new SizeF(11F, 24F);
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1188, 662);
             Controls.Add(panelPagination);
@@ -245,5 +263,6 @@
         private Button btnPrevious;
         private Button btnFirst;
         private Label label1;
+        private Button button_archives;
     }
 }

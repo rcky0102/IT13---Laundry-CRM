@@ -54,10 +54,9 @@
             lblSummary.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblSummary.AutoSize = true;
             lblSummary.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSummary.Location = new Point(271, 941);
-            lblSummary.Margin = new Padding(4, 0, 4, 0);
+            lblSummary.Location = new Point(226, 767);
             lblSummary.Name = "lblSummary";
-            lblSummary.Size = new Size(236, 24);
+            lblSummary.Size = new Size(207, 20);
             lblSummary.TabIndex = 2;
             lblSummary.Text = "Summary will appear here";
             // 
@@ -65,10 +64,9 @@
             // 
             btnGenerateReport.BackColor = Color.CornflowerBlue;
             btnGenerateReport.ForeColor = SystemColors.ButtonHighlight;
-            btnGenerateReport.Location = new Point(739, 36);
-            btnGenerateReport.Margin = new Padding(4, 4, 4, 4);
+            btnGenerateReport.Location = new Point(616, 30);
             btnGenerateReport.Name = "btnGenerateReport";
-            btnGenerateReport.Size = new Size(145, 36);
+            btnGenerateReport.Size = new Size(121, 29);
             btnGenerateReport.TabIndex = 3;
             btnGenerateReport.Text = "Generate";
             btnGenerateReport.UseVisualStyleBackColor = false;
@@ -80,40 +78,36 @@
             dgvRoles.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvRoles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRoles.Location = new Point(271, 233);
-            dgvRoles.Margin = new Padding(4, 4, 4, 4);
+            dgvRoles.Location = new Point(226, 190);
             dgvRoles.Name = "dgvRoles";
             dgvRoles.ReadOnly = true;
             dgvRoles.RowHeadersWidth = 51;
-            dgvRoles.Size = new Size(1067, 94);
+            dgvRoles.Size = new Size(889, 77);
             dgvRoles.TabIndex = 4;
             // 
             // dtpStart
             // 
             dtpStart.Format = DateTimePickerFormat.Short;
-            dtpStart.Location = new Point(114, 36);
-            dtpStart.Margin = new Padding(4, 4, 4, 4);
+            dtpStart.Location = new Point(95, 29);
             dtpStart.Name = "dtpStart";
-            dtpStart.Size = new Size(179, 34);
+            dtpStart.Size = new Size(150, 30);
             dtpStart.TabIndex = 5;
             // 
             // dtpEnd
             // 
             dtpEnd.Format = DateTimePickerFormat.Short;
-            dtpEnd.Location = new Point(419, 35);
-            dtpEnd.Margin = new Padding(4, 4, 4, 4);
+            dtpEnd.Location = new Point(349, 29);
             dtpEnd.Name = "dtpEnd";
-            dtpEnd.Size = new Size(179, 34);
+            dtpEnd.Size = new Size(150, 30);
             dtpEnd.TabIndex = 6;
             // 
             // btnExportPDF
             // 
             btnExportPDF.BackColor = Color.MediumSeaGreen;
             btnExportPDF.ForeColor = SystemColors.ButtonHighlight;
-            btnExportPDF.Location = new Point(892, 36);
-            btnExportPDF.Margin = new Padding(4, 4, 4, 4);
+            btnExportPDF.Location = new Point(743, 29);
             btnExportPDF.Name = "btnExportPDF";
-            btnExportPDF.Size = new Size(151, 36);
+            btnExportPDF.Size = new Size(126, 29);
             btnExportPDF.TabIndex = 7;
             btnExportPDF.Text = "Export";
             btnExportPDF.UseVisualStyleBackColor = false;
@@ -125,12 +119,11 @@
             dgvMonthlyUsers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvMonthlyUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMonthlyUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMonthlyUsers.Location = new Point(271, 344);
-            dgvMonthlyUsers.Margin = new Padding(4, 4, 4, 4);
+            dgvMonthlyUsers.Location = new Point(226, 280);
             dgvMonthlyUsers.Name = "dgvMonthlyUsers";
             dgvMonthlyUsers.ReadOnly = true;
             dgvMonthlyUsers.RowHeadersWidth = 51;
-            dgvMonthlyUsers.Size = new Size(1067, 110);
+            dgvMonthlyUsers.Size = new Size(889, 90);
             dgvMonthlyUsers.TabIndex = 8;
             dgvMonthlyUsers.CellContentClick += dgvRecentChanges_CellContentClick;
             // 
@@ -138,21 +131,19 @@
             // 
             dgvArchived.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvArchived.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvArchived.Location = new Point(271, 474);
-            dgvArchived.Margin = new Padding(4, 4, 4, 4);
+            dgvArchived.Location = new Point(226, 386);
             dgvArchived.Name = "dgvArchived";
             dgvArchived.RowHeadersWidth = 51;
-            dgvArchived.Size = new Size(1067, 139);
+            dgvArchived.Size = new Size(889, 113);
             dgvArchived.TabIndex = 9;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(4, 43);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(3, 35);
             label1.Name = "label1";
-            label1.Size = new Size(102, 24);
+            label1.Size = new Size(90, 20);
             label1.TabIndex = 12;
             label1.Text = "Start Date:";
             // 
@@ -160,10 +151,9 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(318, 42);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(265, 34);
             label2.Name = "label2";
-            label2.Size = new Size(93, 24);
+            label2.Size = new Size(83, 20);
             label2.TabIndex = 13;
             label2.Text = "End Date:";
             // 
@@ -171,22 +161,20 @@
             // 
             dgvGrowth.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvGrowth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGrowth.Location = new Point(271, 632);
-            dgvGrowth.Margin = new Padding(4, 4, 4, 4);
+            dgvGrowth.Location = new Point(226, 515);
             dgvGrowth.Name = "dgvGrowth";
             dgvGrowth.RowHeadersWidth = 51;
-            dgvGrowth.Size = new Size(1067, 123);
+            dgvGrowth.Size = new Size(889, 100);
             dgvGrowth.TabIndex = 14;
             // 
             // dgvAddress
             // 
             dgvAddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvAddress.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAddress.Location = new Point(271, 773);
-            dgvAddress.Margin = new Padding(4, 4, 4, 4);
+            dgvAddress.Location = new Point(226, 630);
             dgvAddress.Name = "dgvAddress";
             dgvAddress.RowHeadersWidth = 51;
-            dgvAddress.Size = new Size(1067, 140);
+            dgvAddress.Size = new Size(889, 114);
             dgvAddress.TabIndex = 15;
             // 
             // panel3
@@ -200,16 +188,17 @@
             panel3.Controls.Add(dtpEnd);
             panel3.Controls.Add(dtpStart);
             panel3.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel3.Location = new Point(271, 100);
+            panel3.Location = new Point(226, 81);
+            panel3.Margin = new Padding(2, 2, 2, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1067, 105);
+            panel3.Size = new Size(890, 86);
             panel3.TabIndex = 16;
             // 
             // admin_reports
             // 
-            AutoScaleDimensions = new SizeF(12F, 27F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1368, 1050);
+            ClientSize = new Size(1140, 856);
             Controls.Add(dgvAddress);
             Controls.Add(dgvGrowth);
             Controls.Add(dgvArchived);
@@ -217,7 +206,7 @@
             Controls.Add(dgvRoles);
             Controls.Add(lblSummary);
             Controls.Add(panel3);
-            Margin = new Padding(6, 4, 6, 4);
+            Margin = new Padding(5, 3, 5, 3);
             Name = "admin_reports";
             Text = "admin_reports";
             Load += admin_reports_Load;

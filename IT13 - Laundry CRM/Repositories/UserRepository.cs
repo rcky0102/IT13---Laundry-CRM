@@ -28,10 +28,12 @@ namespace IT13___Laundry_CRM.Repositories
                     connection.Open();
 
                     string sql = @"SELECT user_id, username, password, role, 
-                                  first_name, middle_name, last_name, 
-                                  address, contact, created_at 
-                           FROM users 
-                           ORDER BY user_id DESC";
+                                        first_name, middle_name, last_name, 
+                                        address, contact, created_at 
+                                    FROM users 
+                                    WHERE is_archived = 0
+                                    ORDER BY user_id DESC";
+
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -430,6 +432,62 @@ namespace IT13___Laundry_CRM.Repositories
                 }
             }
             return users;
+        }
+
+        public List<User> GetArchivedUsers()
+        {
+            var users = new List<User>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Users WHERE is_archived = 1 ORDER BY created_at DESC";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    users.Add(new User
+                    {
+                        user_id = (int)reader["user_id"],
+                        username = reader["username"].ToString(),
+                        role = reader["role"].ToString(),
+                        first_name = reader["first_name"].ToString(),
+                        middle_name = reader["middle_name"].ToString(),
+                        last_name = reader["last_name"].ToString(),
+                        address = reader["address"].ToString(),
+                        contact = reader["contact"].ToString(),
+                        created_at = (DateTime)reader["created_at"],
+                        is_archived = (bool)reader["is_archived"]
+                    });
+                }
+            }
+
+            return users;
+        }
+
+        public void UnarchiveUser(int userId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Users SET is_archived = 0 WHERE user_id = @UserId";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void ArchiveUser(int userId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Users SET is_archived = 1 WHERE user_id = @UserId";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
 
 

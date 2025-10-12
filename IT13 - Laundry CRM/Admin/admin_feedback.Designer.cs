@@ -54,7 +54,6 @@
             textbox_search.Name = "textbox_search";
             textbox_search.Size = new Size(364, 27);
             textbox_search.TabIndex = 20;
-            //textbox_search.TextChanged += textbox_search_TextChanged_1;
             // 
             // label2
             // 
@@ -62,7 +61,7 @@
             label2.AutoSize = true;
             label2.BackColor = SystemColors.GradientInactiveCaption;
             label2.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(430, 108);
+            label2.Location = new Point(421, 109);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(89, 17);
