@@ -1,9 +1,10 @@
-﻿using IT13___Laundry_CRM.Repositories;
-using IT13___Laundry_CRM.Models;
+﻿using IT13___Laundry_CRM.Models;
+using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using static IT13___Laundry_CRM.Models.User;
 
 namespace IT13___Laundry_CRM.Admin
 {
@@ -40,9 +41,13 @@ namespace IT13___Laundry_CRM.Admin
         {
             try
             {
+                // Assume you have the currently logged-in user's ID stored globally or in a session-like variable
+                int currentUserId = CurrentUser.UserId; // or whatever your variable/property is
+
                 allUsers = userRepository.GetUsers()
-                                         .Where(u => !u.is_archived) // 🟩 Only active users
+                                         .Where(u => !u.is_archived && u.user_id != currentUserId) // ✅ Exclude current admin
                                          .ToList();
+
                 totalRecords = allUsers.Count;
                 ApplyFiltersAndPagination();
             }
@@ -52,6 +57,7 @@ namespace IT13___Laundry_CRM.Admin
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void ApplyFiltersAndPagination()
@@ -280,10 +286,9 @@ namespace IT13___Laundry_CRM.Admin
 
                 int buttonSize = 20;
                 int spacing = 10; // space between icons
-                int totalWidth = (buttonSize * 2) + spacing;
 
-                // Center icons horizontally
-                int xStart = e.CellBounds.Left + (e.CellBounds.Width - totalWidth) / 2;
+                // Align to left
+                int xStart = e.CellBounds.Left + 8; // small left padding
                 int yCenter = e.CellBounds.Top + (e.CellBounds.Height - buttonSize) / 2;
 
                 // Define edit and archive rectangles
