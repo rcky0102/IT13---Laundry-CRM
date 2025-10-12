@@ -12,69 +12,31 @@ namespace IT13___Laundry_CRM
 {
     public partial class SIdebarTemplate : Form
     {
-<<<<<<< HEAD
         private readonly MessageRepository messageRepository = new MessageRepository();
 
         private Panel panelNotifications;
         private bool notifPanelVisible = false;
-=======
+
         private Button activeButton;                 // Currently active button
         private Panel indicator;                     // Left indicator bar
         public static string LastActiveButtonName;  // Remember last active button across forms
->>>>>>> d230b3c (Chocksss)
 
         public SIdebarTemplate()
         {
             InitializeComponent();
         }
 
-<<<<<<< HEAD
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-
-        private void button_users_Click(object sender, EventArgs e)
-        {
-            admin_user user = new admin_user();
-            user.Show();
-
-            this.Hide();
-        }
-
-
-        private void button_messages_Click(object sender, EventArgs e)
-        {
-            admin_messages messages = new admin_messages();
-            messages.Show();
-
-            this.Hide();
-        }
-
-        private void button_feedback_Click(object sender, EventArgs e)
-        {
-            admin_feedback feedback = new admin_feedback();
-            feedback.Show();
-
-            this.Hide();
-        }
-
-
-=======
->>>>>>> d230b3c (Chocksss)
         private void SIdebarTemplate_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
 
-<<<<<<< HEAD
             SetupNotificationPanel();
-=======
-            // Circle profile pic
-            var path = new GraphicsPath();
-            path.AddEllipse(0, 0, profile.Width, profile.Height);
-            profile.Region = new Region(path);
 
             // Create indicator panel
             indicator = new Panel
@@ -111,7 +73,6 @@ namespace IT13___Laundry_CRM
             {
                 ActivateButton(button1); // Default dashboard
             }
->>>>>>> d230b3c (Chocksss)
         }
 
         private void ActivateButton(Button clickedButton)
@@ -168,7 +129,6 @@ namespace IT13___Laundry_CRM
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             admin_reports reports = new admin_reports();
             reports.Show();
 
@@ -326,41 +286,16 @@ namespace IT13___Laundry_CRM
         private void button_logout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
-                              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-
-                CurrentUser.User = null;
-
-
-                Form1 loginForm = new Form1();
-                loginForm.Show();
-
-=======
-            OpenForm(new admin_reports(), button2);
-        }
-
-        // Profile click
-        private void profile_Click(object sender, EventArgs e)
-        {
-            contextmenustrip_profile.Show(profile, 0, profile.Height);
-        }
-
-        // Logout
-        private void logout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 CurrentUser.User = null;
                 Form1 loginForm = new Form1();
                 loginForm.Show();
->>>>>>> d230b3c (Chocksss)
                 this.Close();
             }
+
         }
     }
 }

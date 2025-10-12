@@ -17,8 +17,11 @@ namespace IT13___Laundry_CRM
     public partial class AdminForm : SIdebarTemplate
     {
         private readonly string connectionString =
-            @"Data Source=RAVEN-13\SQLEXPRESS01;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
-
+            "Data Source=LAPTOP-NGRORR8P\\SQLEXPRESS;Initial Catalog=LaundryDb;" +
+            "Integrated Security=True;Connect " +
+            "Timeout=30;Encrypt=True;Trust Server Certificate=True;" +
+            "Application Intent=ReadWrite;" +
+            "Multi Subnet Failover=False";
 
         private readonly FeedbackRepository feedbackRepository = new FeedbackRepository();
         private readonly MessageRepository messageRepository = new MessageRepository();

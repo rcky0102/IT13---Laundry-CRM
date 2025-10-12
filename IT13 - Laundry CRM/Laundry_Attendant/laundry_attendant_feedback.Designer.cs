@@ -77,19 +77,13 @@
             label2.AutoSize = true;
             label2.BackColor = SystemColors.GradientInactiveCaption;
             label2.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-<<<<<<< HEAD
+
             label2.Location = new Point(437, 21);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(89, 17);
             label2.TabIndex = 24;
-=======
-            label2.Location = new Point(770, 18);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(102, 19);
-            label2.TabIndex = 17;
->>>>>>> d230b3c (Chocksss)
+
             label2.Text = "View Archive:";
             // 
             // button_archives
@@ -100,11 +94,9 @@
             button_archives.FlatStyle = FlatStyle.Flat;
             button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ActiveCaptionText;
-<<<<<<< HEAD
+
             button_archives.Location = new Point(544, 9);
-=======
-            button_archives.Location = new Point(877, 6);
->>>>>>> d230b3c (Chocksss)
+
             button_archives.Name = "button_archives";
             button_archives.Size = new Size(50, 40);
             button_archives.TabIndex = 23;
@@ -112,22 +104,8 @@
             button_archives.UseVisualStyleBackColor = false;
             button_archives.Click += button_archives_Click;
             // 
-<<<<<<< HEAD
-=======
-            // panel2
-            // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.BackColor = SystemColors.GradientInactiveCaption;
-            panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(textbox_search);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(button_archives);
-            panel2.Location = new Point(332, 82);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(959, 62);
-            panel2.TabIndex = 18;
-            // 
->>>>>>> d230b3c (Chocksss)
+
+
             // laundry_attendant_feedback
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
