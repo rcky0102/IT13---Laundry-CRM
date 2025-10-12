@@ -143,13 +143,13 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 g.FillRectangle(bgBrush, bounds);
 
             int padding = 10;
-            using (Font subjectFont = new Font("Cascadia Code", 10, FontStyle.Bold))
+            using (Font subjectFont = new Font("Gadugi", 10, FontStyle.Bold))
             using (SolidBrush subjectBrush = new SolidBrush(isSelected ? Color.White : Color.Black))
                 g.DrawString(fb.subject, subjectFont, subjectBrush, bounds.Left + padding, bounds.Top + 5);
 
             string user = fb.User != null ? $"{fb.User.first_name} {fb.User.last_name}" : $"User {fb.user_id}";
             string details = $"by {user} — {fb.created_at:MMM dd, yyyy hh:mm tt}";
-            using (Font detailsFont = new Font("Cascadia Code", 8, FontStyle.Italic))
+            using (Font detailsFont = new Font("Gadugi", 8, FontStyle.Italic))
             using (SolidBrush detailsBrush = new SolidBrush(isSelected ? Color.WhiteSmoke : Color.Gray))
                 g.DrawString(details, detailsFont, detailsBrush, bounds.Left + padding, bounds.Top + 25);
 
@@ -159,7 +159,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             Rectangle archiveRect = new Rectangle(bounds.Right - buttonWidth - 10, bounds.Top + 12, buttonWidth, buttonHeight);
             using (SolidBrush buttonBrush = new SolidBrush(Color.FromArgb(231, 76, 60)))
                 g.FillRectangle(buttonBrush, archiveRect);
-            using (Font buttonFont = new Font("Cascadia Code", 8, FontStyle.Bold))
+            using (Font buttonFont = new Font("Gadugi", 8, FontStyle.Bold))
             using (SolidBrush textBrush = new SolidBrush(Color.White))
                 g.DrawString("Archive", buttonFont, textBrush, archiveRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
 

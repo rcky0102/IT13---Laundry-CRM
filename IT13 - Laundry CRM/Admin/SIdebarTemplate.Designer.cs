@@ -62,7 +62,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(202, 434);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
+          
             // 
             // button2
             // 
@@ -77,7 +77,7 @@
             button2.TabIndex = 5;
             button2.Text = "📲 Reports";
             button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click_2;
             // 
             // button_feedback
@@ -93,7 +93,7 @@
             button_feedback.TabIndex = 4;
             button_feedback.Text = "📲 Feedback";
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
-            button_feedback.UseVisualStyleBackColor = true;
+            button_feedback.UseVisualStyleBackColor = false;
             button_feedback.Click += button_feedback_Click;
             // 
             // button_messages
@@ -109,7 +109,7 @@
             button_messages.TabIndex = 2;
             button_messages.Text = "📩 Message";
             button_messages.TextAlign = ContentAlignment.MiddleLeft;
-            button_messages.UseVisualStyleBackColor = true;
+            button_messages.UseVisualStyleBackColor = false;
             button_messages.Click += button_messages_Click;
             // 
             // button_users
@@ -125,7 +125,7 @@
             button_users.TabIndex = 1;
             button_users.Text = "👤 Users";
             button_users.TextAlign = ContentAlignment.MiddleLeft;
-            button_users.UseVisualStyleBackColor = true;
+            button_users.UseVisualStyleBackColor = false;
             button_users.Click += button_users_Click;
             // 
             // button1
@@ -141,7 +141,7 @@
             button1.TabIndex = 0;
             button1.Text = "📊 DashBoard";
             button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panel2
@@ -157,7 +157,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(941, 60);
             panel2.TabIndex = 1;
-            panel2.Paint += panel2_Paint;
+           
             // 
             // pictureBox2
             // 

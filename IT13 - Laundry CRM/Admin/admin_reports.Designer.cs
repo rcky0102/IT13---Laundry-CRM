@@ -40,31 +40,38 @@
             label2 = new Label();
             dgvGrowth = new DataGridView();
             dgvAddress = new DataGridView();
+            panel3 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvRoles).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonthlyUsers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvArchived).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvGrowth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAddress).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // lblSummary
             // 
             lblSummary.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblSummary.AutoSize = true;
-            lblSummary.Location = new Point(233, 841);
+            lblSummary.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSummary.Location = new Point(271, 941);
+            lblSummary.Margin = new Padding(4, 0, 4, 0);
             lblSummary.Name = "lblSummary";
-            lblSummary.Size = new Size(250, 22);
+            lblSummary.Size = new Size(236, 24);
             lblSummary.TabIndex = 2;
             lblSummary.Text = "Summary will appear here";
             // 
             // btnGenerateReport
             // 
-            btnGenerateReport.Location = new Point(247, 162);
+            btnGenerateReport.BackColor = Color.CornflowerBlue;
+            btnGenerateReport.ForeColor = SystemColors.ButtonHighlight;
+            btnGenerateReport.Location = new Point(739, 36);
+            btnGenerateReport.Margin = new Padding(4, 4, 4, 4);
             btnGenerateReport.Name = "btnGenerateReport";
-            btnGenerateReport.Size = new Size(276, 29);
+            btnGenerateReport.Size = new Size(145, 36);
             btnGenerateReport.TabIndex = 3;
             btnGenerateReport.Text = "Generate";
-            btnGenerateReport.UseVisualStyleBackColor = true;
+            btnGenerateReport.UseVisualStyleBackColor = false;
             btnGenerateReport.Click += btnGenerateReport_Click;
             // 
             // dgvRoles
@@ -73,37 +80,43 @@
             dgvRoles.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvRoles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRoles.Location = new Point(233, 207);
+            dgvRoles.Location = new Point(271, 233);
+            dgvRoles.Margin = new Padding(4, 4, 4, 4);
             dgvRoles.Name = "dgvRoles";
             dgvRoles.ReadOnly = true;
             dgvRoles.RowHeadersWidth = 51;
-            dgvRoles.Size = new Size(882, 77);
+            dgvRoles.Size = new Size(1067, 94);
             dgvRoles.TabIndex = 4;
             // 
             // dtpStart
             // 
             dtpStart.Format = DateTimePickerFormat.Short;
-            dtpStart.Location = new Point(373, 116);
+            dtpStart.Location = new Point(114, 36);
+            dtpStart.Margin = new Padding(4, 4, 4, 4);
             dtpStart.Name = "dtpStart";
-            dtpStart.Size = new Size(150, 27);
+            dtpStart.Size = new Size(179, 34);
             dtpStart.TabIndex = 5;
             // 
             // dtpEnd
             // 
             dtpEnd.Format = DateTimePickerFormat.Short;
-            dtpEnd.Location = new Point(672, 116);
+            dtpEnd.Location = new Point(419, 35);
+            dtpEnd.Margin = new Padding(4, 4, 4, 4);
             dtpEnd.Name = "dtpEnd";
-            dtpEnd.Size = new Size(150, 27);
+            dtpEnd.Size = new Size(179, 34);
             dtpEnd.TabIndex = 6;
             // 
             // btnExportPDF
             // 
-            btnExportPDF.Location = new Point(566, 162);
+            btnExportPDF.BackColor = Color.MediumSeaGreen;
+            btnExportPDF.ForeColor = SystemColors.ButtonHighlight;
+            btnExportPDF.Location = new Point(892, 36);
+            btnExportPDF.Margin = new Padding(4, 4, 4, 4);
             btnExportPDF.Name = "btnExportPDF";
-            btnExportPDF.Size = new Size(256, 29);
+            btnExportPDF.Size = new Size(151, 36);
             btnExportPDF.TabIndex = 7;
             btnExportPDF.Text = "Export";
-            btnExportPDF.UseVisualStyleBackColor = true;
+            btnExportPDF.UseVisualStyleBackColor = false;
             btnExportPDF.Click += btnExportPDF_Click;
             // 
             // dgvMonthlyUsers
@@ -112,11 +125,12 @@
             dgvMonthlyUsers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvMonthlyUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMonthlyUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMonthlyUsers.Location = new Point(233, 304);
+            dgvMonthlyUsers.Location = new Point(271, 344);
+            dgvMonthlyUsers.Margin = new Padding(4, 4, 4, 4);
             dgvMonthlyUsers.Name = "dgvMonthlyUsers";
             dgvMonthlyUsers.ReadOnly = true;
             dgvMonthlyUsers.RowHeadersWidth = 51;
-            dgvMonthlyUsers.Size = new Size(882, 90);
+            dgvMonthlyUsers.Size = new Size(1067, 110);
             dgvMonthlyUsers.TabIndex = 8;
             dgvMonthlyUsers.CellContentClick += dgvRecentChanges_CellContentClick;
             // 
@@ -124,27 +138,32 @@
             // 
             dgvArchived.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvArchived.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvArchived.Location = new Point(233, 416);
+            dgvArchived.Location = new Point(271, 474);
+            dgvArchived.Margin = new Padding(4, 4, 4, 4);
             dgvArchived.Name = "dgvArchived";
             dgvArchived.RowHeadersWidth = 51;
-            dgvArchived.Size = new Size(882, 113);
+            dgvArchived.Size = new Size(1067, 139);
             dgvArchived.TabIndex = 9;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(247, 116);
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(4, 43);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(120, 22);
+            label1.Size = new Size(102, 24);
             label1.TabIndex = 12;
             label1.Text = "Start Date:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(566, 116);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(318, 42);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(100, 22);
+            label2.Size = new Size(93, 24);
             label2.TabIndex = 13;
             label2.Text = "End Date:";
             // 
@@ -152,53 +171,61 @@
             // 
             dgvGrowth.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvGrowth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGrowth.Location = new Point(233, 564);
+            dgvGrowth.Location = new Point(271, 632);
+            dgvGrowth.Margin = new Padding(4, 4, 4, 4);
             dgvGrowth.Name = "dgvGrowth";
             dgvGrowth.RowHeadersWidth = 51;
-            dgvGrowth.Size = new Size(882, 100);
+            dgvGrowth.Size = new Size(1067, 123);
             dgvGrowth.TabIndex = 14;
             // 
             // dgvAddress
             // 
             dgvAddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvAddress.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAddress.Location = new Point(233, 688);
+            dgvAddress.Location = new Point(271, 773);
+            dgvAddress.Margin = new Padding(4, 4, 4, 4);
             dgvAddress.Name = "dgvAddress";
             dgvAddress.RowHeadersWidth = 51;
-            dgvAddress.Size = new Size(882, 114);
+            dgvAddress.Size = new Size(1067, 140);
             dgvAddress.TabIndex = 15;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = SystemColors.ActiveCaption;
+            panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Controls.Add(btnExportPDF);
+            panel3.Controls.Add(btnGenerateReport);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(dtpEnd);
+            panel3.Controls.Add(dtpStart);
+            panel3.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panel3.Location = new Point(271, 100);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1067, 105);
+            panel3.TabIndex = 16;
             // 
             // admin_reports
             // 
-            AutoScaleDimensions = new SizeF(10F, 22F);
+            AutoScaleDimensions = new SizeF(12F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1140, 906);
+            ClientSize = new Size(1368, 1050);
             Controls.Add(dgvAddress);
             Controls.Add(dgvGrowth);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(dgvArchived);
             Controls.Add(dgvMonthlyUsers);
-            Controls.Add(btnExportPDF);
-            Controls.Add(dtpEnd);
-            Controls.Add(dtpStart);
             Controls.Add(dgvRoles);
-            Controls.Add(btnGenerateReport);
             Controls.Add(lblSummary);
-            Margin = new Padding(5, 3, 5, 3);
+            Controls.Add(panel3);
+            Margin = new Padding(6, 4, 6, 4);
             Name = "admin_reports";
             Text = "admin_reports";
             Load += admin_reports_Load;
+            Controls.SetChildIndex(panel3, 0);
             Controls.SetChildIndex(lblSummary, 0);
-            Controls.SetChildIndex(btnGenerateReport, 0);
             Controls.SetChildIndex(dgvRoles, 0);
-            Controls.SetChildIndex(dtpStart, 0);
-            Controls.SetChildIndex(dtpEnd, 0);
-            Controls.SetChildIndex(btnExportPDF, 0);
             Controls.SetChildIndex(dgvMonthlyUsers, 0);
             Controls.SetChildIndex(dgvArchived, 0);
-            Controls.SetChildIndex(label1, 0);
-            Controls.SetChildIndex(label2, 0);
             Controls.SetChildIndex(dgvGrowth, 0);
             Controls.SetChildIndex(dgvAddress, 0);
             ((System.ComponentModel.ISupportInitialize)dgvRoles).EndInit();
@@ -206,6 +233,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvArchived).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvGrowth).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAddress).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -224,5 +253,6 @@
         private Label label2;
         private DataGridView dgvGrowth;
         private DataGridView dgvAddress;
+        private Panel panel3;
     }
 }
