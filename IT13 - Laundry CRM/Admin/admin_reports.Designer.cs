@@ -47,17 +47,19 @@
             // lblSummary
             // 
             lblSummary.AutoSize = true;
-            lblSummary.Location = new Point(233, 500);
+            lblSummary.Location = new Point(280, 614);
+            lblSummary.Margin = new Padding(4, 0, 4, 0);
             lblSummary.Name = "lblSummary";
-            lblSummary.Size = new Size(250, 22);
+            lblSummary.Size = new Size(300, 28);
             lblSummary.TabIndex = 2;
             lblSummary.Text = "Summary will appear here";
             // 
             // btnGenerateReport
             // 
-            btnGenerateReport.Location = new Point(247, 162);
+            btnGenerateReport.Location = new Point(296, 199);
+            btnGenerateReport.Margin = new Padding(4, 4, 4, 4);
             btnGenerateReport.Name = "btnGenerateReport";
-            btnGenerateReport.Size = new Size(276, 29);
+            btnGenerateReport.Size = new Size(331, 36);
             btnGenerateReport.TabIndex = 3;
             btnGenerateReport.Text = "Generate";
             btnGenerateReport.UseVisualStyleBackColor = true;
@@ -69,34 +71,38 @@
             dgvTopUsers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvTopUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTopUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTopUsers.Location = new Point(233, 207);
+            dgvTopUsers.Location = new Point(280, 254);
+            dgvTopUsers.Margin = new Padding(4, 4, 4, 4);
             dgvTopUsers.Name = "dgvTopUsers";
             dgvTopUsers.ReadOnly = true;
             dgvTopUsers.RowHeadersWidth = 51;
-            dgvTopUsers.Size = new Size(589, 77);
+            dgvTopUsers.Size = new Size(1059, 94);
             dgvTopUsers.TabIndex = 4;
             // 
             // dtpStart
             // 
             dtpStart.Format = DateTimePickerFormat.Short;
-            dtpStart.Location = new Point(373, 116);
+            dtpStart.Location = new Point(448, 142);
+            dtpStart.Margin = new Padding(4, 4, 4, 4);
             dtpStart.Name = "dtpStart";
-            dtpStart.Size = new Size(150, 27);
+            dtpStart.Size = new Size(179, 31);
             dtpStart.TabIndex = 5;
             // 
             // dtpEnd
             // 
             dtpEnd.Format = DateTimePickerFormat.Short;
-            dtpEnd.Location = new Point(672, 116);
+            dtpEnd.Location = new Point(806, 142);
+            dtpEnd.Margin = new Padding(4, 4, 4, 4);
             dtpEnd.Name = "dtpEnd";
-            dtpEnd.Size = new Size(150, 27);
+            dtpEnd.Size = new Size(179, 31);
             dtpEnd.TabIndex = 6;
             // 
             // btnExportPDF
             // 
-            btnExportPDF.Location = new Point(566, 162);
+            btnExportPDF.Location = new Point(679, 199);
+            btnExportPDF.Margin = new Padding(4, 4, 4, 4);
             btnExportPDF.Name = "btnExportPDF";
-            btnExportPDF.Size = new Size(256, 29);
+            btnExportPDF.Size = new Size(307, 36);
             btnExportPDF.TabIndex = 7;
             btnExportPDF.Text = "Export";
             btnExportPDF.UseVisualStyleBackColor = true;
@@ -108,11 +114,12 @@
             dgvRecentChanges.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvRecentChanges.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRecentChanges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRecentChanges.Location = new Point(233, 304);
+            dgvRecentChanges.Location = new Point(280, 373);
+            dgvRecentChanges.Margin = new Padding(4, 4, 4, 4);
             dgvRecentChanges.Name = "dgvRecentChanges";
             dgvRecentChanges.ReadOnly = true;
             dgvRecentChanges.RowHeadersWidth = 51;
-            dgvRecentChanges.Size = new Size(589, 90);
+            dgvRecentChanges.Size = new Size(1059, 110);
             dgvRecentChanges.TabIndex = 8;
             dgvRecentChanges.CellContentClick += dgvRecentChanges_CellContentClick;
             // 
@@ -120,44 +127,48 @@
             // 
             dgvStatusCounts.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvStatusCounts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStatusCounts.Location = new Point(233, 416);
+            dgvStatusCounts.Location = new Point(280, 511);
+            dgvStatusCounts.Margin = new Padding(4, 4, 4, 4);
             dgvStatusCounts.Name = "dgvStatusCounts";
             dgvStatusCounts.RowHeadersWidth = 51;
-            dgvStatusCounts.Size = new Size(589, 60);
+            dgvStatusCounts.Size = new Size(1059, 74);
             dgvStatusCounts.TabIndex = 9;
             // 
             // lblAverageStatus
             // 
             lblAverageStatus.AutoSize = true;
-            lblAverageStatus.Location = new Point(262, 593);
+            lblAverageStatus.Location = new Point(314, 728);
+            lblAverageStatus.Margin = new Padding(4, 0, 4, 0);
             lblAverageStatus.Name = "lblAverageStatus";
-            lblAverageStatus.Size = new Size(70, 22);
+            lblAverageStatus.Size = new Size(84, 28);
             lblAverageStatus.TabIndex = 11;
             lblAverageStatus.Text = "label1";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(247, 116);
+            label1.Location = new Point(296, 142);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(120, 22);
+            label1.Size = new Size(144, 28);
             label1.TabIndex = 12;
             label1.Text = "Start Date:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(566, 116);
+            label2.Location = new Point(679, 142);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(100, 22);
+            label2.Size = new Size(120, 28);
             label2.TabIndex = 13;
             label2.Text = "End Date:";
             // 
             // admin_reports
             // 
-            AutoScaleDimensions = new SizeF(10F, 22F);
+            AutoScaleDimensions = new SizeF(12F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(847, 624);
+            ClientSize = new Size(1368, 766);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(lblAverageStatus);
@@ -169,7 +180,7 @@
             Controls.Add(dgvTopUsers);
             Controls.Add(btnGenerateReport);
             Controls.Add(lblSummary);
-            Margin = new Padding(5, 3, 5, 3);
+            Margin = new Padding(6, 4, 6, 4);
             Name = "admin_reports";
             Text = "admin_reports";
             Load += admin_reports_Load;
