@@ -38,10 +38,10 @@
             // 
             // flowlayoutpanel_status
             // 
-            flowlayoutpanel_status.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flowlayoutpanel_status.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             flowlayoutpanel_status.AutoScroll = true;
             flowlayoutpanel_status.BackColor = SystemColors.GradientInactiveCaption;
-            flowlayoutpanel_status.Location = new Point(280, 478);
+            flowlayoutpanel_status.Location = new Point(270, 187);
             flowlayoutpanel_status.Margin = new Padding(4);
             flowlayoutpanel_status.Name = "flowlayoutpanel_status";
             flowlayoutpanel_status.Size = new Size(1046, 224);
@@ -49,11 +49,11 @@
             // 
             // panel3
             // 
-            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel3.AutoScroll = true;
             panel3.BackColor = SystemColors.ButtonHighlight;
             panel3.BorderStyle = BorderStyle.Fixed3D;
-            panel3.Location = new Point(282, 155);
+            panel3.Location = new Point(270, 459);
             panel3.Margin = new Padding(4);
             panel3.Name = "panel3";
             panel3.Size = new Size(1046, 178);
@@ -73,10 +73,9 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(260, 428);
+            label1.Location = new Point(260, 159);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(143, 24);

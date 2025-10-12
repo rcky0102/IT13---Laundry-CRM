@@ -528,6 +528,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
