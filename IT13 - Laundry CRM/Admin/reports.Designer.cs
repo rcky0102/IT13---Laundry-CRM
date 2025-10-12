@@ -33,19 +33,21 @@
             // 
             // export
             // 
-            export.Location = new Point(331, 137);
+            export.Location = new Point(414, 171);
+            export.Margin = new Padding(4, 4, 4, 4);
             export.Name = "export";
-            export.Size = new Size(94, 29);
+            export.Size = new Size(118, 36);
             export.TabIndex = 0;
             export.Text = "Export";
             export.UseVisualStyleBackColor = true;
             // 
             // reports
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(895, 565);
+            ClientSize = new Size(1399, 663);
             Controls.Add(export);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "reports";
             Text = "reports";
             ResumeLayout(false);

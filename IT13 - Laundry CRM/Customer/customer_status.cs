@@ -2,46 +2,23 @@
 using IT13___Laundry_CRM.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IT13___Laundry_CRM.Customer
 {
     public partial class customer_status : customer_template
     {
-
         private readonly StatusRepository statusRepository = new StatusRepository();
 
         private readonly string[] stages =
         {
-            "Pending",
-            "Washing",
-            "Drying",
-            "Ironing/Folding",
-            "Ready for Pickup",
-            "Completed/Picked Up"
-        };
-
-        // 🧩 Special statuses (non-sequential)
-        private readonly string[] specialStatuses =
-        {
-            "Cancelled",
-            "On Hold"
+            "Pending", "Washing", "Drying", "Ironing/Folding", "Ready for Pickup", "Completed/Picked Up"
         };
 
         public customer_status()
         {
             InitializeComponent();
-        }
-
-        internal void LoadCustomerStatuses()
-        {
-            throw new NotImplementedException();
         }
 
         private void customer_status_Load(object sender, EventArgs e)
@@ -61,78 +38,47 @@ namespace IT13___Laundry_CRM.Customer
         private void LoadMyStatuses()
         {
             int currentUserId = User.CurrentUser.UserId;
+            if (currentUserId == 0) return;
 
-            if (currentUserId == 0)
-            {
-                //MessageBox.Show("No user logged in.");
-                return;
-            }
-
+            // Clear panels
             flowlayoutpanel_status.Controls.Clear();
+            panel3.Controls.Clear();
 
-            // 1️⃣ Get status history
+            // Get data
             var history = statusRepository.GetStatusHistoryByUserId(currentUserId);
-
-            // 2️⃣ Get current status
             var currentStatuses = statusRepository.GetStatusesByUserId(currentUserId);
 
-            // 3️⃣ Merge them
-            var allStatuses = new List<(DateTime created_at, string status)>();
-            allStatuses.AddRange(history.Select(h => (h.created_at, h.status)));
-            allStatuses.AddRange(currentStatuses.Select(s => (s.created_at, s.status)));
+            // Merge and sort
+            var allStatuses = history.Select(h => (h.created_at, h.status))
+                                   .Concat(currentStatuses.Select(s => (s.created_at, s.status)))
+                                   .OrderBy(a => a.created_at)
+                                   .ToList();
 
-            // Sort by timestamp ascending (oldest first)
-            allStatuses = allStatuses.OrderBy(a => a.created_at).ToList();
-
-            // 🎯 Determine latest status
             string latestStatus = allStatuses.LastOrDefault().status ?? "Pending";
-
-            // ✅ Define the timeline stages
-            string[] stages = {
-                "Pending",
-                "Washing",
-                "Drying",
-                "Ironing/Folding",
-                "Ready for Pickup",
-                "Completed/Picked Up"
-            };
-
-            // Handle special cases
             bool isCancelled = latestStatus == "Cancelled";
             bool isOnHold = latestStatus == "On Hold";
 
-            // Configure panel layout
-            flowlayoutpanel_status.AutoScroll = true;
-            flowlayoutpanel_status.WrapContents = false;
-            flowlayoutpanel_status.FlowDirection = FlowDirection.TopDown;
-            flowlayoutpanel_status.Padding = new Padding(15);
-            flowlayoutpanel_status.BackColor = Color.White;
+            CreateTimeline(latestStatus, isCancelled, isOnHold);
+            CreateHistory(allStatuses);
+        }
 
-            // --- 🔷 TIMELINE PANEL ---
-            FlowLayoutPanel timelinePanel = new FlowLayoutPanel();
-            timelinePanel.AutoScroll = false;
-            timelinePanel.WrapContents = false;
-            timelinePanel.FlowDirection = FlowDirection.LeftToRight;
-            timelinePanel.Height = 120;
-            timelinePanel.Width = flowlayoutpanel_status.Width - 40;
-            timelinePanel.Margin = new Padding(0, 0, 0, 15);
-            timelinePanel.Padding = new Padding(10);
-
-            // Handle special cases (Cancelled / On Hold)
+        private void CreateTimeline(string latestStatus, bool isCancelled, bool isOnHold)
+        {
             if (isCancelled || isOnHold)
             {
-                Label special = new Label();
-                special.AutoSize = false;
-                special.Width = 300;
-                special.Height = 50;
-                special.TextAlign = ContentAlignment.MiddleCenter;
-                special.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-                special.ForeColor = Color.White;
-                special.Margin = new Padding(10);
-                special.Text = isCancelled ? "❌ Laundry Cancelled" : "⏸ Laundry On Hold";
-                special.BackColor = isCancelled ? Color.Firebrick : Color.DarkOrange;
-                timelinePanel.Controls.Add(special);
-                flowlayoutpanel_status.Controls.Add(timelinePanel);
+                var special = new Label
+                {
+                    AutoSize = false,
+                    Width = 300,
+                    Height = 50,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                    ForeColor = Color.White,
+                    Margin = new Padding(10),
+                    Text = isCancelled ? "❌ Laundry Cancelled" : "⏸ Laundry On Hold",
+                    BackColor = isCancelled ? Color.Firebrick : Color.DarkOrange
+                };
+                flowlayoutpanel_status.Controls.Add(special);
             }
             else
             {
@@ -141,28 +87,29 @@ namespace IT13___Laundry_CRM.Customer
 
                 for (int i = 0; i < stages.Length; i++)
                 {
-                    // container for each stage (label + circle)
-                    Panel stagePanel = new Panel();
-                    stagePanel.Width = 120;
-                    stagePanel.Height = 80;
-                    stagePanel.Margin = new Padding(0, 0, 0, 0);
+                    // Stage panel
+                    var stagePanel = new Panel { Width = 120, Height = 80, Margin = new Padding(0) };
 
-                    // label (on top)
-                    Label lbl = new Label();
-                    lbl.Text = stages[i];
-                    lbl.TextAlign = ContentAlignment.MiddleCenter;
-                    lbl.Dock = DockStyle.Top;
-                    lbl.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-                    lbl.Height = 25;
+                    // Stage label
+                    var lbl = new Label
+                    {
+                        Text = stages[i],
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Top,
+                        Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                        Height = 25
+                    };
 
-                    // circle/check mark (below)
-                    Label circle = new Label();
-                    circle.Width = 25;
-                    circle.Height = 25;
-                    circle.TextAlign = ContentAlignment.MiddleCenter;
-                    circle.Font = new Font("Segoe UI Emoji", 12);
-                    circle.Top = 35;
-                    circle.Left = (stagePanel.Width - circle.Width) / 2;
+                    // Status circle
+                    var circle = new Label
+                    {
+                        Width = 25,
+                        Height = 25,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Font = new Font("Segoe UI Emoji", 12),
+                        Top = 35,
+                        Left = 47
+                    };
 
                     if (i < currentStageIndex)
                     {
@@ -182,60 +129,53 @@ namespace IT13___Laundry_CRM.Customer
 
                     stagePanel.Controls.Add(lbl);
                     stagePanel.Controls.Add(circle);
+                    flowlayoutpanel_status.Controls.Add(stagePanel);
 
-                    // add to timeline
-                    timelinePanel.Controls.Add(stagePanel);
-
-                    // connector line (between stages)
+                    // Connector
                     if (i < stages.Length - 1)
                     {
-                        Label connector = new Label();
-                        connector.AutoSize = false;
-                        connector.Width = 40;
-                        connector.Height = 2;
-                        connector.BackColor = (i < currentStageIndex) ? Color.SeaGreen : Color.LightGray;
-                        connector.Margin = new Padding(0, 25, 0, 0);
-                        timelinePanel.Controls.Add(connector);
+                        var connector = new Label
+                        {
+                            AutoSize = false,
+                            Width = 40,
+                            Height = 2,
+                            BackColor = (i < currentStageIndex) ? Color.SeaGreen : Color.LightGray,
+                            Margin = new Padding(0, 25, 0, 0)
+                        };
+                        flowlayoutpanel_status.Controls.Add(connector);
                     }
                 }
-
-                flowlayoutpanel_status.Controls.Add(timelinePanel);
-            }
-
-            // --- 🕒 STATUS HISTORY PANEL ---
-            Panel historyPanel = new Panel();
-            historyPanel.AutoScroll = true;
-            historyPanel.BorderStyle = BorderStyle.FixedSingle;
-            historyPanel.BackColor = Color.WhiteSmoke;
-            historyPanel.Width = flowlayoutpanel_status.Width - 40;
-            historyPanel.Height = 550;
-            historyPanel.Margin = new Padding(10, 0, 10, 0);
-
-            Label historyTitle = new Label();
-            historyTitle.Text = "🕒 Status History";
-            historyTitle.Font = new Font("Cascadia Code", 11, FontStyle.Bold);
-            historyTitle.AutoSize = true;
-            historyTitle.Margin = new Padding(10, 10, 0, 5);
-
-            flowlayoutpanel_status.Controls.Add(historyTitle);
-            flowlayoutpanel_status.Controls.Add(historyPanel);
-
-            int y = 10;
-            foreach (var s in allStatuses)
-            {
-                Label lbl = new Label();
-                lbl.AutoSize = false;
-                lbl.Width = historyPanel.Width - 20;
-                lbl.Height = 25;
-                lbl.Text = $"{s.created_at:G}  →  {s.status}";
-                lbl.Font = new Font("Cascadia Code", 11);
-                lbl.ForeColor = Color.Black;
-                lbl.Location = new Point(10, y);
-                historyPanel.Controls.Add(lbl);
-                y += 30;
             }
         }
 
+        private void CreateHistory(List<(DateTime created_at, string status)> allStatuses)
+        {
+            var historyTitle = new Label
+            {
+                Text = "🕒 Status History",
+                Font = new Font("Cascadia Code", 11, FontStyle.Bold),
+                AutoSize = true,
+                Location = new Point(10, 10),
+                ForeColor = Color.Black
+            };
+            panel3.Controls.Add(historyTitle);
 
+            int y = 40;
+            foreach (var s in allStatuses)
+            {
+                var lbl = new Label
+                {
+                    AutoSize = false,
+                    Width = panel3.Width - 40,
+                    Height = 25,
+                    Text = $"{s.created_at:G}  →  {s.status}",
+                    Font = new Font("Cascadia Code", 9),
+                    ForeColor = Color.Black,
+                    Location = new Point(10, y)
+                };
+                panel3.Controls.Add(lbl);
+                y += 30;
+            }
+        }
     }
 }
