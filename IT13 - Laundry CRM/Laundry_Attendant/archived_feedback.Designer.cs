@@ -93,6 +93,7 @@
             Controls.Add(button_unarchive);
             Controls.Add(panel1);
             Name = "archived_feedback";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "archived_feedback";
             Load += archived_feedback_Load;
             panel1.ResumeLayout(false);
