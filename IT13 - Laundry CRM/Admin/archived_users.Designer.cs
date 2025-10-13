@@ -62,7 +62,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.Controls.Add(dataGridView_archived);
             panel1.Location = new Point(19, 91);
             panel1.Margin = new Padding(2);

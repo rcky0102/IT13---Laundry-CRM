@@ -41,13 +41,13 @@
             // 
             listbox_users.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             listbox_users.BackColor = SystemColors.GradientInactiveCaption;
-            listbox_users.BorderStyle = BorderStyle.FixedSingle;
+            listbox_users.BorderStyle = BorderStyle.None;
             listbox_users.Font = new Font("Gadugi", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             listbox_users.FormattingEnabled = true;
             listbox_users.ItemHeight = 27;
-            listbox_users.Location = new Point(209, 143);
+            listbox_users.Location = new Point(221, 161);
             listbox_users.Name = "listbox_users";
-            listbox_users.Size = new Size(301, 353);
+            listbox_users.Size = new Size(400, 324);
             listbox_users.TabIndex = 18;
             listbox_users.DrawItem += listbox_users_DrawItem;
             listbox_users.SelectedIndexChanged += listbox_users_SelectedIndexChanged;
@@ -55,13 +55,13 @@
             // textbox_message
             // 
             textbox_message.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textbox_message.BackColor = SystemColors.ButtonHighlight;
-            textbox_message.BorderStyle = BorderStyle.FixedSingle;
+            textbox_message.BackColor = SystemColors.ButtonFace;
+            textbox_message.BorderStyle = BorderStyle.None;
             textbox_message.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_message.Location = new Point(517, 472);
+            textbox_message.Location = new Point(627, 414);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
-            textbox_message.Size = new Size(458, 34);
+            textbox_message.Size = new Size(157, 50);
             textbox_message.TabIndex = 16;
             // 
             // button_send
@@ -70,48 +70,49 @@
             button_send.BackColor = SystemColors.HotTrack;
             button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(979, 472);
+            button_send.Location = new Point(790, 414);
             button_send.Name = "button_send";
-            button_send.Size = new Size(54, 40);
+            button_send.Size = new Size(100, 50);
             button_send.TabIndex = 15;
-            button_send.Text = "📩";
+            button_send.Text = "📩 Send";
             button_send.UseVisualStyleBackColor = false;
             button_send.Click += button_send_Click_1;
             // 
             // listbox_messages
             // 
             listbox_messages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            listbox_messages.BackColor = SystemColors.ButtonHighlight;
+            listbox_messages.BackColor = SystemColors.ButtonFace;
+            listbox_messages.BorderStyle = BorderStyle.None;
             listbox_messages.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listbox_messages.FormattingEnabled = true;
             listbox_messages.ItemHeight = 27;
-            listbox_messages.Location = new Point(587, 84);
+            listbox_messages.Location = new Point(627, 80);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(416, 382);
+            listbox_messages.Size = new Size(263, 324);
             listbox_messages.TabIndex = 14;
             listbox_messages.DrawItem += listbox_messages_DrawItem_1;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem_1;
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = SystemColors.GradientInactiveCaption;
-            panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(textbox_searchUser);
-            panel3.Location = new Point(210, 64);
+            panel3.Location = new Point(221, 81);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(301, 75);
+            panel3.Size = new Size(669, 75);
             panel3.TabIndex = 17;
             // 
             // textbox_searchUser
             // 
-            textbox_searchUser.BackColor = SystemColors.ButtonHighlight;
-            textbox_searchUser.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_searchUser.Location = new Point(15, 17);
+            textbox_searchUser.BackColor = SystemColors.ButtonFace;
+            textbox_searchUser.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_searchUser.Location = new Point(26, 13);
             textbox_searchUser.Multiline = true;
             textbox_searchUser.Name = "textbox_searchUser";
-            textbox_searchUser.PlaceholderText = "🔍 Search (e.g. John | Doe | Role)";
-            textbox_searchUser.Size = new Size(266, 40);
+            textbox_searchUser.PlaceholderText = "🔍 Search via first name, last name, or role";
+            textbox_searchUser.Size = new Size(350, 40);
             textbox_searchUser.TabIndex = 8;
             textbox_searchUser.TextChanged += textbox_searchUser_TextChanged;
             // 
@@ -119,7 +120,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1046, 522);
+            ClientSize = new Size(903, 522);
             Controls.Add(listbox_users);
             Controls.Add(textbox_message);
             Controls.Add(button_send);

@@ -64,7 +64,7 @@
             button_archives.BackColor = SystemColors.Highlight;
             button_archives.FlatAppearance.BorderSize = 2;
             button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_archives.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
             button_archives.Location = new Point(556, 13);
             button_archives.Name = "button_archives";

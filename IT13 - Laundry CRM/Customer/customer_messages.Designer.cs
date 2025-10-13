@@ -75,7 +75,7 @@
             textbox_message.Location = new Point(625, 442);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
-            textbox_message.Size = new Size(202, 47);
+            textbox_message.Size = new Size(202, 50);
             textbox_message.TabIndex = 6;
             // 
             // panel3
