@@ -57,11 +57,6 @@ namespace IT13___Laundry_CRM.Admin
             control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
-        private void admin_feedback_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoadFeedbacks(bool archived = false)
         {
             List<Feedback> feedbacks;

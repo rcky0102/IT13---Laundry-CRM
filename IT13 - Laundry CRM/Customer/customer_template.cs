@@ -290,5 +290,10 @@ namespace IT13___Laundry_CRM
             control.Region = new Region(path);
             control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

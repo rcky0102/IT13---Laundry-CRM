@@ -80,7 +80,7 @@
             // 
             // button_send
             // 
-            button_send.Anchor = AnchorStyles.Bottom;
+            button_send.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_send.BackColor = SystemColors.MenuHighlight;
             button_send.FlatAppearance.BorderSize = 0;
             button_send.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);

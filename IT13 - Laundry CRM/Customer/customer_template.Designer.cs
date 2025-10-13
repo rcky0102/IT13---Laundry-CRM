@@ -61,42 +61,43 @@
             panel1.Location = new Point(0, 71);
             panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 642);
+            panel1.Size = new Size(250, 646);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // button_logout
             // 
-            button_logout.Anchor = AnchorStyles.Bottom;
+            button_logout.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_logout.BackColor = SystemColors.ActiveCaption;
             button_logout.FlatAppearance.BorderSize = 0;
             button_logout.FlatStyle = FlatStyle.Flat;
             button_logout.Font = new Font("Gadugi", 12F);
             button_logout.ForeColor = SystemColors.ButtonHighlight;
-            button_logout.Location = new Point(5, 583);
+            button_logout.Location = new Point(-1, 596);
             button_logout.Margin = new Padding(4);
             button_logout.Name = "button_logout";
-            button_logout.Size = new Size(240, 44);
+            button_logout.Size = new Size(250, 44);
             button_logout.TabIndex = 5;
             button_logout.Text = "➜] Logout";
-            button_logout.TextAlign = ContentAlignment.MiddleLeft;
+            button_logout.TextAlign = ContentAlignment.MiddleRight;
             button_logout.UseVisualStyleBackColor = false;
             button_logout.Click += button_logout_Click;
             // 
             // button_profile
             // 
-            button_profile.Anchor = AnchorStyles.Bottom;
+            button_profile.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_profile.BackColor = SystemColors.ActiveCaption;
             button_profile.FlatAppearance.BorderSize = 0;
             button_profile.FlatStyle = FlatStyle.Flat;
             button_profile.Font = new Font("Gadugi", 12F);
             button_profile.ForeColor = SystemColors.ButtonHighlight;
-            button_profile.Location = new Point(3, 531);
+            button_profile.Location = new Point(-1, 558);
             button_profile.Margin = new Padding(4);
             button_profile.Name = "button_profile";
-            button_profile.Size = new Size(240, 44);
+            button_profile.Size = new Size(245, 44);
             button_profile.TabIndex = 4;
             button_profile.Text = "👤 Profile";
-            button_profile.TextAlign = ContentAlignment.MiddleLeft;
+            button_profile.TextAlign = ContentAlignment.MiddleRight;
             button_profile.UseVisualStyleBackColor = false;
             button_profile.Click += button_profile_Click;
             // 
@@ -107,10 +108,10 @@
             button_feedback.FlatStyle = FlatStyle.Flat;
             button_feedback.Font = new Font("Gadugi", 12F);
             button_feedback.ForeColor = SystemColors.ButtonHighlight;
-            button_feedback.Location = new Point(6, 179);
+            button_feedback.Location = new Point(-1, 181);
             button_feedback.Margin = new Padding(4);
             button_feedback.Name = "button_feedback";
-            button_feedback.Size = new Size(240, 44);
+            button_feedback.Size = new Size(250, 44);
             button_feedback.TabIndex = 3;
             button_feedback.Text = "📲 Feedback";
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
@@ -124,10 +125,10 @@
             button_message.FlatStyle = FlatStyle.Flat;
             button_message.Font = new Font("Gadugi", 12F);
             button_message.ForeColor = SystemColors.ButtonHighlight;
-            button_message.Location = new Point(6, 128);
+            button_message.Location = new Point(-3, 129);
             button_message.Margin = new Padding(4);
             button_message.Name = "button_message";
-            button_message.Size = new Size(240, 44);
+            button_message.Size = new Size(245, 44);
             button_message.TabIndex = 2;
             button_message.Text = "📩 Messages";
             button_message.TextAlign = ContentAlignment.MiddleLeft;
@@ -141,10 +142,10 @@
             button_status.FlatStyle = FlatStyle.Flat;
             button_status.Font = new Font("Gadugi", 12F);
             button_status.ForeColor = SystemColors.ButtonHighlight;
-            button_status.Location = new Point(6, 76);
+            button_status.Location = new Point(-3, 77);
             button_status.Margin = new Padding(4);
             button_status.Name = "button_status";
-            button_status.Size = new Size(240, 44);
+            button_status.Size = new Size(247, 44);
             button_status.TabIndex = 1;
             button_status.Text = "⌚ Status";
             button_status.TextAlign = ContentAlignment.MiddleLeft;
@@ -158,10 +159,10 @@
             button_dashboard.FlatStyle = FlatStyle.Flat;
             button_dashboard.Font = new Font("Gadugi", 12F);
             button_dashboard.ForeColor = SystemColors.ButtonHighlight;
-            button_dashboard.Location = new Point(6, 25);
+            button_dashboard.Location = new Point(-1, 25);
             button_dashboard.Margin = new Padding(4);
             button_dashboard.Name = "button_dashboard";
-            button_dashboard.Size = new Size(240, 44);
+            button_dashboard.Size = new Size(247, 44);
             button_dashboard.TabIndex = 0;
             button_dashboard.Text = "📊 DashBoard";
             button_dashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -215,7 +216,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1305, 77);
+            panel2.Size = new Size(1279, 74);
             panel2.TabIndex = 4;
             // 
             // button_notif
@@ -227,7 +228,7 @@
             button_notif.FlatStyle = FlatStyle.Flat;
             button_notif.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_notif.ForeColor = SystemColors.ButtonHighlight;
-            button_notif.Location = new Point(1210, 9);
+            button_notif.Location = new Point(1184, 9);
             button_notif.Margin = new Padding(4);
             button_notif.Name = "button_notif";
             button_notif.Size = new Size(62, 50);
@@ -241,7 +242,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1305, 701);
+            ClientSize = new Size(1279, 705);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(4);
