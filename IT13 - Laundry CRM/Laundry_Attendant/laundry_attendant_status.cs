@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,19 +19,57 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         public laundry_attendant_status()
         {
             InitializeComponent();
+
+            MakeRounded(panel3);
+            MakeRounded(textbox_search);
+            MakeRounded(button_archives);
+            MakeRounded(add);
+            MakeRounded(table_customers);
+            MakeRounded(panelPagination);
+            MakeRounded(btnFirst);
+            MakeRounded(btnPrevious);
+            MakeRounded(cmbPageSize);
+            MakeRounded(btnNext);
+            MakeRounded(btnLast);
+
         }
 
         private void laundry_attendant_status_Load(object sender, EventArgs e)
         {
-            cmbPageSize.SelectedIndex = 1; // Default 10 records per page
-            cmbRoleFilter.SelectedIndex = 0; // Default "All Roles"
             LoadCustomerStatuses();
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void LoadCustomerStatuses(string searchText = "", int page = 1)
         {
             try
             {
+
+                // Set font for the entire DataGridView
+                table_customers.Font = new Font("Gadugi", 10, FontStyle.Regular); // Change "Gadugi" and size as needed
+
+                // Optional: Set font for column headers separately
+                table_customers.ColumnHeadersDefaultCellStyle.Font = new Font("Gadugi", 11, FontStyle.Bold);
+
+                // Optional: Set font for row headers (if used)
+                table_customers.RowHeadersDefaultCellStyle.Font = new Font("Gadugi", 10, FontStyle.Regular);
+
+
                 currentPage = page;
                 currentSearch = searchText;
 
@@ -45,15 +84,6 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                             ((s.User.first_name ?? "").Contains(searchText, StringComparison.OrdinalIgnoreCase)) ||
                             ((s.User.last_name ?? "").Contains(searchText, StringComparison.OrdinalIgnoreCase))
                         )
-                        .ToList();
-                }
-
-                // Role filter
-                if (cmbRoleFilter.SelectedItem != null && cmbRoleFilter.SelectedItem.ToString() != "🔽 All Roles")
-                {
-                    string selectedRole = cmbRoleFilter.SelectedItem.ToString();
-                    statuses = statuses
-                        .Where(s => s.User.role.Equals(selectedRole, StringComparison.OrdinalIgnoreCase))
                         .ToList();
                 }
 
