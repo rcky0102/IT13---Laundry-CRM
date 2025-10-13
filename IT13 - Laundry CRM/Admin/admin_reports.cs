@@ -3,6 +3,7 @@ using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
+using System.Drawing.Drawing2D;
 
 
 namespace IT13___Laundry_CRM.Admin
@@ -15,6 +16,23 @@ namespace IT13___Laundry_CRM.Admin
         public admin_reports()
         {
             InitializeComponent();
+
+            MakeRounded(panel3);
+            MakeRounded(dtpStart);
+            MakeRounded(dtpEnd);
+            MakeRounded(btnGenerateReport);
+            MakeRounded(btnExportPDF);
+            MakeRounded(label5);
+            MakeRounded(dgvRoles);
+            MakeRounded(label1);
+            MakeRounded(dgvMonthlyUsers);
+            MakeRounded(label2);
+            MakeRounded(dgvArchived);
+            MakeRounded(label3);
+            MakeRounded(dgvGrowth);
+            MakeRounded(label4);
+            MakeRounded(dgvAddress);
+
         }
 
         private void admin_reports_Load(object sender, EventArgs e)
@@ -22,6 +40,34 @@ namespace IT13___Laundry_CRM.Admin
             dtpStart.Value = DateTime.Today.AddMonths(-1);
             dtpEnd.Value = DateTime.Today;
         }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
+        }
+
+        private void dgvArchived_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Your code here. If you don't need anything, leave it empty
+        }
+
+        private void dgvGrowth_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Code to handle the click, or leave empty if nothing needed
+        }
+
+
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
@@ -156,7 +202,7 @@ namespace IT13___Laundry_CRM.Admin
             }
 
             // ====== Update UI or Summary Label ======
-            lblSummary.Text =
+            lblSummary1.Text =
                 $"User Report | Period: {start:yyyy-MM-dd} - {end:yyyy-MM-dd}\n" +
                 $"Total Users: {userSummary.TotalUsers} | Admins: {userSummary.Admins} | " +
                 $"Attendants: {userSummary.LaundryAttendants} | Customers: {userSummary.Customers}";
@@ -367,6 +413,10 @@ namespace IT13___Laundry_CRM.Admin
             }
         }
 
+        private void dgvAddress_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
   

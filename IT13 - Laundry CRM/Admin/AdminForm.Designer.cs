@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             label3 = new Label();
             label4 = new Label();
             label_welcome = new Label();
@@ -140,98 +140,106 @@
             // 
             lblTotalUsers.AutoSize = true;
             lblTotalUsers.Font = new Font("Gadugi", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalUsers.Location = new Point(124, 35);
+            lblTotalUsers.Location = new Point(115, 35);
             lblTotalUsers.Margin = new Padding(2, 0, 2, 0);
             lblTotalUsers.Name = "lblTotalUsers";
             lblTotalUsers.Size = new Size(31, 34);
             lblTotalUsers.TabIndex = 29;
             lblTotalUsers.Text = "1";
+            lblTotalUsers.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblActiveUsers
             // 
             lblActiveUsers.AutoSize = true;
             lblActiveUsers.Font = new Font("Gadugi", 16.2F, FontStyle.Bold);
-            lblActiveUsers.Location = new Point(133, 35);
+            lblActiveUsers.Location = new Point(116, 39);
             lblActiveUsers.Margin = new Padding(2, 0, 2, 0);
             lblActiveUsers.Name = "lblActiveUsers";
             lblActiveUsers.Size = new Size(31, 34);
             lblActiveUsers.TabIndex = 30;
             lblActiveUsers.Text = "1";
+            lblActiveUsers.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblArchivedUsers
             // 
             lblArchivedUsers.AutoSize = true;
             lblArchivedUsers.Font = new Font("Gadugi", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblArchivedUsers.Location = new Point(124, 39);
+            lblArchivedUsers.Location = new Point(115, 39);
             lblArchivedUsers.Margin = new Padding(2, 0, 2, 0);
             lblArchivedUsers.Name = "lblArchivedUsers";
             lblArchivedUsers.Size = new Size(31, 34);
             lblArchivedUsers.TabIndex = 31;
             lblArchivedUsers.Text = "1";
+            lblArchivedUsers.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblAdminCount
             // 
             lblAdminCount.AutoSize = true;
             lblAdminCount.Font = new Font("Gadugi", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAdminCount.Location = new Point(129, 35);
+            lblAdminCount.Location = new Point(113, 38);
             lblAdminCount.Margin = new Padding(2, 0, 2, 0);
             lblAdminCount.Name = "lblAdminCount";
             lblAdminCount.Size = new Size(31, 34);
             lblAdminCount.TabIndex = 32;
             lblAdminCount.Text = "1";
+            lblAdminCount.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblAttendantCount
             // 
             lblAttendantCount.AutoSize = true;
             lblAttendantCount.Font = new Font("Gadugi", 16.2F, FontStyle.Bold);
-            lblAttendantCount.Location = new Point(132, 35);
+            lblAttendantCount.Location = new Point(113, 35);
             lblAttendantCount.Margin = new Padding(2, 0, 2, 0);
             lblAttendantCount.Name = "lblAttendantCount";
             lblAttendantCount.Size = new Size(31, 34);
             lblAttendantCount.TabIndex = 33;
             lblAttendantCount.Text = "1";
+            lblAttendantCount.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblCustomerCount
             // 
             lblCustomerCount.AutoSize = true;
             lblCustomerCount.Font = new Font("Gadugi", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCustomerCount.Location = new Point(133, 35);
+            lblCustomerCount.Location = new Point(116, 35);
             lblCustomerCount.Margin = new Padding(2, 0, 2, 0);
             lblCustomerCount.Name = "lblCustomerCount";
             lblCustomerCount.Size = new Size(31, 34);
             lblCustomerCount.TabIndex = 34;
             lblCustomerCount.Text = "1";
+            lblCustomerCount.TextAlign = ContentAlignment.MiddleCenter;
             lblCustomerCount.Click += lblCustomerCount_Click;
             // 
             // lblNewUsersMonth
             // 
             lblNewUsersMonth.AutoSize = true;
             lblNewUsersMonth.Font = new Font("Gadugi", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNewUsersMonth.Location = new Point(129, 35);
+            lblNewUsersMonth.Location = new Point(113, 35);
             lblNewUsersMonth.Margin = new Padding(2, 0, 2, 0);
             lblNewUsersMonth.Name = "lblNewUsersMonth";
             lblNewUsersMonth.Size = new Size(31, 34);
             lblNewUsersMonth.TabIndex = 35;
             lblNewUsersMonth.Text = "1";
+            lblNewUsersMonth.TextAlign = ContentAlignment.MiddleCenter;
             lblNewUsersMonth.Click += lblNewUsersMonth_Click;
             // 
             // lblNewUsersLastMonth
             // 
             lblNewUsersLastMonth.AutoSize = true;
             lblNewUsersLastMonth.Font = new Font("Gadugi", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNewUsersLastMonth.Location = new Point(132, 35);
+            lblNewUsersLastMonth.Location = new Point(113, 35);
             lblNewUsersLastMonth.Margin = new Padding(2, 0, 2, 0);
             lblNewUsersLastMonth.Name = "lblNewUsersLastMonth";
             lblNewUsersLastMonth.Size = new Size(31, 34);
             lblNewUsersLastMonth.TabIndex = 36;
             lblNewUsersLastMonth.Text = "1";
+            lblNewUsersLastMonth.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblLatestUser
             // 
             lblLatestUser.AutoSize = true;
             lblLatestUser.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblLatestUser.ForeColor = SystemColors.ActiveCaptionText;
-            lblLatestUser.Location = new Point(36, 11);
+            lblLatestUser.Location = new Point(35, 11);
             lblLatestUser.Margin = new Padding(2, 0, 2, 0);
             lblLatestUser.Name = "lblLatestUser";
             lblLatestUser.Size = new Size(158, 19);
@@ -243,7 +251,7 @@
             lblLatestUserDate.AutoSize = true;
             lblLatestUserDate.Font = new Font("Gadugi", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblLatestUserDate.ForeColor = SystemColors.ActiveCaptionText;
-            lblLatestUserDate.Location = new Point(49, 36);
+            lblLatestUserDate.Location = new Point(42, 35);
             lblLatestUserDate.Margin = new Padding(2, 0, 2, 0);
             lblLatestUserDate.Name = "lblLatestUserDate";
             lblLatestUserDate.Size = new Size(97, 16);
@@ -255,7 +263,7 @@
             lblGrowthRate.AutoSize = true;
             lblGrowthRate.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblGrowthRate.ForeColor = SystemColors.ActiveCaptionText;
-            lblGrowthRate.Location = new Point(49, 30);
+            lblGrowthRate.Location = new Point(42, 30);
             lblGrowthRate.Margin = new Padding(2, 0, 2, 0);
             lblGrowthRate.Name = "lblGrowthRate";
             lblGrowthRate.Size = new Size(104, 19);
@@ -265,28 +273,28 @@
             // chart1
             // 
             chart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            chartArea4.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea4);
-            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend4.Name = "Legend1";
-            chart1.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
             chart1.Location = new Point(224, 514);
             chart1.Margin = new Padding(2, 4, 2, 4);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series4.ChartArea = "ChartArea1";
-            series4.IsXValueIndexed = true;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.YValuesPerPoint = 2;
-            chart1.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.IsXValueIndexed = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 2;
+            chart1.Series.Add(series2);
             chart1.Size = new Size(1676, 328);
             chart1.TabIndex = 40;
             chart1.Text = "chart1";
-            title4.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            title4.Name = "Title1";
-            title4.Text = "Customer";
-            chart1.Titles.Add(title4);
+            title2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
+            title2.Name = "Title1";
+            title2.Text = "Customer";
+            chart1.Titles.Add(title2);
             chart1.Click += chart1_Click;
             // 
             // dateTimePickerTo
@@ -330,7 +338,7 @@
             // 
             buttonLoadGraphMonth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonLoadGraphMonth.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonLoadGraphMonth.Location = new Point(1552, 15);
+            buttonLoadGraphMonth.Location = new Point(1556, 15);
             buttonLoadGraphMonth.Margin = new Padding(4);
             buttonLoadGraphMonth.Name = "buttonLoadGraphMonth";
             buttonLoadGraphMonth.Size = new Size(104, 33);
@@ -343,7 +351,7 @@
             // 
             buttonLoadGraphWeek.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonLoadGraphWeek.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonLoadGraphWeek.Location = new Point(1430, 15);
+            buttonLoadGraphWeek.Location = new Point(1434, 15);
             buttonLoadGraphWeek.Margin = new Padding(4);
             buttonLoadGraphWeek.Name = "buttonLoadGraphWeek";
             buttonLoadGraphWeek.Size = new Size(112, 33);
@@ -356,7 +364,7 @@
             // 
             buttonLoadGraphToday.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonLoadGraphToday.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonLoadGraphToday.Location = new Point(1338, 16);
+            buttonLoadGraphToday.Location = new Point(1342, 16);
             buttonLoadGraphToday.Margin = new Padding(4);
             buttonLoadGraphToday.Name = "buttonLoadGraphToday";
             buttonLoadGraphToday.Size = new Size(85, 33);
@@ -368,7 +376,6 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.Highlight;
-            panel3.BorderStyle = BorderStyle.Fixed3D;
             panel3.Controls.Add(label13);
             panel3.Controls.Add(label1);
             panel3.Controls.Add(lblTotalUsers);
@@ -406,7 +413,6 @@
             // panel4
             // 
             panel4.BackColor = SystemColors.Highlight;
-            panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(label14);
             panel4.Controls.Add(label2);
             panel4.Controls.Add(lblCustomerCount);
@@ -443,7 +449,6 @@
             // panel5
             // 
             panel5.BackColor = SystemColors.Highlight;
-            panel5.BorderStyle = BorderStyle.Fixed3D;
             panel5.Controls.Add(label19);
             panel5.Controls.Add(label5);
             panel5.Controls.Add(lblActiveUsers);
@@ -481,7 +486,6 @@
             // panel6
             // 
             panel6.BackColor = SystemColors.Highlight;
-            panel6.BorderStyle = BorderStyle.Fixed3D;
             panel6.Controls.Add(label20);
             panel6.Controls.Add(label6);
             panel6.Controls.Add(lblArchivedUsers);
@@ -519,7 +523,6 @@
             // panel7
             // 
             panel7.BackColor = SystemColors.Highlight;
-            panel7.BorderStyle = BorderStyle.Fixed3D;
             panel7.Controls.Add(label18);
             panel7.Controls.Add(label7);
             panel7.Controls.Add(lblAttendantCount);
@@ -556,7 +559,6 @@
             // panel8
             // 
             panel8.BackColor = SystemColors.GradientActiveCaption;
-            panel8.BorderStyle = BorderStyle.Fixed3D;
             panel8.Controls.Add(label15);
             panel8.Controls.Add(lblLatestUser);
             panel8.Controls.Add(lblLatestUserDate);
@@ -594,7 +596,6 @@
             // panel9
             // 
             panel9.BackColor = SystemColors.GradientActiveCaption;
-            panel9.BorderStyle = BorderStyle.Fixed3D;
             panel9.Controls.Add(lblGrowthRate);
             panel9.Controls.Add(label16);
             panel9.Font = new Font("Gadugi", 8F);
@@ -630,7 +631,6 @@
             // panel10
             // 
             panel10.BackColor = SystemColors.Highlight;
-            panel10.BorderStyle = BorderStyle.Fixed3D;
             panel10.Controls.Add(label21);
             panel10.Controls.Add(label10);
             panel10.Controls.Add(lblNewUsersMonth);
@@ -667,7 +667,6 @@
             // panel11
             // 
             panel11.BackColor = SystemColors.Highlight;
-            panel11.BorderStyle = BorderStyle.Fixed3D;
             panel11.Controls.Add(label22);
             panel11.Controls.Add(label11);
             panel11.Controls.Add(lblNewUsersLastMonth);
@@ -704,7 +703,6 @@
             // panel12
             // 
             panel12.BackColor = SystemColors.Highlight;
-            panel12.BorderStyle = BorderStyle.Fixed3D;
             panel12.Controls.Add(label17);
             panel12.Controls.Add(label12);
             panel12.Controls.Add(lblAdminCount);
@@ -742,7 +740,6 @@
             // 
             panel13.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel13.BackColor = SystemColors.GradientActiveCaption;
-            panel13.BorderStyle = BorderStyle.Fixed3D;
             panel13.Controls.Add(label23);
             panel13.Controls.Add(dateTimePickerTo);
             panel13.Controls.Add(dateTimePickerFrom);
