@@ -173,32 +173,84 @@ namespace IT13___Laundry_CRM.Customer
 
         private void CreateHistory(List<(DateTime created_at, string status)> allStatuses)
         {
-            //var historyTitle = new Label
-            //{
-            //    Text = "🕒 Status History",
-            //    Font = new Font("Gadugi", 11, FontStyle.Bold),
-            //    AutoSize = true,
-            //    Location = new Point(10, 10),
-            //    ForeColor = Color.Black
-            //};
-            //panel3.Controls.Add(historyTitle);
+            panel3.Controls.Clear();
+            panel3.AutoScroll = true; // Enable scrolling if content overflows
 
-            int y = 40;
-            foreach (var s in allStatuses)
+            int y = 10; // Starting Y position
+
+            // Latest notifications at the top
+            foreach (var s in allStatuses.OrderByDescending(x => x.created_at))
             {
-                var lbl = new Label
+                // Card panel
+                var card = new Panel
                 {
-                    AutoSize = false,
-                    Width = panel3.Width - 40,
-                    Height = 25,
-                    Text = $"{s.created_at:G}  →  {s.status}",
-                    Font = new Font("Gadugi", 12),
-                    ForeColor = Color.Black,
+                    Width = panel3.Width - 20,
+                    Height = 70,
+                    BackColor = Color.FromArgb(245, 245, 245),
                     Location = new Point(10, y)
                 };
-                panel3.Controls.Add(lbl);
-                y += 30;
+                MakeRounded(card, 15);
+
+                // Panel for timestamp (date + time) on the left
+                var timePanel = new Panel
+                {
+                    Width = 100,
+                    Height = card.Height,
+                    Location = new Point(10, 0)
+                };
+
+                var lblTime = new Label
+                {
+                    AutoSize = false,
+                    Width = timePanel.Width,
+                    Height = 25,
+                    Text = s.created_at.ToString("h:mm tt"), // e.g., 1:00 PM
+                    Font = new Font("Gadugi", 9, FontStyle.Italic),
+                    ForeColor = Color.Gray,
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Location = new Point(0, 5)
+                };
+
+                var lblDate = new Label
+                {
+                    AutoSize = false,
+                    Width = timePanel.Width,
+                    Height = 20,
+                    Text = s.created_at.ToString("MMM dd, yyyy"), // e.g., Oct 13, 2025
+                    Font = new Font("Gadugi", 8, FontStyle.Italic),
+                    ForeColor = Color.Gray,
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Location = new Point(0, lblTime.Bottom + 2)
+                };
+
+                timePanel.Controls.Add(lblTime);
+                timePanel.Controls.Add(lblDate);
+                card.Controls.Add(timePanel);
+
+                // Status text on the right
+                var lblStatus = new Label
+                {
+                    AutoSize = false,
+                    Width = card.Width - timePanel.Width - 30,
+                    Height = card.Height - 10,
+                    Text = s.status,
+                    Font = new Font("Gadugi", 10, FontStyle.Regular),
+                    ForeColor = Color.Black,
+                    Location = new Point(timePanel.Right + 10, 10),
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+
+                card.Controls.Add(lblStatus);
+
+                // Hover effect
+                card.MouseEnter += (s1, e1) => card.BackColor = Color.FromArgb(220, 220, 220);
+                card.MouseLeave += (s1, e1) => card.BackColor = Color.FromArgb(245, 245, 245);
+
+                panel3.Controls.Add(card);
+
+                y += card.Height + 10; // Space for next notification
             }
         }
+
     }
 }
