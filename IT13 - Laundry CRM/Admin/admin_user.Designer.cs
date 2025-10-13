@@ -20,6 +20,7 @@
             button_add = new Button();
             table_users = new DataGridView();
             panel2 = new Panel();
+            button_archives = new Button();
             label1 = new Label();
             textBox_search = new TextBox();
             cmbRoleFilter = new ComboBox();
@@ -31,7 +32,6 @@
             btnPrevious = new Button();
             btnFirst = new Button();
             panelPagination = new Panel();
-            button_archives = new Button();
             ((System.ComponentModel.ISupportInitialize)table_users).BeginInit();
             panel2.SuspendLayout();
             panelPagination.SuspendLayout();
@@ -59,13 +59,13 @@
             table_users.BorderStyle = BorderStyle.None;
             table_users.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             table_users.GridColor = SystemColors.MenuBar;
-            table_users.Location = new Point(250, 159);
+            table_users.Location = new Point(350, 170);
             table_users.Name = "table_users";
             table_users.ReadOnly = true;
             table_users.RowHeadersVisible = false;
             table_users.RowHeadersWidth = 51;
             table_users.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            table_users.Size = new Size(916, 440);
+            table_users.Size = new Size(816, 440);
             table_users.TabIndex = 3;
             table_users.CellClick += table_users_CellClick;
             table_users.CellPainting += table_users_CellPainting;
@@ -85,6 +85,21 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(928, 75);
             panel2.TabIndex = 6;
+            // 
+            // button_archives
+            // 
+            button_archives.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button_archives.BackColor = SystemColors.ActiveCaption;
+            button_archives.FlatAppearance.BorderSize = 0;
+            button_archives.FlatStyle = FlatStyle.Flat;
+            button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.Location = new Point(625, 15);
+            button_archives.Name = "button_archives";
+            button_archives.Size = new Size(50, 40);
+            button_archives.TabIndex = 9;
+            button_archives.Text = "🗂️";
+            button_archives.UseVisualStyleBackColor = false;
+            button_archives.Click += button_archives_Click;
             // 
             // label1
             // 
@@ -207,21 +222,6 @@
             panelPagination.Name = "panelPagination";
             panelPagination.Size = new Size(929, 45);
             panelPagination.TabIndex = 9;
-            // 
-            // button_archives
-            // 
-            button_archives.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button_archives.BackColor = SystemColors.ActiveCaption;
-            button_archives.FlatAppearance.BorderSize = 0;
-            button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_archives.Location = new Point(625, 15);
-            button_archives.Name = "button_archives";
-            button_archives.Size = new Size(50, 40);
-            button_archives.TabIndex = 9;
-            button_archives.Text = "🗂️";
-            button_archives.UseVisualStyleBackColor = false;
-            button_archives.Click += button_archives_Click;
             // 
             // admin_user
             // 

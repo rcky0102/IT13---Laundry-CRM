@@ -57,26 +57,26 @@
             panel1.Controls.Add(button_users);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 74);
+            panel1.Location = new Point(0, 60);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 631);
+            panel1.Size = new Size(200, 480);
             panel1.TabIndex = 0;
             // 
             // button_logout
             // 
-            button_logout.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button_logout.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             button_logout.FlatAppearance.BorderSize = 0;
             button_logout.FlatStyle = FlatStyle.Flat;
             button_logout.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_logout.ForeColor = SystemColors.ButtonHighlight;
-            button_logout.Location = new Point(-2, 591);
+            button_logout.Location = new Point(5, 417);
             button_logout.Margin = new Padding(4, 3, 4, 3);
             button_logout.Name = "button_logout";
-            button_logout.Size = new Size(246, 35);
+            button_logout.Size = new Size(195, 50);
             button_logout.TabIndex = 6;
             button_logout.Text = "➜] Logout";
-            button_logout.TextAlign = ContentAlignment.MiddleRight;
+            button_logout.TextAlign = ContentAlignment.MiddleLeft;
             button_logout.UseVisualStyleBackColor = true;
             button_logout.Click += button_logout_Click;
             // 
@@ -86,10 +86,10 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Gadugi", 12F);
             button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(-1, 245);
+            button2.Location = new Point(5, 220);
             button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
-            button2.Size = new Size(251, 35);
+            button2.Size = new Size(195, 50);
             button2.TabIndex = 5;
             button2.Text = "📈 Reports";
             button2.TextAlign = ContentAlignment.MiddleLeft;
@@ -102,10 +102,10 @@
             button_feedback.FlatStyle = FlatStyle.Flat;
             button_feedback.Font = new Font("Gadugi", 12F);
             button_feedback.ForeColor = SystemColors.ButtonHighlight;
-            button_feedback.Location = new Point(-1, 183);
+            button_feedback.Location = new Point(5, 170);
             button_feedback.Margin = new Padding(4, 3, 4, 3);
             button_feedback.Name = "button_feedback";
-            button_feedback.Size = new Size(251, 35);
+            button_feedback.Size = new Size(195, 50);
             button_feedback.TabIndex = 4;
             button_feedback.Text = "📲 Feedback";
             button_feedback.TextAlign = ContentAlignment.MiddleLeft;
@@ -118,10 +118,10 @@
             button_messages.FlatStyle = FlatStyle.Flat;
             button_messages.Font = new Font("Gadugi", 12F);
             button_messages.ForeColor = SystemColors.ButtonHighlight;
-            button_messages.Location = new Point(-2, 125);
+            button_messages.Location = new Point(5, 120);
             button_messages.Margin = new Padding(4, 3, 4, 3);
             button_messages.Name = "button_messages";
-            button_messages.Size = new Size(251, 35);
+            button_messages.Size = new Size(195, 50);
             button_messages.TabIndex = 2;
             button_messages.Text = "📩 Message";
             button_messages.TextAlign = ContentAlignment.MiddleLeft;
@@ -134,10 +134,10 @@
             button_users.FlatStyle = FlatStyle.Flat;
             button_users.Font = new Font("Gadugi", 12F);
             button_users.ForeColor = SystemColors.ButtonHighlight;
-            button_users.Location = new Point(-1, 71);
+            button_users.Location = new Point(5, 70);
             button_users.Margin = new Padding(4, 3, 4, 3);
             button_users.Name = "button_users";
-            button_users.Size = new Size(251, 35);
+            button_users.Size = new Size(195, 50);
             button_users.TabIndex = 1;
             button_users.Text = "👤 Users";
             button_users.TextAlign = ContentAlignment.MiddleLeft;
@@ -150,10 +150,10 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Gadugi", 12F);
             button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(-1, 19);
+            button1.Location = new Point(5, 20);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
-            button1.Size = new Size(251, 35);
+            button1.Size = new Size(195, 50);
             button1.TabIndex = 0;
             button1.Text = "📊 DashBoard";
             button1.TextAlign = ContentAlignment.MiddleLeft;
@@ -171,7 +171,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1279, 74);
+            panel2.Size = new Size(896, 60);
             panel2.TabIndex = 1;
             // 
             // button_notif
@@ -183,7 +183,7 @@
             button_notif.FlatStyle = FlatStyle.Flat;
             button_notif.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_notif.ForeColor = SystemColors.ButtonHighlight;
-            button_notif.Location = new Point(1215, 7);
+            button_notif.Location = new Point(832, 7);
             button_notif.Name = "button_notif";
             button_notif.Size = new Size(50, 40);
             button_notif.TabIndex = 10;
@@ -207,10 +207,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.RoyalBlue;
-            label3.Location = new Point(192, 11);
+            label3.Location = new Point(169, 8);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(81, 37);
+            label3.Size = new Size(70, 32);
             label3.TabIndex = 7;
             label3.Text = "Care";
             // 
@@ -222,16 +222,16 @@
             label4.Location = new Point(59, 7);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(143, 40);
+            label4.Size = new Size(120, 33);
             label4.TabIndex = 8;
             label4.Text = "Laundry";
             // 
             // SIdebarTemplate
             // 
-            AutoScaleDimensions = new SizeF(12F, 27F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1279, 705);
+            ClientSize = new Size(896, 540);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);

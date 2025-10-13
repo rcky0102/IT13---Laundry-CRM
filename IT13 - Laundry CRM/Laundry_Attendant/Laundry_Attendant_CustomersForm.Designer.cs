@@ -58,14 +58,13 @@
             table_customers.BackgroundColor = SystemColors.Window;
             table_customers.BorderStyle = BorderStyle.None;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(258, 188);
-            table_customers.Margin = new Padding(4);
+            table_customers.Location = new Point(334, 150);
             table_customers.Name = "table_customers";
             table_customers.ReadOnly = true;
             table_customers.RowHeadersVisible = false;
             table_customers.RowHeadersWidth = 51;
             table_customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            table_customers.Size = new Size(911, 350);
+            table_customers.Size = new Size(601, 280);
             table_customers.TabIndex = 1;
             table_customers.CellContentClick += table_customers_CellContentClick;
             // 
@@ -76,10 +75,9 @@
             button_add_cutomer.FlatAppearance.BorderSize = 0;
             button_add_cutomer.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_add_cutomer.ForeColor = SystemColors.ButtonHighlight;
-            button_add_cutomer.Location = new Point(689, 23);
-            button_add_cutomer.Margin = new Padding(4);
+            button_add_cutomer.Location = new Point(551, 18);
             button_add_cutomer.Name = "button_add_cutomer";
-            button_add_cutomer.Size = new Size(206, 50);
+            button_add_cutomer.Size = new Size(165, 40);
             button_add_cutomer.TabIndex = 2;
             button_add_cutomer.Text = "➕ Add Customer";
             button_add_cutomer.UseVisualStyleBackColor = false;
@@ -92,22 +90,22 @@
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(textbox_search);
             panel2.Controls.Add(button_add_cutomer);
-            panel2.Location = new Point(257, 89);
+            panel2.Location = new Point(206, 71);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(912, 93);
+            panel2.Size = new Size(730, 75);
             panel2.TabIndex = 3;
             // 
             // textbox_search
             // 
             textbox_search.BorderStyle = BorderStyle.FixedSingle;
             textbox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_search.Location = new Point(11, 23);
+            textbox_search.Location = new Point(9, 18);
             textbox_search.Margin = new Padding(2);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.PlaceholderText = "🔎 Search here...";
-            textbox_search.Size = new Size(374, 40);
+            textbox_search.Size = new Size(300, 32);
             textbox_search.TabIndex = 5;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
@@ -156,10 +154,9 @@
             panelPagination.Controls.Add(btnNext);
             panelPagination.Controls.Add(btnPrevious);
             panelPagination.Controls.Add(btnFirst);
-            panelPagination.Location = new Point(258, 545);
-            panelPagination.Margin = new Padding(4);
+            panelPagination.Location = new Point(206, 436);
             panelPagination.Name = "panelPagination";
-            panelPagination.Size = new Size(912, 62);
+            panelPagination.Size = new Size(730, 50);
             panelPagination.TabIndex = 14;
             // 
             // lblTotalRecords
@@ -167,10 +164,9 @@
             lblTotalRecords.Anchor = AnchorStyles.Bottom;
             lblTotalRecords.AutoSize = true;
             lblTotalRecords.Font = new Font("Gadugi", 9F);
-            lblTotalRecords.Location = new Point(396, 24);
-            lblTotalRecords.Margin = new Padding(4, 0, 4, 0);
+            lblTotalRecords.Location = new Point(317, 19);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(137, 21);
+            lblTotalRecords.Size = new Size(115, 19);
             lblTotalRecords.TabIndex = 5;
             lblTotalRecords.Text = "Total Records: 0";
             // 
@@ -181,10 +177,9 @@
             cmbPageSize.Font = new Font("Gadugi", 9F);
             cmbPageSize.FormattingEnabled = true;
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "20", "50" });
-            cmbPageSize.Location = new Point(615, 20);
-            cmbPageSize.Margin = new Padding(4);
+            cmbPageSize.Location = new Point(492, 16);
             cmbPageSize.Name = "cmbPageSize";
-            cmbPageSize.Size = new Size(74, 29);
+            cmbPageSize.Size = new Size(60, 27);
             cmbPageSize.TabIndex = 6;
             cmbPageSize.SelectedIndexChanged += cmbPageSize_SelectedIndexChanged;
             // 
@@ -193,10 +188,9 @@
             lblPageInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblPageInfo.AutoSize = true;
             lblPageInfo.Font = new Font("Gadugi", 9F);
-            lblPageInfo.Location = new Point(212, 24);
-            lblPageInfo.Margin = new Padding(4, 0, 4, 0);
+            lblPageInfo.Location = new Point(170, 19);
             lblPageInfo.Name = "lblPageInfo";
-            lblPageInfo.Size = new Size(101, 21);
+            lblPageInfo.Size = new Size(84, 19);
             lblPageInfo.TabIndex = 4;
             lblPageInfo.Text = "Page 1 of 1";
             // 
@@ -204,10 +198,9 @@
             // 
             btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLast.Font = new Font("Gadugi", 9F);
-            btnLast.Location = new Point(821, 19);
-            btnLast.Margin = new Padding(4);
+            btnLast.Location = new Point(657, 15);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(75, 31);
+            btnLast.Size = new Size(60, 25);
             btnLast.TabIndex = 3;
             btnLast.Text = "Last";
             btnLast.UseVisualStyleBackColor = true;
@@ -217,10 +210,9 @@
             // 
             btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnNext.Font = new Font("Gadugi", 9F);
-            btnNext.Location = new Point(715, 19);
-            btnNext.Margin = new Padding(4);
+            btnNext.Location = new Point(572, 15);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(94, 31);
+            btnNext.Size = new Size(75, 25);
             btnNext.TabIndex = 2;
             btnNext.Text = "Next";
             btnNext.UseVisualStyleBackColor = true;
@@ -230,10 +222,9 @@
             // 
             btnPrevious.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnPrevious.Font = new Font("Gadugi", 9F);
-            btnPrevious.Location = new Point(100, 19);
-            btnPrevious.Margin = new Padding(4);
+            btnPrevious.Location = new Point(80, 15);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(94, 31);
+            btnPrevious.Size = new Size(75, 25);
             btnPrevious.TabIndex = 1;
             btnPrevious.Text = "Previous";
             btnPrevious.UseVisualStyleBackColor = true;
@@ -243,10 +234,9 @@
             // 
             btnFirst.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnFirst.Font = new Font("Gadugi", 9F);
-            btnFirst.Location = new Point(12, 19);
-            btnFirst.Margin = new Padding(4);
+            btnFirst.Location = new Point(10, 15);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(75, 31);
+            btnFirst.Size = new Size(60, 25);
             btnFirst.TabIndex = 0;
             btnFirst.Text = "First";
             btnFirst.UseVisualStyleBackColor = true;
@@ -254,14 +244,14 @@
             // 
             // Laundry_Attendant_CustomersForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1184, 625);
+            ClientSize = new Size(947, 500);
             Controls.Add(panelPagination);
             Controls.Add(table_customers);
             Controls.Add(panel2);
-            Margin = new Padding(5);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Laundry_Attendant_CustomersForm";
             Text = "Laundry Attendant | Customers";
             Load += Laundry_Attendant_CustomersForm_Load;

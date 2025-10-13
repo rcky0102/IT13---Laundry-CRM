@@ -1,4 +1,5 @@
-﻿using IT13___Laundry_CRM.Models;
+﻿using IT13___Laundry_CRM.Customer;
+using IT13___Laundry_CRM.Models;
 using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
@@ -96,8 +97,9 @@ namespace IT13___Laundry_CRM
                             //MessageBox.Show("Welcome Laundry Customer!", "Login Successful",
                             //    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            customer_dashboard customerform = new customer_dashboard();
-                            customerform.Show();
+                            customer_status status = new customer_status(); 
+                            status.Show();
+
                             this.Hide();
                         }
                         else if (user.role == "admin")

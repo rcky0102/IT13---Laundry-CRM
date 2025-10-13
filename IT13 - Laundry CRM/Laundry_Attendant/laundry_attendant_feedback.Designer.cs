@@ -45,7 +45,7 @@
             listbox_feedback.FormattingEnabled = true;
             listbox_feedback.Location = new Point(18, 33);
             listbox_feedback.Name = "listbox_feedback";
-            listbox_feedback.Size = new Size(988, 412);
+            listbox_feedback.Size = new Size(988, 344);
             listbox_feedback.TabIndex = 14;
             listbox_feedback.DrawItem += listbox_feedback_DrawItem;
             listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
@@ -56,7 +56,7 @@
             textbox_search.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textbox_search.Location = new Point(14, 15);
             textbox_search.Name = "textbox_search";
-            textbox_search.Size = new Size(364, 31);
+            textbox_search.Size = new Size(364, 27);
             textbox_search.TabIndex = 15;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
@@ -82,7 +82,7 @@
             label2.Location = new Point(840, 18);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(102, 19);
+            label2.Size = new Size(89, 17);
             label2.TabIndex = 24;
             label2.Text = "View Archive:";
             // 
@@ -106,14 +106,14 @@
             // 
             panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(listbox_feedback);
-            panel4.Location = new Point(261, 150);
+            panel4.Location = new Point(261, 199);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1030, 464);
+            panel4.Size = new Size(1030, 415);
             panel4.TabIndex = 19;
             // 
             // laundry_attendant_feedback
             // 
-            AutoScaleDimensions = new SizeF(10F, 21F);
+            AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1306, 614);

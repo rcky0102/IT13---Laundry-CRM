@@ -85,9 +85,9 @@
             listbox_messages.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listbox_messages.FormattingEnabled = true;
             listbox_messages.ItemHeight = 27;
-            listbox_messages.Location = new Point(517, 64);
+            listbox_messages.Location = new Point(587, 84);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(518, 382);
+            listbox_messages.Size = new Size(416, 382);
             listbox_messages.TabIndex = 14;
             listbox_messages.DrawItem += listbox_messages_DrawItem_1;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem_1;

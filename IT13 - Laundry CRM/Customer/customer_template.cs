@@ -26,6 +26,9 @@ namespace IT13___Laundry_CRM
         public customer_template()
         {
             InitializeComponent();
+
+            panel2.BringToFront();  // Dock.Top takes priority
+            panel1.BringToFront();
         }
 
         private void customer_template_Load(object sender, EventArgs e)
@@ -35,10 +38,10 @@ namespace IT13___Laundry_CRM
 
             // --- Create Indicator Bar ---
             indicator = new Panel();
-            indicator.Size = new Size(6, button_dashboard.Height);
+            indicator.Size = new Size(6, button_status.Height);
             indicator.BackColor = Color.White;
             indicator.Visible = false;
-            indicator.Location = new Point(0, button_dashboard.Top);
+            indicator.Location = new Point(0, button_status.Top);
             panel1.Controls.Add(indicator);
             indicator.BringToFront();
 
@@ -88,13 +91,6 @@ namespace IT13___Laundry_CRM
         }
 
         // --- NAV BUTTONS ---
-        private void button_dashboard_Click(object sender, EventArgs e)
-        {
-            ActivateButton(button_dashboard);
-            var dashboard = new customer_dashboard();
-            dashboard.Show();
-            this.Hide();
-        }
 
         private void button_status_Click(object sender, EventArgs e)
         {

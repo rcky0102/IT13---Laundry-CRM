@@ -361,10 +361,10 @@
             panel3.Controls.Add(lblTotalUsers);
             panel3.Font = new Font("Gadugi", 8F);
             panel3.ForeColor = SystemColors.ButtonHighlight;
-            panel3.Location = new Point(289, 146);
+            panel3.Location = new Point(309, 146);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(201, 85);
+            panel3.Size = new Size(181, 85);
             panel3.TabIndex = 47;
             // 
             // label13

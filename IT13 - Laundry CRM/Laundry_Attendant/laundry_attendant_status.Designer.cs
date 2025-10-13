@@ -60,14 +60,13 @@
             table_customers.BackgroundColor = SystemColors.ButtonHighlight;
             table_customers.BorderStyle = BorderStyle.None;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table_customers.Location = new Point(259, 167);
-            table_customers.Margin = new Padding(4);
+            table_customers.Location = new Point(264, 153);
             table_customers.Name = "table_customers";
             table_customers.ReadOnly = true;
             table_customers.RowHeadersVisible = false;
             table_customers.RowHeadersWidth = 51;
             table_customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            table_customers.Size = new Size(1010, 388);
+            table_customers.Size = new Size(751, 291);
             table_customers.TabIndex = 1;
             table_customers.CellContentClick += table_customers_CellContentClick;
             // 
@@ -113,10 +112,9 @@
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
             button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_archives.Location = new Point(716, 20);
-            button_archives.Margin = new Padding(4);
+            button_archives.Location = new Point(573, 16);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(62, 50);
+            button_archives.Size = new Size(50, 40);
             button_archives.TabIndex = 8;
             button_archives.Text = "🗂️";
             button_archives.UseVisualStyleBackColor = false;
@@ -130,10 +128,9 @@
             add.FlatStyle = FlatStyle.Flat;
             add.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             add.ForeColor = SystemColors.ButtonHighlight;
-            add.Location = new Point(788, 23);
-            add.Margin = new Padding(4);
+            add.Location = new Point(630, 18);
             add.Name = "add";
-            add.Size = new Size(202, 40);
+            add.Size = new Size(162, 32);
             add.TabIndex = 9;
             add.Text = "➕ Add Customer";
             add.UseVisualStyleBackColor = false;
@@ -151,21 +148,21 @@
             panel3.Controls.Add(button_archives);
             panel3.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel3.ForeColor = SystemColors.ButtonHighlight;
-            panel3.Location = new Point(259, 78);
+            panel3.Location = new Point(217, 81);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1012, 83);
+            panel3.Size = new Size(810, 67);
             panel3.TabIndex = 12;
             // 
             // textbox_search
             // 
             textbox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_search.Location = new Point(13, 20);
+            textbox_search.Location = new Point(10, 16);
             textbox_search.Margin = new Padding(2);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.PlaceholderText = "🔎 Search here...";
-            textbox_search.Size = new Size(300, 43);
+            textbox_search.Size = new Size(241, 35);
             textbox_search.TabIndex = 13;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 
@@ -174,9 +171,10 @@
             lblRoleFilter.AutoSize = true;
             lblRoleFilter.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRoleFilter.ForeColor = Color.White;
-            lblRoleFilter.Location = new Point(320, 33);
+            lblRoleFilter.Location = new Point(256, 26);
+            lblRoleFilter.Margin = new Padding(2, 0, 2, 0);
             lblRoleFilter.Name = "lblRoleFilter";
-            lblRoleFilter.Size = new Size(92, 21);
+            lblRoleFilter.Size = new Size(79, 19);
             lblRoleFilter.TabIndex = 15;
             lblRoleFilter.Text = "Role Filter:";
             // 
@@ -185,9 +183,10 @@
             cmbRoleFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRoleFilter.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbRoleFilter.Items.AddRange(new object[] { "🔽 All Roles", "Admin", "Laundry Attendant", "Customer" });
-            cmbRoleFilter.Location = new Point(418, 30);
+            cmbRoleFilter.Location = new Point(339, 24);
+            cmbRoleFilter.Margin = new Padding(2);
             cmbRoleFilter.Name = "cmbRoleFilter";
-            cmbRoleFilter.Size = new Size(150, 29);
+            cmbRoleFilter.Size = new Size(121, 27);
             cmbRoleFilter.TabIndex = 16;
             cmbRoleFilter.SelectedIndexChanged += cmbRoleFilter_SelectedIndexChanged;
             // 
@@ -203,10 +202,9 @@
             panelPagination.Controls.Add(btnNext);
             panelPagination.Controls.Add(btnPrevious);
             panelPagination.Controls.Add(btnFirst);
-            panelPagination.Location = new Point(271, 563);
-            panelPagination.Margin = new Padding(4);
+            panelPagination.Location = new Point(217, 450);
             panelPagination.Name = "panelPagination";
-            panelPagination.Size = new Size(996, 61);
+            panelPagination.Size = new Size(797, 49);
             panelPagination.TabIndex = 14;
             // 
             // lblTotalRecords
@@ -214,10 +212,9 @@
             lblTotalRecords.Anchor = AnchorStyles.Bottom;
             lblTotalRecords.AutoSize = true;
             lblTotalRecords.Font = new Font("Gadugi", 9F);
-            lblTotalRecords.Location = new Point(430, 23);
-            lblTotalRecords.Margin = new Padding(4, 0, 4, 0);
+            lblTotalRecords.Location = new Point(344, 18);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(137, 21);
+            lblTotalRecords.Size = new Size(115, 19);
             lblTotalRecords.TabIndex = 5;
             lblTotalRecords.Text = "Total Records: 0";
             // 
@@ -228,10 +225,9 @@
             cmbPageSize.Font = new Font("Gadugi", 9F);
             cmbPageSize.FormattingEnabled = true;
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "20", "50" });
-            cmbPageSize.Location = new Point(690, 20);
-            cmbPageSize.Margin = new Padding(4);
+            cmbPageSize.Location = new Point(552, 16);
             cmbPageSize.Name = "cmbPageSize";
-            cmbPageSize.Size = new Size(74, 29);
+            cmbPageSize.Size = new Size(60, 27);
             cmbPageSize.TabIndex = 6;
             cmbPageSize.SelectedIndexChanged += cmbPageSize_SelectedIndexChanged;
             // 
@@ -239,10 +235,9 @@
             // 
             lblPageInfo.AutoSize = true;
             lblPageInfo.Font = new Font("Gadugi", 9F);
-            lblPageInfo.Location = new Point(212, 24);
-            lblPageInfo.Margin = new Padding(4, 0, 4, 0);
+            lblPageInfo.Location = new Point(170, 19);
             lblPageInfo.Name = "lblPageInfo";
-            lblPageInfo.Size = new Size(101, 21);
+            lblPageInfo.Size = new Size(84, 19);
             lblPageInfo.TabIndex = 4;
             lblPageInfo.Text = "Page 1 of 1";
             // 
@@ -250,10 +245,9 @@
             // 
             btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLast.Font = new Font("Gadugi", 9F);
-            btnLast.Location = new Point(888, 19);
-            btnLast.Margin = new Padding(4);
+            btnLast.Location = new Point(710, 15);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(75, 31);
+            btnLast.Size = new Size(60, 25);
             btnLast.TabIndex = 3;
             btnLast.Text = "Last";
             btnLast.UseVisualStyleBackColor = true;
@@ -263,10 +257,9 @@
             // 
             btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnNext.Font = new Font("Gadugi", 9F);
-            btnNext.Location = new Point(786, 19);
-            btnNext.Margin = new Padding(4);
+            btnNext.Location = new Point(629, 15);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(94, 31);
+            btnNext.Size = new Size(75, 25);
             btnNext.TabIndex = 2;
             btnNext.Text = "Next";
             btnNext.UseVisualStyleBackColor = true;
@@ -275,10 +268,9 @@
             // btnPrevious
             // 
             btnPrevious.Font = new Font("Gadugi", 9F);
-            btnPrevious.Location = new Point(100, 19);
-            btnPrevious.Margin = new Padding(4);
+            btnPrevious.Location = new Point(80, 15);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(94, 31);
+            btnPrevious.Size = new Size(75, 25);
             btnPrevious.TabIndex = 1;
             btnPrevious.Text = "Previous";
             btnPrevious.UseVisualStyleBackColor = true;
@@ -287,10 +279,9 @@
             // btnFirst
             // 
             btnFirst.Font = new Font("Gadugi", 9F);
-            btnFirst.Location = new Point(12, 19);
-            btnFirst.Margin = new Padding(4);
+            btnFirst.Location = new Point(10, 15);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(75, 31);
+            btnFirst.Size = new Size(60, 25);
             btnFirst.TabIndex = 0;
             btnFirst.Text = "First";
             btnFirst.UseVisualStyleBackColor = true;
@@ -298,14 +289,14 @@
             // 
             // laundry_attendant_status
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1286, 637);
+            ClientSize = new Size(1029, 510);
             Controls.Add(panelPagination);
             Controls.Add(table_customers);
             Controls.Add(panel3);
-            Margin = new Padding(5);
+            Margin = new Padding(4);
             Name = "laundry_attendant_status";
             Text = "Laundry Attendant | Status";
             Load += laundry_attendant_status_Load;
