@@ -1,10 +1,11 @@
-﻿using IT13___Laundry_CRM.Repositories;
-using IT13___Laundry_CRM.Models;
+﻿using IT13___Laundry_CRM.Models;
+using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         public create_edit_status()
         {
             InitializeComponent();
+
+            MakeRounded(panel1);
+            MakeRounded(combobox_customer);
+            MakeRounded(combobox_status);
+
         }
 
         public create_edit_status(int statusId, int userId, string status) : this()
@@ -48,6 +54,22 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             {
                 combobox_customer.Enabled = true;  // allow choosing a customer only when adding
             }
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void LoadCustomersToComboBox()

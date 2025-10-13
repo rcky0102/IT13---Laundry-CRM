@@ -2,6 +2,7 @@
 using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using static IT13___Laundry_CRM.Models.User;
@@ -19,12 +20,42 @@ namespace IT13___Laundry_CRM.Admin
         public admin_user()
         {
             InitializeComponent();
+
+            MakeRounded(button_add);
+            MakeRounded(panel2);
+            MakeRounded(textBox_search);
+            MakeRounded(button_archives);
+            MakeRounded(cmbRoleFilter);
+            MakeRounded(table_users);
+            MakeRounded(btnFirst);
+            MakeRounded(btnPrevious);
+            MakeRounded(cmbPageSize);
+            MakeRounded(btnNext);
+            MakeRounded(btnLast);
+            MakeRounded(panelPagination);
+
         }
 
         private void admin_user_Load(object sender, EventArgs e)
         {
             InitializePaginationControls();
             LoadUsers();
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void InitializePaginationControls()
@@ -107,6 +138,7 @@ namespace IT13___Laundry_CRM.Admin
             table_users.AutoGenerateColumns = false;
             table_users.Columns.Clear();
 
+            // Data columns
             table_users.Columns.Add("user_id", "ID");
             table_users.Columns["user_id"].DataPropertyName = "user_id";
 
@@ -128,16 +160,20 @@ namespace IT13___Laundry_CRM.Admin
             table_users.Columns.Add("created_at", "Created At");
             table_users.Columns["created_at"].DataPropertyName = "created_at";
 
-            // 🟩 Combined Action Column
-            DataGridViewButtonColumn actionColumn = new DataGridViewButtonColumn();
-            actionColumn.Name = "actions";
-            actionColumn.HeaderText = "Actions";
-            actionColumn.Text = "";
-            actionColumn.UseColumnTextForButtonValue = false;
-            actionColumn.Width = 100;
+            // 🟩 Actions column (combined)
+            DataGridViewButtonColumn actionColumn = new DataGridViewButtonColumn
+            {
+                Name = "actions",
+                HeaderText = "Actions",
+                Text = "", // Text handled in CellPainting
+                UseColumnTextForButtonValue = false,
+                Width = 80,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            };
             table_users.Columns.Add(actionColumn);
 
-            var data = users.Select(u => new
+            // Bind data
+            table_users.DataSource = users.Select(u => new
             {
                 u.user_id,
                 u.username,
@@ -148,9 +184,7 @@ namespace IT13___Laundry_CRM.Admin
                 u.created_at
             }).ToList();
 
-            table_users.DataSource = data;
-
-            // Add event handlers
+            // Event handlers
             table_users.CellPainting -= table_users_CellPainting;
             table_users.CellPainting += table_users_CellPainting;
 
@@ -161,34 +195,20 @@ namespace IT13___Laundry_CRM.Admin
 
         private void table_users_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0 || table_users.Columns[e.ColumnIndex].Name != "actions") return;
 
-            // Only handle clicks on the Actions column
-            if (table_users.Columns[e.ColumnIndex].Name != "actions") return;
-
-            // Get the user ID
-            var userIdVal = table_users.Rows[e.RowIndex].Cells["user_id"].Value?.ToString();
-            if (string.IsNullOrEmpty(userIdVal)) return;
-
-            int userId = int.Parse(userIdVal);
-
-            // Determine where the user clicked inside the cell
             var cell = table_users[e.ColumnIndex, e.RowIndex];
-            var clickPosition = table_users.PointToClient(Cursor.Position);
+            var userId = Convert.ToInt32(table_users.Rows[e.RowIndex].Cells["user_id"].Value);
+
+            var clickPos = table_users.PointToClient(Cursor.Position);
             var cellRect = table_users.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
-            int relativeX = clickPosition.X - cellRect.Left;
+            int relativeX = clickPos.X - cellRect.Left;
 
-            // Adjust the threshold depending on your icon spacing
-            if (relativeX < 45)
-            {
-
-                EditUser(userId);
-            }
-            else
-            {
-
-                ArchiveUser(userId);
-            }
+            // Adjust thresholds to match CellPainting
+            int buttonSize = 20;
+            int spacing = 10;
+            if (relativeX < buttonSize) EditUser(userId); // Clicked Edit
+            else if (relativeX < buttonSize * 2 + spacing) ArchiveUser(userId); // Clicked Archive
         }
 
 
@@ -285,22 +305,20 @@ namespace IT13___Laundry_CRM.Admin
                 e.PaintBackground(e.ClipBounds, true);
 
                 int buttonSize = 20;
-                int spacing = 10; // space between icons
-
-                // Align to left
-                int xStart = e.CellBounds.Left + 8; // small left padding
+                int spacing = 10;
+                int xStart = e.CellBounds.Left + 8; // left padding
                 int yCenter = e.CellBounds.Top + (e.CellBounds.Height - buttonSize) / 2;
 
-                // Define edit and archive rectangles
+                // Rectangles for hit detection
                 Rectangle editRect = new Rectangle(xStart, yCenter, buttonSize, buttonSize);
                 Rectangle archiveRect = new Rectangle(xStart + buttonSize + spacing, yCenter, buttonSize, buttonSize);
 
-                // Draw edit (✔)
-                TextRenderer.DrawText(e.Graphics, "✔", e.CellStyle.Font, editRect, Color.Green,
+                // Draw Edit (✔)
+                TextRenderer.DrawText(e.Graphics, "✏️", e.CellStyle.Font, editRect, Color.Green,
                     TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
 
-                // Draw archive (🗄)
-                TextRenderer.DrawText(e.Graphics, "🗄", e.CellStyle.Font, archiveRect, Color.IndianRed,
+                // Draw Archive (🗄)
+                TextRenderer.DrawText(e.Graphics, "📦", e.CellStyle.Font, archiveRect, Color.IndianRed,
                     TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
 
                 e.Handled = true;

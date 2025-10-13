@@ -39,15 +39,15 @@
             // 
             // button_add
             // 
-            button_add.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            button_add.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_add.BackColor = SystemColors.Highlight;
             button_add.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_add.ForeColor = SystemColors.ButtonHighlight;
             button_add.Location = new Point(681, 15);
             button_add.Name = "button_add";
-            button_add.Size = new Size(234, 40);
+            button_add.Size = new Size(132, 40);
             button_add.TabIndex = 2;
-            button_add.Text = "➕ Add Customer";
+            button_add.Text = "➕ Add User";
             button_add.UseVisualStyleBackColor = false;
             button_add.Click += button_add_Click;
             // 
@@ -59,13 +59,13 @@
             table_users.BorderStyle = BorderStyle.None;
             table_users.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             table_users.GridColor = SystemColors.MenuBar;
-            table_users.Location = new Point(350, 170);
+            table_users.Location = new Point(220, 153);
             table_users.Name = "table_users";
             table_users.ReadOnly = true;
             table_users.RowHeadersVisible = false;
             table_users.RowHeadersWidth = 51;
             table_users.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            table_users.Size = new Size(816, 440);
+            table_users.Size = new Size(826, 431);
             table_users.TabIndex = 3;
             table_users.CellClick += table_users_CellClick;
             table_users.CellPainting += table_users_CellPainting;
@@ -73,26 +73,27 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.BackColor = SystemColors.ActiveCaption;
+            panel2.BackColor = SystemColors.GradientActiveCaption;
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(button_archives);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(textBox_search);
             panel2.Controls.Add(cmbRoleFilter);
             panel2.Controls.Add(button_add);
-            panel2.Location = new Point(249, 79);
+            panel2.Location = new Point(220, 81);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(928, 75);
+            panel2.Size = new Size(826, 67);
             panel2.TabIndex = 6;
             // 
             // button_archives
             // 
-            button_archives.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button_archives.BackColor = SystemColors.ActiveCaption;
+            button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button_archives.BackColor = SystemColors.Highlight;
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.ForeColor = SystemColors.ButtonFace;
             button_archives.Location = new Point(625, 15);
             button_archives.Name = "button_archives";
             button_archives.Size = new Size(50, 40);
@@ -105,8 +106,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(284, 24);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(274, 23);
             label1.Name = "label1";
             label1.Size = new Size(71, 17);
             label1.TabIndex = 8;
@@ -128,7 +129,7 @@
             cmbRoleFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRoleFilter.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbRoleFilter.Items.AddRange(new object[] { "All", "Admin", "Staff", "Customer" });
-            cmbRoleFilter.Location = new Point(378, 23);
+            cmbRoleFilter.Location = new Point(351, 18);
             cmbRoleFilter.Name = "cmbRoleFilter";
             cmbRoleFilter.Size = new Size(120, 27);
             cmbRoleFilter.TabIndex = 7;
@@ -136,79 +137,91 @@
             // 
             // cmbPageSize
             // 
+            cmbPageSize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cmbPageSize.BackColor = SystemColors.ButtonFace;
             cmbPageSize.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPageSize.Font = new Font("Gadugi", 8F);
+            cmbPageSize.Font = new Font("Gadugi", 10.2F);
             cmbPageSize.FormattingEnabled = true;
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "25", "50" });
-            cmbPageSize.Location = new Point(694, 10);
+            cmbPageSize.Location = new Point(596, 17);
             cmbPageSize.Name = "cmbPageSize";
-            cmbPageSize.Size = new Size(60, 24);
+            cmbPageSize.Size = new Size(60, 28);
             cmbPageSize.TabIndex = 11;
             // 
             // btnLast
             // 
-            btnLast.Font = new Font("Gadugi", 8F);
-            btnLast.Location = new Point(854, 9);
+            btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnLast.BackColor = SystemColors.GradientActiveCaption;
+            btnLast.Font = new Font("Gadugi", 10.2F);
+            btnLast.Location = new Point(751, 15);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(67, 28);
+            btnLast.Size = new Size(60, 30);
             btnLast.TabIndex = 10;
             btnLast.Text = "Last";
-            btnLast.UseVisualStyleBackColor = true;
+            btnLast.UseVisualStyleBackColor = false;
             // 
             // btnNext
             // 
-            btnNext.Font = new Font("Gadugi", 8F);
-            btnNext.Location = new Point(776, 10);
+            btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnNext.BackColor = SystemColors.GradientInactiveCaption;
+            btnNext.Font = new Font("Gadugi", 10.2F);
+            btnNext.Location = new Point(673, 15);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(72, 28);
+            btnNext.Size = new Size(72, 30);
             btnNext.TabIndex = 9;
             btnNext.Text = "Next";
-            btnNext.UseVisualStyleBackColor = true;
+            btnNext.UseVisualStyleBackColor = false;
             // 
             // lblTotalRecords
             // 
+            lblTotalRecords.Anchor = AnchorStyles.Bottom;
             lblTotalRecords.AutoSize = true;
-            lblTotalRecords.Font = new Font("Gadugi", 8F);
-            lblTotalRecords.Location = new Point(410, 14);
+            lblTotalRecords.Font = new Font("Gadugi", 10.2F);
+            lblTotalRecords.Location = new Point(383, 20);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(105, 17);
+            lblTotalRecords.Size = new Size(130, 20);
             lblTotalRecords.TabIndex = 8;
             lblTotalRecords.Text = "Total Records: 0";
             // 
             // lblPageInfo
             // 
+            lblPageInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblPageInfo.AutoSize = true;
-            lblPageInfo.Font = new Font("Gadugi", 8F);
-            lblPageInfo.Location = new Point(209, 13);
+            lblPageInfo.Font = new Font("Gadugi", 10.2F);
+            lblPageInfo.Location = new Point(204, 20);
             lblPageInfo.Name = "lblPageInfo";
-            lblPageInfo.Size = new Size(78, 17);
+            lblPageInfo.Size = new Size(95, 20);
             lblPageInfo.TabIndex = 7;
             lblPageInfo.Text = "Page 1 of 1";
             // 
             // btnPrevious
             // 
-            btnPrevious.Font = new Font("Gadugi", 8F);
-            btnPrevious.Location = new Point(101, 9);
+            btnPrevious.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnPrevious.BackColor = SystemColors.GradientInactiveCaption;
+            btnPrevious.Font = new Font("Gadugi", 10.2F);
+            btnPrevious.Location = new Point(84, 14);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(102, 28);
+            btnPrevious.Size = new Size(102, 30);
             btnPrevious.TabIndex = 6;
             btnPrevious.Text = "Previous";
-            btnPrevious.UseVisualStyleBackColor = true;
+            btnPrevious.UseVisualStyleBackColor = false;
             // 
             // btnFirst
             // 
-            btnFirst.Font = new Font("Gadugi", 8F);
-            btnFirst.Location = new Point(20, 9);
+            btnFirst.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnFirst.BackColor = SystemColors.GradientActiveCaption;
+            btnFirst.Font = new Font("Gadugi", 10.2F);
+            btnFirst.Location = new Point(18, 14);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(75, 28);
+            btnFirst.Size = new Size(60, 30);
             btnFirst.TabIndex = 5;
             btnFirst.Text = "First";
-            btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.UseVisualStyleBackColor = false;
             // 
             // panelPagination
             // 
             panelPagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panelPagination.BackColor = SystemColors.ButtonHighlight;
+            panelPagination.BackColor = SystemColors.GradientInactiveCaption;
             panelPagination.BorderStyle = BorderStyle.Fixed3D;
             panelPagination.Controls.Add(btnFirst);
             panelPagination.Controls.Add(cmbPageSize);
@@ -218,20 +231,20 @@
             panelPagination.Controls.Add(btnNext);
             panelPagination.Controls.Add(lblTotalRecords);
             panelPagination.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelPagination.Location = new Point(247, 605);
+            panelPagination.Location = new Point(220, 590);
             panelPagination.Name = "panelPagination";
-            panelPagination.Size = new Size(929, 45);
+            panelPagination.Size = new Size(826, 60);
             panelPagination.TabIndex = 9;
             // 
             // admin_user
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1188, 662);
+            ClientSize = new Size(1064, 662);
             Controls.Add(panelPagination);
             Controls.Add(table_users);
             Controls.Add(panel2);
-            Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(5, 3, 5, 3);
             Name = "admin_user";
             Text = "Admin | User";

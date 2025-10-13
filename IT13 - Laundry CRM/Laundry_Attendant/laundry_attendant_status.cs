@@ -107,7 +107,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
                 table_customers.DataSource = tableData;
 
-                AddActionColumns();
+                AddActionsColumn();
                 UpdatePaginationControls();
 
                 table_customers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -119,38 +119,29 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             }
         }
 
-        private void AddActionColumns()
+        private void AddActionsColumn()
         {
-            // Remove existing columns
-            if (table_customers.Columns.Contains("EditAction"))
-                table_customers.Columns.Remove("EditAction");
-            if (table_customers.Columns.Contains("ArchiveAction"))
-                table_customers.Columns.Remove("ArchiveAction");
+            if (table_customers.Columns.Contains("Actions"))
+                table_customers.Columns.Remove("Actions");
 
-            // Edit Button
-            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
-            editColumn.Name = "EditAction";
-            editColumn.HeaderText = "Edit";
-            editColumn.Text = "✏️";
-            editColumn.UseColumnTextForButtonValue = true;
-            editColumn.Width = 60;
-            editColumn.DefaultCellStyle.BackColor = Color.ForestGreen;
-            editColumn.DefaultCellStyle.ForeColor = Color.White;
-            editColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            table_customers.Columns.Add(editColumn);
+            DataGridViewButtonColumn actionColumn = new DataGridViewButtonColumn
+            {
+                Name = "Actions",
+                HeaderText = "Actions",
+                Text = "", // we'll paint icons ourselves
+                UseColumnTextForButtonValue = false,
+                Width = 80,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
+            };
+            table_customers.Columns.Add(actionColumn);
 
-            // Archive Button
-            DataGridViewButtonColumn archiveColumn = new DataGridViewButtonColumn();
-            archiveColumn.Name = "ArchiveAction";
-            archiveColumn.HeaderText = "Archive";
-            archiveColumn.Text = "📦";
-            archiveColumn.UseColumnTextForButtonValue = true;
-            archiveColumn.Width = 70;
-            archiveColumn.DefaultCellStyle.BackColor = Color.Salmon;
-            archiveColumn.DefaultCellStyle.ForeColor = Color.White;
-            archiveColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            table_customers.Columns.Add(archiveColumn);
+            table_customers.CellPainting -= Table_Customers_CellPainting;
+            table_customers.CellPainting += Table_Customers_CellPainting;
+
+            table_customers.CellClick -= Table_Customers_CellClick;
+            table_customers.CellClick += Table_Customers_CellClick;
         }
+
 
         private void UpdatePaginationControls()
         {
@@ -287,5 +278,48 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 MessageBox.Show("Please select a status to archive.", "Archive Status", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void Table_Customers_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && table_customers.Columns[e.ColumnIndex].Name == "Actions")
+            {
+                e.PaintBackground(e.ClipBounds, true);
+
+                int buttonSize = 20;
+                int spacing = 10;
+                int xStart = e.CellBounds.Left + 8;
+                int yCenter = e.CellBounds.Top + (e.CellBounds.Height - buttonSize) / 2;
+
+                Rectangle editRect = new Rectangle(xStart, yCenter, buttonSize, buttonSize);
+                Rectangle archiveRect = new Rectangle(xStart + buttonSize + spacing, yCenter, buttonSize, buttonSize);
+
+                TextRenderer.DrawText(e.Graphics, "✏️", e.CellStyle.Font, editRect, Color.Green,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+
+                TextRenderer.DrawText(e.Graphics, "📦", e.CellStyle.Font, archiveRect, Color.IndianRed,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+
+                e.Handled = true;
+            }
+        }
+
+        private void Table_Customers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || table_customers.Columns[e.ColumnIndex].Name != "Actions") return;
+
+            var cellRect = table_customers.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+            var clickPos = table_customers.PointToClient(Cursor.Position);
+            int relativeX = clickPos.X - cellRect.Left;
+
+            int buttonSize = 20;
+            int spacing = 10;
+
+            int statusId = Convert.ToInt32(table_customers.Rows[e.RowIndex].Cells["StatusID"].Value);
+
+            if (relativeX < buttonSize) EditStatus(statusId);              // clicked edit
+            else if (relativeX < buttonSize * 2 + spacing) ArchiveStatus(statusId); // clicked archive
+        }
+
+
     }
 }

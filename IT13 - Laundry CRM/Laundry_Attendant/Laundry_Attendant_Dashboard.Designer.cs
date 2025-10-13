@@ -86,7 +86,7 @@
             label_pending.AutoSize = true;
             label_pending.Font = new Font("Gadugi", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label_pending.ForeColor = SystemColors.ButtonHighlight;
-            label_pending.Location = new Point(3, 0);
+            label_pending.Location = new Point(10, 14);
             label_pending.Name = "label_pending";
             label_pending.Size = new Size(80, 22);
             label_pending.TabIndex = 3;
@@ -113,7 +113,7 @@
             // label_ironing
             // 
             label_ironing.AutoSize = true;
-            label_ironing.Location = new Point(-1, -2);
+            label_ironing.Location = new Point(9, 9);
             label_ironing.Name = "label_ironing";
             label_ironing.Size = new Size(71, 22);
             label_ironing.TabIndex = 6;
@@ -122,7 +122,7 @@
             // label_ready
             // 
             label_ready.AutoSize = true;
-            label_ready.Location = new Point(3, 7);
+            label_ready.Location = new Point(9, 13);
             label_ready.Name = "label_ready";
             label_ready.Size = new Size(61, 22);
             label_ready.TabIndex = 7;
@@ -131,7 +131,7 @@
             // label_completed
             // 
             label_completed.AutoSize = true;
-            label_completed.Location = new Point(-1, -2);
+            label_completed.Location = new Point(10, 10);
             label_completed.Name = "label_completed";
             label_completed.Size = new Size(91, 22);
             label_completed.TabIndex = 8;
@@ -406,7 +406,7 @@
             // buttonLoadGraphToday
             // 
             buttonLoadGraphToday.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphToday.Location = new Point(1060, 10);
+            buttonLoadGraphToday.Location = new Point(951, 10);
             buttonLoadGraphToday.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphToday.Name = "buttonLoadGraphToday";
             buttonLoadGraphToday.Size = new Size(68, 30);
@@ -418,7 +418,7 @@
             // buttonLoadGraphWeek
             // 
             buttonLoadGraphWeek.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphWeek.Location = new Point(1139, 10);
+            buttonLoadGraphWeek.Location = new Point(1030, 10);
             buttonLoadGraphWeek.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphWeek.Name = "buttonLoadGraphWeek";
             buttonLoadGraphWeek.Size = new Size(90, 30);
@@ -430,7 +430,7 @@
             // buttonLoadGraphMonth
             // 
             buttonLoadGraphMonth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphMonth.Location = new Point(1235, 10);
+            buttonLoadGraphMonth.Location = new Point(1126, 10);
             buttonLoadGraphMonth.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphMonth.Name = "buttonLoadGraphMonth";
             buttonLoadGraphMonth.Size = new Size(83, 30);
@@ -457,7 +457,7 @@
             series1.Name = "Series1";
             series1.YValuesPerPoint = 2;
             chart1.Series.Add(series1);
-            chart1.Size = new Size(1335, 170);
+            chart1.Size = new Size(1226, 170);
             chart1.TabIndex = 29;
             chart1.Text = "chart1";
             title1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
@@ -479,7 +479,7 @@
             panel2.Location = new Point(245, 403);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1335, 55);
+            panel2.Size = new Size(1226, 55);
             panel2.TabIndex = 30;
             // 
             // label1
@@ -498,7 +498,7 @@
             pictureBox1.BackColor = SystemColors.GradientActiveCaption;
             pictureBox1.Location = new Point(226, 108);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1356, 23);
+            pictureBox1.Size = new Size(1247, 23);
             pictureBox1.TabIndex = 31;
             pictureBox1.TabStop = false;
             // 
@@ -507,7 +507,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1597, 647);
+            ClientSize = new Size(1488, 647);
             Controls.Add(label_welcome);
             Controls.Add(pictureBox1);
             Controls.Add(chart1);

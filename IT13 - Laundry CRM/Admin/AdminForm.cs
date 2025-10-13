@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,29 @@ namespace IT13___Laundry_CRM
 
             InitializeChart();
 
+            MakeRounded(label_welcome);
+            MakeRounded(pictureBox1);
+            MakeRounded(panel3);
+            MakeRounded(panel4);
+            MakeRounded(panel6);
+            MakeRounded(panel5);
+            MakeRounded(panel7);
+            MakeRounded(panel11);
+            MakeRounded(panel12);
+            MakeRounded(panel10);
+            MakeRounded(label8);
+            MakeRounded(label9);
+            MakeRounded(panel8);
+            MakeRounded(panel9);
+            MakeRounded(panel13);
+            MakeRounded(dateTimePickerFrom);
+            MakeRounded(dateTimePickerTo);
+            MakeRounded(buttonLoadGraph);
+            MakeRounded(buttonLoadGraphToday);
+            MakeRounded(buttonLoadGraphWeek);
+            MakeRounded(buttonLoadGraphMonth);
+
+
             // Set default dates to today
             dateTimePickerFrom.Value = DateTime.Today;
             dateTimePickerTo.Value = DateTime.Today;
@@ -47,6 +71,22 @@ namespace IT13___Laundry_CRM
 
             // Load Today's data by default
             LoadTodayData();
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void InitializeChart()
@@ -466,6 +506,36 @@ namespace IT13___Laundry_CRM
         }
 
         private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCustomerCount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNewUsersMonth_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_welcome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerFrom_ValueChanged(object sender, EventArgs e)
         {
 
         }

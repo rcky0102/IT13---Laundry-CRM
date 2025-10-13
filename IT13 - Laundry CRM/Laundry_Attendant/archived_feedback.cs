@@ -20,7 +20,6 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         {
             InitializeComponent();
 
-            MakeRounded(panel1);
             MakeRounded(dataGridView_archived);
         }
 
