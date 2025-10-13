@@ -33,6 +33,9 @@ namespace IT13___Laundry_CRM.Customer
             MakeRounded(button_send);
             MakeRounded(button_send);
             MakeRounded(listbox_feedback);
+            MakeRounded(label5);
+            MakeRounded(label6);
+            MakeRounded(label1);
 
             listbox_feedback.DrawMode = DrawMode.OwnerDrawFixed;
             listbox_feedback.ItemHeight = 50; // Adjust based on font size
