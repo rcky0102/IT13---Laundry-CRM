@@ -50,7 +50,7 @@
             // 
             textbox_username.Font = new Font("Gadugi", 8F);
             textbox_username.Location = new Point(36, 60);
-            textbox_username.Margin = new Padding(4, 4, 4, 4);
+            textbox_username.Margin = new Padding(4);
             textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
             textbox_username.PlaceholderText = "Username:";
@@ -61,7 +61,7 @@
             // 
             textbox_password.Font = new Font("Gadugi", 8F);
             textbox_password.Location = new Point(458, 60);
-            textbox_password.Margin = new Padding(4, 4, 4, 4);
+            textbox_password.Margin = new Padding(4);
             textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
             textbox_password.PasswordChar = '*';
@@ -73,7 +73,7 @@
             // 
             textbox_firstname.Font = new Font("Gadugi", 8F);
             textbox_firstname.Location = new Point(38, 181);
-            textbox_firstname.Margin = new Padding(4, 4, 4, 4);
+            textbox_firstname.Margin = new Padding(4);
             textbox_firstname.Multiline = true;
             textbox_firstname.Name = "textbox_firstname";
             textbox_firstname.PlaceholderText = "First Name:";
@@ -84,7 +84,7 @@
             // 
             textbox_middlename.Font = new Font("Gadugi", 8F);
             textbox_middlename.Location = new Point(312, 181);
-            textbox_middlename.Margin = new Padding(4, 4, 4, 4);
+            textbox_middlename.Margin = new Padding(4);
             textbox_middlename.Multiline = true;
             textbox_middlename.Name = "textbox_middlename";
             textbox_middlename.PlaceholderText = "Middle Name:";
@@ -95,7 +95,7 @@
             // 
             textbox_lastname.Font = new Font("Gadugi", 8F);
             textbox_lastname.Location = new Point(582, 181);
-            textbox_lastname.Margin = new Padding(4, 4, 4, 4);
+            textbox_lastname.Margin = new Padding(4);
             textbox_lastname.Multiline = true;
             textbox_lastname.Name = "textbox_lastname";
             textbox_lastname.PlaceholderText = "Last Name:";
@@ -106,7 +106,7 @@
             // 
             textbox_address.Font = new Font("Gadugi", 8F);
             textbox_address.Location = new Point(36, 245);
-            textbox_address.Margin = new Padding(4, 4, 4, 4);
+            textbox_address.Margin = new Padding(4);
             textbox_address.Multiline = true;
             textbox_address.Name = "textbox_address";
             textbox_address.PlaceholderText = "Address:";
@@ -117,7 +117,7 @@
             // 
             textbox_contact.Font = new Font("Gadugi", 8F);
             textbox_contact.Location = new Point(36, 351);
-            textbox_contact.Margin = new Padding(4, 4, 4, 4);
+            textbox_contact.Margin = new Padding(4);
             textbox_contact.Multiline = true;
             textbox_contact.Name = "textbox_contact";
             textbox_contact.PlaceholderText = "Contact:";
@@ -128,7 +128,7 @@
             // 
             combobox_role.FormattingEnabled = true;
             combobox_role.Location = new Point(36, 463);
-            combobox_role.Margin = new Padding(4, 4, 4, 4);
+            combobox_role.Margin = new Padding(4);
             combobox_role.Name = "combobox_role";
             combobox_role.Size = new Size(339, 32);
             combobox_role.TabIndex = 7;
@@ -139,7 +139,7 @@
             button_save.Font = new Font("Gadugi", 8F);
             button_save.ForeColor = SystemColors.HighlightText;
             button_save.Location = new Point(707, 487);
-            button_save.Margin = new Padding(4, 4, 4, 4);
+            button_save.Margin = new Padding(4);
             button_save.Name = "button_save";
             button_save.Size = new Size(125, 44);
             button_save.TabIndex = 8;
@@ -154,7 +154,7 @@
             button_cancel.FlatStyle = FlatStyle.Flat;
             button_cancel.Font = new Font("Gadugi", 8F);
             button_cancel.Location = new Point(574, 490);
-            button_cancel.Margin = new Padding(4, 4, 4, 4);
+            button_cancel.Margin = new Padding(4);
             button_cancel.Name = "button_cancel";
             button_cancel.Size = new Size(125, 38);
             button_cancel.TabIndex = 9;
@@ -240,9 +240,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(978, 754);
-            Controls.Add(label4);
             Controls.Add(panel1);
-            Margin = new Padding(4, 4, 4, 4);
+            Controls.Add(label4);
+            Margin = new Padding(4);
             Name = "admin_create_edit_user";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin | Create/Edit";

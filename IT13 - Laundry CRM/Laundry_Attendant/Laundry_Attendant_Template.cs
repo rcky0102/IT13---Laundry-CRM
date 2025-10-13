@@ -281,5 +281,10 @@ namespace IT13___Laundry_CRM
 
             panelNotifications.Height = Math.Min(yOffset + 10, 400);
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
