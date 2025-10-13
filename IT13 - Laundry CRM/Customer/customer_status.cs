@@ -1,7 +1,8 @@
-﻿using IT13___Laundry_CRM.Repositories;
-using IT13___Laundry_CRM.Models;
+﻿using IT13___Laundry_CRM.Models;
+using IT13___Laundry_CRM.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,12 +20,31 @@ namespace IT13___Laundry_CRM.Customer
         public customer_status()
         {
             InitializeComponent();
+
+            MakeRounded(flowlayoutpanel_status);
+            MakeRounded(panel3);
         }
 
         private void customer_status_Load(object sender, EventArgs e)
         {
             LoadMyStatuses();
             ShowWelcomeMessage();
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void ShowWelcomeMessage()
@@ -72,7 +92,7 @@ namespace IT13___Laundry_CRM.Customer
                     Width = 300,
                     Height = 50,
                     TextAlign = ContentAlignment.MiddleCenter,
-                    Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                    Font = new Font("Gadugi", 12, FontStyle.Bold),
                     ForeColor = Color.White,
                     Margin = new Padding(10),
                     Text = isCancelled ? "❌ Laundry Cancelled" : "⏸ Laundry On Hold",
@@ -96,7 +116,7 @@ namespace IT13___Laundry_CRM.Customer
                         Text = stages[i],
                         TextAlign = ContentAlignment.MiddleCenter,
                         Dock = DockStyle.Top,
-                        Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                        Font = new Font("Gadugi", 9, FontStyle.Bold),
                         Height = 25
                     };
 
@@ -150,15 +170,15 @@ namespace IT13___Laundry_CRM.Customer
 
         private void CreateHistory(List<(DateTime created_at, string status)> allStatuses)
         {
-            var historyTitle = new Label
-            {
-                Text = "🕒 Status History",
-                Font = new Font("Cascadia Code", 11, FontStyle.Bold),
-                AutoSize = true,
-                Location = new Point(10, 10),
-                ForeColor = Color.Black
-            };
-            panel3.Controls.Add(historyTitle);
+            //var historyTitle = new Label
+            //{
+            //    Text = "🕒 Status History",
+            //    Font = new Font("Gadugi", 11, FontStyle.Bold),
+            //    AutoSize = true,
+            //    Location = new Point(10, 10),
+            //    ForeColor = Color.Black
+            //};
+            //panel3.Controls.Add(historyTitle);
 
             int y = 40;
             foreach (var s in allStatuses)
@@ -169,7 +189,7 @@ namespace IT13___Laundry_CRM.Customer
                     Width = panel3.Width - 40,
                     Height = 25,
                     Text = $"{s.created_at:G}  →  {s.status}",
-                    Font = new Font("Cascadia Code", 9),
+                    Font = new Font("Gadugi", 12),
                     ForeColor = Color.Black,
                     Location = new Point(10, y)
                 };
