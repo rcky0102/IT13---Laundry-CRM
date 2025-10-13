@@ -25,6 +25,7 @@ namespace IT13___Laundry_CRM.Customer
             MakeRounded(panel3);
             MakeRounded(label_welcome);
             MakeRounded(label1);
+            MakeRounded(pictureBox1);
         }
 
         private void customer_status_Load(object sender, EventArgs e)

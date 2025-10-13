@@ -90,5 +90,10 @@ namespace IT13___Laundry_CRM.Customer
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
