@@ -66,7 +66,7 @@
             table_customers.RowHeadersVisible = false;
             table_customers.RowHeadersWidth = 51;
             table_customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            table_customers.Size = new Size(751, 291);
+            table_customers.Size = new Size(514, 291);
             table_customers.TabIndex = 1;
             table_customers.CellContentClick += table_customers_CellContentClick;
             // 
@@ -112,7 +112,7 @@
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
             button_archives.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_archives.Location = new Point(573, 16);
+            button_archives.Location = new Point(464, 16);
             button_archives.Name = "button_archives";
             button_archives.Size = new Size(50, 40);
             button_archives.TabIndex = 8;
@@ -128,7 +128,7 @@
             add.FlatStyle = FlatStyle.Flat;
             add.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             add.ForeColor = SystemColors.ButtonHighlight;
-            add.Location = new Point(630, 18);
+            add.Location = new Point(521, 18);
             add.Name = "add";
             add.Size = new Size(162, 32);
             add.TabIndex = 9;
@@ -151,7 +151,7 @@
             panel3.Location = new Point(217, 81);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(810, 67);
+            panel3.Size = new Size(701, 67);
             panel3.TabIndex = 12;
             // 
             // textbox_search
@@ -204,7 +204,7 @@
             panelPagination.Controls.Add(btnFirst);
             panelPagination.Location = new Point(217, 450);
             panelPagination.Name = "panelPagination";
-            panelPagination.Size = new Size(797, 49);
+            panelPagination.Size = new Size(714, 49);
             panelPagination.TabIndex = 14;
             // 
             // lblTotalRecords
@@ -212,7 +212,7 @@
             lblTotalRecords.Anchor = AnchorStyles.Bottom;
             lblTotalRecords.AutoSize = true;
             lblTotalRecords.Font = new Font("Gadugi", 9F);
-            lblTotalRecords.Location = new Point(344, 18);
+            lblTotalRecords.Location = new Point(303, 18);
             lblTotalRecords.Name = "lblTotalRecords";
             lblTotalRecords.Size = new Size(115, 19);
             lblTotalRecords.TabIndex = 5;
@@ -225,7 +225,7 @@
             cmbPageSize.Font = new Font("Gadugi", 9F);
             cmbPageSize.FormattingEnabled = true;
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "20", "50" });
-            cmbPageSize.Location = new Point(552, 16);
+            cmbPageSize.Location = new Point(469, 16);
             cmbPageSize.Name = "cmbPageSize";
             cmbPageSize.Size = new Size(60, 27);
             cmbPageSize.TabIndex = 6;
@@ -245,7 +245,7 @@
             // 
             btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLast.Font = new Font("Gadugi", 9F);
-            btnLast.Location = new Point(710, 15);
+            btnLast.Location = new Point(627, 15);
             btnLast.Name = "btnLast";
             btnLast.Size = new Size(60, 25);
             btnLast.TabIndex = 3;
@@ -257,7 +257,7 @@
             // 
             btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnNext.Font = new Font("Gadugi", 9F);
-            btnNext.Location = new Point(629, 15);
+            btnNext.Location = new Point(546, 15);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(75, 25);
             btnNext.TabIndex = 2;
@@ -292,7 +292,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1029, 510);
+            ClientSize = new Size(946, 510);
             Controls.Add(panelPagination);
             Controls.Add(table_customers);
             Controls.Add(panel3);

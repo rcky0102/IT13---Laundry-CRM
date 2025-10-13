@@ -71,11 +71,11 @@
             // label_welcome
             // 
             label_welcome.AutoSize = true;
-            label_welcome.Font = new Font("Gadugi", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_welcome.Font = new Font("Gadugi", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_welcome.ForeColor = SystemColors.ActiveCaptionText;
             label_welcome.Location = new Point(239, 81);
             label_welcome.Name = "label_welcome";
-            label_welcome.Size = new Size(140, 35);
+            label_welcome.Size = new Size(145, 36);
             label_welcome.TabIndex = 5;
             label_welcome.Text = "Welcome";
             // 

@@ -42,6 +42,7 @@
             textbox_subject.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textbox_subject.BackColor = SystemColors.ButtonFace;
             textbox_subject.BorderStyle = BorderStyle.None;
+            textbox_subject.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_subject.ForeColor = SystemColors.WindowText;
             textbox_subject.Location = new Point(451, 97);
             textbox_subject.Multiline = true;
@@ -54,6 +55,7 @@
             textbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textbox_feedback.BackColor = SystemColors.ButtonFace;
             textbox_feedback.BorderStyle = BorderStyle.None;
+            textbox_feedback.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_feedback.Location = new Point(365, 181);
             textbox_feedback.Multiline = true;
             textbox_feedback.Name = "textbox_feedback";

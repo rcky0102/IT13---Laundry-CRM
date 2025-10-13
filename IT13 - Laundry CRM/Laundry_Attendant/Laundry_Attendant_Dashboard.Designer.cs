@@ -66,7 +66,8 @@
             buttonLoadGraphMonth = new Button();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             panel2 = new Panel();
-            panel10 = new Panel();
+            label1 = new Label();
+            pictureBox1 = new PictureBox();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -77,6 +78,7 @@
             panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label_pending
@@ -159,7 +161,7 @@
             label_welcome.BackColor = SystemColors.ButtonHighlight;
             label_welcome.Font = new Font("Gadugi", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_welcome.ForeColor = SystemColors.ActiveCaptionText;
-            label_welcome.Location = new Point(278, 84);
+            label_welcome.Location = new Point(245, 81);
             label_welcome.Name = "label_welcome";
             label_welcome.Size = new Size(155, 36);
             label_welcome.TabIndex = 11;
@@ -172,7 +174,7 @@
             panel3.Controls.Add(label_pending);
             panel3.Font = new Font("Gadugi", 11F);
             panel3.ForeColor = SystemColors.ButtonHighlight;
-            panel3.Location = new Point(327, 157);
+            panel3.Location = new Point(327, 166);
             panel3.Margin = new Padding(1, 2, 1, 2);
             panel3.Name = "panel3";
             panel3.Size = new Size(236, 104);
@@ -196,7 +198,7 @@
             panel4.Controls.Add(label_ready);
             panel4.Font = new Font("Gadugi", 11F);
             panel4.ForeColor = SystemColors.ButtonHighlight;
-            panel4.Location = new Point(640, 157);
+            panel4.Location = new Point(640, 167);
             panel4.Margin = new Padding(1, 2, 1, 2);
             panel4.Name = "panel4";
             panel4.Size = new Size(237, 104);
@@ -220,7 +222,7 @@
             panel5.Controls.Add(label_drying);
             panel5.Font = new Font("Gadugi", 11F);
             panel5.ForeColor = SystemColors.ButtonHighlight;
-            panel5.Location = new Point(1252, 162);
+            panel5.Location = new Point(1252, 168);
             panel5.Margin = new Padding(1, 2, 1, 2);
             panel5.Name = "panel5";
             panel5.Size = new Size(236, 107);
@@ -244,7 +246,7 @@
             panel6.Controls.Add(label_washing);
             panel6.Font = new Font("Gadugi", 11F);
             panel6.ForeColor = SystemColors.ButtonHighlight;
-            panel6.Location = new Point(951, 162);
+            panel6.Location = new Point(951, 167);
             panel6.Margin = new Padding(1, 2, 1, 2);
             panel6.Name = "panel6";
             panel6.Size = new Size(239, 104);
@@ -360,7 +362,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Gadugi", 8F);
-            label3.Location = new Point(327, 129);
+            label3.Location = new Point(287, 141);
             label3.Margin = new Padding(1, 0, 1, 0);
             label3.Name = "label3";
             label3.Size = new Size(108, 17);
@@ -369,11 +371,10 @@
             // 
             // buttonLoadGraph
             // 
-            buttonLoadGraph.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonLoadGraph.BackColor = SystemColors.Highlight;
             buttonLoadGraph.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonLoadGraph.ForeColor = SystemColors.ButtonHighlight;
-            buttonLoadGraph.Location = new Point(544, 9);
+            buttonLoadGraph.Location = new Point(255, 13);
             buttonLoadGraph.Margin = new Padding(3, 2, 3, 2);
             buttonLoadGraph.Name = "buttonLoadGraph";
             buttonLoadGraph.Size = new Size(90, 30);
@@ -386,24 +387,26 @@
             // 
             dateTimePickerFrom.CalendarMonthBackground = SystemColors.GradientActiveCaption;
             dateTimePickerFrom.CalendarTitleBackColor = SystemColors.GradientActiveCaption;
-            dateTimePickerFrom.Location = new Point(7, 10);
+            dateTimePickerFrom.Format = DateTimePickerFormat.Short;
+            dateTimePickerFrom.Location = new Point(17, 13);
             dateTimePickerFrom.Margin = new Padding(3, 2, 3, 2);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
-            dateTimePickerFrom.Size = new Size(245, 27);
+            dateTimePickerFrom.Size = new Size(100, 27);
             dateTimePickerFrom.TabIndex = 23;
             // 
             // dateTimePickerTo
             // 
-            dateTimePickerTo.Location = new Point(272, 10);
+            dateTimePickerTo.Format = DateTimePickerFormat.Short;
+            dateTimePickerTo.Location = new Point(149, 13);
             dateTimePickerTo.Margin = new Padding(3, 2, 3, 2);
             dateTimePickerTo.Name = "dateTimePickerTo";
-            dateTimePickerTo.Size = new Size(251, 27);
+            dateTimePickerTo.Size = new Size(100, 27);
             dateTimePickerTo.TabIndex = 24;
             // 
             // buttonLoadGraphToday
             // 
             buttonLoadGraphToday.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphToday.Location = new Point(901, 10);
+            buttonLoadGraphToday.Location = new Point(1060, 10);
             buttonLoadGraphToday.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphToday.Name = "buttonLoadGraphToday";
             buttonLoadGraphToday.Size = new Size(68, 30);
@@ -415,7 +418,7 @@
             // buttonLoadGraphWeek
             // 
             buttonLoadGraphWeek.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphWeek.Location = new Point(975, 10);
+            buttonLoadGraphWeek.Location = new Point(1139, 10);
             buttonLoadGraphWeek.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphWeek.Name = "buttonLoadGraphWeek";
             buttonLoadGraphWeek.Size = new Size(90, 30);
@@ -427,7 +430,7 @@
             // buttonLoadGraphMonth
             // 
             buttonLoadGraphMonth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphMonth.Location = new Point(1071, 10);
+            buttonLoadGraphMonth.Location = new Point(1235, 10);
             buttonLoadGraphMonth.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphMonth.Name = "buttonLoadGraphMonth";
             buttonLoadGraphMonth.Size = new Size(83, 30);
@@ -438,13 +441,13 @@
             // 
             // chart1
             // 
-            chart1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            chart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             chartArea1.Name = "ChartArea1";
             chart1.ChartAreas.Add(chartArea1);
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
-            chart1.Location = new Point(278, 463);
+            chart1.Location = new Point(245, 464);
             chart1.Margin = new Padding(3, 4, 3, 4);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
@@ -454,7 +457,7 @@
             series1.Name = "Series1";
             series1.YValuesPerPoint = 2;
             chart1.Series.Add(series1);
-            chart1.Size = new Size(730, 384);
+            chart1.Size = new Size(1335, 170);
             chart1.TabIndex = 29;
             chart1.Text = "chart1";
             title1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
@@ -464,36 +467,49 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ActiveCaption;
-            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(label1);
             panel2.Controls.Add(buttonLoadGraphMonth);
             panel2.Controls.Add(buttonLoadGraphWeek);
             panel2.Controls.Add(dateTimePickerTo);
             panel2.Controls.Add(buttonLoadGraphToday);
             panel2.Controls.Add(dateTimePickerFrom);
             panel2.Controls.Add(buttonLoadGraph);
-            panel2.Location = new Point(278, 403);
+            panel2.Location = new Point(245, 403);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1234, 55);
+            panel2.Size = new Size(1335, 55);
             panel2.TabIndex = 30;
             // 
-            // panel10
+            // label1
             // 
-            panel10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel10.BorderStyle = BorderStyle.Fixed3D;
-            panel10.Location = new Point(379, 78);
-            panel10.Margin = new Padding(2, 2, 2, 2);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(631, 50);
-            panel10.TabIndex = 31;
+            label1.AutoSize = true;
+            label1.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(119, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(31, 27);
+            label1.TabIndex = 32;
+            label1.Text = "➜";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox1.BackColor = SystemColors.GradientActiveCaption;
+            pictureBox1.Location = new Point(226, 108);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1356, 23);
+            pictureBox1.TabIndex = 31;
+            pictureBox1.TabStop = false;
             // 
             // Laundry_Attendant_Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1023, 564);
+            ClientSize = new Size(1597, 647);
+            Controls.Add(label_welcome);
+            Controls.Add(pictureBox1);
             Controls.Add(chart1);
             Controls.Add(panel6);
             Controls.Add(panel11);
@@ -504,16 +520,12 @@
             Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(panel5);
-            Controls.Add(label_welcome);
             Controls.Add(panel2);
-            Controls.Add(panel10);
             Margin = new Padding(5, 4, 5, 4);
             Name = "Laundry_Attendant_Dashboard";
             Text = "Laundry Attendant | Dashboard";
             Load += Laundry_Attendant_Dashboard_Load;
-            Controls.SetChildIndex(panel10, 0);
             Controls.SetChildIndex(panel2, 0);
-            Controls.SetChildIndex(label_welcome, 0);
             Controls.SetChildIndex(panel5, 0);
             Controls.SetChildIndex(panel7, 0);
             Controls.SetChildIndex(panel8, 0);
@@ -524,6 +536,8 @@
             Controls.SetChildIndex(panel11, 0);
             Controls.SetChildIndex(panel6, 0);
             Controls.SetChildIndex(chart1, 0);
+            Controls.SetChildIndex(pictureBox1, 0);
+            Controls.SetChildIndex(label_welcome, 0);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
@@ -542,6 +556,8 @@
             panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -582,6 +598,7 @@
         private Button buttonLoadGraphMonth;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private Panel panel2;
-        private Panel panel10;
+        private PictureBox pictureBox1;
+        private Label label1;
     }
 }

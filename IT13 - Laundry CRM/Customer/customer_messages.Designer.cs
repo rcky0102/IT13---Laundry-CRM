@@ -96,7 +96,7 @@
             textbox_searchUser.Location = new Point(29, 11);
             textbox_searchUser.Multiline = true;
             textbox_searchUser.Name = "textbox_searchUser";
-            textbox_searchUser.PlaceholderText = "🔍 Search (e.g. John | Doe | Role)";
+            textbox_searchUser.PlaceholderText = "🔍 Search via first name, last name, or role";
             textbox_searchUser.Size = new Size(350, 40);
             textbox_searchUser.TabIndex = 8;
             textbox_searchUser.TextChanged += textbox_searchUser_TextChanged;
