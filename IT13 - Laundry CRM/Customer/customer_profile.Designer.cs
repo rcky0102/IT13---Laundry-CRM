@@ -38,22 +38,22 @@
             button_save = new Button();
             button_cancel = new Button();
             panel1 = new Panel();
-            label2 = new Label();
-            label1 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
             label8 = new Label();
-            richTextBox1 = new RichTextBox();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label4 = new Label();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // textbox_username
             // 
+            textbox_username.BorderStyle = BorderStyle.None;
             textbox_username.Font = new Font("Gadugi", 9F);
-            textbox_username.Location = new Point(28, 69);
+            textbox_username.Location = new Point(28, 68);
             textbox_username.Margin = new Padding(4, 3, 4, 3);
             textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
@@ -63,28 +63,31 @@
             // 
             // textbox_password
             // 
+            textbox_password.BorderStyle = BorderStyle.None;
             textbox_password.Font = new Font("Gadugi", 9F);
-            textbox_password.Location = new Point(460, 69);
+            textbox_password.Location = new Point(360, 68);
             textbox_password.Margin = new Padding(4, 3, 4, 3);
             textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
             textbox_password.PlaceholderText = "(At least 8 characters )";
-            textbox_password.Size = new Size(225, 40);
+            textbox_password.Size = new Size(300, 40);
             textbox_password.TabIndex = 1;
             // 
             // textbox_firstname
             // 
+            textbox_firstname.BorderStyle = BorderStyle.None;
             textbox_firstname.Font = new Font("Gadugi", 9F);
             textbox_firstname.Location = new Point(28, 179);
             textbox_firstname.Margin = new Padding(4, 3, 4, 3);
             textbox_firstname.Multiline = true;
             textbox_firstname.Name = "textbox_firstname";
-            textbox_firstname.PlaceholderText = "First Name:";
+            textbox_firstname.PlaceholderText = "(e.g. John)";
             textbox_firstname.Size = new Size(200, 40);
             textbox_firstname.TabIndex = 2;
             // 
             // textbox_middlename
             // 
+            textbox_middlename.BorderStyle = BorderStyle.None;
             textbox_middlename.Font = new Font("Gadugi", 9F);
             textbox_middlename.Location = new Point(243, 179);
             textbox_middlename.Margin = new Padding(4, 3, 4, 3);
@@ -96,35 +99,38 @@
             // 
             // textbox_lastname
             // 
+            textbox_lastname.BorderStyle = BorderStyle.None;
             textbox_lastname.Font = new Font("Gadugi", 9F);
             textbox_lastname.Location = new Point(460, 179);
             textbox_lastname.Margin = new Padding(4, 3, 4, 3);
             textbox_lastname.Multiline = true;
             textbox_lastname.Name = "textbox_lastname";
-            textbox_lastname.PlaceholderText = "Last Name:";
+            textbox_lastname.PlaceholderText = "(e.g. Doe)";
             textbox_lastname.Size = new Size(200, 40);
             textbox_lastname.TabIndex = 4;
             textbox_lastname.TextChanged += textbox_lastname_TextChanged;
             // 
             // textbox_address
             // 
+            textbox_address.BorderStyle = BorderStyle.None;
             textbox_address.Font = new Font("Gadugi", 9F);
-            textbox_address.Location = new Point(28, 251);
+            textbox_address.Location = new Point(28, 258);
             textbox_address.Margin = new Padding(4, 3, 4, 3);
             textbox_address.Multiline = true;
             textbox_address.Name = "textbox_address";
-            textbox_address.PlaceholderText = "Address:";
+            textbox_address.PlaceholderText = "(e.g. Bagong Pag-asa, Sitio Awa, Catalunan Grande, Davao City.)";
             textbox_address.Size = new Size(632, 70);
             textbox_address.TabIndex = 6;
             // 
             // textbox_contact
             // 
+            textbox_contact.BorderStyle = BorderStyle.None;
             textbox_contact.Font = new Font("Gadugi", 9F);
             textbox_contact.Location = new Point(28, 360);
             textbox_contact.Margin = new Padding(4, 3, 4, 3);
             textbox_contact.Multiline = true;
             textbox_contact.Name = "textbox_contact";
-            textbox_contact.PlaceholderText = "Contact:";
+            textbox_contact.PlaceholderText = "(e.g. 09123456789)";
             textbox_contact.Size = new Size(632, 40);
             textbox_contact.TabIndex = 7;
             // 
@@ -162,15 +168,13 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.GradientInactiveCaption;
-            panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(richTextBox1);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(label4);
             panel1.Controls.Add(label2);
+            panel1.Controls.Add(label4);
             panel1.Controls.Add(button_cancel);
             panel1.Controls.Add(button_save);
             panel1.Controls.Add(textbox_username);
@@ -187,17 +191,89 @@
             panel1.Size = new Size(700, 496);
             panel1.TabIndex = 10;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.Location = new Point(43, 338);
+            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(67, 19);
+            label8.TabIndex = 19;
+            label8.Text = "Contact:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ActiveCaptionText;
+            label7.Location = new Point(43, 236);
+            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(70, 19);
+            label7.TabIndex = 18;
+            label7.Text = "Address:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.Location = new Point(470, 157);
+            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(88, 19);
+            label6.TabIndex = 17;
+            label6.Text = "Last Name:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = SystemColors.ActiveCaptionText;
+            label5.Location = new Point(256, 157);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(107, 19);
+            label5.TabIndex = 16;
+            label5.Text = "Middle Name:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(43, 157);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 19);
+            label3.TabIndex = 15;
+            label3.Text = "First Name:";
+            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Gadugi", 9F);
+            label2.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(39, 46);
+            label2.Location = new Point(43, 46);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(78, 19);
-            label2.TabIndex = 11;
+            label2.Size = new Size(84, 19);
+            label2.TabIndex = 14;
             label2.Text = "Username:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(380, 46);
+            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(80, 19);
+            label4.TabIndex = 13;
+            label4.Text = "Password:";
             // 
             // label1
             // 
@@ -211,87 +287,6 @@
             label1.Size = new Size(155, 106);
             label1.TabIndex = 11;
             label1.Text = "👤";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Gadugi", 9F);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(474, 46);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(74, 19);
-            label4.TabIndex = 13;
-            label4.Text = "Password:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Gadugi", 9F);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(39, 157);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(78, 19);
-            label3.TabIndex = 14;
-            label3.Text = "Username:";
-            label3.Click += label3_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Gadugi", 9F);
-            label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(260, 157);
-            label5.Margin = new Padding(2, 0, 2, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(78, 19);
-            label5.TabIndex = 15;
-            label5.Text = "Username:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Gadugi", 9F);
-            label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(470, 157);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(78, 19);
-            label6.TabIndex = 16;
-            label6.Text = "Username:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Gadugi", 9F);
-            label7.ForeColor = SystemColors.ActiveCaptionText;
-            label7.Location = new Point(48, 222);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(78, 19);
-            label7.TabIndex = 17;
-            label7.Text = "Username:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Gadugi", 9F);
-            label8.ForeColor = SystemColors.ActiveCaptionText;
-            label8.Location = new Point(39, 349);
-            label8.Margin = new Padding(2, 0, 2, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(78, 19);
-            label8.TabIndex = 18;
-            label8.Text = "Username:";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(204, 69);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(186, 53);
-            richTextBox1.TabIndex = 19;
-            richTextBox1.Text = "";
             // 
             // customer_profile
             // 
@@ -326,13 +321,12 @@
         private Button button_cancel;
         private Panel panel1;
         private Label label1;
-        private Label label2;
         private Label label4;
         private Label label8;
         private Label label7;
         private Label label6;
         private Label label5;
         private Label label3;
-        private RichTextBox richTextBox1;
+        private Label label2;
     }
 }
