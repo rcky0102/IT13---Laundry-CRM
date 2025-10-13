@@ -33,9 +33,7 @@
             label1 = new Label();
             label_welcome = new Label();
             pictureBox1 = new PictureBox();
-            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // flowlayoutpanel_status
@@ -54,7 +52,6 @@
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel3.AutoScroll = true;
             panel3.BackColor = SystemColors.GradientInactiveCaption;
-            panel3.BorderStyle = BorderStyle.Fixed3D;
             panel3.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel3.Location = new Point(224, 280);
             panel3.Name = "panel3";
@@ -76,7 +73,7 @@
             label_welcome.AutoSize = true;
             label_welcome.Font = new Font("Gadugi", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label_welcome.ForeColor = SystemColors.ActiveCaptionText;
-            label_welcome.Location = new Point(239, 77);
+            label_welcome.Location = new Point(239, 81);
             label_welcome.Name = "label_welcome";
             label_welcome.Size = new Size(140, 35);
             label_welcome.TabIndex = 5;
@@ -86,21 +83,11 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.BackColor = SystemColors.GradientActiveCaption;
-            pictureBox1.Location = new Point(224, 121);
+            pictureBox1.Location = new Point(224, 108);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(687, 10);
+            pictureBox1.Size = new Size(687, 23);
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox3.BackColor = SystemColors.GradientActiveCaption;
-            pictureBox3.Location = new Point(224, 242);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(687, 10);
-            pictureBox3.TabIndex = 9;
-            pictureBox3.TabStop = false;
             // 
             // customer_status
             // 
@@ -108,9 +95,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(923, 480);
-            Controls.Add(pictureBox3);
-            Controls.Add(pictureBox1);
             Controls.Add(label_welcome);
+            Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(panel3);
             Controls.Add(flowlayoutpanel_status);
@@ -123,11 +109,9 @@
             Controls.SetChildIndex(flowlayoutpanel_status, 0);
             Controls.SetChildIndex(panel3, 0);
             Controls.SetChildIndex(label1, 0);
-            Controls.SetChildIndex(label_welcome, 0);
             Controls.SetChildIndex(pictureBox1, 0);
-            Controls.SetChildIndex(pictureBox3, 0);
+            Controls.SetChildIndex(label_welcome, 0);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -138,6 +122,5 @@
         private Panel panel3;
         private Label label_welcome;
         private PictureBox pictureBox1;
-        private PictureBox pictureBox3;
     }
 }

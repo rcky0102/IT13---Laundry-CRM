@@ -40,13 +40,14 @@
             // listbox_messages
             // 
             listbox_messages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            listbox_messages.BackColor = SystemColors.ButtonHighlight;
+            listbox_messages.BackColor = SystemColors.ButtonFace;
+            listbox_messages.BorderStyle = BorderStyle.None;
             listbox_messages.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listbox_messages.FormattingEnabled = true;
             listbox_messages.ItemHeight = 27;
             listbox_messages.Location = new Point(625, 81);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(307, 382);
+            listbox_messages.Size = new Size(307, 351);
             listbox_messages.TabIndex = 2;
             listbox_messages.DrawItem += listbox_messages_DrawItem;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem;
@@ -57,7 +58,7 @@
             button_send.BackColor = SystemColors.HotTrack;
             button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(832, 482);
+            button_send.Location = new Point(833, 442);
             button_send.Name = "button_send";
             button_send.Size = new Size(100, 50);
             button_send.TabIndex = 3;
@@ -68,10 +69,10 @@
             // textbox_message
             // 
             textbox_message.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textbox_message.BackColor = SystemColors.ButtonHighlight;
-            textbox_message.BorderStyle = BorderStyle.FixedSingle;
+            textbox_message.BackColor = SystemColors.ButtonFace;
+            textbox_message.BorderStyle = BorderStyle.None;
             textbox_message.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_message.Location = new Point(624, 482);
+            textbox_message.Location = new Point(625, 442);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
             textbox_message.Size = new Size(202, 47);
@@ -80,7 +81,6 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.GradientInactiveCaption;
-            panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(textbox_searchUser);
             panel3.Location = new Point(218, 81);
             panel3.Margin = new Padding(2);
@@ -90,9 +90,10 @@
             // 
             // textbox_searchUser
             // 
-            textbox_searchUser.BackColor = SystemColors.ButtonHighlight;
-            textbox_searchUser.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_searchUser.Location = new Point(29, 13);
+            textbox_searchUser.BackColor = SystemColors.ButtonFace;
+            textbox_searchUser.BorderStyle = BorderStyle.None;
+            textbox_searchUser.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_searchUser.Location = new Point(29, 11);
             textbox_searchUser.Multiline = true;
             textbox_searchUser.Name = "textbox_searchUser";
             textbox_searchUser.PlaceholderText = "🔍 Search (e.g. John | Doe | Role)";
@@ -104,13 +105,13 @@
             // 
             listbox_users.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             listbox_users.BackColor = SystemColors.GradientInactiveCaption;
-            listbox_users.BorderStyle = BorderStyle.FixedSingle;
+            listbox_users.BorderStyle = BorderStyle.None;
             listbox_users.Font = new Font("Gadugi", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             listbox_users.FormattingEnabled = true;
             listbox_users.ItemHeight = 27;
             listbox_users.Location = new Point(218, 151);
             listbox_users.Name = "listbox_users";
-            listbox_users.Size = new Size(400, 380);
+            listbox_users.Size = new Size(400, 351);
             listbox_users.TabIndex = 8;
             listbox_users.DrawItem += listbox_users_DrawItem;
             listbox_users.SelectedIndexChanged += listbox_users_SelectedIndexChanged;

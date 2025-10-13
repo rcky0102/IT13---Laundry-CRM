@@ -293,7 +293,7 @@ namespace IT13___Laundry_CRM.Customer
 
             using (SolidBrush brush = new SolidBrush(bubbleColor))
             using (SolidBrush textBrush = new SolidBrush(textColor))
-            using (Font timeFont = new Font("Segoe UI", 8, FontStyle.Italic))
+            using (Font timeFont = new Font("Gadugi", 8, FontStyle.Italic))
             {
                 Rectangle bubbleRect = new Rectangle(x, y, bubbleWidth, e.Bounds.Height - 5);
                 e.Graphics.FillRoundedRectangle(brush, bubbleRect, 10);
