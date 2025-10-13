@@ -34,7 +34,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             textbox_search.TextChanged += textbox_search_TextChanged;
             listbox_feedback.MouseDown += listbox_feedback_MouseDown;
 
+            MakeRounded(panel2);
+            MakeRounded(textbox_search);
+            MakeRounded(button_archives);
             MakeRounded(listbox_feedback);
+
 
             listbox_feedback.DrawMode = DrawMode.OwnerDrawFixed;
             listbox_feedback.ItemHeight = 50; // Adjust based on font size
@@ -258,6 +262,11 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             archived_feedback archives = new archived_feedback();
             archives.FormClosed += (s, args) => LoadFeedbacks();
             archives.ShowDialog();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 
