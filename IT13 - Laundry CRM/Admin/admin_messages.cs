@@ -453,10 +453,12 @@ namespace IT13___Laundry_CRM.Admin
             string search = textbox_searchUser.Text.Trim().ToLower();
 
             var filtered = allUsers
-                .Where(u => u.first_name.ToLower().Contains(search) ||
-                            (u.middle_name != null && u.middle_name.ToLower().Contains(search)) ||
-                            u.last_name.ToLower().Contains(search) ||
-                            u.role.ToLower().Contains(search))
+                .Where(u =>
+                    (!string.IsNullOrEmpty(u.first_name) && u.first_name.ToLower().Contains(search)) ||
+                    (!string.IsNullOrEmpty(u.middle_name) && u.middle_name.ToLower().Contains(search)) ||
+                    (!string.IsNullOrEmpty(u.last_name) && u.last_name.ToLower().Contains(search)) ||
+                    (!string.IsNullOrEmpty(u.role) && u.role.ToLower().Contains(search))
+                )
                 .ToList();
 
             UpdateUserList(filtered);

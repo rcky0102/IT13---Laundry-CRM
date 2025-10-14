@@ -21,6 +21,7 @@ namespace IT13___Laundry_CRM
             string username = textbox_username.Text.Trim();
             string password = textbox_password.Text.Trim();
 
+            // ✅ Check if fields are filled
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username and password.", "Error",
@@ -28,7 +29,24 @@ namespace IT13___Laundry_CRM
                 return;
             }
 
-            // Fetch user from DB
+            // ✅ Username rule (optional but recommended)
+            // Minimum 4 characters, letters/numbers/underscores only
+            if (username.Length < 4 || !username.All(c => char.IsLetterOrDigit(c) || c == '_'))
+            {
+                MessageBox.Show("Username must be at least 4 characters long and contain only letters, numbers, or underscores.",
+                                "Invalid Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // ✅ Password rule: at least 8 characters (simple security)
+            if (password.Length < 8)
+            {
+                MessageBox.Show("Password must be at least 8 characters long.",
+                                "Weak Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // ✅ Fetch user from database
             User? user = userRepository.GetUserByUsername(username);
 
             if (user != null)

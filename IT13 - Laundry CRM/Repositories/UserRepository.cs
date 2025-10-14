@@ -130,9 +130,13 @@ namespace IT13___Laundry_CRM.Repositories
                 {
                     connection.Open();
 
-                    string sql = @"SELECT user_id, username, password, role, first_name, middle_name, last_name, address, contact, created_at
-                           FROM users 
-                           WHERE username = @username";
+                    string sql = @"SELECT user_id, username, password, role, 
+                                          first_name, middle_name, last_name, 
+                                          address, contact, created_at
+                                   FROM users 
+                                   WHERE username = @username";
+
+
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -334,32 +338,68 @@ namespace IT13___Laundry_CRM.Repositories
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"UPDATE users
-                         SET first_name=@FirstName,
-                             middle_name=@MiddleName,
-                             last_name=@LastName,
-                             address=@Address,
-                             contact=@Contact,
-                             username=@Username,
-                             password=@Password
-                         WHERE user_id=@UserId";
+
+                string query = string.IsNullOrEmpty(user.password)
+                    ? @"UPDATE users
+                SET first_name=@FirstName,
+                    middle_name=@MiddleName,
+                    last_name=@LastName,
+                    address=@Address,
+                    contact=@Contact,
+                    username=@Username
+                WHERE user_id=@UserId"
+                    : @"UPDATE users
+                SET first_name=@FirstName,
+                    middle_name=@MiddleName,
+                    last_name=@LastName,
+                    address=@Address,
+                    contact=@Contact,
+                    username=@Username,
+                    password=@Password
+                WHERE user_id=@UserId";
 
                 using (var cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@FirstName", user.first_name);
-                    cmd.Parameters.AddWithValue("@MiddleName", user.middle_name);
-                    cmd.Parameters.AddWithValue("@LastName", user.last_name);
-                    cmd.Parameters.AddWithValue("@Address", user.address);
-                    cmd.Parameters.AddWithValue("@Contact", user.contact);
-                    cmd.Parameters.AddWithValue("@Username", user.username);
-                    cmd.Parameters.AddWithValue("@Password", user.password);
+                    cmd.Parameters.AddWithValue("@FirstName", (object?)user.first_name ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@MiddleName", (object?)user.middle_name ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@LastName", (object?)user.last_name ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Address", (object?)user.address ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Contact", (object?)user.contact ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Username", (object?)user.username ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@UserId", user.user_id);
+
+                    if (!string.IsNullOrEmpty(user.password))
+                    {
+                        string hashedPassword = HashPassword(user.password);
+                        cmd.Parameters.AddWithValue("@Password", hashedPassword);
+                    }
 
                     int rows = cmd.ExecuteNonQuery();
                     return rows > 0;
                 }
             }
         }
+
+
+        public bool UsernameExists(string username)
+        {
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM users WHERE username = @Username";
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0; // true if username already exists
+                }
+            }
+        }
+
+
+
 
 
 

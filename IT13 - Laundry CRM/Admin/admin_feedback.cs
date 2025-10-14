@@ -200,7 +200,7 @@ namespace IT13___Laundry_CRM.Admin
 
             string user = fb.User != null ? $"{fb.User.first_name} {fb.User.last_name}" : $"User {fb.user_id}";
             string details = $"by {user} — {fb.created_at:MMM dd, yyyy hh:mm tt}";
-            using (Font detailsFont = new Font("Gadugi", 8, FontStyle.Italic))
+            using (Font detailsFont = new Font("Gadugi", 8))
             using (SolidBrush detailsBrush = new SolidBrush(isSelected ? Color.WhiteSmoke : Color.Gray))
                 g.DrawString(details, detailsFont, detailsBrush, bounds.Left + padding, bounds.Top + 25);
 

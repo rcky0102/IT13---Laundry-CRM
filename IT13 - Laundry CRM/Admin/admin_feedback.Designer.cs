@@ -40,9 +40,9 @@
             listbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listbox_feedback.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listbox_feedback.FormattingEnabled = true;
-            listbox_feedback.Location = new Point(215, 157);
+            listbox_feedback.Location = new Point(216, 157);
             listbox_feedback.Name = "listbox_feedback";
-            listbox_feedback.Size = new Size(762, 364);
+            listbox_feedback.Size = new Size(762, 344);
             listbox_feedback.TabIndex = 19;
             listbox_feedback.DrawItem += listbox_feedback_DrawItem;
             listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
@@ -50,8 +50,8 @@
             // 
             // textbox_search
             // 
-            textbox_search.BackColor = SystemColors.ButtonFace;
-            textbox_search.Location = new Point(14, 14);
+            textbox_search.BackColor = SystemColors.ButtonHighlight;
+            textbox_search.Location = new Point(21, 13);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.Size = new Size(350, 35);
@@ -61,7 +61,7 @@
             // 
             button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_archives.BackColor = Color.CornflowerBlue;
-            button_archives.FlatAppearance.BorderSize = 2;
+            button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
             button_archives.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
@@ -80,7 +80,7 @@
             panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(textbox_search);
             panel4.Controls.Add(button_archives);
-            panel4.Location = new Point(215, 77);
+            panel4.Location = new Point(216, 77);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
             panel4.Size = new Size(762, 67);
@@ -93,7 +93,6 @@
             ClientSize = new Size(988, 538);
             Controls.Add(listbox_feedback);
             Controls.Add(panel4);
-            Margin = new Padding(5, 3, 5, 3);
             Name = "admin_feedback";
             Text = "Admin | Feedback";
             Controls.SetChildIndex(panel4, 0);
