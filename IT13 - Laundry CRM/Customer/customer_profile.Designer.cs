@@ -58,7 +58,7 @@
             textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
             textbox_username.PlaceholderText = "(e.g. John123)";
-            textbox_username.Size = new Size(300, 50);
+            textbox_username.Size = new Size(300, 40);
             textbox_username.TabIndex = 0;
             // 
             // textbox_password
@@ -71,7 +71,7 @@
             textbox_password.Name = "textbox_password";
             textbox_password.PasswordChar = '*';
             textbox_password.PlaceholderText = "(At least 8 characters )";
-            textbox_password.Size = new Size(300, 50);
+            textbox_password.Size = new Size(300, 40);
             textbox_password.TabIndex = 1;
             // 
             // textbox_firstname
