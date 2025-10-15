@@ -200,7 +200,7 @@ namespace IT13___Laundry_CRM
                     BorderStyle = BorderStyle.None,
                     BackColor = Color.White,
                     ReadOnly = true,
-                    Font = new Font("Cascadia Code", 12),
+                    Font = new Font("Gadugi", 12),
                     Location = new Point(padding, 10),
                     Width = panelNotifications.Width - 40,
                     Height = 50,
@@ -208,14 +208,14 @@ namespace IT13___Laundry_CRM
                 };
 
                 lblMessage.AppendText("📩 Latest message from:\n");
-                lblMessage.SelectionFont = new Font("Cascadia Code", 11, FontStyle.Bold);
+                lblMessage.SelectionFont = new Font("Gadugi", 11, FontStyle.Bold);
                 lblMessage.AppendText(fullName);
 
                 messagePanel.Controls.Add(lblMessage);
 
                 messagePanel.Click += (s, e) =>
                 {
-                    customer_messages msg = new customer_messages();
+                    laundry_attendant_messages msg = new laundry_attendant_messages();
                     msg.Show();
                     this.Hide();
                 };
@@ -223,6 +223,25 @@ namespace IT13___Laundry_CRM
                 panelNotifications.Controls.Add(messagePanel);
                 yOffset += messagePanel.Height + 10;
             }
+
+            else
+            {
+                // --- No Message Yet Panel ---
+                Label lblNoMessage = new Label
+                {
+                    Text = "📭 No notfications yet",
+                    Font = new Font("Gadugi", 11, FontStyle.Italic),
+                    ForeColor = Color.Gray,
+                    AutoSize = false,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Dock = DockStyle.Top,
+                    Height = 60
+                };
+
+                panelNotifications.Controls.Add(lblNoMessage);
+                yOffset += lblNoMessage.Height + 10;
+            }
+
 
             // --- Latest Laundry Status ---
             //var statuses = statusRepository.GetStatusesByUserId(CurrentUser.User.user_id);
@@ -246,7 +265,7 @@ namespace IT13___Laundry_CRM
             //        ReadOnly = true,
             //        BorderStyle = BorderStyle.None,
             //        BackColor = this.BackColor,
-            //        Font = new Font("Cascadia Code", 10),
+            //        Font = new Font("Gadugi", 10),
             //        Location = new Point(padding, 15),
             //        Width = 380,
             //        Height = 60
