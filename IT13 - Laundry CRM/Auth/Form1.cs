@@ -62,6 +62,8 @@ namespace IT13___Laundry_CRM
 
                         //MessageBox.Show("Welcome Admin!", "Login Successful",
                         //                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //SIdebarTemplate.LastActiveButtonName = null;
                         AdminForm dashboard = new AdminForm();
                         dashboard.Show();
                         this.Hide();
@@ -72,6 +74,8 @@ namespace IT13___Laundry_CRM
 
                         //MessageBox.Show("Welcome Laundry Attendant!", "Login Successful",
                         //                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //Laundry_Attendant_Template.LastActiveButtonName = null;
                         Laundry_Attendant_Dashboard dashboard = new Laundry_Attendant_Dashboard();
                         dashboard.Show();
                         this.Hide();
@@ -82,6 +86,8 @@ namespace IT13___Laundry_CRM
 
                         //MessageBox.Show("Welcome Laundry Customer!", "Login Successful",
                         //                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //customer_template.LastActiveButtonName = null;
                         customer_status status = new customer_status();
                         status.Show();
 

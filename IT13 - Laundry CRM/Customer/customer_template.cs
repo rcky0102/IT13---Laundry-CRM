@@ -63,7 +63,14 @@ namespace IT13___Laundry_CRM
             {
                 var found = panel1.Controls.Find(LastActiveButtonName, true);
                 if (found.Length > 0 && found[0] is Button saved)
+                {
                     ActivateButton(saved);
+                }
+            }
+            else
+            {
+                // Default: highlight button_status
+                ActivateButton(button_status);
             }
         }
 

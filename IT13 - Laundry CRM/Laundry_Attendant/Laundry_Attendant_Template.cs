@@ -49,6 +49,11 @@ namespace IT13___Laundry_CRM
                     ActivateButton(saved);
                 }
             }
+            else
+            {
+                // Default: highlight Dashboard button
+                ActivateButton(button_dashboard);
+            }
         }
 
         // activate a clicked button
@@ -295,6 +300,7 @@ namespace IT13___Laundry_CRM
 
         private void button_logout_Click_1(object sender, EventArgs e)
         {
+            ActivateButton(button_logout);
             DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

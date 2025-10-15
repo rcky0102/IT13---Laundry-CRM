@@ -129,10 +129,7 @@ namespace IT13___Laundry_CRM
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            admin_reports reports = new admin_reports();
-            reports.Show();
-
-            this.Hide();
+            OpenForm(new admin_reports(), button2);
         }
 
         private void button_notif_Click(object sender, EventArgs e)
@@ -303,6 +300,7 @@ namespace IT13___Laundry_CRM
 
         private void button_logout_Click(object sender, EventArgs e)
         {
+            ActivateButton(button_logout);
             DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout",
                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
