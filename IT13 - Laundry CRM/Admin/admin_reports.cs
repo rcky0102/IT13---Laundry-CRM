@@ -43,6 +43,8 @@ namespace IT13___Laundry_CRM.Admin
         {
             dtpStart.Value = DateTime.Today.AddMonths(-1);
             dtpEnd.Value = DateTime.Today;
+
+            btnGenerateReport.PerformClick();
         }
 
         private void MakeRounded(Control control, int radius = 20)
@@ -285,12 +287,39 @@ namespace IT13___Laundry_CRM.Admin
             gfx.DrawString("Executive Summary", subHeaderFont, XBrushes.Black, new XPoint(margin, y));
             y += 20;
 
-            double summaryHeight = DrawWrappedText(tf, lblSummary.Text, bodyFont, XBrushes.Black, margin, y, page.Width - margin * 2);
+            double summaryHeight = DrawWrappedText(tf, lblSummary1.Text, bodyFont, XBrushes.Black, margin, y, page.Width - margin * 2);
             y += (int)summaryHeight + 30;
 
             // ===== Report Sections =====
             y = DrawTableWithPagination(pdf, ref gfx, ref page, ref y, "1. User Count by Role", dgvRoles, margin, bodyFont, subHeaderFont);
             y = DrawTableWithPagination(pdf, ref gfx, ref page, ref y, "2. New Users per Month", dgvMonthlyUsers, margin, bodyFont, subHeaderFont);
+
+            // --- Calculate and Display Growth Rate ---
+            if (dgvMonthlyUsers.Rows.Count > 1)
+            {
+                gfx.DrawString("Growth Rate per Month", subHeaderFont, XBrushes.Black, new XPoint(margin, y));
+                y += 20;
+
+                for (int i = 1; i < dgvMonthlyUsers.Rows.Count; i++)
+                {
+                    int prev = Convert.ToInt32(dgvMonthlyUsers.Rows[i - 1].Cells[1].Value); // Previous month users
+                    int curr = Convert.ToInt32(dgvMonthlyUsers.Rows[i].Cells[1].Value);     // Current month users
+
+                    double growthRate = 0;
+                    if (prev != 0)
+                        growthRate = ((double)(curr - prev) / prev); // just decimal, do NOT multiply by 100
+
+                    string month = dgvMonthlyUsers.Rows[i].Cells[0].Value.ToString();
+                    string growthText = $"{month}: {growthRate:+0.00%;-0.00%;0.00%}"; // formatting handles %
+
+                    gfx.DrawString(growthText, bodyFont, XBrushes.DarkGreen, new XPoint(margin + 10, y));
+                    y += 15;
+                }
+
+
+                y += 15; // extra spacing after growth rate
+            }
+
             y = DrawTableWithPagination(pdf, ref gfx, ref page, ref y, "3. Active vs Archived Users", dgvArchived, margin, bodyFont, subHeaderFont);
             y = DrawTableWithPagination(pdf, ref gfx, ref page, ref y, "4. Role Distribution", dgvRoles, margin, bodyFont, subHeaderFont);
             y = DrawTableWithPagination(pdf, ref gfx, ref page, ref y, "5. User Growth Over Time", dgvGrowth, margin, bodyFont, subHeaderFont);

@@ -77,7 +77,7 @@
             btnGenerateReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGenerateReport.BackColor = SystemColors.Highlight;
             btnGenerateReport.ForeColor = SystemColors.ButtonHighlight;
-            btnGenerateReport.Location = new Point(585, 13);
+            btnGenerateReport.Location = new Point(595, 13);
             btnGenerateReport.Margin = new Padding(2, 3, 2, 3);
             btnGenerateReport.Name = "btnGenerateReport";
             btnGenerateReport.Size = new Size(149, 40);
@@ -93,14 +93,14 @@
             dgvRoles.BackgroundColor = SystemColors.ButtonFace;
             dgvRoles.BorderStyle = BorderStyle.None;
             dgvRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRoles.Location = new Point(222, 598);
+            dgvRoles.Location = new Point(222, 610);
             dgvRoles.Margin = new Padding(2, 3, 2, 3);
             dgvRoles.MultiSelect = false;
             dgvRoles.Name = "dgvRoles";
             dgvRoles.ReadOnly = true;
             dgvRoles.RowHeadersVisible = false;
             dgvRoles.RowHeadersWidth = 51;
-            dgvRoles.Size = new Size(439, 124);
+            dgvRoles.Size = new Size(439, 112);
             dgvRoles.TabIndex = 4;
             // 
             // dtpStart
@@ -160,14 +160,14 @@
             dgvArchived.BackgroundColor = SystemColors.ButtonFace;
             dgvArchived.BorderStyle = BorderStyle.None;
             dgvArchived.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvArchived.Location = new Point(222, 752);
+            dgvArchived.Location = new Point(222, 771);
             dgvArchived.Margin = new Padding(2, 3, 2, 3);
             dgvArchived.MultiSelect = false;
             dgvArchived.Name = "dgvArchived";
             dgvArchived.ReadOnly = true;
             dgvArchived.RowHeadersVisible = false;
             dgvArchived.RowHeadersWidth = 51;
-            dgvArchived.Size = new Size(436, 106);
+            dgvArchived.Size = new Size(436, 87);
             dgvArchived.TabIndex = 9;
             dgvArchived.CellContentClick += dgvArchived_CellContentClick;
             // 
@@ -177,14 +177,14 @@
             dgvGrowth.BackgroundColor = SystemColors.ButtonFace;
             dgvGrowth.BorderStyle = BorderStyle.None;
             dgvGrowth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGrowth.Location = new Point(219, 888);
+            dgvGrowth.Location = new Point(219, 901);
             dgvGrowth.Margin = new Padding(2, 3, 2, 3);
             dgvGrowth.MultiSelect = false;
             dgvGrowth.Name = "dgvGrowth";
             dgvGrowth.ReadOnly = true;
             dgvGrowth.RowHeadersVisible = false;
             dgvGrowth.RowHeadersWidth = 51;
-            dgvGrowth.Size = new Size(440, 150);
+            dgvGrowth.Size = new Size(440, 136);
             dgvGrowth.TabIndex = 14;
             dgvGrowth.CellContentClick += dgvGrowth_CellContentClick;
             // 
@@ -195,14 +195,14 @@
             dgvAddress.BackgroundColor = SystemColors.ButtonFace;
             dgvAddress.BorderStyle = BorderStyle.None;
             dgvAddress.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAddress.Location = new Point(690, 845);
+            dgvAddress.Location = new Point(690, 861);
             dgvAddress.Margin = new Padding(2, 3, 2, 3);
             dgvAddress.MultiSelect = false;
             dgvAddress.Name = "dgvAddress";
             dgvAddress.ReadOnly = true;
             dgvAddress.RowHeadersVisible = false;
             dgvAddress.RowHeadersWidth = 51;
-            dgvAddress.Size = new Size(439, 192);
+            dgvAddress.Size = new Size(439, 176);
             dgvAddress.TabIndex = 15;
             dgvAddress.CellContentClick += dgvAddress_CellContentClick;
             // 
@@ -237,69 +237,70 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = SystemColors.Window;
-            label5.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Gadugi", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(712, 694);
+            label5.Location = new Point(712, 682);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(216, 24);
+            label5.Size = new Size(187, 20);
             label5.TabIndex = 17;
-            label5.Text = "New Users per Month";
+            label5.Text = "New Users per Month:";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = SystemColors.Window;
-            label1.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Gadugi", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(245, 737);
+            label1.Location = new Point(241, 741);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(258, 24);
+            label1.Size = new Size(222, 20);
             label1.TabIndex = 18;
-            label1.Text = "Active and Archived Users";
+            label1.Text = "Active and Archived Users:";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.BackColor = SystemColors.Window;
-            label2.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Gadugi", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
             label2.Location = new Point(241, 583);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(172, 24);
+            label2.Size = new Size(151, 20);
             label2.TabIndex = 19;
-            label2.Text = "Role Distribution";
+            label2.Text = "Role Distribution:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = SystemColors.Window;
-            label3.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Gadugi", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(264, 871);
+            label3.Location = new Point(241, 876);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(232, 24);
+            label3.Size = new Size(202, 20);
             label3.TabIndex = 20;
-            label3.Text = "User Growth Over Time";
+            label3.Text = "User Growth Over Time:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.BackColor = SystemColors.Window;
-            label4.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Gadugi", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(734, 832);
+            label4.Location = new Point(712, 836);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(268, 24);
+            label4.Size = new Size(234, 20);
             label4.TabIndex = 21;
-            label4.Text = "Address-based Distribution";
+            label4.Text = "Address-based Distribution:";
             // 
             // lblSummary1
             // 
+            lblSummary1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblSummary1.AutoSize = true;
             lblSummary1.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSummary1.Location = new Point(712, 583);
