@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             label_pending = new Label();
             label_washing = new Label();
             label_drying = new Label();
@@ -42,6 +42,7 @@
             label_onhold = new Label();
             label_welcome = new Label();
             panel3 = new Panel();
+            label2 = new Label();
             label4 = new Label();
             panel4 = new Panel();
             label5 = new Label();
@@ -68,6 +69,7 @@
             panel2 = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            label12 = new Label();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -95,7 +97,7 @@
             // label_washing
             // 
             label_washing.AutoSize = true;
-            label_washing.Location = new Point(-1, 0);
+            label_washing.Location = new Point(10, 13);
             label_washing.Name = "label_washing";
             label_washing.Size = new Size(84, 22);
             label_washing.TabIndex = 4;
@@ -104,7 +106,7 @@
             // label_drying
             // 
             label_drying.AutoSize = true;
-            label_drying.Location = new Point(-1, 0);
+            label_drying.Location = new Point(19, 12);
             label_drying.Name = "label_drying";
             label_drying.Size = new Size(66, 22);
             label_drying.TabIndex = 5;
@@ -140,7 +142,7 @@
             // label_cancelled
             // 
             label_cancelled.AutoSize = true;
-            label_cancelled.Location = new Point(-1, 0);
+            label_cancelled.Location = new Point(19, 8);
             label_cancelled.Name = "label_cancelled";
             label_cancelled.Size = new Size(93, 22);
             label_cancelled.TabIndex = 9;
@@ -149,7 +151,7 @@
             // label_onhold
             // 
             label_onhold.AutoSize = true;
-            label_onhold.Location = new Point(-1, 0);
+            label_onhold.Location = new Point(10, 8);
             label_onhold.Name = "label_onhold";
             label_onhold.Size = new Size(73, 22);
             label_onhold.TabIndex = 10;
@@ -169,8 +171,9 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.HotTrack;
+            panel3.BackColor = SystemColors.MenuHighlight;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(label2);
             panel3.Controls.Add(label_pending);
             panel3.Font = new Font("Gadugi", 11F);
             panel3.ForeColor = SystemColors.ButtonHighlight;
@@ -179,6 +182,16 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(236, 104);
             panel3.TabIndex = 13;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(192, 64);
+            label2.Margin = new Padding(1, 0, 1, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(31, 22);
+            label2.TabIndex = 21;
+            label2.Text = "⌛";
             // 
             // label4
             // 
@@ -192,7 +205,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.RoyalBlue;
+            panel4.BackColor = SystemColors.MenuHighlight;
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label5);
             panel4.Controls.Add(label_ready);
@@ -207,7 +220,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(205, 78);
+            label5.Location = new Point(192, 63);
             label5.Margin = new Padding(1, 0, 1, 0);
             label5.Name = "label5";
             label5.Size = new Size(31, 22);
@@ -216,8 +229,9 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.RoyalBlue;
+            panel5.BackColor = SystemColors.MenuHighlight;
             panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(label12);
             panel5.Controls.Add(label7);
             panel5.Controls.Add(label_drying);
             panel5.Font = new Font("Gadugi", 11F);
@@ -240,7 +254,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = SystemColors.HotTrack;
+            panel6.BackColor = SystemColors.MenuHighlight;
             panel6.BorderStyle = BorderStyle.FixedSingle;
             panel6.Controls.Add(label6);
             panel6.Controls.Add(label_washing);
@@ -255,7 +269,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(206, 78);
+            label6.Location = new Point(189, 63);
             label6.Margin = new Padding(1, 0, 1, 0);
             label6.Name = "label6";
             label6.Size = new Size(31, 22);
@@ -264,7 +278,7 @@
             // 
             // panel7
             // 
-            panel7.BackColor = Color.RoyalBlue;
+            panel7.BackColor = SystemColors.MenuHighlight;
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(label10);
             panel7.Controls.Add(label_onhold);
@@ -279,7 +293,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(206, 79);
+            label10.Location = new Point(189, 69);
             label10.Margin = new Padding(1, 0, 1, 0);
             label10.Name = "label10";
             label10.Size = new Size(31, 22);
@@ -288,7 +302,7 @@
             // 
             // panel8
             // 
-            panel8.BackColor = SystemColors.HotTrack;
+            panel8.BackColor = SystemColors.MenuHighlight;
             panel8.BorderStyle = BorderStyle.FixedSingle;
             panel8.Controls.Add(label9);
             panel8.Controls.Add(label_completed);
@@ -303,7 +317,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(205, 82);
+            label9.Location = new Point(192, 71);
             label9.Margin = new Padding(1, 0, 1, 0);
             label9.Name = "label9";
             label9.Size = new Size(31, 22);
@@ -312,7 +326,7 @@
             // 
             // panel9
             // 
-            panel9.BackColor = Color.RoyalBlue;
+            panel9.BackColor = SystemColors.MenuHighlight;
             panel9.BorderStyle = BorderStyle.FixedSingle;
             panel9.Controls.Add(label8);
             panel9.Controls.Add(label_ironing);
@@ -327,7 +341,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(205, 78);
+            label8.Location = new Point(192, 70);
             label8.Margin = new Padding(1, 0, 1, 0);
             label8.Name = "label8";
             label8.Size = new Size(31, 22);
@@ -336,7 +350,7 @@
             // 
             // panel11
             // 
-            panel11.BackColor = SystemColors.HotTrack;
+            panel11.BackColor = SystemColors.MenuHighlight;
             panel11.BorderStyle = BorderStyle.FixedSingle;
             panel11.Controls.Add(label11);
             panel11.Controls.Add(label_cancelled);
@@ -351,7 +365,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(196, 69);
+            label11.Location = new Point(186, 69);
             label11.Margin = new Padding(1, 0, 1, 0);
             label11.Name = "label11";
             label11.Size = new Size(31, 22);
@@ -406,7 +420,7 @@
             // buttonLoadGraphToday
             // 
             buttonLoadGraphToday.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphToday.Location = new Point(951, 10);
+            buttonLoadGraphToday.Location = new Point(1093, 10);
             buttonLoadGraphToday.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphToday.Name = "buttonLoadGraphToday";
             buttonLoadGraphToday.Size = new Size(68, 30);
@@ -418,7 +432,7 @@
             // buttonLoadGraphWeek
             // 
             buttonLoadGraphWeek.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphWeek.Location = new Point(1030, 10);
+            buttonLoadGraphWeek.Location = new Point(1172, 10);
             buttonLoadGraphWeek.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphWeek.Name = "buttonLoadGraphWeek";
             buttonLoadGraphWeek.Size = new Size(90, 30);
@@ -430,7 +444,7 @@
             // buttonLoadGraphMonth
             // 
             buttonLoadGraphMonth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphMonth.Location = new Point(1126, 10);
+            buttonLoadGraphMonth.Location = new Point(1268, 10);
             buttonLoadGraphMonth.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphMonth.Name = "buttonLoadGraphMonth";
             buttonLoadGraphMonth.Size = new Size(83, 30);
@@ -442,28 +456,28 @@
             // chart1
             // 
             chart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
-            chart1.Location = new Point(245, 464);
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
+            chart1.Location = new Point(226, 464);
             chart1.Margin = new Padding(3, 4, 3, 4);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series1.ChartArea = "ChartArea1";
-            series1.IsXValueIndexed = true;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 2;
-            chart1.Series.Add(series1);
-            chart1.Size = new Size(1226, 170);
+            series2.ChartArea = "ChartArea1";
+            series2.IsXValueIndexed = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 2;
+            chart1.Series.Add(series2);
+            chart1.Size = new Size(1368, 170);
             chart1.TabIndex = 29;
             chart1.Text = "chart1";
-            title1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            title1.Name = "Title1";
-            title1.Text = "Customer";
-            chart1.Titles.Add(title1);
+            title2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
+            title2.Name = "Title1";
+            title2.Text = "Customer";
+            chart1.Titles.Add(title2);
             // 
             // panel2
             // 
@@ -476,10 +490,10 @@
             panel2.Controls.Add(buttonLoadGraphToday);
             panel2.Controls.Add(dateTimePickerFrom);
             panel2.Controls.Add(buttonLoadGraph);
-            panel2.Location = new Point(245, 403);
+            panel2.Location = new Point(226, 403);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1226, 55);
+            panel2.Size = new Size(1368, 55);
             panel2.TabIndex = 30;
             // 
             // label1
@@ -498,16 +512,26 @@
             pictureBox1.BackColor = SystemColors.GradientActiveCaption;
             pictureBox1.Location = new Point(226, 108);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1247, 23);
+            pictureBox1.Size = new Size(1370, 23);
             pictureBox1.TabIndex = 31;
             pictureBox1.TabStop = false;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(186, 62);
+            label12.Margin = new Padding(1, 0, 1, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(31, 22);
+            label12.TabIndex = 21;
+            label12.Text = "💨";
             // 
             // Laundry_Attendant_Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1488, 647);
+            ClientSize = new Size(1611, 647);
             Controls.Add(label_welcome);
             Controls.Add(pictureBox1);
             Controls.Add(chart1);
@@ -600,5 +624,7 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label label1;
+        private Label label2;
+        private Label label12;
     }
 }

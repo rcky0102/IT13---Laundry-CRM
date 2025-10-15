@@ -62,7 +62,7 @@ namespace IT13___Laundry_CRM
             // comboBoxGrouping.SelectedIndex = 0;
 
             // Load Today's data by default
-            LoadTodayData();
+            LoadMonthData();
         }
 
         private void InitializeChart()

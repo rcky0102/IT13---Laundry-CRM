@@ -40,17 +40,17 @@
             button_cancel = new Button();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label5 = new Label();
             label1 = new Label();
             pictureBox2 = new PictureBox();
             label2 = new Label();
             panel1 = new Panel();
-            label5 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -147,11 +147,11 @@
             button_register.BackColor = Color.RoyalBlue;
             button_register.FlatAppearance.BorderSize = 0;
             button_register.FlatStyle = FlatStyle.Flat;
-            button_register.Font = new Font("Gadugi", 10F);
+            button_register.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_register.ForeColor = SystemColors.ButtonHighlight;
-            button_register.Location = new Point(419, 487);
+            button_register.Location = new Point(419, 485);
             button_register.Name = "button_register";
-            button_register.Size = new Size(114, 29);
+            button_register.Size = new Size(114, 30);
             button_register.TabIndex = 9;
             button_register.Text = "Register";
             button_register.UseVisualStyleBackColor = false;
@@ -162,10 +162,10 @@
             button_cancel.BackColor = SystemColors.ButtonFace;
             button_cancel.FlatAppearance.BorderSize = 0;
             button_cancel.FlatStyle = FlatStyle.Flat;
-            button_cancel.Font = new Font("Gadugi", 10F);
-            button_cancel.Location = new Point(301, 487);
+            button_cancel.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_cancel.Location = new Point(319, 485);
             button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(94, 29);
+            button_cancel.Size = new Size(94, 30);
             button_cancel.TabIndex = 10;
             button_cancel.Text = "Cancel";
             button_cancel.UseVisualStyleBackColor = false;
@@ -208,6 +208,90 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(564, 532);
             panel3.TabIndex = 14;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ActiveCaptionText;
+            label9.Location = new Point(34, 320);
+            label9.Margin = new Padding(2, 0, 2, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(67, 19);
+            label9.TabIndex = 21;
+            label9.Text = "Contact:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.Location = new Point(34, 222);
+            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(70, 19);
+            label8.TabIndex = 20;
+            label8.Text = "Address:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ActiveCaptionText;
+            label7.Location = new Point(372, 126);
+            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(88, 19);
+            label7.TabIndex = 19;
+            label7.Text = "Last Name:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.Location = new Point(221, 126);
+            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(107, 19);
+            label6.TabIndex = 18;
+            label6.Text = "Middle Name:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(34, 126);
+            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(90, 19);
+            label4.TabIndex = 17;
+            label4.Text = "First Name:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(297, 44);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(80, 19);
+            label3.TabIndex = 16;
+            label3.Text = "Password:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = SystemColors.ActiveCaptionText;
+            label5.Location = new Point(34, 44);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(84, 19);
+            label5.TabIndex = 15;
+            label5.Text = "Username:";
             // 
             // label1
             // 
@@ -253,90 +337,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(446, 100);
             panel1.TabIndex = 12;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(34, 44);
-            label5.Margin = new Padding(2, 0, 2, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(84, 19);
-            label5.TabIndex = 15;
-            label5.Text = "Username:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(297, 44);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(80, 19);
-            label3.TabIndex = 16;
-            label3.Text = "Password:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(34, 126);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(90, 19);
-            label4.TabIndex = 17;
-            label4.Text = "First Name:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(221, 126);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(107, 19);
-            label6.TabIndex = 18;
-            label6.Text = "Middle Name:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = SystemColors.ActiveCaptionText;
-            label7.Location = new Point(372, 126);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(88, 19);
-            label7.TabIndex = 19;
-            label7.Text = "Last Name:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = SystemColors.ActiveCaptionText;
-            label8.Location = new Point(34, 222);
-            label8.Margin = new Padding(2, 0, 2, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(70, 19);
-            label8.TabIndex = 20;
-            label8.Text = "Address:";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ActiveCaptionText;
-            label9.Location = new Point(34, 320);
-            label9.Margin = new Padding(2, 0, 2, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(67, 19);
-            label9.TabIndex = 21;
-            label9.Text = "Contact:";
             // 
             // RegisterForm
             // 
