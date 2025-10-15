@@ -1,9 +1,11 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using IT13___Laundry_CRM.Repositories;
+using Microsoft.Data.SqlClient;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Fonts;
 using PdfSharp.Pdf;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms.DataVisualization.Charting;
 
 
 namespace IT13___Laundry_CRM.Admin
@@ -12,6 +14,8 @@ namespace IT13___Laundry_CRM.Admin
     {
         private readonly string connectionString =
     @"Data Source=LAPTOP-NGRORR8P\SQLEXPRESS;Initial Catalog=LaundryDb;Integrated Security=True;Connect Timeout=30; TrustServerCertificate=True";
+
+        private readonly UserRepository userRepository = new UserRepository();
 
         public admin_reports()
         {
@@ -72,7 +76,29 @@ namespace IT13___Laundry_CRM.Admin
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             GenerateReport();
+
+            // ===== Load Chart =====
+            DateTime from = dtpStart.Value.Date;
+            DateTime to = dtpEnd.Value.Date;
+
+            string groupBy = DetermineGrouping(from, to);
+            ShowCustomerCounts(groupBy, from, to);
         }
+
+        private string DetermineGrouping(DateTime from, DateTime to)
+        {
+            TimeSpan span = to - from;
+
+            if (span.TotalDays <= 1)
+                return "Day";
+            else if (span.TotalDays <= 7)
+                return "Week";
+            else if (span.TotalDays <= 30)
+                return "Month";
+            else
+                return "Custom";
+        }
+
 
         private void GenerateReport()
         {
@@ -348,6 +374,129 @@ namespace IT13___Laundry_CRM.Admin
                 new XRect(margin, page.Height - 50, page.Width - margin * 2, 20), XStringFormats.TopLeft);
             gfx.DrawString("© " + DateTime.Now.Year + " Laundry CRM. All Rights Reserved.", footerFont, XBrushes.Gray,
                 new XRect(margin, page.Height - 35, page.Width - margin * 2, 20), XStringFormats.TopLeft);
+        }
+
+        private void ShowCustomerCounts(string groupBy, DateTime from, DateTime to)
+        {
+            try
+            {
+                var customers = userRepository.GetCustomersByRegistrationDateRange(from, to.AddDays(1).AddSeconds(-1));
+
+                Dictionary<string, int> groupedData = new Dictionary<string, int>();
+
+                switch (groupBy)
+                {
+                    case "Day":
+                        for (int hour = 0; hour < 24; hour++)
+                        {
+                            string hourLabel = $"{hour:00}:00";
+                            int count = customers.Count(c => c.created_at.Hour == hour);
+                            groupedData[hourLabel] = count;
+                        }
+                        break;
+
+                    case "Week":
+                        for (int i = 6; i >= 0; i--)
+                        {
+                            DateTime day = DateTime.Today.AddDays(-i);
+                            string dayLabel = day.ToString("MMM dd");
+                            int count = customers.Count(c => c.created_at.Date == day.Date);
+                            groupedData[dayLabel] = count;
+                        }
+                        break;
+
+                    case "Month":
+                        for (int i = 29; i >= 0; i--)
+                        {
+                            DateTime day = DateTime.Today.AddDays(-i);
+                            string dayLabel = day.ToString("MMM dd");
+                            int count = customers.Count(c => c.created_at.Date == day.Date);
+                            groupedData[dayLabel] = count;
+                        }
+                        break;
+
+                    case "Custom":
+                        for (DateTime day = from.Date; day <= to.Date; day = day.AddDays(1))
+                        {
+                            string dayLabel = day.ToString("MMM dd");
+                            int count = customers.Count(c => c.created_at.Date == day.Date);
+                            groupedData[dayLabel] = count;
+                        }
+                        break;
+                }
+
+                UpdateChart(groupedData, groupBy, from, to);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error displaying customer counts: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdateChart(Dictionary<string, int> data, string chartType, DateTime from, DateTime to)
+        {
+            if (chart1 == null) return;
+
+            try
+            {
+                chart1.Series.Clear();
+
+                Series series = new Series("Number of Customers")
+                {
+                    ChartType = SeriesChartType.Column,
+                    Color = Color.SteelBlue,
+                    BorderColor = Color.DarkBlue,
+                    BorderWidth = 1,
+                    IsValueShownAsLabel = true,
+                    LabelFormat = "0",
+                    Font = new Font("Segoe UI", 8, FontStyle.Bold),
+                    ["PointWidth"] = "0.6",
+                    IsXValueIndexed = true
+                };
+
+                int index = 0;
+                foreach (var item in data)
+                {
+                    DataPoint point = new DataPoint
+                    {
+                        AxisLabel = item.Key,
+                        Label = item.Value > 0 ? item.Value.ToString() : ""
+                    };
+                    point.SetValueXY(index, item.Value);
+                    series.Points.Add(point);
+                    index++;
+                }
+
+                chart1.Series.Add(series);
+
+                if (chart1.Titles.Count > 0)
+                {
+                    chart1.Titles[0].Text = chartType switch
+                    {
+                        "Day" => "Number of Customers - Today (24 Hours)",
+                        "Week" => "Number of Customers - Last 7 Days",
+                        "Month" => "Number of Customers - Last 30 Days",
+                        "Custom" => $"Number of Customers ({from:MMM dd, yyyy} - {to:MMM dd, yyyy})",
+                        _ => "Number of Customers"
+                    };
+                }
+
+                if (chart1.ChartAreas.Count > 0)
+                {
+                    ChartArea area = chart1.ChartAreas[0];
+                    area.AxisY.Minimum = 0;
+                    area.AxisY.Maximum = data.Values.Any() ? data.Values.Max() + 1 : 10;
+                    area.AxisX.Interval = data.Count > 10 ? Math.Ceiling(data.Count / 10.0) : 1;
+                }
+
+                chart1.Invalidate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating chart: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             lblSummary = new Label();
             btnGenerateReport = new Button();
             dgvRoles = new DataGridView();
@@ -46,12 +50,17 @@
             label3 = new Label();
             label4 = new Label();
             lblSummary1 = new Label();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            buttonLoadGraphToday = new Button();
+            buttonLoadGraphWeek = new Button();
+            buttonLoadGraphMonth = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvRoles).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonthlyUsers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvArchived).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvGrowth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAddress).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // lblSummary
@@ -71,7 +80,7 @@
             btnGenerateReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGenerateReport.BackColor = SystemColors.Highlight;
             btnGenerateReport.ForeColor = SystemColors.ButtonHighlight;
-            btnGenerateReport.Location = new Point(595, 13);
+            btnGenerateReport.Location = new Point(594, 13);
             btnGenerateReport.Margin = new Padding(2, 3, 2, 3);
             btnGenerateReport.Name = "btnGenerateReport";
             btnGenerateReport.Size = new Size(149, 40);
@@ -83,19 +92,18 @@
             // dgvRoles
             // 
             dgvRoles.AllowUserToAddRows = false;
-            dgvRoles.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvRoles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRoles.BackgroundColor = SystemColors.ButtonFace;
             dgvRoles.BorderStyle = BorderStyle.None;
             dgvRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRoles.Location = new Point(219, 174);
+            dgvRoles.Location = new Point(222, 399);
             dgvRoles.Margin = new Padding(2, 3, 2, 3);
             dgvRoles.MultiSelect = false;
             dgvRoles.Name = "dgvRoles";
             dgvRoles.ReadOnly = true;
             dgvRoles.RowHeadersVisible = false;
             dgvRoles.RowHeadersWidth = 51;
-            dgvRoles.Size = new Size(902, 130);
+            dgvRoles.Size = new Size(439, 124);
             dgvRoles.TabIndex = 4;
             // 
             // dtpStart
@@ -138,14 +146,14 @@
             dgvMonthlyUsers.BackgroundColor = SystemColors.ButtonFace;
             dgvMonthlyUsers.BorderStyle = BorderStyle.None;
             dgvMonthlyUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMonthlyUsers.Location = new Point(217, 331);
+            dgvMonthlyUsers.Location = new Point(680, 469);
             dgvMonthlyUsers.Margin = new Padding(2, 3, 2, 3);
             dgvMonthlyUsers.MultiSelect = false;
             dgvMonthlyUsers.Name = "dgvMonthlyUsers";
             dgvMonthlyUsers.ReadOnly = true;
             dgvMonthlyUsers.RowHeadersVisible = false;
             dgvMonthlyUsers.RowHeadersWidth = 51;
-            dgvMonthlyUsers.Size = new Size(902, 100);
+            dgvMonthlyUsers.Size = new Size(442, 101);
             dgvMonthlyUsers.TabIndex = 8;
             dgvMonthlyUsers.CellContentClick += dgvRecentChanges_CellContentClick;
             // 
@@ -156,32 +164,31 @@
             dgvArchived.BackgroundColor = SystemColors.ButtonFace;
             dgvArchived.BorderStyle = BorderStyle.None;
             dgvArchived.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvArchived.Location = new Point(218, 456);
+            dgvArchived.Location = new Point(680, 598);
             dgvArchived.Margin = new Padding(2, 3, 2, 3);
             dgvArchived.MultiSelect = false;
             dgvArchived.Name = "dgvArchived";
             dgvArchived.ReadOnly = true;
             dgvArchived.RowHeadersVisible = false;
             dgvArchived.RowHeadersWidth = 51;
-            dgvArchived.Size = new Size(902, 120);
+            dgvArchived.Size = new Size(441, 120);
             dgvArchived.TabIndex = 9;
             dgvArchived.CellContentClick += dgvArchived_CellContentClick;
             // 
             // dgvGrowth
             // 
-            dgvGrowth.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvGrowth.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGrowth.BackgroundColor = SystemColors.ButtonFace;
             dgvGrowth.BorderStyle = BorderStyle.None;
             dgvGrowth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGrowth.Location = new Point(219, 606);
+            dgvGrowth.Location = new Point(221, 570);
             dgvGrowth.Margin = new Padding(2, 3, 2, 3);
             dgvGrowth.MultiSelect = false;
             dgvGrowth.Name = "dgvGrowth";
             dgvGrowth.ReadOnly = true;
             dgvGrowth.RowHeadersVisible = false;
             dgvGrowth.RowHeadersWidth = 51;
-            dgvGrowth.Size = new Size(902, 150);
+            dgvGrowth.Size = new Size(440, 150);
             dgvGrowth.TabIndex = 14;
             dgvGrowth.CellContentClick += dgvGrowth_CellContentClick;
             // 
@@ -192,7 +199,7 @@
             dgvAddress.BackgroundColor = SystemColors.ButtonFace;
             dgvAddress.BorderStyle = BorderStyle.None;
             dgvAddress.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAddress.Location = new Point(220, 781);
+            dgvAddress.Location = new Point(222, 767);
             dgvAddress.Margin = new Padding(2, 3, 2, 3);
             dgvAddress.MultiSelect = false;
             dgvAddress.Name = "dgvAddress";
@@ -236,7 +243,7 @@
             label5.BackColor = SystemColors.Window;
             label5.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(266, 162);
+            label5.Location = new Point(266, 384);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(216, 24);
@@ -249,7 +256,7 @@
             label1.BackColor = SystemColors.Window;
             label1.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(264, 319);
+            label1.Location = new Point(726, 458);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(258, 24);
@@ -262,7 +269,7 @@
             label2.BackColor = SystemColors.Window;
             label2.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(264, 444);
+            label2.Location = new Point(726, 586);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(172, 24);
@@ -275,7 +282,7 @@
             label3.BackColor = SystemColors.Window;
             label3.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(264, 590);
+            label3.Location = new Point(266, 553);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(232, 24);
@@ -288,7 +295,7 @@
             label4.BackColor = SystemColors.Window;
             label4.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(264, 768);
+            label4.Location = new Point(266, 754);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(268, 24);
@@ -299,11 +306,74 @@
             // 
             lblSummary1.AutoSize = true;
             lblSummary1.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSummary1.Location = new Point(239, 993);
+            lblSummary1.Location = new Point(241, 979);
+            lblSummary1.Margin = new Padding(2, 0, 2, 0);
             lblSummary1.Name = "lblSummary1";
             lblSummary1.Size = new Size(81, 20);
             lblSummary1.TabIndex = 22;
             lblSummary1.Text = "Summary";
+            // 
+            // chart1
+            // 
+            chart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
+            chart1.Location = new Point(222, 163);
+            chart1.Margin = new Padding(2, 4, 2, 4);
+            chart1.Name = "chart1";
+            chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series1.ChartArea = "ChartArea1";
+            series1.IsXValueIndexed = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 2;
+            chart1.Series.Add(series1);
+            chart1.Size = new Size(899, 217);
+            chart1.TabIndex = 41;
+            chart1.Text = "chart1";
+            title1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
+            title1.Name = "Title1";
+            title1.Text = "Customer";
+            chart1.Titles.Add(title1);
+            // 
+            // buttonLoadGraphToday
+            // 
+            buttonLoadGraphToday.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonLoadGraphToday.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonLoadGraphToday.Location = new Point(708, 400);
+            buttonLoadGraphToday.Margin = new Padding(5, 4, 5, 4);
+            buttonLoadGraphToday.Name = "buttonLoadGraphToday";
+            buttonLoadGraphToday.Size = new Size(106, 36);
+            buttonLoadGraphToday.TabIndex = 47;
+            buttonLoadGraphToday.Text = "Today";
+            buttonLoadGraphToday.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoadGraphWeek
+            // 
+            buttonLoadGraphWeek.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonLoadGraphWeek.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonLoadGraphWeek.Location = new Point(822, 399);
+            buttonLoadGraphWeek.Margin = new Padding(5, 4, 5, 4);
+            buttonLoadGraphWeek.Name = "buttonLoadGraphWeek";
+            buttonLoadGraphWeek.Size = new Size(140, 36);
+            buttonLoadGraphWeek.TabIndex = 48;
+            buttonLoadGraphWeek.Text = "Week";
+            buttonLoadGraphWeek.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoadGraphMonth
+            // 
+            buttonLoadGraphMonth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonLoadGraphMonth.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonLoadGraphMonth.Location = new Point(975, 399);
+            buttonLoadGraphMonth.Margin = new Padding(5, 4, 5, 4);
+            buttonLoadGraphMonth.Name = "buttonLoadGraphMonth";
+            buttonLoadGraphMonth.Size = new Size(130, 36);
+            buttonLoadGraphMonth.TabIndex = 49;
+            buttonLoadGraphMonth.Text = "Month";
+            buttonLoadGraphMonth.UseVisualStyleBackColor = true;
             // 
             // admin_reports
             // 
@@ -312,6 +382,10 @@
             AutoScroll = true;
             BackColor = SystemColors.Window;
             ClientSize = new Size(1168, 1055);
+            Controls.Add(buttonLoadGraphToday);
+            Controls.Add(buttonLoadGraphWeek);
+            Controls.Add(buttonLoadGraphMonth);
+            Controls.Add(chart1);
             Controls.Add(lblSummary1);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -342,6 +416,10 @@
             Controls.SetChildIndex(label3, 0);
             Controls.SetChildIndex(label4, 0);
             Controls.SetChildIndex(lblSummary1, 0);
+            Controls.SetChildIndex(chart1, 0);
+            Controls.SetChildIndex(buttonLoadGraphMonth, 0);
+            Controls.SetChildIndex(buttonLoadGraphWeek, 0);
+            Controls.SetChildIndex(buttonLoadGraphToday, 0);
             ((System.ComponentModel.ISupportInitialize)dgvRoles).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonthlyUsers).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvArchived).EndInit();
@@ -349,6 +427,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvAddress).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -373,5 +452,9 @@
         private Label label3;
         private Label label4;
         private Label lblSummary1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private Button buttonLoadGraphToday;
+        private Button buttonLoadGraphWeek;
+        private Button buttonLoadGraphMonth;
     }
 }
