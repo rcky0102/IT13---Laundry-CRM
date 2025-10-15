@@ -269,69 +269,78 @@ namespace IT13___Laundry_CRM.Repositories
         }
 
         // Update existing user
-        public void UpdateUser(User user)
+        public bool UpdateUser(User user)
         {
-            try
+            using (var conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
+                conn.Open();
 
-                    // If password is provided → include in update
-                    string sql;
+                string query = string.IsNullOrEmpty(user.password)
+                    ? @"UPDATE users
+               SET username=@Username,
+                   role=@Role,
+                   first_name=@FirstName,
+                   middle_name=@MiddleName,
+                   last_name=@LastName,
+                   address=@Address,
+                   contact=@Contact
+               WHERE user_id=@UserId"
+                    : @"UPDATE users
+               SET username=@Username,
+                   password=@Password,
+                   role=@Role,
+                   first_name=@FirstName,
+                   middle_name=@MiddleName,
+                   last_name=@LastName,
+                   address=@Address,
+                   contact=@Contact
+               WHERE user_id=@UserId";
+
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", (object?)user.username ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Role", (object?)user.role ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@FirstName", (object?)user.first_name ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@MiddleName", (object?)user.middle_name ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@LastName", (object?)user.last_name ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Address", (object?)user.address ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Contact", (object?)user.contact ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@UserId", user.user_id);
+
+                    // ✅ Only add password if provided (already hashed in the form)
                     if (!string.IsNullOrEmpty(user.password))
                     {
-                        sql = @"UPDATE users 
-                        SET username = @username, 
-                            password = @password, 
-                            role = @role, 
-                            first_name = @first_name, 
-                            middle_name = @middle_name, 
-                            last_name = @last_name, 
-                            address = @address, 
-                            contact = @contact
-                        WHERE user_id = @user_id";
-                    }
-                    else
-                    {
-                        // No password change → exclude password column
-                        sql = @"UPDATE users 
-                        SET username = @username, 
-                            role = @role, 
-                            first_name = @first_name, 
-                            middle_name = @middle_name, 
-                            last_name = @last_name, 
-                            address = @address, 
-                            contact = @contact
-                        WHERE user_id = @user_id";
+                        cmd.Parameters.AddWithValue("@Password", user.password);
                     }
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@username", user.username);
-                        command.Parameters.AddWithValue("@role", user.role);
-                        command.Parameters.AddWithValue("@first_name", (object?)user.first_name ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@middle_name", (object?)user.middle_name ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@last_name", (object?)user.last_name ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@address", (object?)user.address ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@contact", (object?)user.contact ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@user_id", user.user_id);
-
-                        if (!string.IsNullOrEmpty(user.password))
-                        {
-                            string hashedPassword = HashPassword(user.password);
-                            command.Parameters.AddWithValue("@password", hashedPassword);
-                        }
-
-                        command.ExecuteNonQuery();
-                    }
+                    int rows = cmd.ExecuteNonQuery();
+                    return rows > 0;
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message);
-            }
         }
+
+
+        // --- Add these two helper methods if not already present ---
+        //private string HashPassword1(string password)
+        //{
+        //    using (SHA256 sha256 = SHA256.Create())
+        //    {
+        //        byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+        //        StringBuilder builder = new StringBuilder();
+        //        foreach (byte b in bytes)
+        //        {
+        //            builder.Append(b.ToString("x2"));
+        //        }
+        //        return builder.ToString();
+        //    }
+        //}
+
+        //private bool VerifyPassword(string plainTextPassword, string hashedPassword)
+        //{
+        //    string hashOfInput = HashPassword1(plainTextPassword);
+        //    return hashOfInput == hashedPassword;
+        //}
+
 
         public bool UpdateUserProfile(User user)
         {
