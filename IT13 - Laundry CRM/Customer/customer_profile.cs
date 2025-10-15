@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static IT13___Laundry_CRM.Models.User;
 
 namespace IT13___Laundry_CRM.Customer
 {
@@ -43,9 +44,9 @@ namespace IT13___Laundry_CRM.Customer
 
         private void customer_profile_Load(object sender, EventArgs e)
         {
-            if (User.CurrentUser.User != null)
+            if (CurrentUser.User != null)
             {
-                var user = User.CurrentUser.User;
+                var user = CurrentUser.User;
 
                 textbox_firstname.Text = user.first_name;
                 textbox_middlename.Text = user.middle_name;
@@ -53,7 +54,14 @@ namespace IT13___Laundry_CRM.Customer
                 textbox_address.Text = user.address;
                 textbox_contact.Text = user.contact;
                 textbox_username.Text = user.username;
-                // Optionally leave password blank for security
+
+                // Leave password field blank for security
+                textbox_password.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("No user is currently logged in.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
@@ -75,35 +83,64 @@ namespace IT13___Laundry_CRM.Customer
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            if (User.CurrentUser.User == null)
+            if (CurrentUser.User == null)
                 return;
 
-            var user = User.CurrentUser.User;
+            var user = CurrentUser.User;
 
-            // Update user object with new values
+            // ✅ Validate input fields
+            if (string.IsNullOrWhiteSpace(textbox_firstname.Text) ||
+                string.IsNullOrWhiteSpace(textbox_lastname.Text) ||
+                string.IsNullOrWhiteSpace(textbox_address.Text) ||
+                string.IsNullOrWhiteSpace(textbox_contact.Text) ||
+                string.IsNullOrWhiteSpace(textbox_username.Text))
+            {
+                MessageBox.Show("Please fill out all required fields.", "Missing Information",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // ✅ Validate username format
+            string username = textbox_username.Text.Trim();
+            if (username.Length < 4 || !username.All(c => char.IsLetterOrDigit(c) || c == '_'))
+            {
+                MessageBox.Show("Username must be at least 4 characters long and contain only letters, numbers, or underscores.",
+                                "Invalid Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // ✅ Update user object
             user.first_name = textbox_firstname.Text.Trim();
             user.middle_name = textbox_middlename.Text.Trim();
             user.last_name = textbox_lastname.Text.Trim();
             user.address = textbox_address.Text.Trim();
             user.contact = textbox_contact.Text.Trim();
-            user.username = textbox_username.Text.Trim();
+            user.username = username;
 
-            // If you want to allow password change
+            // ✅ Update password if changed
             if (!string.IsNullOrEmpty(textbox_password.Text))
             {
-                user.password = HashPassword(textbox_password.Text.Trim());
+                string password = textbox_password.Text.Trim();
+                if (password.Length < 8)
+                {
+                    MessageBox.Show("Password must be at least 8 characters long.",
+                                    "Weak Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                user.password = HashPassword(password);
             }
 
-            // Update in database
+            // ✅ Attempt database update
             bool updated = userRepository.UpdateUserProfile(user);
 
             if (updated)
             {
-                MessageBox.Show("Profile updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Profile updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Failed to update profile.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to update profile. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -116,6 +153,7 @@ namespace IT13___Laundry_CRM.Customer
                 return Convert.ToBase64String(hash);
             }
         }
+
 
         private void button_cancel_Click(object sender, EventArgs e)
         {

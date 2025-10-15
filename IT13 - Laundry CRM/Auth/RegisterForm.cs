@@ -57,8 +57,31 @@ namespace IT13___Laundry_CRM
                     return;
                 }
 
-                // Save to database
+                // 🔹 Enforce username and password length rules
+                if (newUser.username.Length < 4)
+                {
+                    MessageBox.Show("Username must be at least 4 characters long.",
+                        "Invalid Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (newUser.password.Length < 8)
+                {
+                    MessageBox.Show("Password must be at least 8 characters long.",
+                        "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 🔹 Check if username already exists in the database
                 var userRepository = new UserRepository();
+                if (userRepository.UsernameExists(newUser.username))
+                {
+                    MessageBox.Show("This username is already taken. Please choose another one.",
+                        "Duplicate Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // ✅ Save to database
                 userRepository.CreateUser(newUser);
 
                 MessageBox.Show("Registration successful! Logging you in...", "Success",
@@ -66,11 +89,11 @@ namespace IT13___Laundry_CRM
 
                 // ✅ Auto-login logic
                 AutoLoginAfterRegister(newUser.username, newUser.password);
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error during registration: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error during registration: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

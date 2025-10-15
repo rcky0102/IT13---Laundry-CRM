@@ -84,7 +84,7 @@ namespace IT13___Laundry_CRM.Admin
             {
                 // Get all relevant users
                 allUsers = userRepository.GetUsers()
-                    .Where(u => u.role == "customer" || u.role == "admin")
+                    .Where(u => u.role == "customer" || u.role == "laundry_attendant")
                     .ToList();
 
                 // Get the latest message datetime per user
