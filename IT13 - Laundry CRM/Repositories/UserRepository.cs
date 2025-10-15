@@ -341,22 +341,22 @@ namespace IT13___Laundry_CRM.Repositories
 
                 string query = string.IsNullOrEmpty(user.password)
                     ? @"UPDATE users
-                SET first_name=@FirstName,
-                    middle_name=@MiddleName,
-                    last_name=@LastName,
-                    address=@Address,
-                    contact=@Contact,
-                    username=@Username
-                WHERE user_id=@UserId"
+               SET first_name=@FirstName,
+                   middle_name=@MiddleName,
+                   last_name=@LastName,
+                   address=@Address,
+                   contact=@Contact,
+                   username=@Username
+               WHERE user_id=@UserId"
                     : @"UPDATE users
-                SET first_name=@FirstName,
-                    middle_name=@MiddleName,
-                    last_name=@LastName,
-                    address=@Address,
-                    contact=@Contact,
-                    username=@Username,
-                    password=@Password
-                WHERE user_id=@UserId";
+               SET first_name=@FirstName,
+                   middle_name=@MiddleName,
+                   last_name=@LastName,
+                   address=@Address,
+                   contact=@Contact,
+                   username=@Username,
+                   password=@Password
+               WHERE user_id=@UserId";
 
                 using (var cmd = new SqlCommand(query, conn))
                 {
@@ -368,10 +368,10 @@ namespace IT13___Laundry_CRM.Repositories
                     cmd.Parameters.AddWithValue("@Username", (object?)user.username ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@UserId", user.user_id);
 
+                    // ✅ Do NOT re-hash here
                     if (!string.IsNullOrEmpty(user.password))
                     {
-                        string hashedPassword = HashPassword(user.password);
-                        cmd.Parameters.AddWithValue("@Password", hashedPassword);
+                        cmd.Parameters.AddWithValue("@Password", user.password);
                     }
 
                     int rows = cmd.ExecuteNonQuery();
@@ -379,6 +379,7 @@ namespace IT13___Laundry_CRM.Repositories
                 }
             }
         }
+
 
 
         public bool UsernameExists(string username)

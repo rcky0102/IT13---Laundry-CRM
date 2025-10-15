@@ -88,7 +88,7 @@ namespace IT13___Laundry_CRM.Customer
 
             var user = CurrentUser.User;
 
-            // ✅ Validate input fields
+            // ✅ Validate fields
             if (string.IsNullOrWhiteSpace(textbox_firstname.Text) ||
                 string.IsNullOrWhiteSpace(textbox_lastname.Text) ||
                 string.IsNullOrWhiteSpace(textbox_address.Text) ||
@@ -117,7 +117,7 @@ namespace IT13___Laundry_CRM.Customer
             user.contact = textbox_contact.Text.Trim();
             user.username = username;
 
-            // ✅ Update password if changed
+            // ✅ Handle password change (hash before saving)
             if (!string.IsNullOrEmpty(textbox_password.Text))
             {
                 string password = textbox_password.Text.Trim();
@@ -128,19 +128,25 @@ namespace IT13___Laundry_CRM.Customer
                     return;
                 }
 
-                user.password = HashPassword(password);
+                string hashedPassword = HashPassword(password);
+                user.password = hashedPassword;
             }
 
-            // ✅ Attempt database update
+            // ✅ Save to database
             bool updated = userRepository.UpdateUserProfile(user);
 
             if (updated)
             {
-                MessageBox.Show("Profile updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // ✅ Keep CurrentUser.User synced with database
+                CurrentUser.User = user;
+
+                MessageBox.Show("Profile updated successfully!\nYou can now log in with your updated credentials.",
+                                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Failed to update profile. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to update profile. Please try again.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

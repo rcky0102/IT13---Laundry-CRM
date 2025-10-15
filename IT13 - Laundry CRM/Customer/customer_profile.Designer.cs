@@ -69,6 +69,7 @@
             textbox_password.Margin = new Padding(4, 3, 4, 3);
             textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
+            textbox_password.PasswordChar = '*';
             textbox_password.PlaceholderText = "(At least 8 characters )";
             textbox_password.Size = new Size(300, 40);
             textbox_password.TabIndex = 1;
