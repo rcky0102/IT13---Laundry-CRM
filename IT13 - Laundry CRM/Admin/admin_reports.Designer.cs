@@ -301,9 +301,9 @@
             lblSummary1.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSummary1.Location = new Point(239, 993);
             lblSummary1.Name = "lblSummary1";
-            lblSummary1.Size = new Size(54, 20);
+            lblSummary1.Size = new Size(81, 20);
             lblSummary1.TabIndex = 22;
-            lblSummary1.Text = "label6";
+            lblSummary1.Text = "Summary";
             // 
             // admin_reports
             // 

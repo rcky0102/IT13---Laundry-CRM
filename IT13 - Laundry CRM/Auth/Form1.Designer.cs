@@ -96,7 +96,8 @@
             login_button.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             login_button.BackColor = Color.RoyalBlue;
             login_button.FlatAppearance.BorderColor = Color.Blue;
-            login_button.FlatAppearance.BorderSize = 20;
+            login_button.FlatAppearance.BorderSize = 0;
+            login_button.FlatStyle = FlatStyle.Flat;
             login_button.ForeColor = SystemColors.ButtonHighlight;
             login_button.Location = new Point(129, 413);
             login_button.Margin = new Padding(3, 2, 3, 2);
@@ -111,28 +112,30 @@
             // 
             textbox_password.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textbox_password.BackColor = SystemColors.ButtonHighlight;
-            textbox_password.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_password.Location = new Point(112, 332);
+            textbox_password.BorderStyle = BorderStyle.None;
+            textbox_password.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_password.Location = new Point(112, 309);
             textbox_password.Margin = new Padding(3, 2, 3, 2);
             textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
             textbox_password.PasswordChar = '*';
             textbox_password.PlaceholderText = "🗝️ Password:";
-            textbox_password.Size = new Size(354, 58);
+            textbox_password.Size = new Size(354, 40);
             textbox_password.TabIndex = 5;
             // 
             // textbox_username
             // 
             textbox_username.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textbox_username.BackColor = SystemColors.ControlLightLight;
-            textbox_username.Font = new Font("Cascadia Code", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_username.BorderStyle = BorderStyle.None;
+            textbox_username.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_username.ForeColor = SystemColors.ActiveCaptionText;
             textbox_username.Location = new Point(112, 241);
             textbox_username.Margin = new Padding(3, 2, 3, 2);
             textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
             textbox_username.PlaceholderText = "👤 Username:";
-            textbox_username.Size = new Size(354, 61);
+            textbox_username.Size = new Size(354, 40);
             textbox_username.TabIndex = 4;
             // 
             // label1

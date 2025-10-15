@@ -44,10 +44,10 @@
             textbox_subject.BorderStyle = BorderStyle.None;
             textbox_subject.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_subject.ForeColor = SystemColors.WindowText;
-            textbox_subject.Location = new Point(451, 97);
+            textbox_subject.Location = new Point(451, 108);
             textbox_subject.Multiline = true;
             textbox_subject.Name = "textbox_subject";
-            textbox_subject.Size = new Size(162, 44);
+            textbox_subject.Size = new Size(162, 33);
             textbox_subject.TabIndex = 1;
             // 
             // textbox_feedback
@@ -56,10 +56,10 @@
             textbox_feedback.BackColor = SystemColors.ButtonFace;
             textbox_feedback.BorderStyle = BorderStyle.None;
             textbox_feedback.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_feedback.Location = new Point(365, 181);
+            textbox_feedback.Location = new Point(365, 194);
             textbox_feedback.Multiline = true;
             textbox_feedback.Name = "textbox_feedback";
-            textbox_feedback.Size = new Size(330, 155);
+            textbox_feedback.Size = new Size(330, 142);
             textbox_feedback.TabIndex = 2;
             // 
             // listbox_feedback
@@ -110,7 +110,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(286, 419);
+            label6.Location = new Point(245, 409);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(216, 24);
@@ -122,7 +122,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(385, 167);
+            label1.Location = new Point(386, 167);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(103, 24);

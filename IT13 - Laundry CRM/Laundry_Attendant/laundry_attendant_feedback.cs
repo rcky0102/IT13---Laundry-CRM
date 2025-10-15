@@ -240,7 +240,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                     {
                         if (feedbackRepository.ArchiveFeedback(fb.feedback_id))
                         {
-                            MessageBox.Show("Feedback archived successfully!", "Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show("Feedback archived successfully!", "Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadFeedbacks(); // reload only unarchived feedbacks
                         }
 

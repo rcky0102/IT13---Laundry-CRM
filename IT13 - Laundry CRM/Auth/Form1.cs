@@ -1,6 +1,7 @@
 ﻿using IT13___Laundry_CRM.Customer;
 using IT13___Laundry_CRM.Models;
 using IT13___Laundry_CRM.Repositories;
+using System.Drawing.Drawing2D;
 using System.Security.Cryptography;
 using System.Text;
 using static IT13___Laundry_CRM.Models.User;
@@ -14,6 +15,26 @@ namespace IT13___Laundry_CRM
         public Form1()
         {
             InitializeComponent();
+
+            MakeRounded(textbox_username);
+            MakeRounded(textbox_password);
+            MakeRounded(login_button);
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void login_button_Click(object sender, EventArgs e)

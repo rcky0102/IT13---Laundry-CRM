@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,33 @@ namespace IT13___Laundry_CRM
         public RegisterForm()
         {
             InitializeComponent();
+
+            MakeRounded(textbox_username);
+            MakeRounded(textbox_password);
+            MakeRounded(textbox_firstname);
+            MakeRounded(textbox_middlename);
+            MakeRounded(textbox_lastname);
+            MakeRounded(textbox_address);
+            MakeRounded(textbox_contact);
+            MakeRounded(button_cancel);
+            MakeRounded(button_register);
+
+        }
+
+        private void MakeRounded(Control control, int radius = 20)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radius, radius), 180, 90); // Top-left
+            path.AddArc(new Rectangle(control.Width - radius, 0, radius, radius), 270, 90); // Top-right
+            path.AddArc(new Rectangle(control.Width - radius, control.Height - radius, radius, radius), 0, 90); // Bottom-right
+            path.AddArc(new Rectangle(0, control.Height - radius, radius, radius), 90, 90); // Bottom-left
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+
+            // Optional: handle resizing to keep corners rounded
+            control.SizeChanged += (s, e) => MakeRounded(control, radius);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

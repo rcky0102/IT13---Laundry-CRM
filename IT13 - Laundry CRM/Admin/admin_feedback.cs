@@ -238,7 +238,7 @@ namespace IT13___Laundry_CRM.Admin
                     {
                         if (feedbackRepository.ArchiveFeedback(fb.feedback_id))
                         {
-                            MessageBox.Show("Feedback archived successfully!", "Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show("Feedback archived successfully!", "Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadFeedbacks(); // reload only unarchived feedbacks
                         }
 

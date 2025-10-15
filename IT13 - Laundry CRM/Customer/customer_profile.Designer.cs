@@ -58,7 +58,7 @@
             textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
             textbox_username.PlaceholderText = "(e.g. John123)";
-            textbox_username.Size = new Size(300, 40);
+            textbox_username.Size = new Size(300, 50);
             textbox_username.TabIndex = 0;
             // 
             // textbox_password
@@ -71,7 +71,7 @@
             textbox_password.Name = "textbox_password";
             textbox_password.PasswordChar = '*';
             textbox_password.PlaceholderText = "(At least 8 characters )";
-            textbox_password.Size = new Size(300, 40);
+            textbox_password.Size = new Size(300, 50);
             textbox_password.TabIndex = 1;
             // 
             // textbox_firstname
@@ -94,7 +94,7 @@
             textbox_middlename.Margin = new Padding(4, 3, 4, 3);
             textbox_middlename.Multiline = true;
             textbox_middlename.Name = "textbox_middlename";
-            textbox_middlename.PlaceholderText = "Middle Name:";
+            textbox_middlename.PlaceholderText = "(Optional)";
             textbox_middlename.Size = new Size(200, 40);
             textbox_middlename.TabIndex = 3;
             // 

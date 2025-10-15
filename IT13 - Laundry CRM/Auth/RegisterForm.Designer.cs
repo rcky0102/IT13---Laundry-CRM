@@ -40,12 +40,17 @@
             button_cancel = new Button();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
-            label4 = new Label();
-            label3 = new Label();
             label1 = new Label();
             pictureBox2 = new PictureBox();
             label2 = new Label();
             panel1 = new Panel();
+            label5 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -53,100 +58,100 @@
             // 
             // textbox_username
             // 
-            textbox_username.BackColor = SystemColors.HighlightText;
+            textbox_username.BackColor = SystemColors.ButtonFace;
+            textbox_username.BorderStyle = BorderStyle.None;
             textbox_username.Font = new Font("Gadugi", 8F);
-            textbox_username.Location = new Point(25, 159);
-            textbox_username.Margin = new Padding(4);
+            textbox_username.Location = new Point(19, 70);
             textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
-            textbox_username.PlaceholderText = "Username:";
-            textbox_username.Size = new Size(343, 50);
+            textbox_username.PlaceholderText = "(e.g. John123)";
+            textbox_username.Size = new Size(250, 40);
             textbox_username.TabIndex = 0;
             // 
             // textbox_password
             // 
-            textbox_password.BackColor = SystemColors.HighlightText;
+            textbox_password.BackColor = SystemColors.ButtonFace;
+            textbox_password.BorderStyle = BorderStyle.None;
             textbox_password.Font = new Font("Gadugi", 8F);
-            textbox_password.Location = new Point(376, 156);
-            textbox_password.Margin = new Padding(4);
+            textbox_password.Location = new Point(283, 70);
             textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
             textbox_password.PasswordChar = '*';
-            textbox_password.PlaceholderText = "Password:";
-            textbox_password.Size = new Size(290, 53);
+            textbox_password.PlaceholderText = "(At least 8 characters )";
+            textbox_password.Size = new Size(250, 40);
             textbox_password.TabIndex = 1;
             textbox_password.TextChanged += textBox2_TextChanged;
             // 
             // textbox_firstname
             // 
-            textbox_firstname.BackColor = SystemColors.HighlightText;
+            textbox_firstname.BackColor = SystemColors.ButtonFace;
+            textbox_firstname.BorderStyle = BorderStyle.None;
             textbox_firstname.Font = new Font("Gadugi", 8F);
-            textbox_firstname.Location = new Point(25, 313);
-            textbox_firstname.Margin = new Padding(4);
+            textbox_firstname.Location = new Point(21, 148);
             textbox_firstname.Multiline = true;
             textbox_firstname.Name = "textbox_firstname";
-            textbox_firstname.PlaceholderText = "First Name:";
-            textbox_firstname.Size = new Size(215, 52);
+            textbox_firstname.PlaceholderText = "(e.g. John)";
+            textbox_firstname.Size = new Size(180, 40);
             textbox_firstname.TabIndex = 3;
             // 
             // textbox_middlename
             // 
-            textbox_middlename.BackColor = SystemColors.HighlightText;
+            textbox_middlename.BackColor = SystemColors.ButtonFace;
+            textbox_middlename.BorderStyle = BorderStyle.None;
             textbox_middlename.Font = new Font("Gadugi", 8F);
-            textbox_middlename.Location = new Point(248, 313);
-            textbox_middlename.Margin = new Padding(4);
+            textbox_middlename.Location = new Point(207, 148);
             textbox_middlename.Multiline = true;
             textbox_middlename.Name = "textbox_middlename";
-            textbox_middlename.PlaceholderText = "Middle Name:";
-            textbox_middlename.Size = new Size(162, 52);
+            textbox_middlename.PlaceholderText = "(Optional)";
+            textbox_middlename.Size = new Size(150, 40);
             textbox_middlename.TabIndex = 4;
             // 
             // textbox_lastname
             // 
-            textbox_lastname.BackColor = SystemColors.HighlightText;
+            textbox_lastname.BackColor = SystemColors.ButtonFace;
+            textbox_lastname.BorderStyle = BorderStyle.None;
             textbox_lastname.Font = new Font("Gadugi", 8F);
-            textbox_lastname.Location = new Point(418, 313);
-            textbox_lastname.Margin = new Padding(4);
+            textbox_lastname.Location = new Point(363, 148);
             textbox_lastname.Multiline = true;
             textbox_lastname.Name = "textbox_lastname";
-            textbox_lastname.PlaceholderText = "Last Name:";
-            textbox_lastname.Size = new Size(248, 52);
+            textbox_lastname.PlaceholderText = "(e.g. Doe)";
+            textbox_lastname.Size = new Size(170, 40);
             textbox_lastname.TabIndex = 5;
             // 
             // textbox_address
             // 
-            textbox_address.BackColor = SystemColors.HighlightText;
+            textbox_address.BackColor = SystemColors.ButtonFace;
+            textbox_address.BorderStyle = BorderStyle.None;
             textbox_address.Font = new Font("Gadugi", 8F);
-            textbox_address.Location = new Point(25, 389);
-            textbox_address.Margin = new Padding(4);
+            textbox_address.Location = new Point(19, 244);
             textbox_address.Multiline = true;
             textbox_address.Name = "textbox_address";
-            textbox_address.PlaceholderText = "Address:";
-            textbox_address.Size = new Size(641, 52);
+            textbox_address.PlaceholderText = "(e.g. Bagong Pag-asa, Sitio Awa, Catalunan Grande, Davao City.)";
+            textbox_address.Size = new Size(514, 60);
             textbox_address.TabIndex = 6;
             // 
             // textbox_contact
             // 
-            textbox_contact.BackColor = SystemColors.HighlightText;
+            textbox_contact.BackColor = SystemColors.ButtonFace;
+            textbox_contact.BorderStyle = BorderStyle.None;
             textbox_contact.Font = new Font("Gadugi", 8F);
-            textbox_contact.Location = new Point(25, 462);
-            textbox_contact.Margin = new Padding(4);
+            textbox_contact.Location = new Point(19, 342);
             textbox_contact.Multiline = true;
             textbox_contact.Name = "textbox_contact";
-            textbox_contact.PlaceholderText = "Contact:";
-            textbox_contact.Size = new Size(641, 53);
+            textbox_contact.PlaceholderText = "(e.g. 09123456789)";
+            textbox_contact.Size = new Size(514, 40);
             textbox_contact.TabIndex = 7;
             // 
             // button_register
             // 
             button_register.BackColor = Color.RoyalBlue;
             button_register.FlatAppearance.BorderSize = 0;
+            button_register.FlatStyle = FlatStyle.Flat;
             button_register.Font = new Font("Gadugi", 10F);
             button_register.ForeColor = SystemColors.ButtonHighlight;
-            button_register.Location = new Point(540, 612);
-            button_register.Margin = new Padding(4);
+            button_register.Location = new Point(419, 487);
             button_register.Name = "button_register";
-            button_register.Size = new Size(143, 36);
+            button_register.Size = new Size(114, 29);
             button_register.TabIndex = 9;
             button_register.Text = "Register";
             button_register.UseVisualStyleBackColor = false;
@@ -154,26 +159,26 @@
             // 
             // button_cancel
             // 
+            button_cancel.BackColor = SystemColors.ButtonFace;
             button_cancel.FlatAppearance.BorderSize = 0;
             button_cancel.FlatStyle = FlatStyle.Flat;
             button_cancel.Font = new Font("Gadugi", 10F);
-            button_cancel.Location = new Point(393, 612);
-            button_cancel.Margin = new Padding(4);
+            button_cancel.Location = new Point(301, 487);
             button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(118, 36);
+            button_cancel.Size = new Size(94, 29);
             button_cancel.TabIndex = 10;
             button_cancel.Text = "Cancel";
-            button_cancel.UseVisualStyleBackColor = true;
+            button_cancel.UseVisualStyleBackColor = false;
             button_cancel.Click += button_cancel_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.ActiveCaption;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(11, 168);
+            pictureBox1.Location = new Point(9, 134);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(541, 489);
+            pictureBox1.Size = new Size(433, 391);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
@@ -182,8 +187,13 @@
             // 
             panel3.BackColor = SystemColors.ButtonHighlight;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(label6);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label3);
+            panel3.Controls.Add(label5);
             panel3.Controls.Add(button_cancel);
             panel3.Controls.Add(textbox_contact);
             panel3.Controls.Add(button_register);
@@ -193,57 +203,31 @@
             panel3.Controls.Add(textbox_lastname);
             panel3.Controls.Add(textbox_firstname);
             panel3.Controls.Add(textbox_middlename);
-            panel3.Location = new Point(565, 11);
+            panel3.Location = new Point(452, 9);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(704, 664);
+            panel3.Size = new Size(564, 532);
             panel3.TabIndex = 14;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = SystemColors.ButtonHighlight;
-            label4.Font = new Font("Gadugi", 14F, FontStyle.Bold);
-            label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(6, 249);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(310, 34);
-            label4.TabIndex = 12;
-            label4.Text = "Enter Personal Details:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = SystemColors.ButtonHighlight;
-            label3.Font = new Font("Gadugi", 14F, FontStyle.Bold);
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(6, 76);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(216, 34);
-            label3.TabIndex = 11;
-            label3.Text = "User/Password:";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(110, 20);
+            label1.Location = new Point(88, 16);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(116, 33);
+            label1.Size = new Size(98, 28);
             label1.TabIndex = 13;
             label1.Text = "Register";
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(5, 20);
+            pictureBox2.Location = new Point(4, 16);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(101, 89);
+            pictureBox2.Size = new Size(81, 71);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 12;
             pictureBox2.TabStop = false;
@@ -253,10 +237,10 @@
             label2.BackColor = SystemColors.ActiveCaption;
             label2.Font = new Font("Gadugi", 8F);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(110, 67);
+            label2.Location = new Point(88, 54);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(422, 42);
+            label2.Size = new Size(338, 34);
             label2.TabIndex = 14;
             label2.Text = "\"Join us today and experience hassle-free laundry service!\"";
             // 
@@ -264,25 +248,108 @@
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Location = new Point(5, 11);
+            panel1.Location = new Point(4, 9);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(556, 124);
+            panel1.Size = new Size(446, 100);
             panel1.TabIndex = 12;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = SystemColors.ActiveCaptionText;
+            label5.Location = new Point(34, 44);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(84, 19);
+            label5.TabIndex = 15;
+            label5.Text = "Username:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(297, 44);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(80, 19);
+            label3.TabIndex = 16;
+            label3.Text = "Password:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(34, 126);
+            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(90, 19);
+            label4.TabIndex = 17;
+            label4.Text = "First Name:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.Location = new Point(221, 126);
+            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(107, 19);
+            label6.TabIndex = 18;
+            label6.Text = "Middle Name:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ActiveCaptionText;
+            label7.Location = new Point(372, 126);
+            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(88, 19);
+            label7.TabIndex = 19;
+            label7.Text = "Last Name:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.Location = new Point(34, 222);
+            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(70, 19);
+            label8.TabIndex = 20;
+            label8.Text = "Address:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Gadugi", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ActiveCaptionText;
+            label9.Location = new Point(34, 320);
+            label9.Margin = new Padding(2, 0, 2, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(67, 19);
+            label9.TabIndex = 21;
+            label9.Text = "Contact:";
             // 
             // RegisterForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1262, 673);
+            ClientSize = new Size(1010, 538);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             Controls.Add(panel3);
-            Margin = new Padding(4);
             Name = "RegisterForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegisterForm";
@@ -308,11 +375,16 @@
         private Button button_cancel;
         private PictureBox pictureBox1;
         private Panel panel3;
-        private Label label4;
-        private Label label3;
         private Label label1;
         private PictureBox pictureBox2;
         private Label label2;
         private Panel panel1;
+        private Label label5;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Label label4;
+        private Label label3;
     }
 }
