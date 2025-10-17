@@ -65,13 +65,14 @@
             button_archives.BackColor = SystemColors.Highlight;
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
             button_archives.Location = new Point(500, 13);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(106, 40);
+            button_archives.Size = new Size(110, 40);
             button_archives.TabIndex = 23;
             button_archives.Text = "🗂️ Archives";
+            button_archives.UseMnemonic = false;
             button_archives.UseVisualStyleBackColor = false;
             button_archives.Click += button_archives_Click;
             // 

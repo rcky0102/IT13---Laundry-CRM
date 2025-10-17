@@ -55,7 +55,7 @@
             // 
             textbox_username.BackColor = SystemColors.ButtonFace;
             textbox_username.BorderStyle = BorderStyle.None;
-            textbox_username.Font = new Font("Gadugi", 8F);
+            textbox_username.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_username.Location = new Point(29, 48);
             textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
@@ -67,7 +67,7 @@
             // 
             textbox_password.BackColor = SystemColors.ButtonFace;
             textbox_password.BorderStyle = BorderStyle.None;
-            textbox_password.Font = new Font("Gadugi", 8F);
+            textbox_password.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_password.Location = new Point(366, 48);
             textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
@@ -80,7 +80,7 @@
             // 
             textbox_firstname.BackColor = SystemColors.ButtonFace;
             textbox_firstname.BorderStyle = BorderStyle.None;
-            textbox_firstname.Font = new Font("Gadugi", 8F);
+            textbox_firstname.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_firstname.Location = new Point(30, 145);
             textbox_firstname.Multiline = true;
             textbox_firstname.Name = "textbox_firstname";
@@ -92,7 +92,7 @@
             // 
             textbox_middlename.BackColor = SystemColors.ButtonFace;
             textbox_middlename.BorderStyle = BorderStyle.None;
-            textbox_middlename.Font = new Font("Gadugi", 8F);
+            textbox_middlename.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_middlename.Location = new Point(250, 145);
             textbox_middlename.Multiline = true;
             textbox_middlename.Name = "textbox_middlename";
@@ -104,7 +104,7 @@
             // 
             textbox_lastname.BackColor = SystemColors.ButtonFace;
             textbox_lastname.BorderStyle = BorderStyle.None;
-            textbox_lastname.Font = new Font("Gadugi", 8F);
+            textbox_lastname.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_lastname.Location = new Point(466, 145);
             textbox_lastname.Multiline = true;
             textbox_lastname.Name = "textbox_lastname";
@@ -116,7 +116,7 @@
             // 
             textbox_address.BackColor = SystemColors.ButtonFace;
             textbox_address.BorderStyle = BorderStyle.None;
-            textbox_address.Font = new Font("Gadugi", 8F);
+            textbox_address.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_address.Location = new Point(28, 231);
             textbox_address.Multiline = true;
             textbox_address.Name = "textbox_address";
@@ -128,7 +128,7 @@
             // 
             textbox_contact.BackColor = SystemColors.ButtonFace;
             textbox_contact.BorderStyle = BorderStyle.None;
-            textbox_contact.Font = new Font("Gadugi", 8F);
+            textbox_contact.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_contact.Location = new Point(28, 339);
             textbox_contact.Multiline = true;
             textbox_contact.Name = "textbox_contact";
@@ -139,11 +139,11 @@
             // combobox_role
             // 
             combobox_role.BackColor = SystemColors.ButtonFace;
-            combobox_role.Font = new Font("Gadugi", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            combobox_role.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             combobox_role.FormattingEnabled = true;
             combobox_role.Location = new Point(29, 422);
             combobox_role.Name = "combobox_role";
-            combobox_role.Size = new Size(272, 24);
+            combobox_role.Size = new Size(272, 27);
             combobox_role.TabIndex = 7;
             // 
             // button_save
@@ -151,7 +151,7 @@
             button_save.BackColor = SystemColors.HotTrack;
             button_save.FlatAppearance.BorderSize = 0;
             button_save.FlatStyle = FlatStyle.Flat;
-            button_save.Font = new Font("Gadugi", 8F);
+            button_save.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_save.ForeColor = SystemColors.HighlightText;
             button_save.Location = new Point(566, 456);
             button_save.Name = "button_save";
@@ -166,7 +166,7 @@
             button_cancel.BackColor = SystemColors.ButtonFace;
             button_cancel.FlatAppearance.BorderSize = 0;
             button_cancel.FlatStyle = FlatStyle.Flat;
-            button_cancel.Font = new Font("Gadugi", 8F);
+            button_cancel.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_cancel.Location = new Point(451, 456);
             button_cancel.Name = "button_cancel";
             button_cancel.Size = new Size(100, 35);

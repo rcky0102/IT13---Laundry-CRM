@@ -138,9 +138,11 @@
             // button_save
             // 
             button_save.BackColor = SystemColors.HotTrack;
-            button_save.Font = new Font("Cascadia Code", 9F);
+            button_save.FlatAppearance.BorderSize = 0;
+            button_save.FlatStyle = FlatStyle.Flat;
+            button_save.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_save.ForeColor = SystemColors.ControlLightLight;
-            button_save.Location = new Point(228, 441);
+            button_save.Location = new Point(360, 440);
             button_save.Margin = new Padding(4, 3, 4, 3);
             button_save.Name = "button_save";
             button_save.Size = new Size(100, 35);
@@ -154,9 +156,9 @@
             button_cancel.BackColor = SystemColors.ButtonFace;
             button_cancel.FlatAppearance.BorderSize = 0;
             button_cancel.FlatStyle = FlatStyle.Flat;
-            button_cancel.Font = new Font("Cascadia Code", 9F);
+            button_cancel.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_cancel.ForeColor = SystemColors.ActiveCaptionText;
-            button_cancel.Location = new Point(360, 443);
+            button_cancel.Location = new Point(228, 442);
             button_cancel.Margin = new Padding(4, 3, 4, 3);
             button_cancel.Name = "button_cancel";
             button_cancel.Size = new Size(100, 30);

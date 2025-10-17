@@ -109,11 +109,11 @@
             button_archives.BackColor = SystemColors.Highlight;
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
-            button_archives.Location = new Point(414, 16);
+            button_archives.Location = new Point(434, 17);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(117, 40);
+            button_archives.Size = new Size(110, 40);
             button_archives.TabIndex = 8;
             button_archives.Text = "🗂 Archives";
             button_archives.UseVisualStyleBackColor = false;
@@ -125,13 +125,13 @@
             add.BackColor = SystemColors.Highlight;
             add.FlatAppearance.BorderSize = 0;
             add.FlatStyle = FlatStyle.Flat;
-            add.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            add.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             add.ForeColor = SystemColors.ButtonHighlight;
-            add.Location = new Point(537, 16);
+            add.Location = new Point(557, 17);
             add.Name = "add";
-            add.Size = new Size(150, 40);
+            add.Size = new Size(130, 40);
             add.TabIndex = 9;
-            add.Text = "➕ Add Customer";
+            add.Text = "➕ Add Status";
             add.UseVisualStyleBackColor = false;
             add.Click += add_Click;
             // 

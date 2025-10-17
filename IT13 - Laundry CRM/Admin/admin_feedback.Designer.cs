@@ -51,25 +51,27 @@
             // textbox_search
             // 
             textbox_search.BackColor = SystemColors.ButtonHighlight;
+            textbox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_search.Location = new Point(21, 13);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
+            textbox_search.PlaceholderText = "🔎 Search via subject, sender name, or date";
             textbox_search.Size = new Size(350, 35);
             textbox_search.TabIndex = 20;
             // 
             // button_archives
             // 
             button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button_archives.BackColor = Color.CornflowerBlue;
+            button_archives.BackColor = SystemColors.Highlight;
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
-            button_archives.Location = new Point(698, 10);
+            button_archives.Location = new Point(634, 13);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(50, 40);
+            button_archives.Size = new Size(110, 40);
             button_archives.TabIndex = 21;
-            button_archives.Text = "🗂️";
+            button_archives.Text = "🗂️ Archives";
             button_archives.UseVisualStyleBackColor = false;
             button_archives.Click += button_archives_Click;
             // 

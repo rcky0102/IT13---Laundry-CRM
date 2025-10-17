@@ -41,11 +41,13 @@
             // 
             button_add.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_add.BackColor = SystemColors.Highlight;
-            button_add.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_add.FlatAppearance.BorderSize = 0;
+            button_add.FlatStyle = FlatStyle.Flat;
+            button_add.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_add.ForeColor = SystemColors.ButtonHighlight;
-            button_add.Location = new Point(681, 15);
+            button_add.Location = new Point(701, 12);
             button_add.Name = "button_add";
-            button_add.Size = new Size(132, 40);
+            button_add.Size = new Size(110, 40);
             button_add.TabIndex = 2;
             button_add.Text = "➕ Add User";
             button_add.UseVisualStyleBackColor = false;
@@ -92,13 +94,13 @@
             button_archives.BackColor = SystemColors.Highlight;
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_archives.ForeColor = SystemColors.ButtonFace;
-            button_archives.Location = new Point(625, 15);
+            button_archives.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.ForeColor = SystemColors.ButtonHighlight;
+            button_archives.Location = new Point(585, 12);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(50, 40);
+            button_archives.Size = new Size(110, 40);
             button_archives.TabIndex = 9;
-            button_archives.Text = "🗂️";
+            button_archives.Text = "🗂️ Archives";
             button_archives.UseVisualStyleBackColor = false;
             button_archives.Click += button_archives_Click;
             // 
@@ -107,7 +109,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(274, 23);
+            label1.Location = new Point(285, 23);
             label1.Name = "label1";
             label1.Size = new Size(71, 17);
             label1.TabIndex = 8;
@@ -119,7 +121,7 @@
             textBox_search.Location = new Point(18, 12);
             textBox_search.Multiline = true;
             textBox_search.Name = "textBox_search";
-            textBox_search.PlaceholderText = "🔎 Search here...";
+            textBox_search.PlaceholderText = "🔎 Search via first name, last name, or ID";
             textBox_search.Size = new Size(250, 40);
             textBox_search.TabIndex = 6;
             textBox_search.TextChanged += textBox_search_TextChanged;
@@ -129,7 +131,7 @@
             cmbRoleFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRoleFilter.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbRoleFilter.Items.AddRange(new object[] { "All", "Admin", "Staff", "Customer" });
-            cmbRoleFilter.Location = new Point(351, 18);
+            cmbRoleFilter.Location = new Point(362, 18);
             cmbRoleFilter.Name = "cmbRoleFilter";
             cmbRoleFilter.Size = new Size(120, 27);
             cmbRoleFilter.TabIndex = 7;

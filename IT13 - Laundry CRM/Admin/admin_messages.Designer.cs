@@ -106,13 +106,13 @@
             // 
             // textbox_searchUser
             // 
-            textbox_searchUser.BackColor = SystemColors.ButtonFace;
-            textbox_searchUser.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_searchUser.Location = new Point(26, 13);
+            textbox_searchUser.BackColor = SystemColors.ButtonHighlight;
+            textbox_searchUser.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textbox_searchUser.Location = new Point(27, 24);
             textbox_searchUser.Multiline = true;
             textbox_searchUser.Name = "textbox_searchUser";
             textbox_searchUser.PlaceholderText = "🔍 Search via first name, last name, or role";
-            textbox_searchUser.Size = new Size(350, 40);
+            textbox_searchUser.Size = new Size(350, 35);
             textbox_searchUser.TabIndex = 8;
             textbox_searchUser.TextChanged += textbox_searchUser_TextChanged;
             // 
