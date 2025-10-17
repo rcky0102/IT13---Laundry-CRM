@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             label3 = new Label();
             label4 = new Label();
             label_welcome = new Label();
@@ -273,104 +273,115 @@
             // chart1
             // 
             chart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
             chart1.Location = new Point(224, 514);
             chart1.Margin = new Padding(2, 4, 2, 4);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series1.ChartArea = "ChartArea1";
-            series1.IsXValueIndexed = true;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 2;
-            chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.IsXValueIndexed = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 2;
+            chart1.Series.Add(series2);
             chart1.Size = new Size(1676, 328);
             chart1.TabIndex = 40;
             chart1.Text = "chart1";
-            title1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            title1.Name = "Title1";
-            title1.Text = "Customer";
-            chart1.Titles.Add(title1);
+            title2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
+            title2.Name = "Title1";
+            title2.Text = "Customer";
+            chart1.Titles.Add(title2);
             chart1.Click += chart1_Click;
             // 
             // dateTimePickerTo
             // 
-            dateTimePickerTo.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dateTimePickerTo.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dateTimePickerTo.Format = DateTimePickerFormat.Short;
-            dateTimePickerTo.Location = new Point(191, 15);
+            dateTimePickerTo.Location = new Point(191, 21);
             dateTimePickerTo.Margin = new Padding(4, 2, 4, 2);
             dateTimePickerTo.Name = "dateTimePickerTo";
-            dateTimePickerTo.Size = new Size(124, 30);
+            dateTimePickerTo.Size = new Size(124, 27);
             dateTimePickerTo.TabIndex = 43;
             // 
             // dateTimePickerFrom
             // 
             dateTimePickerFrom.CalendarMonthBackground = SystemColors.GradientActiveCaption;
             dateTimePickerFrom.CalendarTitleBackColor = SystemColors.GradientActiveCaption;
-            dateTimePickerFrom.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dateTimePickerFrom.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dateTimePickerFrom.Format = DateTimePickerFormat.Short;
-            dateTimePickerFrom.Location = new Point(21, 15);
+            dateTimePickerFrom.Location = new Point(22, 21);
             dateTimePickerFrom.Margin = new Padding(4, 2, 4, 2);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
-            dateTimePickerFrom.Size = new Size(124, 30);
+            dateTimePickerFrom.Size = new Size(124, 27);
             dateTimePickerFrom.TabIndex = 42;
             dateTimePickerFrom.ValueChanged += dateTimePickerFrom_ValueChanged;
             // 
             // buttonLoadGraph
             // 
             buttonLoadGraph.BackColor = SystemColors.Highlight;
+            buttonLoadGraph.FlatAppearance.BorderSize = 0;
+            buttonLoadGraph.FlatStyle = FlatStyle.Flat;
             buttonLoadGraph.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonLoadGraph.ForeColor = SystemColors.ButtonHighlight;
-            buttonLoadGraph.Location = new Point(323, 15);
+            buttonLoadGraph.Location = new Point(333, 20);
             buttonLoadGraph.Margin = new Padding(4, 2, 4, 2);
             buttonLoadGraph.Name = "buttonLoadGraph";
-            buttonLoadGraph.Size = new Size(112, 33);
+            buttonLoadGraph.Size = new Size(90, 30);
             buttonLoadGraph.TabIndex = 41;
-            buttonLoadGraph.Text = "Load";
+            buttonLoadGraph.Text = "Custom";
             buttonLoadGraph.UseVisualStyleBackColor = false;
             buttonLoadGraph.Click += buttonLoadGraph_Click;
             // 
             // buttonLoadGraphMonth
             // 
             buttonLoadGraphMonth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphMonth.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonLoadGraphMonth.Location = new Point(1556, 15);
+            buttonLoadGraphMonth.BackColor = SystemColors.ButtonHighlight;
+            buttonLoadGraphMonth.FlatAppearance.BorderSize = 0;
+            buttonLoadGraphMonth.FlatStyle = FlatStyle.Flat;
+            buttonLoadGraphMonth.Font = new Font("Gadugi", 9F);
+            buttonLoadGraphMonth.Location = new Point(1588, 21);
             buttonLoadGraphMonth.Margin = new Padding(4);
             buttonLoadGraphMonth.Name = "buttonLoadGraphMonth";
-            buttonLoadGraphMonth.Size = new Size(104, 33);
+            buttonLoadGraphMonth.Size = new Size(70, 30);
             buttonLoadGraphMonth.TabIndex = 46;
             buttonLoadGraphMonth.Text = "Month";
-            buttonLoadGraphMonth.UseVisualStyleBackColor = true;
+            buttonLoadGraphMonth.UseVisualStyleBackColor = false;
             buttonLoadGraphMonth.Click += buttonLoadGraphMonth_Click;
             // 
             // buttonLoadGraphWeek
             // 
             buttonLoadGraphWeek.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphWeek.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonLoadGraphWeek.Location = new Point(1434, 15);
+            buttonLoadGraphWeek.BackColor = SystemColors.ButtonHighlight;
+            buttonLoadGraphWeek.FlatAppearance.BorderSize = 0;
+            buttonLoadGraphWeek.FlatStyle = FlatStyle.Flat;
+            buttonLoadGraphWeek.Font = new Font("Gadugi", 9F);
+            buttonLoadGraphWeek.Location = new Point(1510, 21);
             buttonLoadGraphWeek.Margin = new Padding(4);
             buttonLoadGraphWeek.Name = "buttonLoadGraphWeek";
-            buttonLoadGraphWeek.Size = new Size(112, 33);
+            buttonLoadGraphWeek.Size = new Size(70, 30);
             buttonLoadGraphWeek.TabIndex = 45;
             buttonLoadGraphWeek.Text = "Week";
-            buttonLoadGraphWeek.UseVisualStyleBackColor = true;
+            buttonLoadGraphWeek.UseVisualStyleBackColor = false;
             buttonLoadGraphWeek.Click += buttonLoadGraphWeek_Click;
             // 
             // buttonLoadGraphToday
             // 
             buttonLoadGraphToday.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphToday.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonLoadGraphToday.Location = new Point(1342, 16);
+            buttonLoadGraphToday.BackColor = SystemColors.ButtonHighlight;
+            buttonLoadGraphToday.FlatAppearance.BorderSize = 0;
+            buttonLoadGraphToday.FlatStyle = FlatStyle.Flat;
+            buttonLoadGraphToday.Font = new Font("Gadugi", 9F);
+            buttonLoadGraphToday.Location = new Point(1429, 21);
             buttonLoadGraphToday.Margin = new Padding(4);
             buttonLoadGraphToday.Name = "buttonLoadGraphToday";
-            buttonLoadGraphToday.Size = new Size(85, 33);
+            buttonLoadGraphToday.Size = new Size(70, 30);
             buttonLoadGraphToday.TabIndex = 44;
             buttonLoadGraphToday.Text = "Today";
-            buttonLoadGraphToday.UseVisualStyleBackColor = true;
+            buttonLoadGraphToday.UseVisualStyleBackColor = false;
             buttonLoadGraphToday.Click += buttonLoadGraphToday_Click;
             // 
             // panel3
@@ -757,7 +768,7 @@
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label23.Location = new Point(154, 15);
+            label23.Location = new Point(154, 20);
             label23.Margin = new Padding(4, 0, 4, 0);
             label23.Name = "label23";
             label23.Size = new Size(31, 27);

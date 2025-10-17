@@ -16,9 +16,11 @@ namespace IT13___Laundry_CRM
         {
             InitializeComponent();
 
-            MakeRounded(textbox_username);
-            MakeRounded(textbox_password);
+            //MakeRounded(textbox_username);
+            //MakeRounded(textbox_password);
             MakeRounded(login_button);
+            MakeRounded(panel1);
+            MakeRounded(panel2);
         }
 
         private void MakeRounded(Control control, int radius = 20)
@@ -171,7 +173,12 @@ namespace IT13___Laundry_CRM
             RegisterForm reg = new RegisterForm();
             reg.Show();
 
-            this.Hide();    
+            this.Hide();
+        }
+
+        private void textbox_password_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

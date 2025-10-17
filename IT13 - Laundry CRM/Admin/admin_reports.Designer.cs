@@ -76,6 +76,8 @@
             // 
             btnGenerateReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGenerateReport.BackColor = SystemColors.Highlight;
+            btnGenerateReport.FlatAppearance.BorderSize = 0;
+            btnGenerateReport.FlatStyle = FlatStyle.Flat;
             btnGenerateReport.ForeColor = SystemColors.ButtonHighlight;
             btnGenerateReport.Location = new Point(595, 13);
             btnGenerateReport.Margin = new Padding(2, 3, 2, 3);
@@ -125,6 +127,8 @@
             // 
             btnExportPDF.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnExportPDF.BackColor = Color.MediumSeaGreen;
+            btnExportPDF.FlatAppearance.BorderSize = 0;
+            btnExportPDF.FlatStyle = FlatStyle.Flat;
             btnExportPDF.ForeColor = SystemColors.ButtonHighlight;
             btnExportPDF.Location = new Point(748, 13);
             btnExportPDF.Margin = new Padding(2, 3, 2, 3);

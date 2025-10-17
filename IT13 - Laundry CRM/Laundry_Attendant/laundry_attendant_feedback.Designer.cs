@@ -37,11 +37,12 @@
             // 
             // textbox_search
             // 
-            textbox_search.BackColor = SystemColors.ButtonFace;
+            textbox_search.BackColor = SystemColors.ButtonHighlight;
             textbox_search.BorderStyle = BorderStyle.None;
             textbox_search.Location = new Point(17, 17);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
+            textbox_search.PlaceholderText = "🔎 Search via subject, sender name, or date";
             textbox_search.Size = new Size(350, 35);
             textbox_search.TabIndex = 15;
             textbox_search.TextChanged += textbox_search_TextChanged;
@@ -62,22 +63,22 @@
             // 
             button_archives.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button_archives.BackColor = SystemColors.Highlight;
-            button_archives.FlatAppearance.BorderSize = 2;
+            button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_archives.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
-            button_archives.Location = new Point(556, 13);
+            button_archives.Location = new Point(500, 13);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(50, 40);
+            button_archives.Size = new Size(106, 40);
             button_archives.TabIndex = 23;
-            button_archives.Text = "🗂️";
+            button_archives.Text = "🗂️ Archives";
             button_archives.UseVisualStyleBackColor = false;
             button_archives.Click += button_archives_Click;
             // 
             // listbox_feedback
             // 
             listbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            listbox_feedback.BackColor = SystemColors.ButtonFace;
+            listbox_feedback.BackColor = SystemColors.ButtonHighlight;
             listbox_feedback.BorderStyle = BorderStyle.None;
             listbox_feedback.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listbox_feedback.FormattingEnabled = true;

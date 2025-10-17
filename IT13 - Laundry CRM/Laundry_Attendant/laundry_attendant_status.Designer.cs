@@ -55,7 +55,7 @@
             // 
             table_customers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             table_customers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            table_customers.BackgroundColor = SystemColors.ButtonFace;
+            table_customers.BackgroundColor = SystemColors.ButtonHighlight;
             table_customers.BorderStyle = BorderStyle.None;
             table_customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             table_customers.Location = new Point(218, 153);
@@ -109,13 +109,13 @@
             button_archives.BackColor = SystemColors.Highlight;
             button_archives.FlatAppearance.BorderSize = 0;
             button_archives.FlatStyle = FlatStyle.Flat;
-            button_archives.Font = new Font("Gadugi", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_archives.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
-            button_archives.Location = new Point(481, 16);
+            button_archives.Location = new Point(414, 16);
             button_archives.Name = "button_archives";
-            button_archives.Size = new Size(50, 40);
+            button_archives.Size = new Size(117, 40);
             button_archives.TabIndex = 8;
-            button_archives.Text = "🗂";
+            button_archives.Text = "🗂 Archives";
             button_archives.UseVisualStyleBackColor = false;
             button_archives.Click += button_archives_Click;
             // 
@@ -125,7 +125,7 @@
             add.BackColor = SystemColors.Highlight;
             add.FlatAppearance.BorderSize = 0;
             add.FlatStyle = FlatStyle.Flat;
-            add.Font = new Font("Gadugi", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            add.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             add.ForeColor = SystemColors.ButtonHighlight;
             add.Location = new Point(537, 16);
             add.Name = "add";
@@ -152,14 +152,14 @@
             // 
             // textbox_search
             // 
-            textbox_search.BackColor = SystemColors.ButtonFace;
+            textbox_search.BackColor = SystemColors.ButtonHighlight;
             textbox_search.BorderStyle = BorderStyle.None;
             textbox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_search.Location = new Point(19, 14);
+            textbox_search.Location = new Point(19, 17);
             textbox_search.Margin = new Padding(2);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
-            textbox_search.PlaceholderText = "🔎 Search here...";
+            textbox_search.PlaceholderText = "🔎 Search via first name or last name";
             textbox_search.Size = new Size(350, 35);
             textbox_search.TabIndex = 13;
             textbox_search.TextChanged += textbox_search_TextChanged;
@@ -185,10 +185,10 @@
             // 
             lblTotalRecords.Anchor = AnchorStyles.Bottom;
             lblTotalRecords.AutoSize = true;
-            lblTotalRecords.Font = new Font("Gadugi", 10.2F);
-            lblTotalRecords.Location = new Point(294, 24);
+            lblTotalRecords.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotalRecords.Location = new Point(300, 25);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(130, 20);
+            lblTotalRecords.Size = new Size(115, 19);
             lblTotalRecords.TabIndex = 5;
             lblTotalRecords.Text = "Total Records: 0";
             // 
@@ -196,22 +196,22 @@
             // 
             cmbPageSize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             cmbPageSize.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPageSize.Font = new Font("Gadugi", 10.2F);
+            cmbPageSize.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbPageSize.FormattingEnabled = true;
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "20", "50" });
             cmbPageSize.Location = new Point(469, 17);
             cmbPageSize.Name = "cmbPageSize";
-            cmbPageSize.Size = new Size(60, 28);
+            cmbPageSize.Size = new Size(60, 27);
             cmbPageSize.TabIndex = 6;
             cmbPageSize.SelectedIndexChanged += cmbPageSize_SelectedIndexChanged;
             // 
             // lblPageInfo
             // 
             lblPageInfo.AutoSize = true;
-            lblPageInfo.Font = new Font("Gadugi", 10.2F);
-            lblPageInfo.Location = new Point(191, 22);
+            lblPageInfo.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPageInfo.Location = new Point(193, 23);
             lblPageInfo.Name = "lblPageInfo";
-            lblPageInfo.Size = new Size(95, 20);
+            lblPageInfo.Size = new Size(84, 19);
             lblPageInfo.TabIndex = 4;
             lblPageInfo.Text = "Page 1 of 1";
             // 
@@ -219,7 +219,9 @@
             // 
             btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLast.BackColor = SystemColors.GradientActiveCaption;
-            btnLast.Font = new Font("Gadugi", 10.2F);
+            btnLast.FlatAppearance.BorderSize = 0;
+            btnLast.FlatStyle = FlatStyle.Flat;
+            btnLast.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLast.Location = new Point(625, 15);
             btnLast.Name = "btnLast";
             btnLast.Size = new Size(60, 30);
@@ -231,8 +233,10 @@
             // btnNext
             // 
             btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnNext.BackColor = SystemColors.GradientInactiveCaption;
-            btnNext.Font = new Font("Gadugi", 10.2F);
+            btnNext.BackColor = SystemColors.GradientActiveCaption;
+            btnNext.FlatAppearance.BorderSize = 0;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnNext.Location = new Point(544, 15);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(75, 30);
@@ -243,8 +247,10 @@
             // 
             // btnPrevious
             // 
-            btnPrevious.BackColor = SystemColors.GradientInactiveCaption;
-            btnPrevious.Font = new Font("Gadugi", 10.2F);
+            btnPrevious.BackColor = SystemColors.GradientActiveCaption;
+            btnPrevious.FlatAppearance.BorderSize = 0;
+            btnPrevious.FlatStyle = FlatStyle.Flat;
+            btnPrevious.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPrevious.Location = new Point(83, 17);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Size = new Size(93, 30);
@@ -256,7 +262,9 @@
             // btnFirst
             // 
             btnFirst.BackColor = SystemColors.GradientActiveCaption;
-            btnFirst.Font = new Font("Gadugi", 10.2F);
+            btnFirst.FlatAppearance.BorderSize = 0;
+            btnFirst.FlatStyle = FlatStyle.Flat;
+            btnFirst.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnFirst.Location = new Point(17, 17);
             btnFirst.Name = "btnFirst";
             btnFirst.Size = new Size(60, 30);

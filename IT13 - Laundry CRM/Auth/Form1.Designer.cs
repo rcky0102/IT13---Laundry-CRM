@@ -38,6 +38,8 @@
             textbox_username = new TextBox();
             label1 = new Label();
             linklabel_reg = new LinkLabel();
+            panel1 = new Panel();
+            panel2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -114,14 +116,15 @@
             textbox_password.BackColor = SystemColors.ButtonHighlight;
             textbox_password.BorderStyle = BorderStyle.None;
             textbox_password.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_password.Location = new Point(112, 309);
+            textbox_password.Location = new Point(129, 325);
             textbox_password.Margin = new Padding(3, 2, 3, 2);
             textbox_password.Multiline = true;
             textbox_password.Name = "textbox_password";
             textbox_password.PasswordChar = '*';
             textbox_password.PlaceholderText = "🗝️ Password:";
-            textbox_password.Size = new Size(354, 40);
+            textbox_password.Size = new Size(313, 23);
             textbox_password.TabIndex = 5;
+            textbox_password.TextChanged += textbox_password_TextChanged;
             // 
             // textbox_username
             // 
@@ -130,12 +133,11 @@
             textbox_username.BorderStyle = BorderStyle.None;
             textbox_username.Font = new Font("Gadugi", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_username.ForeColor = SystemColors.ActiveCaptionText;
-            textbox_username.Location = new Point(112, 241);
+            textbox_username.Location = new Point(129, 255);
             textbox_username.Margin = new Padding(3, 2, 3, 2);
-            textbox_username.Multiline = true;
             textbox_username.Name = "textbox_username";
             textbox_username.PlaceholderText = "👤 Username:";
-            textbox_username.Size = new Size(354, 40);
+            textbox_username.Size = new Size(313, 23);
             textbox_username.TabIndex = 4;
             // 
             // label1
@@ -163,6 +165,22 @@
             linklabel_reg.Text = "Register";
             linklabel_reg.LinkClicked += linklabel_reg_LinkClicked;
             // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Location = new Point(112, 241);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(354, 50);
+            panel1.TabIndex = 14;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.ButtonHighlight;
+            panel2.Location = new Point(112, 312);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(354, 50);
+            panel2.TabIndex = 15;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 22F);
@@ -171,15 +189,17 @@
             BackColor = SystemColors.ActiveCaption;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1262, 673);
+            Controls.Add(textbox_username);
             Controls.Add(linklabel_reg);
             Controls.Add(label4);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(login_button);
             Controls.Add(textbox_password);
-            Controls.Add(textbox_username);
             Controls.Add(label2);
             Controls.Add(label3);
+            Controls.Add(panel1);
+            Controls.Add(panel2);
             Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
@@ -201,5 +221,7 @@
         private TextBox textbox_username;
         private Label label1;
         private LinkLabel linklabel_reg;
+        private Panel panel1;
+        private Panel panel2;
     }
 }

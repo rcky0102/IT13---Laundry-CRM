@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             label_pending = new Label();
             label_washing = new Label();
             label_drying = new Label();
@@ -47,6 +47,7 @@
             panel4 = new Panel();
             label5 = new Label();
             panel5 = new Panel();
+            label12 = new Label();
             label7 = new Label();
             panel6 = new Panel();
             label6 = new Label();
@@ -69,7 +70,6 @@
             panel2 = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            label12 = new Label();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -242,6 +242,16 @@
             panel5.Size = new Size(236, 107);
             panel5.TabIndex = 15;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(186, 62);
+            label12.Margin = new Padding(1, 0, 1, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(31, 22);
+            label12.TabIndex = 21;
+            label12.Text = "💨";
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -386,6 +396,8 @@
             // buttonLoadGraph
             // 
             buttonLoadGraph.BackColor = SystemColors.Highlight;
+            buttonLoadGraph.FlatAppearance.BorderSize = 0;
+            buttonLoadGraph.FlatStyle = FlatStyle.Flat;
             buttonLoadGraph.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonLoadGraph.ForeColor = SystemColors.ButtonHighlight;
             buttonLoadGraph.Location = new Point(255, 13);
@@ -401,6 +413,7 @@
             // 
             dateTimePickerFrom.CalendarMonthBackground = SystemColors.GradientActiveCaption;
             dateTimePickerFrom.CalendarTitleBackColor = SystemColors.GradientActiveCaption;
+            dateTimePickerFrom.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dateTimePickerFrom.Format = DateTimePickerFormat.Short;
             dateTimePickerFrom.Location = new Point(17, 13);
             dateTimePickerFrom.Margin = new Padding(3, 2, 3, 2);
@@ -410,6 +423,7 @@
             // 
             // dateTimePickerTo
             // 
+            dateTimePickerTo.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dateTimePickerTo.Format = DateTimePickerFormat.Short;
             dateTimePickerTo.Location = new Point(149, 13);
             dateTimePickerTo.Margin = new Padding(3, 2, 3, 2);
@@ -420,64 +434,77 @@
             // buttonLoadGraphToday
             // 
             buttonLoadGraphToday.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphToday.Location = new Point(1093, 10);
+            buttonLoadGraphToday.BackColor = SystemColors.ButtonHighlight;
+            buttonLoadGraphToday.FlatAppearance.BorderSize = 0;
+            buttonLoadGraphToday.FlatStyle = FlatStyle.Flat;
+            buttonLoadGraphToday.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonLoadGraphToday.Location = new Point(1131, 13);
             buttonLoadGraphToday.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphToday.Name = "buttonLoadGraphToday";
-            buttonLoadGraphToday.Size = new Size(68, 30);
+            buttonLoadGraphToday.Size = new Size(70, 30);
             buttonLoadGraphToday.TabIndex = 26;
             buttonLoadGraphToday.Text = "Today";
-            buttonLoadGraphToday.UseVisualStyleBackColor = true;
+            buttonLoadGraphToday.UseVisualStyleBackColor = false;
             buttonLoadGraphToday.Click += buttonLoadGraphToday_Click;
             // 
             // buttonLoadGraphWeek
             // 
             buttonLoadGraphWeek.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphWeek.Location = new Point(1172, 10);
+            buttonLoadGraphWeek.BackColor = SystemColors.ButtonHighlight;
+            buttonLoadGraphWeek.FlatAppearance.BorderSize = 0;
+            buttonLoadGraphWeek.FlatStyle = FlatStyle.Flat;
+            buttonLoadGraphWeek.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonLoadGraphWeek.Location = new Point(1207, 13);
             buttonLoadGraphWeek.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphWeek.Name = "buttonLoadGraphWeek";
-            buttonLoadGraphWeek.Size = new Size(90, 30);
+            buttonLoadGraphWeek.Size = new Size(70, 30);
             buttonLoadGraphWeek.TabIndex = 27;
             buttonLoadGraphWeek.Text = "Week";
-            buttonLoadGraphWeek.UseVisualStyleBackColor = true;
+            buttonLoadGraphWeek.UseVisualStyleBackColor = false;
             buttonLoadGraphWeek.Click += buttonLoadGraphWeek_Click;
             // 
             // buttonLoadGraphMonth
             // 
             buttonLoadGraphMonth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonLoadGraphMonth.Location = new Point(1268, 10);
+            buttonLoadGraphMonth.BackColor = SystemColors.ButtonHighlight;
+            buttonLoadGraphMonth.FlatAppearance.BorderSize = 0;
+            buttonLoadGraphMonth.FlatStyle = FlatStyle.Flat;
+            buttonLoadGraphMonth.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonLoadGraphMonth.ForeColor = SystemColors.ControlText;
+            buttonLoadGraphMonth.Location = new Point(1283, 13);
             buttonLoadGraphMonth.Margin = new Padding(3, 4, 3, 4);
             buttonLoadGraphMonth.Name = "buttonLoadGraphMonth";
-            buttonLoadGraphMonth.Size = new Size(83, 30);
+            buttonLoadGraphMonth.Size = new Size(70, 30);
             buttonLoadGraphMonth.TabIndex = 28;
             buttonLoadGraphMonth.Text = "Month";
-            buttonLoadGraphMonth.UseVisualStyleBackColor = true;
+            buttonLoadGraphMonth.UseVisualStyleBackColor = false;
             buttonLoadGraphMonth.Click += buttonLoadGraphMonth_Click;
             // 
             // chart1
             // 
             chart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            chartArea2.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea2);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend2.Name = "Legend1";
-            chart1.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea3);
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend3.Name = "Legend1";
+            chart1.Legends.Add(legend3);
             chart1.Location = new Point(226, 464);
             chart1.Margin = new Padding(3, 4, 3, 4);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series2.ChartArea = "ChartArea1";
-            series2.IsXValueIndexed = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 2;
-            chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.IsXValueIndexed = true;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.YValuesPerPoint = 2;
+            chart1.Series.Add(series3);
             chart1.Size = new Size(1368, 170);
             chart1.TabIndex = 29;
             chart1.Text = "chart1";
-            title2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            title2.Name = "Title1";
-            title2.Text = "Customer";
-            chart1.Titles.Add(title2);
+            title3.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
+            title3.Name = "Title1";
+            title3.Text = "Customer";
+            chart1.Titles.Add(title3);
             // 
             // panel2
             // 
@@ -515,16 +542,6 @@
             pictureBox1.Size = new Size(1370, 23);
             pictureBox1.TabIndex = 31;
             pictureBox1.TabStop = false;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(186, 62);
-            label12.Margin = new Padding(1, 0, 1, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(31, 22);
-            label12.TabIndex = 21;
-            label12.Text = "💨";
             // 
             // Laundry_Attendant_Dashboard
             // 

@@ -27,15 +27,15 @@ namespace IT13___Laundry_CRM.Admin
             MakeRounded(btnGenerateReport);
             MakeRounded(btnExportPDF);
             MakeRounded(label5);
-            MakeRounded(dgvRoles);
+            //MakeRounded(dgvRoles);
             MakeRounded(label1);
-            MakeRounded(dgvMonthlyUsers);
+            //MakeRounded(dgvMonthlyUsers);
             MakeRounded(label2);
-            MakeRounded(dgvArchived);
+            //MakeRounded(dgvArchived);
             MakeRounded(label3);
-            MakeRounded(dgvGrowth);
+            //MakeRounded(dgvGrowth);
             MakeRounded(label4);
-            MakeRounded(dgvAddress);
+            //MakeRounded(dgvAddress);
 
         }
 
