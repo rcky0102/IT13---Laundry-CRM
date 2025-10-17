@@ -68,7 +68,7 @@
             textbox_message.BackColor = SystemColors.ButtonFace;
             textbox_message.BorderStyle = BorderStyle.None;
             textbox_message.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_message.Location = new Point(627, 465);
+            textbox_message.Location = new Point(627, 492);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
             textbox_message.Size = new Size(251, 40);
@@ -82,7 +82,7 @@
             button_send.FlatStyle = FlatStyle.Flat;
             button_send.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(884, 465);
+            button_send.Location = new Point(884, 492);
             button_send.Name = "button_send";
             button_send.Size = new Size(50, 40);
             button_send.TabIndex = 10;
@@ -100,7 +100,7 @@
             listbox_messages.ItemHeight = 27;
             listbox_messages.Location = new Point(627, 81);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(307, 378);
+            listbox_messages.Size = new Size(307, 405);
             listbox_messages.TabIndex = 9;
             listbox_messages.DrawItem += listbox_messages_DrawItem_1;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem_1;

@@ -58,23 +58,25 @@
             textbox_message.BackColor = SystemColors.ButtonFace;
             textbox_message.BorderStyle = BorderStyle.None;
             textbox_message.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_message.Location = new Point(627, 414);
+            textbox_message.Location = new Point(627, 435);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
-            textbox_message.Size = new Size(157, 50);
+            textbox_message.Size = new Size(207, 40);
             textbox_message.TabIndex = 16;
             // 
             // button_send
             // 
             button_send.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_send.BackColor = SystemColors.HotTrack;
-            button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_send.FlatAppearance.BorderSize = 0;
+            button_send.FlatStyle = FlatStyle.Flat;
+            button_send.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(790, 414);
+            button_send.Location = new Point(840, 437);
             button_send.Name = "button_send";
-            button_send.Size = new Size(100, 50);
+            button_send.Size = new Size(50, 40);
             button_send.TabIndex = 15;
-            button_send.Text = "📩 Send";
+            button_send.Text = "📩";
             button_send.UseVisualStyleBackColor = false;
             button_send.Click += button_send_Click_1;
             // 
@@ -88,7 +90,7 @@
             listbox_messages.ItemHeight = 27;
             listbox_messages.Location = new Point(627, 80);
             listbox_messages.Name = "listbox_messages";
-            listbox_messages.Size = new Size(263, 324);
+            listbox_messages.Size = new Size(263, 351);
             listbox_messages.TabIndex = 14;
             listbox_messages.DrawItem += listbox_messages_DrawItem_1;
             listbox_messages.MeasureItem += listbox_messages_MeasureItem_1;
