@@ -71,20 +71,22 @@
             textbox_message.Location = new Point(627, 465);
             textbox_message.Multiline = true;
             textbox_message.Name = "textbox_message";
-            textbox_message.Size = new Size(201, 47);
+            textbox_message.Size = new Size(251, 40);
             textbox_message.TabIndex = 11;
             // 
             // button_send
             // 
             button_send.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button_send.BackColor = SystemColors.HotTrack;
-            button_send.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_send.FlatAppearance.BorderSize = 0;
+            button_send.FlatStyle = FlatStyle.Flat;
+            button_send.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_send.ForeColor = SystemColors.ButtonHighlight;
-            button_send.Location = new Point(834, 462);
+            button_send.Location = new Point(884, 465);
             button_send.Name = "button_send";
-            button_send.Size = new Size(100, 50);
+            button_send.Size = new Size(50, 40);
             button_send.TabIndex = 10;
-            button_send.Text = "📩 Send";
+            button_send.Text = "📩 ";
             button_send.UseVisualStyleBackColor = false;
             button_send.Click += button_send_Click_1;
             // 

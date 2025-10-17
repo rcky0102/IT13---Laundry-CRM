@@ -44,10 +44,10 @@
             textbox_subject.BorderStyle = BorderStyle.None;
             textbox_subject.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_subject.ForeColor = SystemColors.WindowText;
-            textbox_subject.Location = new Point(451, 108);
+            textbox_subject.Location = new Point(286, 131);
             textbox_subject.Multiline = true;
             textbox_subject.Name = "textbox_subject";
-            textbox_subject.Size = new Size(162, 33);
+            textbox_subject.Size = new Size(93, 33);
             textbox_subject.TabIndex = 1;
             // 
             // textbox_feedback
@@ -56,23 +56,23 @@
             textbox_feedback.BackColor = SystemColors.ButtonFace;
             textbox_feedback.BorderStyle = BorderStyle.None;
             textbox_feedback.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_feedback.Location = new Point(365, 194);
+            textbox_feedback.Location = new Point(261, 222);
             textbox_feedback.Multiline = true;
             textbox_feedback.Name = "textbox_feedback";
-            textbox_feedback.Size = new Size(330, 142);
+            textbox_feedback.Size = new Size(199, 190);
             textbox_feedback.TabIndex = 2;
             // 
             // listbox_feedback
             // 
-            listbox_feedback.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            listbox_feedback.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             listbox_feedback.BackColor = SystemColors.GradientInactiveCaption;
             listbox_feedback.BorderStyle = BorderStyle.None;
             listbox_feedback.Font = new Font("Gadugi", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listbox_feedback.FormattingEnabled = true;
             listbox_feedback.ItemHeight = 21;
-            listbox_feedback.Location = new Point(219, 436);
+            listbox_feedback.Location = new Point(527, 131);
             listbox_feedback.Name = "listbox_feedback";
-            listbox_feedback.Size = new Size(677, 105);
+            listbox_feedback.Size = new Size(370, 420);
             listbox_feedback.TabIndex = 3;
             listbox_feedback.DrawItem += listbox_feedback_DrawItem;
             listbox_feedback.SelectedIndexChanged += listbox_feedback_SelectedIndexChanged;
@@ -82,10 +82,11 @@
             button_send.Anchor = AnchorStyles.Bottom;
             button_send.BackColor = SystemColors.MenuHighlight;
             button_send.FlatAppearance.BorderSize = 0;
-            button_send.Font = new Font("Gadugi", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_send.Location = new Point(422, 353);
+            button_send.FlatStyle = FlatStyle.Flat;
+            button_send.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_send.Location = new Point(286, 435);
             button_send.Name = "button_send";
-            button_send.Size = new Size(191, 50);
+            button_send.Size = new Size(150, 40);
             button_send.TabIndex = 4;
             button_send.Text = "📩 Submit Feedback";
             button_send.UseVisualStyleBackColor = false;
@@ -97,7 +98,7 @@
             label5.BackColor = SystemColors.Window;
             label5.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(469, 81);
+            label5.Location = new Point(296, 107);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(85, 24);
@@ -106,11 +107,11 @@
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(245, 409);
+            label6.Location = new Point(551, 94);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(216, 24);
@@ -122,7 +123,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(386, 167);
+            label1.Location = new Point(276, 194);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(103, 24);

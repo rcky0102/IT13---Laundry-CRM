@@ -88,13 +88,13 @@ namespace IT13___Laundry_CRM
             this.Hide();
         }
 
-        private void button_customers_Click(object sender, EventArgs e)
-        {
-            ActivateButton(button_customers);
-            var customers = new Laundry_Attendant_CustomersForm();
-            customers.Show();
-            this.Hide();
-        }
+        //private void button_customers_Click(object sender, EventArgs e)
+        //{
+        //    ActivateButton(button_customers);
+        //    var customers = new Laundry_Attendant_CustomersForm();
+        //    customers.Show();
+        //    this.Hide();
+        //}
 
         private void button_status_Click(object sender, EventArgs e)
         {

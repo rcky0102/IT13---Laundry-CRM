@@ -148,9 +148,9 @@
             label1.Location = new Point(190, 534);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(200, 18);
+            label1.Size = new Size(184, 18);
             label1.TabIndex = 7;
-            label1.Text = "Doesn't have an account?";
+            label1.Text = "Don't have an account?";
             // 
             // linklabel_reg
             // 

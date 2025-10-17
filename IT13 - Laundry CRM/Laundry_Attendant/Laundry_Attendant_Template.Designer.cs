@@ -35,7 +35,6 @@
             button3 = new Button();
             button_dashboard = new Button();
             button_status = new Button();
-            button_customers = new Button();
             panel3 = new Panel();
             button_notif = new Button();
             pictureBox2 = new PictureBox();
@@ -55,7 +54,6 @@
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button_dashboard);
             panel1.Controls.Add(button_status);
-            panel1.Controls.Add(button_customers);
             panel1.Dock = DockStyle.Left;
             panel1.Font = new Font("Cascadia Code SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             panel1.ForeColor = SystemColors.ButtonHighlight;
@@ -86,7 +84,7 @@
             button_feedback.FlatAppearance.BorderSize = 0;
             button_feedback.FlatStyle = FlatStyle.Flat;
             button_feedback.Font = new Font("Gadugi", 12F);
-            button_feedback.Location = new Point(5, 220);
+            button_feedback.Location = new Point(5, 170);
             button_feedback.Margin = new Padding(2);
             button_feedback.Name = "button_feedback";
             button_feedback.Size = new Size(195, 50);
@@ -101,7 +99,7 @@
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Gadugi", 12F);
-            button3.Location = new Point(5, 170);
+            button3.Location = new Point(5, 120);
             button3.Margin = new Padding(2);
             button3.Name = "button3";
             button3.Size = new Size(195, 50);
@@ -131,7 +129,7 @@
             button_status.FlatAppearance.BorderSize = 0;
             button_status.FlatStyle = FlatStyle.Flat;
             button_status.Font = new Font("Gadugi", 12F);
-            button_status.Location = new Point(5, 120);
+            button_status.Location = new Point(5, 70);
             button_status.Name = "button_status";
             button_status.Size = new Size(195, 50);
             button_status.TabIndex = 1;
@@ -139,20 +137,6 @@
             button_status.TextAlign = ContentAlignment.MiddleLeft;
             button_status.UseVisualStyleBackColor = true;
             button_status.Click += button_status_Click;
-            // 
-            // button_customers
-            // 
-            button_customers.FlatAppearance.BorderSize = 0;
-            button_customers.FlatStyle = FlatStyle.Flat;
-            button_customers.Font = new Font("Gadugi", 12F);
-            button_customers.Location = new Point(5, 70);
-            button_customers.Name = "button_customers";
-            button_customers.Size = new Size(195, 50);
-            button_customers.TabIndex = 0;
-            button_customers.Text = "👤 Customers";
-            button_customers.TextAlign = ContentAlignment.MiddleLeft;
-            button_customers.UseVisualStyleBackColor = true;
-            button_customers.Click += button_customers_Click;
             // 
             // panel3
             // 
@@ -243,7 +227,6 @@
         #endregion
 
         private Panel panel1;
-        private Button button_customers;
         private Button button_status;
         private Button button_dashboard;
         private Button button3;
