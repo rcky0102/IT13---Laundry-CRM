@@ -37,10 +37,13 @@
             // button_unarchive
             // 
             button_unarchive.BackColor = SystemColors.Highlight;
+            button_unarchive.FlatAppearance.BorderSize = 0;
+            button_unarchive.FlatStyle = FlatStyle.Flat;
+            button_unarchive.Font = new Font("Gadugi", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_unarchive.ForeColor = SystemColors.ButtonHighlight;
-            button_unarchive.Location = new Point(717, 32);
+            button_unarchive.Location = new Point(720, 20);
             button_unarchive.Name = "button_unarchive";
-            button_unarchive.Size = new Size(39, 33);
+            button_unarchive.Size = new Size(50, 40);
             button_unarchive.TabIndex = 1;
             button_unarchive.Text = "📤";
             button_unarchive.UseVisualStyleBackColor = false;
@@ -50,7 +53,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(49, 25);
+            label1.Location = new Point(36, 25);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(239, 35);
@@ -61,6 +64,7 @@
             // 
             dataGridView_archived.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView_archived.BackgroundColor = SystemColors.GradientInactiveCaption;
+            dataGridView_archived.BorderStyle = BorderStyle.None;
             dataGridView_archived.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_archived.Location = new Point(12, 71);
             dataGridView_archived.Name = "dataGridView_archived";

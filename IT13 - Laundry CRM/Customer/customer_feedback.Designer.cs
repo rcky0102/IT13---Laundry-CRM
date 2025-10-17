@@ -44,10 +44,10 @@
             textbox_subject.BorderStyle = BorderStyle.None;
             textbox_subject.Font = new Font("Gadugi", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_subject.ForeColor = SystemColors.WindowText;
-            textbox_subject.Location = new Point(343, 131);
+            textbox_subject.Location = new Point(353, 131);
             textbox_subject.Multiline = true;
             textbox_subject.Name = "textbox_subject";
-            textbox_subject.Size = new Size(93, 33);
+            textbox_subject.Size = new Size(40, 33);
             textbox_subject.TabIndex = 1;
             // 
             // textbox_feedback
@@ -98,7 +98,7 @@
             label5.BackColor = SystemColors.Window;
             label5.Font = new Font("Gadugi", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(353, 107);
+            label5.Location = new Point(375, 107);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(85, 24);

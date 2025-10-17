@@ -21,6 +21,7 @@ namespace IT13___Laundry_CRM.Admin
             InitializeComponent();
 
             MakeRounded(dataGridView_archived);
+            MakeRounded(button_unarchive);
         }
 
         private void archived_users_Load(object sender, EventArgs e)

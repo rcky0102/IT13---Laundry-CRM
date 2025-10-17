@@ -109,6 +109,7 @@
             // textbox_searchUser
             // 
             textbox_searchUser.BackColor = SystemColors.ButtonHighlight;
+            textbox_searchUser.BorderStyle = BorderStyle.None;
             textbox_searchUser.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textbox_searchUser.Location = new Point(27, 24);
             textbox_searchUser.Multiline = true;
