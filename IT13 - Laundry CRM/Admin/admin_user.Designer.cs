@@ -142,20 +142,22 @@
             cmbPageSize.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             cmbPageSize.BackColor = SystemColors.ButtonFace;
             cmbPageSize.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPageSize.Font = new Font("Gadugi", 10.2F);
+            cmbPageSize.Font = new Font("Gadugi", 9F);
             cmbPageSize.FormattingEnabled = true;
             cmbPageSize.Items.AddRange(new object[] { "5", "10", "25", "50" });
-            cmbPageSize.Location = new Point(596, 17);
+            cmbPageSize.Location = new Point(600, 21);
             cmbPageSize.Name = "cmbPageSize";
-            cmbPageSize.Size = new Size(60, 28);
+            cmbPageSize.Size = new Size(60, 27);
             cmbPageSize.TabIndex = 11;
             // 
             // btnLast
             // 
             btnLast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLast.BackColor = SystemColors.GradientActiveCaption;
-            btnLast.Font = new Font("Gadugi", 10.2F);
-            btnLast.Location = new Point(751, 15);
+            btnLast.FlatAppearance.BorderSize = 0;
+            btnLast.FlatStyle = FlatStyle.Flat;
+            btnLast.Font = new Font("Gadugi", 9F);
+            btnLast.Location = new Point(755, 19);
             btnLast.Name = "btnLast";
             btnLast.Size = new Size(60, 30);
             btnLast.TabIndex = 10;
@@ -165,9 +167,11 @@
             // btnNext
             // 
             btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnNext.BackColor = SystemColors.GradientInactiveCaption;
-            btnNext.Font = new Font("Gadugi", 10.2F);
-            btnNext.Location = new Point(673, 15);
+            btnNext.BackColor = SystemColors.GradientActiveCaption;
+            btnNext.FlatAppearance.BorderSize = 0;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Font = new Font("Gadugi", 9F);
+            btnNext.Location = new Point(677, 19);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(72, 30);
             btnNext.TabIndex = 9;
@@ -178,10 +182,10 @@
             // 
             lblTotalRecords.Anchor = AnchorStyles.Bottom;
             lblTotalRecords.AutoSize = true;
-            lblTotalRecords.Font = new Font("Gadugi", 10.2F);
-            lblTotalRecords.Location = new Point(383, 20);
+            lblTotalRecords.Font = new Font("Gadugi", 9F);
+            lblTotalRecords.Location = new Point(385, 24);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(130, 20);
+            lblTotalRecords.Size = new Size(115, 19);
             lblTotalRecords.TabIndex = 8;
             lblTotalRecords.Text = "Total Records: 0";
             // 
@@ -189,19 +193,21 @@
             // 
             lblPageInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblPageInfo.AutoSize = true;
-            lblPageInfo.Font = new Font("Gadugi", 10.2F);
-            lblPageInfo.Location = new Point(204, 20);
+            lblPageInfo.Font = new Font("Gadugi", 9F);
+            lblPageInfo.Location = new Point(204, 24);
             lblPageInfo.Name = "lblPageInfo";
-            lblPageInfo.Size = new Size(95, 20);
+            lblPageInfo.Size = new Size(84, 19);
             lblPageInfo.TabIndex = 7;
             lblPageInfo.Text = "Page 1 of 1";
             // 
             // btnPrevious
             // 
             btnPrevious.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnPrevious.BackColor = SystemColors.GradientInactiveCaption;
-            btnPrevious.Font = new Font("Gadugi", 10.2F);
-            btnPrevious.Location = new Point(84, 14);
+            btnPrevious.BackColor = SystemColors.GradientActiveCaption;
+            btnPrevious.FlatAppearance.BorderSize = 0;
+            btnPrevious.FlatStyle = FlatStyle.Flat;
+            btnPrevious.Font = new Font("Gadugi", 9F);
+            btnPrevious.Location = new Point(84, 18);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Size = new Size(102, 30);
             btnPrevious.TabIndex = 6;
@@ -212,8 +218,10 @@
             // 
             btnFirst.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnFirst.BackColor = SystemColors.GradientActiveCaption;
-            btnFirst.Font = new Font("Gadugi", 10.2F);
-            btnFirst.Location = new Point(18, 14);
+            btnFirst.FlatAppearance.BorderSize = 0;
+            btnFirst.FlatStyle = FlatStyle.Flat;
+            btnFirst.Font = new Font("Gadugi", 9F);
+            btnFirst.Location = new Point(18, 18);
             btnFirst.Name = "btnFirst";
             btnFirst.Size = new Size(60, 30);
             btnFirst.TabIndex = 5;
@@ -224,7 +232,6 @@
             // 
             panelPagination.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelPagination.BackColor = SystemColors.GradientInactiveCaption;
-            panelPagination.BorderStyle = BorderStyle.Fixed3D;
             panelPagination.Controls.Add(btnFirst);
             panelPagination.Controls.Add(cmbPageSize);
             panelPagination.Controls.Add(btnPrevious);

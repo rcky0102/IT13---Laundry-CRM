@@ -86,6 +86,8 @@ namespace IT13___Laundry_CRM.Admin
                 ).ToList();
             }
 
+            feedbacks = feedbacks.OrderByDescending(fb => fb.created_at).ToList();
+
             currentFeedbacks = feedbacks;
 
             listbox_feedback.Items.Clear();
