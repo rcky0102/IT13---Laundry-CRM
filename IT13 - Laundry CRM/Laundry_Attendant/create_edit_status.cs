@@ -115,7 +115,7 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
                 "Drying",
                 "Ironing/Folding",
                 "Ready for Pickup",
-                "Completed/Picked Up",
+                "Completed",
                 "Cancelled",
                 "On Hold"
             };

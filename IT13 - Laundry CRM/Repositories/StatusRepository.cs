@@ -515,9 +515,15 @@ namespace IT13___Laundry_CRM.Repositories
                 conn.Open();
 
                 string query = @"
-            SELECT status, COUNT(*) as total
-            FROM Status
-            GROUP BY status";
+            SELECT s.status, COUNT(*) AS total
+            FROM Status s
+            INNER JOIN (
+                SELECT user_id, MAX(created_at) AS latest_created
+                FROM Status
+                WHERE is_archived = 0
+                GROUP BY user_id
+            ) latest ON s.user_id = latest.user_id AND s.created_at = latest.latest_created
+            GROUP BY s.status;";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -535,6 +541,7 @@ namespace IT13___Laundry_CRM.Repositories
 
             return counts;
         }
+
 
 
 
