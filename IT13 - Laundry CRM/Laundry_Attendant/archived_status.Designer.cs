@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             button_unarchive = new Button();
-            label1 = new Label();
             dataGridView_archived = new DataGridView();
+            txtSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView_archived).BeginInit();
             SuspendLayout();
             // 
@@ -49,17 +49,6 @@
             button_unarchive.UseVisualStyleBackColor = false;
             button_unarchive.Click += button_unarchive_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(36, 25);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(239, 35);
-            label1.TabIndex = 2;
-            label1.Text = "Manage Archive";
-            // 
             // dataGridView_archived
             // 
             dataGridView_archived.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -76,14 +65,27 @@
             dataGridView_archived.TabIndex = 0;
             dataGridView_archived.CellContentClick += dataGridView_archived_CellContentClick;
             // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = SystemColors.ButtonFace;
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(39, 30);
+            txtSearch.Multiline = true;
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "🔎 Search via first name, last name, or ID";
+            txtSearch.Size = new Size(250, 30);
+            txtSearch.TabIndex = 8;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
             // archived_status
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(782, 482);
+            Controls.Add(txtSearch);
             Controls.Add(dataGridView_archived);
-            Controls.Add(label1);
             Controls.Add(button_unarchive);
             Name = "archived_status";
             StartPosition = FormStartPosition.CenterScreen;
@@ -96,7 +98,7 @@
 
         #endregion
         private Button button_unarchive;
-        private Label label1;
         private DataGridView dataGridView_archived;
+        private TextBox txtSearch;
     }
 }

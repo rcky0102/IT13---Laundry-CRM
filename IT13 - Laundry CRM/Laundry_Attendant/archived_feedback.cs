@@ -22,11 +22,13 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
             MakeRounded(dataGridView_archived);
             MakeRounded(button_unarchive);
+            MakeRounded(txtSearch);
         }
 
         private void archived_feedback_Load(object sender, EventArgs e)
         {
             LoadArchivedFeedbacks();
+            txtSearch.TextChanged += txtSearch_TextChanged;
         }
 
         private void MakeRounded(Control control, int radius = 20)
@@ -104,5 +106,52 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         {
 
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            SearchArchivedFeedbacks(txtSearch.Text.Trim());
+        }
+
+        private void SearchArchivedFeedbacks(string searchText)
+        {
+            var feedbacks = feedbackRepository.GetArchivedFeedbacks();
+
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                searchText = searchText.ToLower();
+
+                feedbacks = feedbacks.Where(fb =>
+                    (!string.IsNullOrEmpty(fb.subject) && fb.subject.ToLower().Contains(searchText)) ||
+                    (fb.User != null && !string.IsNullOrEmpty(fb.User.first_name) && fb.User.first_name.ToLower().Contains(searchText)) ||
+                    (fb.User != null && !string.IsNullOrEmpty(fb.User.last_name) && fb.User.last_name.ToLower().Contains(searchText)) ||
+                    // Search by month name, day, or year
+                    fb.created_at.ToString("MMMM d, yyyy").ToLower().Contains(searchText) ||
+                    fb.created_at.ToString("MMMM").ToLower().Contains(searchText) ||
+                    fb.created_at.ToString("d").Contains(searchText) ||
+                    fb.created_at.ToString("yyyy").Contains(searchText)
+                ).ToList();
+            }
+
+            if (feedbacks.Any())
+            {
+                var displayList = feedbacks.Select(fb => new
+                {
+                    fb.feedback_id,
+                    Sender = fb.User != null
+                        ? $"{fb.User.first_name} {(string.IsNullOrEmpty(fb.User.middle_name) ? "" : fb.User.middle_name + " ")}{fb.User.last_name}"
+                        : $"User {fb.user_id}",
+                    fb.subject,
+                    fb.feedback,
+                    Date = fb.created_at.ToString("g")
+                }).ToList();
+
+                dataGridView_archived.DataSource = displayList;
+            }
+            else
+            {
+                dataGridView_archived.DataSource = null;
+            }
+        }
+
     }
 }

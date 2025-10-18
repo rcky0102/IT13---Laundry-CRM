@@ -30,7 +30,7 @@
         {
             button_unarchive = new Button();
             dataGridView_archived = new DataGridView();
-            label1 = new Label();
+            txtSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView_archived).BeginInit();
             SuspendLayout();
             // 
@@ -64,17 +64,18 @@
             dataGridView_archived.Size = new Size(758, 395);
             dataGridView_archived.TabIndex = 0;
             // 
-            // label1
+            // txtSearch
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Cascadia Code SemiBold", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(34, 25);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(239, 35);
-            label1.TabIndex = 6;
-            label1.Text = "Manage Archive";
-            label1.Click += label1_Click;
+            txtSearch.BackColor = SystemColors.ButtonFace;
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(35, 30);
+            txtSearch.Multiline = true;
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "🔎 Search via subject, first name, last name, or date";
+            txtSearch.Size = new Size(250, 30);
+            txtSearch.TabIndex = 9;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // archived_feedback
             // 
@@ -82,8 +83,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(782, 482);
+            Controls.Add(txtSearch);
             Controls.Add(dataGridView_archived);
-            Controls.Add(label1);
             Controls.Add(button_unarchive);
             Name = "archived_feedback";
             StartPosition = FormStartPosition.CenterScreen;
@@ -97,6 +98,6 @@
         #endregion
         private Button button_unarchive;
         private DataGridView dataGridView_archived;
-        private Label label1;
+        private TextBox txtSearch;
     }
 }

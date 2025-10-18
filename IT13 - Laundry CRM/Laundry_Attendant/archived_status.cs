@@ -22,11 +22,13 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
 
             MakeRounded(dataGridView_archived);
             MakeRounded(button_unarchive);
+            MakeRounded(txtSearch);
         }
 
         private void archived_status_Load(object sender, EventArgs e)
         {
             LoadArchivedStatuses();
+            txtSearch.TextChanged += txtSearch_TextChanged;
         }
 
         private void MakeRounded(Control control, int radius = 20)
@@ -93,5 +95,46 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
         {
 
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            SearchArchivedStatuses(txtSearch.Text.Trim());
+        }
+        private void SearchArchivedStatuses(string searchText)
+        {
+            var statuses = statusRepository.GetArchivedStatuses();
+
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                searchText = searchText.ToLower();
+
+                statuses = statuses.Where(s =>
+                    s.status_id.ToString().Contains(searchText) ||
+                    (!string.IsNullOrEmpty(s.status) && s.status.ToLower().Contains(searchText)) ||
+                    (!string.IsNullOrEmpty(s.User.first_name) && s.User.first_name.ToLower().Contains(searchText)) ||
+                    (!string.IsNullOrEmpty(s.User.last_name) && s.User.last_name.ToLower().Contains(searchText)) ||
+                    (!string.IsNullOrEmpty(s.User.middle_name) && s.User.middle_name.ToLower().Contains(searchText))
+                ).ToList();
+            }
+
+            if (statuses.Any())
+            {
+                var displayList = statuses.Select(s => new
+                {
+                    s.status_id,
+                    Customer = $"{s.User.first_name} {(string.IsNullOrEmpty(s.User.middle_name) ? "" : s.User.middle_name + " ")}{s.User.last_name}",
+                    s.status,
+                    Date = s.created_at.ToString("g")
+                }).ToList();
+
+                dataGridView_archived.DataSource = displayList;
+            }
+            else
+            {
+                dataGridView_archived.DataSource = null;
+            }
+        }
+
+
     }
 }
