@@ -38,9 +38,21 @@ namespace IT13___Laundry_CRM.Admin
 
         private void admin_user_Load(object sender, EventArgs e)
         {
+            InitializeRoleFilter();
             InitializePaginationControls();
             LoadUsers();
         }
+
+        private void InitializeRoleFilter()
+        {
+            cmbRoleFilter.Items.Clear();
+            cmbRoleFilter.Items.Add("All");
+            cmbRoleFilter.Items.Add("customer");
+            cmbRoleFilter.Items.Add("laundry_attendant");
+
+            cmbRoleFilter.SelectedIndex = 0; // Default to "All"
+        }
+
 
         private void MakeRounded(Control control, int radius = 20)
         {
