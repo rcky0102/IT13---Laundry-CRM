@@ -155,12 +155,12 @@
             textbox_search.BackColor = SystemColors.ButtonHighlight;
             textbox_search.BorderStyle = BorderStyle.None;
             textbox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_search.Location = new Point(19, 17);
+            textbox_search.Location = new Point(19, 20);
             textbox_search.Margin = new Padding(2);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.PlaceholderText = "🔎 Search via first name or last name";
-            textbox_search.Size = new Size(350, 35);
+            textbox_search.Size = new Size(350, 30);
             textbox_search.TabIndex = 13;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 

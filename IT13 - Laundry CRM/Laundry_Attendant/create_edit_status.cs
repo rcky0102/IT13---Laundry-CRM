@@ -27,6 +27,8 @@ namespace IT13___Laundry_CRM.Laundry_Attendant
             MakeRounded(panel1);
             MakeRounded(combobox_customer);
             MakeRounded(combobox_status);
+            MakeRounded(button_save);
+            MakeRounded(button_cancel);
 
         }
 

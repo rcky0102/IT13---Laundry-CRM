@@ -45,7 +45,7 @@
             button_add.FlatStyle = FlatStyle.Flat;
             button_add.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_add.ForeColor = SystemColors.ButtonHighlight;
-            button_add.Location = new Point(701, 12);
+            button_add.Location = new Point(705, 12);
             button_add.Name = "button_add";
             button_add.Size = new Size(110, 40);
             button_add.TabIndex = 2;
@@ -76,7 +76,6 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.GradientActiveCaption;
-            panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(button_archives);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(textBox_search);
@@ -96,7 +95,7 @@
             button_archives.FlatStyle = FlatStyle.Flat;
             button_archives.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
-            button_archives.Location = new Point(585, 12);
+            button_archives.Location = new Point(589, 12);
             button_archives.Name = "button_archives";
             button_archives.Size = new Size(110, 40);
             button_archives.TabIndex = 9;
@@ -117,12 +116,13 @@
             // 
             // textBox_search
             // 
+            textBox_search.BorderStyle = BorderStyle.None;
             textBox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox_search.Location = new Point(18, 12);
+            textBox_search.Location = new Point(18, 18);
             textBox_search.Multiline = true;
             textBox_search.Name = "textBox_search";
             textBox_search.PlaceholderText = "🔎 Search via first name, last name, or ID";
-            textBox_search.Size = new Size(250, 40);
+            textBox_search.Size = new Size(250, 30);
             textBox_search.TabIndex = 6;
             textBox_search.TextChanged += textBox_search_TextChanged;
             // 

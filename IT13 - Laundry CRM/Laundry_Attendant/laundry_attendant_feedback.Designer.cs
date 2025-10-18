@@ -43,7 +43,7 @@
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.PlaceholderText = "🔎 Search via subject, sender name, or date";
-            textbox_search.Size = new Size(350, 35);
+            textbox_search.Size = new Size(350, 30);
             textbox_search.TabIndex = 15;
             textbox_search.TextChanged += textbox_search_TextChanged;
             // 

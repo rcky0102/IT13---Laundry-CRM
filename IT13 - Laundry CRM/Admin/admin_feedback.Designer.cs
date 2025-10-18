@@ -51,12 +51,13 @@
             // textbox_search
             // 
             textbox_search.BackColor = SystemColors.ButtonHighlight;
+            textbox_search.BorderStyle = BorderStyle.None;
             textbox_search.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_search.Location = new Point(21, 13);
+            textbox_search.Location = new Point(21, 21);
             textbox_search.Multiline = true;
             textbox_search.Name = "textbox_search";
             textbox_search.PlaceholderText = "🔎 Search via subject, sender name, or date";
-            textbox_search.Size = new Size(350, 35);
+            textbox_search.Size = new Size(350, 30);
             textbox_search.TabIndex = 20;
             // 
             // button_archives
@@ -67,7 +68,7 @@
             button_archives.FlatStyle = FlatStyle.Flat;
             button_archives.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_archives.ForeColor = SystemColors.ButtonHighlight;
-            button_archives.Location = new Point(634, 13);
+            button_archives.Location = new Point(638, 13);
             button_archives.Name = "button_archives";
             button_archives.Size = new Size(110, 40);
             button_archives.TabIndex = 21;
@@ -79,7 +80,6 @@
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel4.BackColor = SystemColors.GradientActiveCaption;
-            panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(textbox_search);
             panel4.Controls.Add(button_archives);
             panel4.Location = new Point(216, 77);

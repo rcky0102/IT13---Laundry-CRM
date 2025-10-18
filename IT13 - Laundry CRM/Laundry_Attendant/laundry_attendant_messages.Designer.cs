@@ -122,11 +122,11 @@
             textbox_searchUser.BackColor = SystemColors.ButtonHighlight;
             textbox_searchUser.BorderStyle = BorderStyle.None;
             textbox_searchUser.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textbox_searchUser.Location = new Point(25, 17);
+            textbox_searchUser.Location = new Point(25, 20);
             textbox_searchUser.Multiline = true;
             textbox_searchUser.Name = "textbox_searchUser";
             textbox_searchUser.PlaceholderText = "🔍 Search (e.g. John | Doe | Role)";
-            textbox_searchUser.Size = new Size(350, 35);
+            textbox_searchUser.Size = new Size(350, 30);
             textbox_searchUser.TabIndex = 8;
             textbox_searchUser.TextChanged += textbox_searchUser_TextChanged;
             // 

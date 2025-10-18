@@ -60,11 +60,13 @@
             // button_save
             // 
             button_save.BackColor = SystemColors.MenuHighlight;
+            button_save.FlatAppearance.BorderSize = 0;
+            button_save.FlatStyle = FlatStyle.Flat;
             button_save.Font = new Font("Gadugi", 10F);
             button_save.ForeColor = SystemColors.ButtonHighlight;
-            button_save.Location = new Point(177, 191);
+            button_save.Location = new Point(192, 191);
             button_save.Name = "button_save";
-            button_save.Size = new Size(100, 35);
+            button_save.Size = new Size(100, 30);
             button_save.TabIndex = 2;
             button_save.Text = "Save";
             button_save.UseVisualStyleBackColor = false;
@@ -76,7 +78,7 @@
             button_cancel.FlatAppearance.BorderSize = 0;
             button_cancel.FlatStyle = FlatStyle.Flat;
             button_cancel.Font = new Font("Gadugi", 10F);
-            button_cancel.Location = new Point(71, 191);
+            button_cancel.Location = new Point(75, 191);
             button_cancel.Name = "button_cancel";
             button_cancel.Size = new Size(100, 30);
             button_cancel.TabIndex = 3;
