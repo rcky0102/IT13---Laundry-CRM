@@ -251,7 +251,7 @@ namespace IT13___Laundry_CRM.Customer
             }
 
             // Subject (acts as "Name") - bold, larger font
-            using (Font subjectFont = new Font("Cascadia Code", 10, FontStyle.Bold))
+            using (Font subjectFont = new Font("Gadugi", 10, FontStyle.Bold))
             using (SolidBrush subjectBrush = new SolidBrush(isSelected ? Color.White : Color.Black))
             {
                 g.DrawString(fb.subject, subjectFont, subjectBrush, bounds.Left + padding, bounds.Top + 5);
@@ -263,7 +263,7 @@ namespace IT13___Laundry_CRM.Customer
                 : $"User {fb.user_id}";
             string details = $"by {user} — {fb.created_at:MMM dd, yyyy hh:mm tt}";
 
-            using (Font detailsFont = new Font("Cascadia Code", 8, FontStyle.Italic))
+            using (Font detailsFont = new Font("Gadugi", 8, FontStyle.Italic))
             using (SolidBrush detailsBrush = new SolidBrush(isSelected ? Color.WhiteSmoke : Color.Gray))
             {
                 g.DrawString(details, detailsFont, detailsBrush, bounds.Left + padding, bounds.Top + 25);
@@ -295,7 +295,7 @@ namespace IT13___Laundry_CRM.Customer
             Label lblSubject = new Label()
             {
                 Text = $"📌 Subject: {feedback.subject}",
-                Font = new Font("Cascadia Code", 11, FontStyle.Bold),
+                Font = new Font("Gadugi", 11, FontStyle.Bold),
                 Dock = DockStyle.Top,
                 Height = 50,
                 Padding = new Padding(10)
@@ -308,7 +308,7 @@ namespace IT13___Laundry_CRM.Customer
             Label lblUser = new Label()
             {
                 Text = $"👤 Submitted by: {user}",
-                Font = new Font("Cascadia Code", 10, FontStyle.Regular),
+                Font = new Font("Gadugi", 10, FontStyle.Regular),
                 Dock = DockStyle.Top,
                 Height = 40,
                 Padding = new Padding(10)
@@ -317,7 +317,7 @@ namespace IT13___Laundry_CRM.Customer
             Label lblDate = new Label()
             {
                 Text = $"🕒 Date: {feedback.created_at:MMMM dd, yyyy hh:mm tt}",
-                Font = new Font("Cascadia Code", 9, FontStyle.Italic),
+                Font = new Font("Gadugi", 9, FontStyle.Italic),
                 Dock = DockStyle.Top,
                 Height = 40,
                 Padding = new Padding(10)
@@ -330,7 +330,7 @@ namespace IT13___Laundry_CRM.Customer
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
                 Dock = DockStyle.Fill,
-                Font = new Font("Cascadia Code", 10, FontStyle.Regular),
+                Font = new Font("Gadugi", 10, FontStyle.Regular),
                 BackColor = Color.WhiteSmoke,
                 ForeColor = Color.Black,
                 Padding = new Padding(10)
@@ -341,7 +341,7 @@ namespace IT13___Laundry_CRM.Customer
             //    Text = "Close",
             //    Dock = DockStyle.Bottom,
             //    Height = 40,
-            //    Font = new Font("Cascadia Code", 10, FontStyle.Bold),
+            //    Font = new Font("Gadugi", 10, FontStyle.Bold),
             //    BackColor = Color.FromArgb(52, 152, 219),
             //    ForeColor = Color.White,
             //    FlatStyle = FlatStyle.Flat

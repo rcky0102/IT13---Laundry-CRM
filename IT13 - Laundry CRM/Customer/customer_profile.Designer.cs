@@ -158,10 +158,10 @@
             button_cancel.FlatStyle = FlatStyle.Flat;
             button_cancel.Font = new Font("Gadugi", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button_cancel.ForeColor = SystemColors.ActiveCaptionText;
-            button_cancel.Location = new Point(228, 442);
+            button_cancel.Location = new Point(228, 440);
             button_cancel.Margin = new Padding(4, 3, 4, 3);
             button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(100, 30);
+            button_cancel.Size = new Size(100, 35);
             button_cancel.TabIndex = 9;
             button_cancel.Text = "Cancel";
             button_cancel.UseVisualStyleBackColor = false;

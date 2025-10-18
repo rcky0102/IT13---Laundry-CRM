@@ -31,6 +31,8 @@ namespace IT13___Laundry_CRM.Customer
             MakeRounded(label7);
             MakeRounded(label8);
             MakeRounded(panel1);
+            MakeRounded(button_save);
+            MakeRounded(button_cancel);
 
             MakeRounded(textbox_username);
             MakeRounded(textbox_password);
